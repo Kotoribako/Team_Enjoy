@@ -35,7 +35,8 @@ void Player::Draw()
 	DrawLine(0, 400, 1280, 400, GetColor(255, 0, 0), TRUE);
 	DrawLine(0, 200, 1280, 200, GetColor(255, 0, 0), TRUE);
 	DrawBox(playerX, playerY, playerX - 30, playerY - 30, GetColor(255, 255, 255), TRUE);
-	DrawFormatString(0, 30, GetColor(255, 255, 255), "jumoflg:%d",Jumpflg);
+	DrawFormatString(0, 50, GetColor(255, 255, 255), "count:%d",count);
+	DrawFormatString(0, 30, GetColor(255, 255, 255), "jumoflg:%d", Jumpflg);
 	DrawFormatString(100, 0, GetColor(255, 255, 255), "playerX:%f  playerY:%f", playerX, playerY);
 }
 
@@ -89,24 +90,22 @@ void Player::Move()
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && Jumpflg == FALSE)
 	{
 		Jumpflg = TRUE;
+		count += 1;
 	}
 
-	if (Jumpflg == TRUE)
+	if (Jumpflg == TRUE && Downflg == FALSE)
 	{
-		count += 1;
 		sy = 12.0f;
 		playerY -= sy;
 		sy += 0.3f;
-		//y_temp = playerY;
-		//playerY += (playerY - y_prev) + 200.0f;
-		//y_prev = y_temp;
 		if (playerY <= 200) {
 			playerY = 200;
 			Jumpflg = FALSE;
+			Downflg = TRUE;
 		}
 		/* ここにインターバル入れる */
 	}
-	 if (Jumpflg == FALSE && playerY < 400)
+	 if (Downflg == TRUE && count >= 1)
 	{
 		sy = 12.0f;
 		playerY += sy;
@@ -116,6 +115,8 @@ void Player::Move()
 	if (playerY >= 400) {
 		playerY = 400;
 		Jumpflg = FALSE;
+		Downflg = FALSE;
+		count = 0;
 	}
 	//if (count == 1 && PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
 	//	sy = 12.0f;
