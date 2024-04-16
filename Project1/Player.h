@@ -7,9 +7,10 @@ private:
 	int life;       //残機
 	int input_margin;
 	float P_YSpeed;
+	int count = 0;
 	int P_FPS;     //FPScnt
 	int P_Seconas1;  //秒数
-	bool Jumpflg = FALSE;
+	int Jumpflg = FALSE;
 	bool Downflg = FALSE;
 	float P_moveY;
 	float P_moveX;
