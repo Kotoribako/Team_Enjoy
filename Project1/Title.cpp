@@ -1,15 +1,14 @@
 #include "DxLib.h"
 #include "Title.h"
-#include "PadInput.h"
+#include "PadInput.h""
 #include<iostream>
-#include"GameMain.h"
 #define SCREEN_WIDTH 1280
 
 Title::Title()
 {
 
-	//ï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Ì’Ç‰ï¿½
-	MenuFont = CreateFontToHandle("HGå‰µè‹±è§’POPä½“", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
+	//ƒtƒHƒ“ƒg‚Ì’Ç‰Á
+	MenuFont = CreateFontToHandle("HG‘n‰pŠpÎß¯Ìß‘Ì", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
 	now_menu = static_cast<int>(TITLE_MENU::GAME_START);
 	input_margin = 0;
 
@@ -23,36 +22,32 @@ Title::~Title()
 
 AbstractScene* Title::Update()
 {
-	// ï¿½ï¿½ï¿½ï¿½ÔŠuï¿½ï¿½ï¿½ï¿½
+	// ‘€ìŠÔŠuŠÔ
 	const int max_input_margin = 15;
-	// ï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ÌŠï¿½ï¿½x
+	// ƒXƒeƒBƒbƒN‚ÌŠ´“x
 	const int stick_sensitivity = 20000;
 
 	if (input_margin < max_input_margin) {
 		input_margin++;
 	}
 	else {
-		// ï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½Yï¿½ï¿½ï¿½Wï¿½ï¿½æ“¾
+		// ƒXƒeƒBƒbƒN‚ÌYÀ•W‚ğæ“¾
 		int stick_y = PAD_INPUT::GetLStick().ThumbY;
 
 		if (std::abs(stick_y) > stick_sensitivity) {
 			//playsoundmem
-			// ï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡
+			// ƒXƒeƒBƒbƒN‚ªã‚ÉˆÚ“®‚µ‚½ê‡
 			if (stick_y > 0) {
-				// ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â‘Oï¿½ÉˆÚ“ï¿½
+				// ƒƒjƒ…[‘I‘ğˆ‚ğˆê‚Â‘O‚ÉˆÚ“®
 				now_menu = (now_menu - 1 + static_cast<int>(TITLE_MENU::TITLE_SIZE)) % static_cast<int>(TITLE_MENU::TITLE_SIZE);
 			}
-			// ï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡
+			// ƒXƒeƒBƒbƒN‚ª‰º‚ÉˆÚ“®‚µ‚½ê‡
 			else if (stick_y < 0) {
-				// ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âï¿½ï¿½ÉˆÚ“ï¿½
+				// ƒƒjƒ…[‘I‘ğˆ‚ğˆê‚ÂŸ‚ÉˆÚ“®
 				now_menu = (now_menu + 1) % static_cast<int>(TITLE_MENU::TITLE_SIZE);
 			}
 			input_margin = 0;
 		}
-	}
-	if (CheckHitKey(KEY_INPUT_1)) {
-		return new GameMain();
-
 	}
 	//if (PAD_INPUT::GetNowKey(XINPUT_BUTTON_A) && (PAD_INPUT::OnButton(XINPUT_BUTTON_A) == true))
 	//{
@@ -67,7 +62,7 @@ AbstractScene* Title::Update()
 	//		return nullptr;
 	//		break;
 	//	default:
-	//		printfDx("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‹@ï¿½\ï¿½Å‚ï¿½ï¿½B\n");
+	//		printfDx("–¢À‘•‚È‹@”\‚Å‚·B\n");
 	//		break;
 		//}
 	//}
@@ -77,32 +72,32 @@ AbstractScene* Title::Update()
 
 void Title::Draw()const
 {
-	//ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
+	//ƒ^ƒCƒgƒ‹‚Ì•`‰æ
 	/*DrawGraph(0, 0, TitleImg, FALSE);*/
 
 	for (int i = 0; i < static_cast<int>(TITLE_MENU::TITLE_SIZE); i++)
 	{
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌÅï¿½Yï¿½ï¿½ï¿½W
+		// •¶š—ñ‚ÌÅ¬YÀ•W
 		const int base_y = 200;
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Yï¿½ï¿½ï¿½Wï¿½ÔŠu
+		// •¶š—ñ‚ÌYÀ•WŠÔŠu
 		const int margin_y = 100;
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½F
+		// •¶šF
 		int color = 0xFFFFFF;
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½gï¿½F
+		// •¶šŠO˜gF
 		int border_color = 0x000000;
 
-		// ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ê‡ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Fï¿½Æ•ï¿½ï¿½ï¿½ï¿½Oï¿½gï¿½Fï¿½ğ”½“]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ƒJ[ƒ\ƒ‹‚ª‡‚Á‚Ä‚¢‚éê‡A•¶šF‚Æ•¶šŠO˜gF‚ğ”½“]‚³‚¹‚é
 		if (now_menu == i) {
 			color = ~color;
 			border_color = ~border_color;
 		}
 		DrawStringToHandle(SCREEN_WIDTH / 2 - 100, i * margin_y + base_y, menu_items[i], color, MenuFont, border_color);
 	}
-	DrawStringToHandle(150, 100, "ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½S", 0xffffff, MenuFont);
+	DrawStringToHandle(150, 100, "ƒQ[ƒ€‘å‘S", 0xffffff, MenuFont);
 
-	////ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ì•`ï¿½ï¿½
+	////ƒJ[ƒ\ƒ‹‚Ì•`‰æ
 	//int select_y = 230 + Select * 80;
 	//DrawGraph(650, select_y, CursorImg, TRUE);
 }

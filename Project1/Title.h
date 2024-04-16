@@ -2,7 +2,7 @@
 #pragma once
 #include "AbstractScene.h"
 
-//ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[
+//ƒ^ƒCƒgƒ‹ƒƒjƒ…[
 enum class TITLE_MENU
 {
     GAME_START,
@@ -14,37 +14,37 @@ class Title : public AbstractScene
 {
 private:
     const char* menu_items[static_cast<int>(TITLE_MENU::TITLE_SIZE)] = {
-    "ã‚¹ã‚¿ãƒ¼ãƒˆ",
-    "ã‚¨ãƒ³ãƒ‰"
+    "‚·‚½[‚Æ",
+    "‚¦‚ñ‚Ç"
     };
 
-    //int Select;     //ï¿½Iï¿½ï¿½
-    //int OldKey;		//ï¿½Oï¿½Ì“ï¿½ï¿½ÍƒLï¿½[
-    //int NowKey;		//ï¿½ï¿½ï¿½Ì“ï¿½ï¿½ÍƒLï¿½[
-    //int KeyFlg;		//ï¿½ï¿½ï¿½ÍƒLï¿½[ï¿½ï¿½ï¿½
+    //int Select;     //‘I‘ğ”
+    //int OldKey;		//‘O‚Ì“ü—ÍƒL[
+    //int NowKey;		//¡‚Ì“ü—ÍƒL[
+    //int KeyFlg;		//“ü—ÍƒL[î•ñ
 
-    //bool Once;      //Lï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ÅƒJï¿½[ï¿½\ï¿½ï¿½ï¿½ğ“®‚ï¿½ï¿½ï¿½ï¿½p
+    //bool Once;      //LƒXƒeƒBƒbƒN‚ÅƒJ[ƒ\ƒ‹‚ğ“®‚©‚·—p
 
-    //int TitleBGM;     //BGMï¿½p
-    //int MenuSE;       //ï¿½Iï¿½ï¿½SEï¿½p
-    //int TitleImg;     //ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½æ‘œ
-    //int CursorImg;    //ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½æ‘œ
+    //int TitleBGM;     //BGM—p
+    //int MenuSE;       //‘I‘ğSE—p
+    //int TitleImg;     //ƒ^ƒCƒgƒ‹‰æ‘œ
+    //int CursorImg;    //ƒJ[ƒ\ƒ‹‰æ‘œ
 
-    int now_menu; //ï¿½ï¿½ï¿½İ‘Iï¿½ï¿½ï¿½ï¿½Ä‚éƒï¿½jï¿½ï¿½ï¿½[
-    int MenuFont; //ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½pï¿½Ìƒtï¿½Hï¿½ï¿½ï¿½g
-    int input_margin;  //ï¿½ï¿½ï¿½ìï¿½ÔŠÔŠu
+    int now_menu; //Œ»İ‘I‘ğ‚µ‚Ä‚éƒƒjƒ…[
+    int MenuFont; //ƒƒjƒ…[—p‚ÌƒtƒHƒ“ƒg
+    int input_margin;  //‘€ìŠÔŠÔŠu
 
 public:
-    //ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
+    //ƒRƒ“ƒXƒgƒ‰ƒNƒ^
     Title();
 
-    //ï¿½fï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
+    //ƒfƒXƒgƒ‰ƒNƒ^
     ~Title();
 
-    //ï¿½`ï¿½ï¿½ÈŠOï¿½ÌXï¿½Vï¿½ï¿½ï¿½ï¿½s
+    //•`‰æˆÈŠO‚ÌXV‚ğÀs
     AbstractScene* Update() override;
 
-    //ï¿½`ï¿½ï¿½ÉŠÖ‚ï¿½ï¿½é‚±ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½
+    //•`‰æ‚ÉŠÖ‚·‚é‚±‚Æ‚ğÀ‘•
     void Draw() const override;
 };
 
