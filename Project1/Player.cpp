@@ -33,8 +33,9 @@ void Player::Update()
 void Player::Draw()
 {
 	DrawLine(0, 400, 1280, 400, GetColor(255, 0, 0), TRUE);
-	DrawLine(0, 350, 1280, 350, GetColor(255, 0, 0), TRUE);
+	DrawLine(0, 200, 1280, 200, GetColor(255, 0, 0), TRUE);
 	DrawBox(playerX, playerY, playerX - 30, playerY - 30, GetColor(255, 255, 255), TRUE);
+	DrawFormatString(0, 30, GetColor(255, 255, 255), "jumoflg:%d",Jumpflg);
 	DrawFormatString(100, 0, GetColor(255, 255, 255), "playerX:%f  playerY:%f", playerX, playerY);
 }
 
@@ -42,6 +43,9 @@ void Player::Move()
 {
 	float Jump;
 	float y;
+	float y_temp;
+	float y_prev = 20.0f;
+	float sy = 0.0f;
 	// ����Ԋu����
 	const int max_input_margin = 10;
 	// �X�e�B�b�N�̊��x
@@ -50,7 +54,7 @@ void Player::Move()
 	int stick_y1 = PAD_INPUT::GetLStick().ThumbY;
 	int stick_x1 = PAD_INPUT::GetLStick().ThumbX;
 
-	
+
 	if (std::abs(stick_y1) > stick_sensitivity) {
 		// スティック上
 		if (stick_y1 > 0) {
@@ -58,13 +62,13 @@ void Player::Move()
 		}
 		//ステック下
 		else if (stick_y1 < 0) {
-			playerY += 3 ;
+			playerY += 3;
 		}
 		input_margin = 0;
 	}
 	if (std::abs(stick_x1) > stick_sensitivity) {
 		//スティック左
-		if (stick_x1 < 0 ) {
+		if (stick_x1 < 0) {
 			playerX -= 3;
 		}
 		//スティック右
@@ -82,34 +86,42 @@ void Player::Move()
 	{
 		playerX += 3;
 	}
-
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A)) // Aボタンを押したら
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && Jumpflg == FALSE)
 	{
 		Jumpflg = TRUE;
-		if (Jumpflg == TRUE && playerY <= 400)
-		{
-			P_moveY = -0.6f;
-			playerY += P_moveY;
-			if (playerY == 300) {
-				Jumpflg = FALSE;
-				Downflg = TRUE;
-			}
-			/* ここにインターバル入れる */
-
-		}
-		if (Jumpflg == FALSE && Downflg == TRUE)
-		{
-			P_moveY = 0.6f;
-			playerY += P_moveY;
-			Downflg = FALSE;
-		}
 	}
+
+	if (Jumpflg == TRUE)
+	{
+		count += 1;
+		sy = 12.0f;
+		playerY -= sy;
+		sy += 0.3f;
+		//y_temp = playerY;
+		//playerY += (playerY - y_prev) + 200.0f;
+		//y_prev = y_temp;
+		if (playerY <= 200) {
+			playerY = 200;
+			Jumpflg = FALSE;
+		}
+		/* ここにインターバル入れる */
+	}
+	 if (Jumpflg == FALSE && playerY < 400)
+	{
+		sy = 12.0f;
+		playerY += sy;
+		sy += 0.3f;
+	}
+
 	if (playerY >= 400) {
 		playerY = 400;
-		Downflg = FALSE;
-		
+		Jumpflg = FALSE;
 	}
-	
+	//if (count == 1 && PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
+	//	sy = 12.0f;
+	//	playerY += sy;
+	//	sy += 0.3f;
+	//}
 }
 
 //void Player::Jump()
