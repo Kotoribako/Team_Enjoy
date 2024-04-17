@@ -13,7 +13,6 @@ Title::Title()
 	now_menu = static_cast<int>(TITLE_MENU::GAME_START);
 	input_margin = 0;
 
-	
 }
 
 Title::~Title()
