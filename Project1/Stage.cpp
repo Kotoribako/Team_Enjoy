@@ -13,13 +13,13 @@ Stage::~Stage()
 
 void Stage::Update()
 {
-	switch (NowStageNumber) // ƒXƒe[ƒW”‚É‚æ‚Á‚Ä‘JˆÚ‚·‚é
+	switch (NowStageNumber) // ï¿½Xï¿½eï¿½[ï¿½Wï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Ä‘Jï¿½Ú‚ï¿½ï¿½ï¿½
 	{
-	case 1: // ‚PƒXƒe[ƒW–Ú‚Ì
+	case 1: // ï¿½Pï¿½Xï¿½eï¿½[ï¿½Wï¿½Ú‚Ìï¿½
 		break;
-	case 2: // ‚QƒXƒe[ƒW–Ú‚Ì
+	case 2: // ï¿½Qï¿½Xï¿½eï¿½[ï¿½Wï¿½Ú‚Ìï¿½
 		break;
-	case 3: // ‚RƒXƒe[ƒW–Ú‚Ì
+	case 3: // ï¿½Rï¿½Xï¿½eï¿½[ï¿½Wï¿½Ú‚Ìï¿½
 		break;
 	}
 }

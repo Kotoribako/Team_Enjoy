@@ -3,21 +3,21 @@
 class Stage
 {
 private:
-	int Stage1Image; // 1–Ê‚Ì‰æ‘œ“Ç‚İ‚İ
-	int Stage2Image; // ‚Q–Ê‚Ì‰æ‘œ“Ç‚İ‚İ
-	int Stage3Image; // ‚R–Ê‚Ì‰æ‘œ“Ç‚İ‚İ
+	int Stage1Image; // 1ï¿½Ê‚Ì‰æ‘œï¿½Ç‚İï¿½ï¿½ï¿½
+	int Stage2Image; // ï¿½Qï¿½Ê‚Ì‰æ‘œï¿½Ç‚İï¿½ï¿½ï¿½
+	int Stage3Image; // ï¿½Rï¿½Ê‚Ì‰æ‘œï¿½Ç‚İï¿½ï¿½ï¿½
 
-	int BlockImage; // •ªŠ„“Ç‚İ‚İ—p
+	int BlockImage; // ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚İï¿½ï¿½İ—p
 
-	int NowStageNumber; // ¡‚ÌƒXƒe[ƒW”
+	int NowStageNumber; // ï¿½ï¿½ï¿½ÌƒXï¿½eï¿½[ï¿½Wï¿½ï¿½
 
 public:
 	Stage();
 
 	~Stage();
 
-	void Update(); // •`‰æˆÈŠO‚ÌXVˆ—‚ğs‚¤
-	void Draw(); // •`‰æ‚µ‚Ä‚¢‚é‚à‚Ì‚ğXV
+	void Update(); // ï¿½`ï¿½ï¿½ÈŠOï¿½ÌXï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
+	void Draw(); // ï¿½`ï¿½æ‚µï¿½Ä‚ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½Xï¿½V
 
-	void MoveXStage(); // ‰¡²‚ÉƒXƒe[ƒW‚ğ“®‚©‚·
+	void MoveXStage(); // ï¿½ï¿½ï¿½ï¿½ï¿½ÉƒXï¿½eï¿½[ï¿½Wï¿½ğ“®‚ï¿½ï¿½ï¿½
 };
