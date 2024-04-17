@@ -3,6 +3,7 @@
 #include "PadInput.h"
 #include<iostream>
 #include"GameMain.h"
+#include"GenreSelect.h"
 #define SCREEN_WIDTH 1280
 
 Title::Title()
@@ -53,6 +54,9 @@ AbstractScene* Title::Update()
 	if (CheckHitKey(KEY_INPUT_1)) {
 		return new GameMain();
 
+	}
+	if (CheckHitKey(KEY_INPUT_2)) {
+		return new GenreSelect;
 	}
 	//if (PAD_INPUT::GetNowKey(XINPUT_BUTTON_A) && (PAD_INPUT::OnButton(XINPUT_BUTTON_A) == true))
 	//{
