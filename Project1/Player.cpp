@@ -32,8 +32,6 @@ void Player::Update()
 
 void Player::Draw()
 {
-	DrawLine(0, 400, 1280, 400, GetColor(255, 0, 0), TRUE);
-	DrawLine(0, 200, 1280, 200, GetColor(255, 0, 0), TRUE);
 	DrawBox(playerX, playerY, playerX - 30, playerY - 30, GetColor(255, 255, 255), TRUE);
 	DrawFormatString(0, 50, GetColor(255, 255, 255), "count:%d",count);
 	DrawFormatString(0, 30, GetColor(255, 255, 255), "jumoflg:%d", Jumpflg);
