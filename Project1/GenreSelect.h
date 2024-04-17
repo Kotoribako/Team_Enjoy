@@ -13,37 +13,37 @@ public:
 	struct Genre1 {
 		int img;
 	};
-	Genre1 genre1;
+	struct Genre1 genre1;
 
 	struct Genre2 {
 		int img;
 	};
-	Genre1 genre2;
+	struct Genre2 genre2;
 
 	struct Genre3 {
 		int img;
 	};
-	Genre1 genre3;
+	struct Genre3 genre3;
 
 	struct Genre4 {
 		int img;
 	};
-	Genre1 genre4;
+	struct Genre4 genre4;
 
 	struct Genre5 {
 		int img;
 	};
-	Genre1 genre5;
+	struct Genre5 genre5;
 
 	struct Genre6 {
 		int img;
 	};
-	Genre1 genre6;
+	struct Genre6 genre6;
 
 	struct GenreRand {
 		int img;
 	};
-	GenreRand genrerand;
+	struct GenreRand genrerand;
 
 	GenreSelect();
 	virtual ~GenreSelect() {};

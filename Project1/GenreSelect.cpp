@@ -10,6 +10,7 @@ GenreSelect::GenreSelect()
 	min = 1;
 	result = 0;
 	Select = 0;
+
 }
 
 
