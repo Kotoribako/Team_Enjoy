@@ -7,6 +7,8 @@ class GameMain :public AbstractScene
 private:
 	Player* player;
 	Stage1* stage1;
+
+	int mouseX, mouseY;
 public:
 	GameMain();
 	virtual ~GameMain();

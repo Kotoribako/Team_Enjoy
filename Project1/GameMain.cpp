@@ -12,6 +12,7 @@ GameMain::~GameMain()
 
 AbstractScene* GameMain::Update()
 {
+	GetMousePoint(&mouseX, &mouseY);
 	player->Update();
 	stage1->Update();
 	return this;
@@ -19,6 +20,8 @@ AbstractScene* GameMain::Update()
 
 void GameMain::Draw() const
 {
-	player->Draw();
+
 	stage1->Draw();
+	player->Draw();
+	DrawFormatString(500, 0, GetColor(0, 0, 0), "mouseX:%d  mouseY:%d", mouseX, mouseY);
 }
