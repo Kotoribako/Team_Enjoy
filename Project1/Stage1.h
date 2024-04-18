@@ -10,7 +10,7 @@ private:
 
 	int BlockImg; //ブロック（障害物）画像（床画像を使うなら確実に使う）
 
-
+	int Stage1X; // ステージのX座標のデータ
 	
 
 public:
