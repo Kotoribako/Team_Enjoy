@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="FpsController.cpp" />
     <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="GenreSelect.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="AbstractScene.h" />
     <ClInclude Include="FpsController.h" />
     <ClInclude Include="GameMain.h" />
+    <ClInclude Include="GenreSelect.h" />
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneManager.h" />
