@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include <DxLib.h>
-
+#include"PadInput.h"
 GenreSelect::GenreSelect()
 {
 	r = 0;
@@ -60,13 +60,13 @@ void GenreSelect::Draw() const
 void GenreSelect::gSelect()
 {
 	int x = 0;
-	if (CheckHitKey(KEY_INPUT_DOWN)) 
+	if (CheckHitKey(KEY_INPUT_DOWN)|| PAD_INPUT::GetLStick().ThumbY)
 	{
 		if (Select <= 6) {
 			Select += 1;
 		}
 	}
-	else if (CheckHitKey(KEY_INPUT_UP))
+	else if (CheckHitKey(KEY_INPUT_UP)|| PAD_INPUT::GetLStick().ThumbY)
 	{
 		if (Select >= 1) {
 			Select -= 1;
