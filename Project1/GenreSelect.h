@@ -8,7 +8,7 @@ private:
 	int min; //乱数の上限値
 	int result; //乱数の結果
 	int Select;// ジャンル選択
-	int Genre1[6];
+	int Genre1;
 
 public:
 
@@ -19,5 +19,6 @@ public:
 	virtual AbstractScene* Update() override;
 	virtual void Draw() const override;
 	void gSelect();
+	void greflection();
 };
 

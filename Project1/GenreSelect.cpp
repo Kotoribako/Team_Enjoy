@@ -11,13 +11,15 @@ GenreSelect::GenreSelect()
 	result = 0;
 	Select = 0;
 
-	Genre1[6] = 0;
+	Genre1 = 0;
 	
 }
 
 
 AbstractScene* GenreSelect::Update()
 {
+	gSelect();
+	greflection();
 	srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
 
 	r = (rand() % (max - min + 1)) + min;
@@ -73,6 +75,37 @@ void GenreSelect::gSelect()
 
 	if (CheckHitKey(KEY_INPUT_3)) 
 	{
-		Genre1[x] = Select;
+		Genre1 = Select;
 	}
+}
+
+void GenreSelect::greflection()
+{
+	int y{};
+
+	if (Genre1 == 1)
+	{
+
+	}
+	else if (Genre1 == 2)
+	{
+
+	}
+	else if (Genre1 == 3)
+	{
+
+	}
+	else if (Genre1 == 4)
+	{
+
+	}
+	else if (Genre1 == 5) 
+	{
+
+	}
+	else if (Genre1 == 6)
+	{
+
+	}
+
 }
