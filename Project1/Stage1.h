@@ -10,8 +10,7 @@ private:
 
 	int BlockImg; //ブロック（障害物）画像（床画像を使うなら確実に使う）
 
-	int Stage1X; // ステージのX座標のデータ
-	
+	float Stage1X; // ステージのX座標のデータ
 
 public:
 	static int NowStageNumber; //ステージ数の表示
@@ -19,8 +18,8 @@ public:
 
 	~Stage1();
 
-	void Update(); // �`��ȊO�̍X�V������s��
-	void Draw(); // �`�悵�Ă����̂�X�V
+	void Update(); // 描画以外をアップデート
+	void Draw(); // 描画をアップデート
 
-	void MoveXStage(); // �����ɃX�e�[�W�𓮂���
+	void MoveXStage(); // ステージ画像を横に移動するための関数
 };

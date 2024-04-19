@@ -32,7 +32,7 @@ void Player::Update()
 
 void Player::Draw()
 {
-	DrawBox(playerX, playerY, playerX - 30, playerY - 30, GetColor(0, 0,255 ), TRUE);
+	DrawBox(playerX, playerY, playerX + 30, playerY -30, GetColor(0, 0,255 ), TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
 	DrawFormatString(0, 30, GetColor(0, 0, 0), "jumoflg:%d", Jumpflg);
 	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
@@ -101,7 +101,6 @@ void Player::Move()
 			Jumpflg = FALSE;
 			Downflg = TRUE;
 		}
-		/* ここにインターバル入れる */
 	}
 	 if (Downflg == TRUE && count >= 1)
 	{
@@ -115,5 +114,11 @@ void Player::Move()
 		Jumpflg = FALSE;
 		Downflg = FALSE;
 		count = 0;
+	}
+	if (playerX >= 640) {
+		playerX = 640;
+	}
+	if (playerX <= 0) {
+		playerX = 0;
 	}
 }
