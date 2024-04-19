@@ -101,7 +101,6 @@ void Player::Move()
 			Jumpflg = FALSE;
 			Downflg = TRUE;
 		}
-		/* ここにインターバル入れる */
 	}
 	 if (Downflg == TRUE && count >= 1)
 	{
@@ -115,5 +114,8 @@ void Player::Move()
 		Jumpflg = FALSE;
 		Downflg = FALSE;
 		count = 0;
+	}
+	if (playerX >= 640) {
+		playerX = 640;
 	}
 }
