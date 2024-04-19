@@ -10,40 +10,7 @@ private:
 	int Select;// ジャンル選択
 public:
 
-	struct Genre1 {
-		int img;
-	};
-	struct Genre1 genre1;
-
-	struct Genre2 {
-		int img;
-	};
-	struct Genre2 genre2;
-
-	struct Genre3 {
-		int img;
-	};
-	struct Genre3 genre3;
-
-	struct Genre4 {
-		int img;
-	};
-	struct Genre4 genre4;
-
-	struct Genre5 {
-		int img;
-	};
-	struct Genre5 genre5;
-
-	struct Genre6 {
-		int img;
-	};
-	struct Genre6 genre6;
-
-	struct GenreRand {
-		int img;
-	};
-	struct GenreRand genrerand;
+	int Genre[6][10];
 
 	GenreSelect();
 	virtual ~GenreSelect() {};

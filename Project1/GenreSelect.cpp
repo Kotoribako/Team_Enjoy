@@ -10,7 +10,6 @@ GenreSelect::GenreSelect()
 	min = 1;
 	result = 0;
 	Select = 0;
-
 }
 
 
@@ -55,5 +54,21 @@ void GenreSelect::Draw() const
 
 void GenreSelect::gSelect()
 {
-	
+	if (CheckHitKey(KEY_INPUT_DOWN)) 
+	{
+		if (Select <= 6) {
+			Select += 1;
+		}
+	}
+	else if (CheckHitKey(KEY_INPUT_UP))
+	{
+		if (Select >= 1) {
+			Select -= 1;
+		}
+	}
+
+	if (CheckHitKey(KEY_INPUT_3)) 
+	{
+
+	}
 }
