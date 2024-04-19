@@ -10,9 +10,8 @@ int Stage1::NowStageNumber;
 Stage1::Stage1()
 {
 	Stage1Img = LoadGraph("image/FirstStage(temporary).png");
-	NowStageNumber = 0;
-	Stage1X = 0.0;
-	MoveFlgX = 0;
+	NowStageNumber = 0; // 現在のステージを管理する
+	Stage1X = 0.0; // 最初の画像のX座標を0にする
 }
 
 Stage1::~Stage1()
@@ -22,8 +21,7 @@ Stage1::~Stage1()
 
 void Stage1::Update()
 {
-	MoveXStage();
-	
+	MoveXStage(); // X軸の画像を動かす処理を入れる	
 }
 
 void Stage1::Draw()
@@ -37,21 +35,19 @@ void Stage1::Draw()
 
 void Stage1::MoveXStage()
 {
-	if (Player::playerX == 640.0 && PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) && Player::playerX <= Stage1MaxX - 640.0)
-	{
-		/*if (Player::playerX >= 640.0 && PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT))*/
-		//{
-			Stage1X -= 3/*640.0 - Player::playerX*/;
-		//}
-		
+	// プレイヤーのX座標が640以上かつ、右ボタンを押していて、画像の端に到達していないとき、
+	if (Player::playerX >= 640.0 && PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) && Player::playerX <= Stage1MaxX - 640.0)
+	{		
+		Stage1X -= 3; // 画像を左に動かす。
 	}
-	if (Player::playerX < 640.0 &&/* MoveFlgX == 0 &&*/ PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT)/* && Stage1X >= 0*//* && Player::playerX - 640.0 >= Stage1MinX*/)
+	//プレイヤーのX座標が640未満かつ、左ボタンを押している時、
+	if (Player::playerX < 640.0 &&PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT))
 	{
-		Stage1X += 3;
+		Stage1X += 3; // 画像を右に動かす。
 	}
 
-	if (Stage1X >= 0)
+	if (Stage1X >= 0) // ステージ画像のX座標が0以下の時、
 	{
-		Stage1X = 0;
+		Stage1X = 0; // ステージ画像のX座標を0に固定する
 	}
 }

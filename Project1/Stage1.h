@@ -12,17 +12,14 @@ private:
 
 	float Stage1X; // ステージのX座標のデータ
 
-	int MoveFlgX; // 画像を左に動かすかどうか
-	
-
 public:
 	static int NowStageNumber; //ステージ数の表示
 	Stage1();
 
 	~Stage1();
 
-	void Update(); // �`��ȊO�̍X�V������s��
-	void Draw(); // �`�悵�Ă����̂�X�V
+	void Update(); // 描画以外をアップデート
+	void Draw(); // 描画をアップデート
 
-	void MoveXStage(); // �����ɃX�e�[�W�𓮂���
+	void MoveXStage(); // ステージ画像を横に移動するための関数
 };
