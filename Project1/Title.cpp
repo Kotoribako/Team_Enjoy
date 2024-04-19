@@ -51,7 +51,7 @@ AbstractScene* Title::Update()
 			input_margin = 0;
 		}
 	}
-	if (CheckHitKey(KEY_INPUT_1)) {
+	if (CheckHitKey(KEY_INPUT_1) || PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
 		return new GameMain();
 
 	}
@@ -104,7 +104,7 @@ void Title::Draw()const
 		}
 		DrawStringToHandle(SCREEN_WIDTH / 2 - 100, i * margin_y + base_y, menu_items[i], color, MenuFont, border_color);
 	}
-	DrawStringToHandle(150, 100, "�Q�[����S", 0xffffff, MenuFont);
+	DrawStringToHandle(150, 100, "タイトル画面", 0xffffff, MenuFont);
 
 	////�J�[�\���̕`��
 	//int select_y = 230 + Select * 80;
