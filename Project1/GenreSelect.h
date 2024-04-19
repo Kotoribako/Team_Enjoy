@@ -10,7 +10,7 @@ private:
 	int Select;// ジャンル選択
 public:
 
-	int Genre[6][10];
+	//int Genre[6][10];
 
 	GenreSelect();
 	virtual ~GenreSelect() {};
