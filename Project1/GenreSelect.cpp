@@ -10,6 +10,9 @@ GenreSelect::GenreSelect()
 	min = 1;
 	result = 0;
 	Select = 0;
+
+	Genre1[6] = 0;
+	
 }
 
 
@@ -54,6 +57,7 @@ void GenreSelect::Draw() const
 
 void GenreSelect::gSelect()
 {
+	int x = 0;
 	if (CheckHitKey(KEY_INPUT_DOWN)) 
 	{
 		if (Select <= 6) {
@@ -69,6 +73,6 @@ void GenreSelect::gSelect()
 
 	if (CheckHitKey(KEY_INPUT_3)) 
 	{
-
+		Genre1[x] = Select;
 	}
 }

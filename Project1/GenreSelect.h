@@ -8,6 +8,8 @@ private:
 	int min; //乱数の上限値
 	int result; //乱数の結果
 	int Select;// ジャンル選択
+	int Genre1[6];
+
 public:
 
 	//int Genre[6][10];
