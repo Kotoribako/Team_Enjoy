@@ -36,7 +36,7 @@ void Stage1::Draw()
 void Stage1::MoveXStage()
 {
 	// プレイヤーのX座標が640以上かつ、右ボタンを押していて、画像の端に到達していないとき、
-	if (Player::playerX >= 640.0 && PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) && Player::playerX <= Stage1MaxX - 640.0)
+	if (Player::playerX >= 640.0 && PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) && (Stage1X * (-1)) + 640.0 <= Stage1MaxX - 640.0) // フラグでプレイヤーを管理
 	{		
 		Stage1X -= 3; // 画像を左に動かす。
 	}
