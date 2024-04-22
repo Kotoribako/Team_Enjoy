@@ -1,4 +1,5 @@
 #include "DxLib.h"
+#include <DxLib.h>
 #include "Title.h"
 #include "PadInput.h"
 #include<iostream>
@@ -8,6 +9,9 @@
 
 Title::Title()
 {
+
+	//SE読み込み
+	((MenuSE = LoadSoundMem("Project1/Sound/SE/カーソルSE.wav")) == -1);
 
 	//�t�H���g�̒ǉ�
 	MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
@@ -52,6 +56,7 @@ AbstractScene* Title::Update()
 	}
 	if (CheckHitKey(KEY_INPUT_1) || PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
 		return new GameMain();
+		PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
 
 	}
 	if (CheckHitKey(KEY_INPUT_2)) {

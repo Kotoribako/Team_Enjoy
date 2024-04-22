@@ -6,8 +6,8 @@
 enum class TITLE_MENU
 {
     GAME_START,
-    RANKING,
-    HELP,
+    /*RANKING,
+    HELP,*/
     GAME_END,
     TITLE_SIZE
 };
@@ -27,8 +27,8 @@ private:
 
     //bool Once;      //L�X�e�B�b�N�ŃJ�[�\���𓮂����p
 
-    //int TitleBGM;     //BGM�p
-    //int MenuSE;       //�I��SE�p
+    int TitleBGM;       //BGM
+    int MenuSE;       //�I��SE�p
     //int TitleImg;     //�^�C�g���摜
     //int CursorImg;    //�J�[�\���摜
 
