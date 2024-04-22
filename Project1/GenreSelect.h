@@ -12,7 +12,7 @@ private:
 
 	int CauserX; //ジャンル選択用のカーソルX
 	int CauserY; //ジャンル選択用のカーソルY
-
+	int Causer;
 
 	int AnimeGame1;
 	int AnimeGame2;
