@@ -6,6 +6,8 @@
 enum class TITLE_MENU
 {
     GAME_START,
+    RANKING,
+    HELP,
     GAME_END,
     TITLE_SIZE
 };

@@ -70,7 +70,7 @@ AbstractScene* Title::Update()
 	//		return nullptr;
 	//		break;
 	//	default:
-	//		printfDx("�������ȋ@�\�ł��B\n");
+	//		printfDx("�������ȋ@�\�ł��B\n"); 
 	//		break;
 		//}
 	//}
