@@ -1,9 +1,11 @@
 #pragma once
+#include"Block.h"
 
 class Stage1
 {
 private:
 
+	Block* block;
 	int Stage1Img; //ステージ１画像
 	//↑か↓のどちらかを使う
 	int FloorImg; //床画像

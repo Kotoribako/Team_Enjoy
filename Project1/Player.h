@@ -18,8 +18,11 @@ private:
 	
 
 public:
-	static  float playerX;  //プレイヤー座標X
-	static  float playerY;  //プレイヤー座標Y
+	static  float playerX;  //プレイヤー座標X　左
+	static	float playerX2;	//プレイヤー座標Y　右
+	static  float playerY;	//プレイヤー座標X　下
+	static	float playerY2; //プレイヤー座標Y　上
+	static  int   p_standflg;
 	static float velocity;
 
 	static int MoveFlg; // スクロール終了後移動する
@@ -30,6 +33,7 @@ public:
 	void Update();
 	void Draw();
 	void Move();  //プレイヤー動き（ジャンプ含む）
+	void StageStand(); //ステージに立つ（当たり判定の処理）
 	
 
 };

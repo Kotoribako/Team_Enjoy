@@ -2,8 +2,11 @@
 #include "Stage1.h"
 #include<iostream>
 #include"DxLib.h"
-float Player::playerX;
-float Player::playerY;
+float Player::playerX;  //左
+float Player::playerX2; //右
+float Player::playerY;  //上
+float Player::playerY2; //下
+int Player::p_standflg; //立ってるかのフラグ
 float Player::velocity;
 int Player::MoveFlg;
 
@@ -25,6 +28,7 @@ Player::~Player()
 
 void Player::Update()
 {
+	
 	P_FPS++;
 	Move();
 	if (P_FPS > 59) {
@@ -39,7 +43,7 @@ void Player::Update()
 
 void Player::Draw()
 {
-	DrawBox(playerX, playerY, playerX + 30, playerY -30, GetColor(0, 0,255 ), TRUE);
+	DrawBox(playerX, playerY, playerX2, playerY2, GetColor(0, 0,255 ), TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
 	DrawFormatString(0, 30, GetColor(0, 0, 0), "jumoflg:%d", Jumpflg);
 	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
@@ -128,4 +132,10 @@ void Player::Move()
 	if (playerX <= 0) {
 		playerX = 0;
 	}
+	playerX2 = playerX + 30;
+	playerY2 = playerY - 30;
+}
+
+void Player::StageStand()
+{
 }
