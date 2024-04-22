@@ -8,7 +8,18 @@ private:
 	int min; //乱数の上限値
 	int result; //乱数の結果
 	int Select;// ジャンル選択
-	int Genre1;
+	int Genre1; //ジャンルの反映
+
+	int AnimeGame1;
+	int AnimeGame2;
+	int AnimeGame3;
+	int Quiz1[3] = { AnimeGame1,AnimeGame2,AnimeGame3 };
+
+	int Quiz2[3];
+	int Quiz3[3]; 
+	int Quiz4[3];
+	int Quiz5[3];
+	int Quiz6[3];
 
 public:
 

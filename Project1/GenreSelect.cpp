@@ -12,7 +12,6 @@ GenreSelect::GenreSelect()
 	Select = 0;
 
 	Genre1 = 0;
-	
 }
 
 
