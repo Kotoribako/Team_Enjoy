@@ -17,6 +17,9 @@ GenreSelect::GenreSelect()
 	AnimeGame2 = LoadGraph("image/Anime&Game/AnimeGame2.png", TRUE);
 	AnimeGame3 = LoadGraph("image/Anime&Game/AnimeGame3.png", TRUE);
 
+	CauserX = 500;
+	CauserY = 200;
+
 }
 
 
@@ -54,6 +57,8 @@ AbstractScene* GenreSelect::Update()
 
 void GenreSelect::Draw() const
 {
+
+	
 
 
 	// ランダムで出した値に応じて、いくつかのパターンに派生する

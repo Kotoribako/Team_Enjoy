@@ -10,6 +10,10 @@ private:
 	int Select;// ジャンル選択
 	int Genre1; //ジャンルの反映
 
+	int CauserX; //ジャンル選択用のカーソルX
+	int CauserY; //ジャンル選択用のカーソルY
+
+
 	int AnimeGame1;
 	int AnimeGame2;
 	int AnimeGame3;
