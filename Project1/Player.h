@@ -20,7 +20,10 @@ private:
 public:
 	static  float playerX;  //プレイヤー座標X
 	static  float playerY;  //プレイヤー座標Y
-	static float velocity;  
+	static float velocity;
+
+	static int MoveFlg; // スクロール終了後移動する
+
 	Player();
 	~Player();
 

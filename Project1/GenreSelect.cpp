@@ -9,26 +9,76 @@ GenreSelect::GenreSelect()
 	max = 6;
 	min = 1;
 	result = 0;
-	Select = 0;
 
-	Genre1 = 0;
-	
+	Genre1 = 1;
+
+	AnimeGame1 = LoadGraph("image/Anime&Game/AnimeGame1.png", TRUE);
+	AnimeGame2 = LoadGraph("image/Anime&Game/AnimeGame2.png", TRUE);
+	AnimeGame3 = LoadGraph("image/Anime&Game/AnimeGame3.png", TRUE);
+
+	Causer = LoadGraph("image/Causer.png", TRUE);
+	CauserX = 200;
+	CauserY = 200;
+	for (int i = 0; i < 3; i++) {
+		Quiz1[i] = 0;
+		Quiz2[i] = 0;
+		Quiz3[i] = 0;
+		Quiz4[i] = 0;
+		Quiz5[i] = 0;
+		Quiz6[i] = 0;
+	}
 }
 
 
 AbstractScene* GenreSelect::Update()
 {
-	gSelect();
 	greflection();
 	srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
 
 	r = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
 	result = r; 
+
+	
+
+	
+	int x = 0;
+	// 上キー押すか、左スティックを上に倒す
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
+	{
+		if (Genre1 > 1) {
+			Genre1 -= 1;
+			CauserY = 200 + Genre1 * 50;
+		}
+
+	}
+	// 下キー押すか、左スティックを下に倒す
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
+	{
+		if(Genre1 <= 5){
+			Genre1 += 1;
+			CauserY = 200 + Genre1 * 50;
+		}
+		
+	}
+	
+
+	///* カーソルが６より下に言ったら */
+	//if (Genre1 == 6 && PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) {
+	//	// カーソルを動かないようにする（6番を代入させる）
+	//	Genre1 = 6;
+	//}
+	
+
 	return this;
 }
 
 void GenreSelect::Draw() const
 {
+
+	DrawGraph(CauserX, CauserY, Causer, TRUE);
+
+	DrawFormatString(100, 100, GetColor(255, 255, 255), "CauserX:%d\n",CauserX);
+	DrawFormatString(200, 100, GetColor(255, 255, 255), "CauserY:%d\n",CauserY);
 
 
 	// ランダムで出した値に応じて、いくつかのパターンに派生する
@@ -55,59 +105,62 @@ void GenreSelect::Draw() const
 		DrawFormatString(200, 200, GetColor(255, 255, 255), "6", result);
 
 	}
+
+	if (Quiz1[0] == 1) {
+		DrawGraph(500, 500, Quiz1[0], TRUE);
+	}
+	if (Quiz1[1] == 1) {
+		DrawGraph(500, 0, Quiz1[1], TRUE);
+
+	}
+	if (Quiz1[2] == 1) {
+		DrawGraph(0, 500, Quiz1[1], TRUE);
+
+	}
+	//DrawGraph(500, 0, AnimeGame1, TRUE);
+	//DrawGraph(0, 500, AnimeGame2, TRUE);
+	//DrawGraph(500, 500, AnimeGame3, TRUE);
 }
 
-void GenreSelect::gSelect()
-{
-	int x = 0;
-	// 下キー押すか、左スティックを下に倒す
-	if (CheckHitKey(KEY_INPUT_DOWN)|| PAD_INPUT::GetLStick().ThumbY)
-	{
-		if (Select <= 6) {
-			Select += 1;
-		}
-	}
-	// 上キー押すか、左スティックを上に倒す
-	else if (CheckHitKey(KEY_INPUT_UP)|| PAD_INPUT::GetLStick().ThumbY)
-	{
-		if (Select >= 1) {
-			Select -= 1;
-		}
-	}
-	// 決定した時
-	if (CheckHitKey(KEY_INPUT_3)) 
-	{
-		Genre1 = Select;
-	}
-}
 
 void GenreSelect::greflection()
 {
-	int y{};
 	// gSelectで変数に入れた値を持ちいて、いくつかあるパターンにを派生させる処理
 	if (Genre1 == 1)
 	{
-
+		for (int i = 0; i < 2; i++) {
+			Quiz1[i] = 1;
+		}
 	}
 	else if (Genre1 == 2)
 	{
-
+		for (int i = 0; i < 2; i++) {
+			Quiz2[i] = 1;
+		}
 	}
 	else if (Genre1 == 3)
 	{
-
+		for (int i = 0; i < 2; i++) {
+			Quiz3[i] = 1;
+		}
 	}
 	else if (Genre1 == 4)
 	{
-
+		for (int i = 0; i < 2; i++) {
+			Quiz4[i] = 1;
+		}
 	}
 	else if (Genre1 == 5) 
 	{
-
+		for (int i = 0; i < 2; i++) {
+			Quiz5[i] = 1;
+		}
 	}
 	else if (Genre1 == 6)
 	{
-
+		for (int i = 0; i < 2; i++) {
+			Quiz6[i] = 1;
+		}
 	}
 
 }
