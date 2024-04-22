@@ -5,12 +5,14 @@
 float Player::playerY;
 float Player::playerX;
 float Player::velocity;
+int Player::MoveFlg;
 Player::Player()
 {
 	playerX = 300;
 	playerY = 400;
 	P_FPS = 0;
 	velocity = 0.0f;
+	MoveFlg = FALSE;
 }
 
 Player::~Player()
@@ -116,7 +118,7 @@ void Player::Move()
 		Downflg = FALSE;
 		count = 0;
 	}
-	if (playerX >= 640) {
+	if (playerX >= 640 && MoveFlg == FALSE) {
 		playerX = 640;
 	}
 	if (playerX <= 0) {
