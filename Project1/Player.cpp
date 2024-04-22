@@ -1,15 +1,22 @@
 ﻿#include "Player.h"
+#include "Stage1.h"
 #include<iostream>
 #include"DxLib.h"
-float Player::playerY;
 float Player::playerX;
+float Player::playerY;
 float Player::velocity;
+int Player::MoveFlg;
+
+#define PLAYERSTARTX 220
+#define PLAYERSTARTY 630
+
 Player::Player()
 {
-	playerX = 300;
-	playerY = 400;
+	playerX = PLAYERSTARTX;
+	playerY = PLAYERSTARTY;
 	P_FPS = 0;
 	velocity = 0.0f;
+	MoveFlg = FALSE;
 }
 
 Player::~Player()
@@ -109,13 +116,13 @@ void Player::Move()
 		sy += 0.3f;
 	}
 
-	if (playerY >= 400) {
-		playerY = 400;
+	if (playerY >= 720) {
+		playerY = 620;
 		Jumpflg = FALSE;
 		Downflg = FALSE;
 		count = 0;
 	}
-	if (playerX >= 640) {
+	if (playerX >= 640 && MoveFlg == FALSE) {
 		playerX = 640;
 	}
 	if (playerX <= 0) {
