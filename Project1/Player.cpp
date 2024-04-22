@@ -1,4 +1,5 @@
 ﻿#include "Player.h"
+#include "Stage1.h"
 #include<iostream>
 #include"DxLib.h"
 float Player::playerY;

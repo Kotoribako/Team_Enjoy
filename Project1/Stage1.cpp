@@ -9,7 +9,7 @@
 int Stage1::NowStageNumber;
 Stage1::Stage1()
 {
-	Stage1Img = LoadGraph("image/FirstStage(temporary).png");
+	Stage1Img = LoadGraph("image/Dummy/FirstStage(temporary).png");
 	NowStageNumber = 0; // 現在のステージを管理する
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 }
