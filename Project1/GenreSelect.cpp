@@ -11,7 +11,7 @@ GenreSelect::GenreSelect()
 	result = 0;
 	Select = 0;
 
-	Genre1 = 0;
+	Genre1 = 1;
 
 	AnimeGame1 = LoadGraph("image/Anime&Game/AnimeGame1.png", TRUE);
 	AnimeGame2 = LoadGraph("image/Anime&Game/AnimeGame2.png", TRUE);
@@ -34,25 +34,23 @@ AbstractScene* GenreSelect::Update()
 
 	int x = 0;
 	// 下キー押すか、左スティックを下に倒す
-	if (CheckHitKey(KEY_INPUT_DOWN) || PAD_INPUT::GetLStick().ThumbY)
+	if ( PAD_INPUT::GetLStick().ThumbY)
 	{
-		if (Select <= 6) {
-			Select += 1;
+		if(CauserY > 199){
+			Genre1 += 1;
+			CauserY = 200 + Genre1 * 30;
 		}
+		
 	}
 	// 上キー押すか、左スティックを上に倒す
-	else if (CheckHitKey(KEY_INPUT_UP) || PAD_INPUT::GetLStick().ThumbY)
+	else if (PAD_INPUT::GetLStick().ThumbY)
 	{
-		if (Select >= 1) {
-			Select -= 1;
+		if (CauserY <= 380) {
+			CauserY -= 30;
 		}
+		
 	}
 
-	// 決定した時
-	if (CheckHitKey(KEY_INPUT_3))
-	{
-		Genre1 = 1;//Select;
-	}
 	return this;
 }
 
@@ -60,6 +58,9 @@ void GenreSelect::Draw() const
 {
 
 	DrawGraph(CauserX, CauserY, Causer, TRUE);
+
+	DrawFormatString(100, 100, GetColor(255, 255, 255), "CauserX:%d\n",CauserX);
+	DrawFormatString(200, 100, GetColor(255, 255, 255), "CauserY:%d\n",CauserY);
 
 
 	// ランダムで出した値に応じて、いくつかのパターンに派生する
