@@ -13,7 +13,7 @@ private:
 	int AnimeGame1;
 	int AnimeGame2;
 	int AnimeGame3;
-	int Quiz1[3] = { AnimeGame1,AnimeGame2,AnimeGame3 };
+	int Quiz1[3];
 
 	int Quiz2[3];
 	int Quiz3[3]; 
@@ -29,7 +29,6 @@ public:
 	virtual ~GenreSelect() {};
 	virtual AbstractScene* Update() override;
 	virtual void Draw() const override;
-	void gSelect();
-	void greflection();
+	void Greflection();
 };
 
