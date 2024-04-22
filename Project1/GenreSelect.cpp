@@ -22,8 +22,8 @@ AbstractScene* GenreSelect::Update()
 	greflection();
 	srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
 
-	r = (rand() % (max - min + 1)) + min;
-	result = r;
+	r = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
+	result = r; 
 	return this;
 }
 
@@ -31,7 +31,7 @@ void GenreSelect::Draw() const
 {
 
 
-
+	// ランダムで出した値に応じて、いくつかのパターンに派生する
 	if (result == 1) {
 		DrawFormatString(200, 200, GetColor(255, 255, 255), "1", result);
 	}
@@ -60,19 +60,21 @@ void GenreSelect::Draw() const
 void GenreSelect::gSelect()
 {
 	int x = 0;
+	// 下キー押すか、左スティックを下に倒す
 	if (CheckHitKey(KEY_INPUT_DOWN)|| PAD_INPUT::GetLStick().ThumbY)
 	{
 		if (Select <= 6) {
 			Select += 1;
 		}
 	}
+	// 上キー押すか、左スティックを上に倒す
 	else if (CheckHitKey(KEY_INPUT_UP)|| PAD_INPUT::GetLStick().ThumbY)
 	{
 		if (Select >= 1) {
 			Select -= 1;
 		}
 	}
-
+	// 決定した時
 	if (CheckHitKey(KEY_INPUT_3)) 
 	{
 		Genre1 = Select;
@@ -82,7 +84,7 @@ void GenreSelect::gSelect()
 void GenreSelect::greflection()
 {
 	int y{};
-
+	// gSelectで変数に入れた値を持ちいて、いくつかあるパターンにを派生させる処理
 	if (Genre1 == 1)
 	{
 
