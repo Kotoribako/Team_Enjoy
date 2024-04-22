@@ -80,30 +80,32 @@ AbstractScene* Title::Update()
 
 void Title::Draw()const
 {
-	//�^�C�g���̕`��
-	/*DrawGraph(0, 0, TitleImg, FALSE);*/
+	//SetFontSize(60);
+	////タイトル表示
+	//DrawFormatString(300, 200, 0xffffff, "タイトル");
+	//DrawFormatString(300, 500, 0xffffff, "ゲームメイン");
 
-	//for (int i = 0; i < static_cast<int>(TITLE_MENU::TITLE_SIZE); i++)
-	//{
-	//	// ������̍ŏ�Y���W
-	//	const int base_y = 200;
+	for (int i = 0; i < static_cast<int>(TITLE_MENU::TITLE_SIZE); i++)
+	{
+		// ������̍ŏ�Y���W
+		const int base_y = 200;
 
-	//	// �������Y���W�Ԋu
-	//	const int margin_y = 100;
+		// �������Y���W�Ԋu
+		const int margin_y = 100;
 
-	//	// �����F
-	//	int color = 0xFFFFFF;
-	//	// �����O�g�F
-	//	int border_color = 0x000000;
+		// �����F
+		int color = 0xFFFFFF;
+		// �����O�g�F
+		int border_color = 0x000000;
 
-	//	// �J�[�\���������Ă���ꍇ�A�����F�ƕ����O�g�F�𔽓]������
-	//	if (now_menu == i) {
-	//		color = ~color;
-	//		border_color = ~border_color;
-	//	}
-	//	DrawStringToHandle(SCREEN_WIDTH / 2 - 100, i * margin_y + base_y, menu_items[i], color, MenuFont, border_color);
-	//}
-	//DrawStringToHandle(150, 100, "タイトル画面", 0xffffff, MenuFont);
+		// �J�[�\���������Ă���ꍇ�A�����F�ƕ����O�g�F�𔽓]������
+		if (now_menu == i) {
+			color = ~color;
+			border_color = ~border_color;
+		}
+		DrawStringToHandle(SCREEN_WIDTH / 2 - 100, i * margin_y + base_y, menu_items[i], color, MenuFont, border_color);
+	}
+	DrawStringToHandle(150, 100, "タイトル画面", 0xffffff, MenuFont);
 
 	////�J�[�\���̕`��
 	//int select_y = 230 + Select * 80;
