@@ -16,6 +16,10 @@ GenreSelect::GenreSelect()
 	AnimeGame2 = LoadGraph("image/Anime&Game/AnimeGame2.png", TRUE);
 	AnimeGame3 = LoadGraph("image/Anime&Game/AnimeGame3.png", TRUE);
 
+	WordExchange1 = LoadGraph("image/WordExchange/WordExchange1.png", TRUE);
+	WordExchange2 = LoadGraph("image/WordExchange/WordExchange2.png", TRUE);
+	WordExchange3 = LoadGraph("image/WordExchange/WordExchange3.png", TRUE);
+
 	Causer = LoadGraph("image/Causer.png", TRUE);
 	CauserX = 200;
 	CauserY = 200;
@@ -135,9 +139,9 @@ void GenreSelect::Draw() const
 		DrawGraph(0, 500, Quiz1[2], TRUE);
 	}
 
-	//DrawGraph(500, 0, AnimeGame1, TRUE);
-	//DrawGraph(0, 500, AnimeGame2, TRUE);
-	//DrawGraph(500, 500, AnimeGame3, TRUE);
+	/*DrawGraph(500, 0, WordExchange1, TRUE);
+	DrawGraph(0, 500, WordExchange2, TRUE);
+	DrawGraph(500, 500, WordExchange3, TRUE);*/
 }
 
 

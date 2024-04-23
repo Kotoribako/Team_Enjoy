@@ -19,7 +19,11 @@ private:
 	int AnimeGame2;
 	int AnimeGame3;
 
-	
+	int WordExchange1;
+	int WordExchange2;
+	int WordExchange3;
+
+
 
 public:
 	int Quiz1[3];
