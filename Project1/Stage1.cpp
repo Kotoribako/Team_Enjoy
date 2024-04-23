@@ -12,6 +12,7 @@ int Stage1::NowStageNumber;
 Stage1::Stage1()
 {
 	Stage1Img = LoadGraph("image/Dummy/FirstStage(temporary).png");
+	DoorImg = LoadGraph("image/Dummy/DummyDoor.png");
 	NowStageNumber = 0; // 現在のステージを管理する
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
@@ -34,6 +35,8 @@ void Stage1::Draw()
 	DrawLine(0, 200, 1280, 200, GetColor(255, 0, 0), TRUE);
 	DrawFormatString(0, 600, GetColor(255, 0, 0), "stage1X:%f\n", Stage1X);
 	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
+
+	DrawGraph(1400+Stage1X, 550, DoorImg, TRUE);
 }
 
 void Stage1::MoveXStage()
