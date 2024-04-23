@@ -2,23 +2,24 @@
 class Block
 {
 private:
+	float px;
+	float px2;
+	float py;
+	float py2;
 
 public:
-		float px;
-		float px2;
-		float py;
-		float py2;
+	static int flg;
 	typedef struct BLOCK
 	{
-		int X;  //ブロック左
-		int X2; //ブロック右
-		int Y;  //ブロック上
-		int Y2; //ブロック下
+		float X;  //ブロック左
+		float X2; //ブロック右
+		float Y;  //ブロック上
+		float Y2; //ブロック下
 	}BLOCK;
-	struct BLOCK block[11];
+	 struct BLOCK block[11];
 	Block();
 	~Block();
 	void Update();
 	void Draw();
-	void PlayerStand();
+	/*void PlayerStand();*/
 };

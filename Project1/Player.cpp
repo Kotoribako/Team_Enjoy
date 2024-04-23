@@ -4,22 +4,29 @@
 #include"DxLib.h"
 float Player::playerX;  //左
 float Player::playerX2; //右
-float Player::playerY;  //上
-float Player::playerY2; //下
-int Player::p_standflg; //立ってるかのフラグ
+float Player::playerY;  //下
+float Player::playerY2; //上
+int   Player::standflg; //立ってるかのフラグ
 float Player::velocity;
-int Player::MoveFlg;
+int   Player::MoveFlg;
 
 #define PLAYERSTARTX 220
 #define PLAYERSTARTY 630
 
 Player::Player()
 {
-	playerX = PLAYERSTARTX;
-	playerY = PLAYERSTARTY;
+	playerX = 235;
+	playerY = 615;
+	
+	px = playerX - 15;
+	px2 = playerX + 15;
+	py = playerY - 15;
+	py2 = playerY + 15;
+
 	P_FPS = 0;
 	velocity = 0.0f;
 	MoveFlg = FALSE;
+	standflg = 1;
 }
 
 Player::~Player()
@@ -31,6 +38,7 @@ void Player::Update()
 	
 	P_FPS++;
 	Move();
+	
 	if (P_FPS > 59) {
 		P_FPS = 0;
 		P_Seconas1++;
@@ -39,14 +47,18 @@ void Player::Update()
 	else if (P_Seconas1 > 3) {
 		P_Seconas1 = 0;
 	}
+	playerX2 = playerX + 30;
+	playerY2 = playerY - 30;
 }
 
 void Player::Draw()
 {
 	DrawBox(playerX, playerY, playerX2, playerY2, GetColor(0, 0,255 ), TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
+	DrawFormatString(0, 50, GetColor(0, 0, 0), "standflg:%d", standflg);
 	DrawFormatString(0, 30, GetColor(0, 0, 0), "jumoflg:%d", Jumpflg);
 	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
+	DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
 }
 
 void Player::Move()
@@ -99,6 +111,7 @@ void Player::Move()
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && Jumpflg == FALSE)
 	{
 		Jumpflg = TRUE;
+		standflg = 0;
 		count += 1;
 	}
 
@@ -119,12 +132,12 @@ void Player::Move()
 		playerY += sy;
 		sy += 0.3f;
 	}
-
-	if (playerY >= 720) {
-		playerY = 620;
+	if (playerY >= 630) {//地面に付いたとき
+		standflg = 1;
 		Jumpflg = FALSE;
 		Downflg = FALSE;
 		count = 0;
+
 	}
 	if (playerX >= 640 && MoveFlg == FALSE) {
 		playerX = 640;
@@ -132,10 +145,13 @@ void Player::Move()
 	if (playerX <= 0) {
 		playerX = 0;
 	}
-	playerX2 = playerX + 30;
-	playerY2 = playerY - 30;
+	
 }
 
-void Player::StageStand()
+void Player::PlayerHit()
 {
+	/*if (playerX >= Block::block[1].X && playerX >= Block::block[0].X2 && playerY <= Block::block[0].Y) {
+		py2 = Block::block[0].Y;
+	}*/
 }
+
