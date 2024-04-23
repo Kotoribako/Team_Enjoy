@@ -9,9 +9,13 @@
 
 Title::Title()
 {
+	//タイトルBGM
+	((TitleBGM = LoadSoundMem("Project1/sound/BGM/Title_BGM2.wav")) == -1);
+	//BGM音量
+	ChangeVolumeSoundMem(200, TitleBGM);
 
 	//SE読み込み
-	((MenuSE = LoadSoundMem("Project1/Sound/SE/カーソルSE.wav")) == -1);
+	((MenuSE = LoadSoundMem("Project1/sound/SE/cursorSE.wav")) == -1);
 
 	//�t�H���g�̒ǉ�
 	MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
@@ -22,11 +26,19 @@ Title::Title()
 
 Title::~Title()
 {
-
+	//BGM
+	DeleteSoundMem(TitleBGM);
+	StopSoundMem(TitleBGM);
 }
 
 AbstractScene* Title::Update()
 {
+	//BGM�̍Đ�
+	if (CheckSoundMem(TitleBGM) == 0)
+	{
+		PlaySoundMem(TitleBGM, DX_PLAYTYPE_LOOP, TRUE);
+	}
+
 	// ����Ԋu����
 	const int max_input_margin = 15;
 	// �X�e�B�b�N�̊��x
