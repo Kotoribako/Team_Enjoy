@@ -19,6 +19,7 @@ GenreSelect::GenreSelect()
 	Causer = LoadGraph("image/Causer.png", TRUE);
 	CauserX = 200;
 	CauserY = 200;
+	
 	for (int i = 0; i < 3; i++) 
 	{
 		Quiz1[i] = 0;
@@ -28,18 +29,22 @@ GenreSelect::GenreSelect()
 		Quiz5[i] = 0;
 		Quiz6[i] = 0;
 	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		Select[i] = 0;
+	}
 }
 
 
 AbstractScene* GenreSelect::Update()
 {
+
 	greflection();
 	srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
 
 	r = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
 	result = r; 
-
-	
 
 	
 	int x = 0;
@@ -53,6 +58,7 @@ AbstractScene* GenreSelect::Update()
 		}
 
 	}
+
 	// 下キー押すか、左スティックを下に倒す
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
 	{
@@ -64,13 +70,11 @@ AbstractScene* GenreSelect::Update()
 		
 	}
 	
-
-	///* カーソルが６より下に言ったら */
+	/* カーソルが６より下に言ったら */
 	//if (Genre1 == 6 && PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) {
 	//	// カーソルを動かないようにする（6番を代入させる）
 	//	Genre1 = 6;
 	//}
-	
 
 	return this;
 }
@@ -82,6 +86,14 @@ void GenreSelect::Draw() const
 
 	DrawFormatString(100, 100, GetColor(255, 255, 255), "CauserX:%d\n",CauserX);
 	DrawFormatString(200, 100, GetColor(255, 255, 255), "CauserY:%d\n",CauserY);
+	
+	DrawFormatString(500, 250, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[0]);
+	DrawFormatString(500, 300, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[1]);
+	DrawFormatString(500, 350, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[2]);
+	DrawFormatString(500, 400, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[3]);
+	DrawFormatString(500, 450, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[4]);
+	DrawFormatString(500, 500, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[5]);
+
 
 
 	// ランダムで出した値に応じて、いくつかのパターンに派生する
@@ -120,8 +132,9 @@ void GenreSelect::Draw() const
 	}
 	if (Quiz1[2] == 1) 
 	{
-		DrawGraph(0, 500, Quiz1[1], TRUE);
+		DrawGraph(0, 500, Quiz1[2], TRUE);
 	}
+
 	//DrawGraph(500, 0, AnimeGame1, TRUE);
 	//DrawGraph(0, 500, AnimeGame2, TRUE);
 	//DrawGraph(500, 500, AnimeGame3, TRUE);

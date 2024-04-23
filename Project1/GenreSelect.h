@@ -13,19 +13,21 @@ private:
 	int CauserY; //ジャンル選択用のカーソルY
 	int Causer;
 
+	int Select[6]; // セレクト表示
+
 	int AnimeGame1;
 	int AnimeGame2;
 	int AnimeGame3;
-	int Quiz1[3];
 
+	
+
+public:
+	int Quiz1[3];
 	int Quiz2[3];
-	int Quiz3[3]; 
+	int Quiz3[3];
 	int Quiz4[3];
 	int Quiz5[3];
 	int Quiz6[3];
-
-public:
-
 	//int Genre[6][10];
 
 	GenreSelect();
