@@ -148,6 +148,7 @@ void GenreSelect::greflection()
 	{
 		for (int i = 0; i < 2; i++) 
 		{
+			// この結果をGameMainに受け継がせる
 			Quiz1[i] = 1;
 		}
 	}
