@@ -6,8 +6,8 @@
 enum class TITLE_MENU
 {
     GAME_START,
-    /*RANKING,
-    HELP,*/
+    RANKING,
+    HELP,
     GAME_END,
     TITLE_SIZE
 };
@@ -16,8 +16,10 @@ class Title : public AbstractScene
 {
 private:
     const char* menu_items[static_cast<int>(TITLE_MENU::TITLE_SIZE)] = {
-    "スタート",
-    "エンド"
+    "START",
+    "HELP",
+    "RANKING",
+    "END"
     };
 
     //int Select;     //�I��
@@ -28,9 +30,10 @@ private:
     //bool Once;      //L�X�e�B�b�N�ŃJ�[�\���𓮂����p
 
     int TitleBGM;       //BGM
+    int TitleImg;     //�^�C�g���摜
+
     int MenuSE;       //�I��SE�p
-    //int TitleImg;     //�^�C�g���摜
-    //int CursorImg;    //�J�[�\���摜
+    int CursorSE;    //�J�[�\���摜
 
     int now_menu; //���ݑI����Ă郁�j���[
     int MenuFont; //���j���[�p�̃t�H���g
