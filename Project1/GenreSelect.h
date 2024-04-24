@@ -17,14 +17,9 @@ private:
 
 	int Select[6]; // セレクト表示
 
-	int AnimeGame1;
-	int AnimeGame2;
-	int AnimeGame3;
-
-	int WordExchange1;
-	int WordExchange2;
-	int WordExchange3;
-
+	int AnimeGame[3];
+	int WordExchange[3];
+	int ijin[3];
 
 public:
 	int Quiz1[3];

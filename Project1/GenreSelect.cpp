@@ -16,23 +16,28 @@ GenreSelect::GenreSelect()
 
 	Enter = FALSE;
 
-	AnimeGame1 = LoadGraph("image/Anime&Game/AnimeGame1.png", TRUE);
-	AnimeGame2 = LoadGraph("image/Anime&Game/AnimeGame2.png", TRUE);
-	AnimeGame3 = LoadGraph("image/Anime&Game/AnimeGame3.png", TRUE);
+	AnimeGame[0] = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png", TRUE);
+	AnimeGame[1] = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png", TRUE);
+	AnimeGame[2] = LoadGraph("image/Quiz/Anime&Game/AnimeGame3.png", TRUE);
 
-	WordExchange1 = LoadGraph("image/WordExchange/WordExchange1.png", TRUE);
-	WordExchange2 = LoadGraph("image/WordExchange/WordExchange2.png", TRUE);
-	WordExchange3 = LoadGraph("image/WordExchange/WordExchange3.png", TRUE);
+	WordExchange[0] = LoadGraph("image/Quiz/WordExchange/WordExchange1.png", TRUE);
+	WordExchange[1] = LoadGraph("image/Quiz/WordExchange/WordExchange2.png", TRUE);
+	WordExchange[2] = LoadGraph("image/Quiz/WordExchange/WordExchange3.png", TRUE);
+
+	ijin[0] = LoadGraph("image/Quiz/Greatman/ijin1.png", TRUE);
+	ijin[1] = LoadGraph("image/Quiz/Greatman/ijin2.png", TRUE);
+	ijin[2] = LoadGraph("image/Quiz/Greatman/ijin3.png", TRUE);
+
 
 	Causer = LoadGraph("image/Causer.png", TRUE);
 	CauserX = 200;
 	CauserY = 200;
 	
-	for (int i = 0; i < 3; i++) 
+	for (int i = 0; i < 2; i++) 
 	{
-		Quiz1[i] = 0;
-		Quiz2[i] = 0;
-		Quiz3[i] = 0;
+		Quiz1[i] = AnimeGame[i];
+		Quiz2[i] = WordExchange[i];
+		Quiz3[i] = ijin[i];
 		Quiz4[i] = 0;
 		Quiz5[i] = 0;
 		Quiz6[i] = 0;
@@ -160,9 +165,9 @@ void GenreSelect::Draw() const
 		DrawGraph(0, 500, Quiz1[2], TRUE);
 	}
 
-	/*DrawGraph(500, 0, WordExchange1, TRUE);
-	DrawGraph(0, 500, WordExchange2, TRUE);
-	DrawGraph(500, 500, WordExchange3, TRUE);*/
+	//DrawGraph(500, 0, ijin[0], TRUE);
+	//DrawGraph(0, 500, ijin[1], TRUE);
+	//DrawGraph(500, 500, ijin[2], TRUE);
 }
 
 
