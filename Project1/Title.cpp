@@ -6,6 +6,7 @@
 #include"GameMain.h"
 #include"GenreSelect.h"
 #include "Help.h"
+
 #define SCREEN_WIDTH 1280
 
 Title::Title()
