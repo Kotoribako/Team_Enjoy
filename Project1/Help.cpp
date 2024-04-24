@@ -15,6 +15,11 @@ Help::~Help()
 
 AbstractScene* Help::Update()
 {
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
+	{
+		return new Title();
+	}
+
 	return this;
 }
 
