@@ -28,7 +28,6 @@ GenreSelect::GenreSelect()
 	ijin[1] = LoadGraph("image/Quiz/Greatman/ijin2.png", TRUE);
 	ijin[2] = LoadGraph("image/Quiz/Greatman/ijin3.png", TRUE);
 
-
 	Causer = LoadGraph("image/Causer.png", TRUE);
 	CauserX = 200;
 	CauserY = 200;
@@ -48,7 +47,6 @@ GenreSelect::GenreSelect()
 		Select[i] = 0;
 	}
 
-
 }
 
 
@@ -60,7 +58,6 @@ AbstractScene* GenreSelect::Update()
 
 	r = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
 	result = r; 
-
 	
 	int x = 0;
 	// 上キー押すか、左スティックを上に倒す
@@ -71,7 +68,6 @@ AbstractScene* GenreSelect::Update()
 			Genre1 -= 1;
 			CauserY = 200 + Genre1 * 50;
 		}
-
 	}
 
 	// 下キー押すか、左スティックを下に倒す
@@ -82,7 +78,6 @@ AbstractScene* GenreSelect::Update()
 			Genre1 += 1;
 			CauserY = 200 + Genre1 * 50;
 		}
-		
 	}
 	
 
@@ -91,7 +86,6 @@ AbstractScene* GenreSelect::Update()
 	{
 		Enter = TRUE;
 	}
-
 
 	// クイズ配列の最後番がTRUEなら、ステージに移行する
 	if (Quiz1[2] == 1 || Quiz2[2] == 1 || Quiz3[2] == 1 ||
@@ -123,7 +117,6 @@ void GenreSelect::Draw() const
 	DrawFormatString(500, 400, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[3]);
 	DrawFormatString(500, 450, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[4]);
 	DrawFormatString(500, 500, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[5]);
-
 
 
 	// ランダムで出した値に応じて、いくつかのパターンに派生する
@@ -173,6 +166,7 @@ void GenreSelect::Draw() const
 
 void GenreSelect::greflection()
 {
+
 	// gSelectで変数に入れた値を持ちいて、いくつかあるパターンにを派生させる処理
 	if (Genre1 == 1&&Enter == TRUE)
 	{
@@ -214,7 +208,7 @@ void GenreSelect::greflection()
 	{
 		for (int i = 0; i < 2; i++) 
 		{
-			Quiz6[i] = 1;
+
 		}
 	}
 

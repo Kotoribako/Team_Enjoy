@@ -27,7 +27,7 @@ public:
 	int Quiz3[3];
 	int Quiz4[3];
 	int Quiz5[3];
-	int Quiz6[3];
+	int Quiz6[5];
 	//int Genre[6][10];
 
 	GenreSelect();
