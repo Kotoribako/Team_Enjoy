@@ -17,7 +17,7 @@ Title::Title()
 	ChangeVolumeSoundMem(200, TitleBGM);
 
 	//SE読み込み
-	((CursorImg = LoadSoundMem("sound/SE/cursor_SE.wav")) == -1);
+	//((CursorImg = LoadSoundMem("sound/SE/cursor_SE.wav")) == -1);
 	//SE読み込み
 	((MenuSE = LoadSoundMem("sound/SE/kettei_SE.wav")) == -1);
 
@@ -56,7 +56,7 @@ AbstractScene* Title::Update()
 		int stick_y = PAD_INPUT::GetLStick().ThumbY;
 
 		if (std::abs(stick_y) > stick_sensitivity || PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP)) {
-			PlaySoundMem(CursorImg, DX_PLAYTYPE_BACK, TRUE);
+		//	PlaySoundMem(CursorImg, DX_PLAYTYPE_BACK, TRUE);
 			//playsoundmem
 			// �X�e�B�b�N����Ɉړ������ꍇ
 			if (stick_y > 0) {
