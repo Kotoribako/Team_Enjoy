@@ -1,5 +1,6 @@
 #pragma once
 #include"PadInput.h"
+#include"Block.h"
 class Player
 {
 private:
@@ -15,12 +16,17 @@ private:
 	float P_moveY;
 	float P_moveX;
 	float PlayerLocationY;
-	
+	Block* block;
+	float px,px2;
+	float py, py2;
 
 public:
-	static  float playerX;  //プレイヤー座標X
-	static  float playerY;  //プレイヤー座標Y
-	static float velocity;
+	static  float playerX;  //プレイヤー座標X　左  プレイヤー中心座標
+	static	float playerX2;	//プレイヤー座標Y　右
+	static  float playerY;	//プレイヤー座標X　下	プレイヤー中心座標
+	static	float playerY2; //プレイヤー座標Y　上
+	static  int   standflg;
+	static float  velocity;
 
 	static int MoveFlg; // スクロール終了後移動する
 
@@ -30,6 +36,6 @@ public:
 	void Update();
 	void Draw();
 	void Move();  //プレイヤー動き（ジャンプ含む）
-	
+	void PlayerHit(); //当たり判定のためのプレイヤー座標
 
 };
