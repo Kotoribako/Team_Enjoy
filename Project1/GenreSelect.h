@@ -9,6 +9,8 @@ private:
 	int result; //乱数の結果
 	int Genre1; //ジャンルの反映
 
+	int Enter; // ジャンル決定
+
 	int CauserX; //ジャンル選択用のカーソルX
 	int CauserY; //ジャンル選択用のカーソルY
 	int Causer;
@@ -22,7 +24,6 @@ private:
 	int WordExchange1;
 	int WordExchange2;
 	int WordExchange3;
-
 
 
 public:

@@ -3,6 +3,8 @@
 #include<time.h>
 #include <DxLib.h>
 #include"PadInput.h"
+#include"Stage1.h"
+#include "GameMain.h"
 GenreSelect::GenreSelect()
 {
 	r = 0;
@@ -11,6 +13,8 @@ GenreSelect::GenreSelect()
 	result = 0;
 
 	Genre1 = 1;
+
+	Enter = FALSE;
 
 	AnimeGame1 = LoadGraph("image/Anime&Game/AnimeGame1.png", TRUE);
 	AnimeGame2 = LoadGraph("image/Anime&Game/AnimeGame2.png", TRUE);
@@ -38,6 +42,8 @@ GenreSelect::GenreSelect()
 	{
 		Select[i] = 0;
 	}
+
+
 }
 
 
@@ -74,6 +80,21 @@ AbstractScene* GenreSelect::Update()
 		
 	}
 	
+
+	// Aボタンを押すと決定
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
+	{
+		Enter = TRUE;
+	}
+
+
+	// クイズ配列の最後番がTRUEなら、ステージに移行する
+	if (Quiz1[2] == 1 || Quiz2[2] == 1 || Quiz3[2] == 1 ||
+		Quiz4[2] == 1 || Quiz5[2] == 1 || Quiz6[2] == 1) 
+	{
+		// ステージへ遷移
+	}
+
 	/* カーソルが６より下に言ったら */
 	//if (Genre1 == 6 && PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) {
 	//	// カーソルを動かないようにする（6番を代入させる）
@@ -90,7 +111,7 @@ void GenreSelect::Draw() const
 
 	DrawFormatString(100, 100, GetColor(255, 255, 255), "CauserX:%d\n",CauserX);
 	DrawFormatString(200, 100, GetColor(255, 255, 255), "CauserY:%d\n",CauserY);
-	
+	SetFontSize(30);
 	DrawFormatString(500, 250, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[0]);
 	DrawFormatString(500, 300, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[1]);
 	DrawFormatString(500, 350, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[2]);
@@ -148,7 +169,7 @@ void GenreSelect::Draw() const
 void GenreSelect::greflection()
 {
 	// gSelectで変数に入れた値を持ちいて、いくつかあるパターンにを派生させる処理
-	if (Genre1 == 1)
+	if (Genre1 == 1&&Enter == TRUE)
 	{
 		for (int i = 0; i < 2; i++) 
 		{
@@ -156,35 +177,35 @@ void GenreSelect::greflection()
 			Quiz1[i] = 1;
 		}
 	}
-	else if (Genre1 == 2)
+	else if (Genre1 == 2&&Enter == TRUE)
 	{
 		for (int i = 0; i < 2; i++)
 		{
 			Quiz2[i] = 1;
 		}
 	}
-	else if (Genre1 == 3)
+	else if (Genre1 == 3&&Enter == TRUE)
 	{
 		for (int i = 0; i < 2; i++) 
 		{
 			Quiz3[i] = 1;
 		}
 	}
-	else if (Genre1 == 4)
+	else if (Genre1 == 4&&Enter == TRUE)
 	{
 		for (int i = 0; i < 2; i++) 
 		{
 			Quiz4[i] = 1;
 		}
 	}
-	else if (Genre1 == 5) 
+	else if (Genre1 == 5&&Enter == TRUE) 
 	{
 		for (int i = 0; i < 2; i++) 
 		{
 			Quiz5[i] = 1;
 		}
 	}
-	else if (Genre1 == 6)
+	else if (Genre1 == 6&&Enter == TRUE)
 	{
 		for (int i = 0; i < 2; i++) 
 		{
@@ -192,4 +213,5 @@ void GenreSelect::greflection()
 		}
 	}
 
+	
 }
