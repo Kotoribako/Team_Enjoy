@@ -4,6 +4,7 @@
 #include<DxLib.h>
 
 int Stage1::StopStage1Xflg;
+float Stage1::Stage1X;
 
 #define Stage1MaxX 1700 // 画像の最大Xの値
 #define Stage1MinX 0 // 画像の最小のXの値
@@ -53,6 +54,12 @@ void Stage1::MoveXStage()
 		{
 			Stage1X -= 3; // 画像を左に動かす。
 			Player::MoveFlg = FALSE; // 真ん中よりも右に進めないようにする
+
+			for (int i = 0; i < 11; i++)
+			{
+				block->bloc[i].X += -2.9; // 左側の当たり判定ずらす
+				block->bloc[i].X2 += -2.9; // 右側の当たり判定ずらす
+			}
 		}
 		else // 画像の端に到達したとき、
 		{
@@ -65,6 +72,12 @@ void Stage1::MoveXStage()
 	if (Player::playerX < 640.0 &&PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT))
 	{
 		Stage1X += 3; // 画像を右に動かす。
+		for (int i = 0; i < 11; i++)
+		{
+			block->bloc[i].X += 2.9; // 左側の当たり判定ずらす
+			block->bloc[i].X2 += 2.9; // 右側の当たり判定ずらす
+		}
+
 	}
 
 	if (Stage1X >= 0) // ステージ画像のX座標が0以下の時、

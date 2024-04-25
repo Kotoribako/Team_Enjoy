@@ -15,6 +15,8 @@ int   Player::MoveFlg;
 
 Player::Player()
 {
+	block = new Block();
+
 	playerX = 235;
 	playerY = 615;
 	
@@ -27,6 +29,7 @@ Player::Player()
 	velocity = 0.0f;
 	MoveFlg = FALSE;
 	standflg = 1;
+
 }
 
 Player::~Player()
@@ -38,6 +41,10 @@ void Player::Update()
 	
 	P_FPS++;
 	Move();
+	px = playerX - 15;
+	px2 = playerX + 15;
+	py = playerY - 15;
+	py2 = playerY + 15;
 	
 	if (P_FPS > 59) {
 		P_FPS = 0;
@@ -49,6 +56,30 @@ void Player::Update()
 	}
 	playerX2 = playerX + 30;
 	playerY2 = playerY - 30;
+
+	PlayerHit(); // 当たり判定
+
+	if (playerY >= 800) // リスポーン処理（後で消す）
+	{
+		playerX = 235;
+		playerY = 615;
+		Stage1::Stage1X = 0;
+
+		//block = new Block();
+
+		block->bloc[0] = { 0,270,630,720 };
+		block->bloc[1] = { 340,440,565,615 };
+		block->bloc[2] = { 475,555,510,555 };
+		block->bloc[3] = { 510,555,470,510 };
+		block->bloc[4] = { 580,735,420,455 };
+		block->bloc[5] = { 780,845,365,415 };
+		block->bloc[6] = { 875,940,310,360 };
+		block->bloc[7] = { 950,1010,425,480 };
+		block->bloc[8] = { 980,1035,235,290 };
+		block->bloc[9] = { 1055,1120,350,410 };
+		block->bloc[10] = { 1125,1700,610,720 };
+
+	}
 }
 
 void Player::Draw()
@@ -132,13 +163,13 @@ void Player::Move()
 		playerY += sy;
 		sy += 0.3f;
 	}
-	if (playerY >= 630) {//地面に付いたとき
-		standflg = 1;
-		Jumpflg = FALSE;
-		Downflg = FALSE;
-		count = 0;
+	//if (playerY >= 630) {//地面に付いたとき
+	//	standflg = 1;
+	//	Jumpflg = FALSE;
+	//	Downflg = FALSE;
+	//	count = 0;
 
-	}
+	//}
 	if (playerX >= 640 && MoveFlg == FALSE) {
 		playerX = 640;
 	}
@@ -150,6 +181,29 @@ void Player::Move()
 
 void Player::PlayerHit()
 {
+	for (int i = 0; i < 11; i++)
+	{
+
+		if (GetLocationX1() >= block->bloc[i].X && GetLocationX2() <= block->bloc[i].X2 /*&& player->GetLocationY1() >= block->bloc[i].Y*/)
+		{
+			// 上にプレイヤーがいる処理
+			if (GetLocationY1() >= block->bloc[i].Y)
+			{
+				Jumpflg = FALSE;
+				Downflg = FALSE;
+				count = 0;
+			}
+			if (GetLocationY2() <= block->bloc[i].Y2 && GetLocationX1() >= block->bloc[i].X2)
+			{
+				Jumpflg = FALSE;
+				Downflg = TRUE;
+				count = 0;
+
+			}
+		}
+	}
+
+
 	/*if (playerX >= Block::block[1].X && playerX >= Block::block[0].X2 && playerY <= Block::block[0].Y) {
 		py2 = Block::block[0].Y;
 	}*/

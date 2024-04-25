@@ -38,4 +38,9 @@ public:
 	void Move();  //プレイヤー動き（ジャンプ含む）
 	void PlayerHit(); //当たり判定のためのプレイヤー座標
 
+	float GetLocationX1() { return px; } // プレイヤーの左端の座標を取る。
+	float GetLocationY1() { return py; } // プレイヤーの下側の座標を取る。
+	float GetLocationX2() { return px2; }// プレイヤーの右端の座標を取る。
+	float GetLocationY2() { return px2; }// プレイヤーの頭上の座標を取る。
+
 };
