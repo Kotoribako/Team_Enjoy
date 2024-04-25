@@ -119,13 +119,13 @@ AbstractScene* GenreSelect::Update()
 			input_margin = 0;
 		}
 	}
-	//if (CheckHitKey(KEY_INPUT_1) || PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
-	//	return new GameMain();
+	if (CheckHitKey(KEY_INPUT_1) || PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
+		return new GameMain();
 
-	//}
-	//if (CheckHitKey(KEY_INPUT_2)) {
-	//	return new GenreSelect;
-	//}
+	}
+	if (CheckHitKey(KEY_INPUT_2)) {
+		return new GenreSelect;
+	}
 
 
 	return this;
