@@ -58,6 +58,7 @@ AbstractScene* Title::Update()
 		//
 		int stick_y = PAD_INPUT::GetLStick().ThumbY;
 
+		//スティックでカーソル移動
 		if (std::abs(stick_y) > stick_sensitivity /*|| PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP)*/) {
 			//ボタンが押された時SE再生
 			PlaySoundMem(CursorSE, DX_PLAYTYPE_BACK, TRUE);
@@ -74,12 +75,22 @@ AbstractScene* Title::Update()
 			}
 			input_margin = 0;
 		}
+		//十字キーでカーソル移動
+		if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
+		{
+			now_menu = (now_menu - 1 + static_cast<int>(TITLE_MENU::TITLE_SIZE)) % static_cast<int>(TITLE_MENU::TITLE_SIZE);
+		}
+		else if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
+		{
+			now_menu = (now_menu + 1) % static_cast<int>(TITLE_MENU::TITLE_SIZE);
+		}
 	}
+
 	//if (CheckHitKey(KEY_INPUT_1) || PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
 	//	//return new GameMain();
 	//	//PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
-
 	//}
+
 	if (CheckHitKey(KEY_INPUT_2)) {
 		return new GenreSelect;
 	}
