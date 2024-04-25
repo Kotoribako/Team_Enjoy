@@ -15,6 +15,7 @@ AbstractScene* GameMain::Update()
 	GetMousePoint(&mouseX, &mouseY);
 	player->Update();
 	stage1->Update();
+
 	return this;
 }
 

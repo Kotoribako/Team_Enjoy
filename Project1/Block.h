@@ -1,4 +1,14 @@
 #pragma once
+
+/*typedef */struct BLOCK
+{
+	float X;  //ブロック左
+	float X2; //ブロック右
+	float Y;  //ブロック上
+	float Y2; //ブロック下
+};
+/*static struct BLOCK */;
+
 class Block
 {
 private:
@@ -9,17 +19,11 @@ private:
 
 public:
 	static int flg;
-	typedef struct BLOCK
-	{
-		float X;  //ブロック左
-		float X2; //ブロック右
-		float Y;  //ブロック上
-		float Y2; //ブロック下
-	}BLOCK;
-	 struct BLOCK block[11];
 	Block();
 	~Block();
 	void Update();
 	void Draw();
+
+	BLOCK bloc[11];
 	/*void PlayerStand();*/
 };

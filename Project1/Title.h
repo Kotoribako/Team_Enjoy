@@ -1,13 +1,12 @@
 #pragma once
-#pragma once
 #include "AbstractScene.h"
 
 //�^�C�g�����j���[
 enum class TITLE_MENU
 {
     GAME_START,
-    RANKING,
     HELP,
+    RANKING,
     GAME_END,
     TITLE_SIZE
 };
@@ -29,27 +28,27 @@ private:
 
     //bool Once;      //L�X�e�B�b�N�ŃJ�[�\���𓮂����p
 
-    int TitleBGM;       //BGM
-    int TitleImg;     //�^�C�g���摜
+    int TitleBGM;       //タイトルBGM
+    int TitleImg;       //タイトル画像
 
-    int MenuSE;       //�I��SE�p
-    int CursorSE;    //�J�[�\���摜
+    int MenuSE;         //決定音
+    int CursorSE;       //カーソル移動音
 
-    int now_menu; //���ݑI����Ă郁�j���[
-    int MenuFont; //���j���[�p�̃t�H���g
-    int input_margin;  //���쎞�ԊԊu
+    int now_menu;       //
+    int MenuFont;       //
+    int input_margin;   //
 
 public:
-    //�R���X�g���N�^
+    //
     Title();
 
-    //�f�X�g���N�^
+    //
     ~Title();
 
-    //�`��ȊO�̍X�V����s
+    //
     AbstractScene* Update() override;
 
-    //�`��Ɋւ��邱�Ƃ����
+    //
     void Draw() const override;
 };
 
