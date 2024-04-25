@@ -1,8 +1,26 @@
 #pragma once
 #include"AbstractScene.h"
+
+enum class SELECT
+{
+	ANIMEGAME,
+	WORDEXCHANGE,
+	GREATMAN,
+	SELECT_SIZE
+
+};
+
 class GenreSelect :public AbstractScene
 {
 private:
+
+	const char* select_items [static_cast<int>(SELECT::SELECT_SIZE)] = {
+	"GAME",
+	"QUIZ",
+	"GREAT",
+	
+	};
+
 	int r; // 乱数の値
 	int max; //乱数の下限値
 	int min; //乱数の上限値
@@ -14,8 +32,10 @@ private:
 	int CauserX; //ジャンル選択用のカーソルX
 	int CauserY; //ジャンル選択用のカーソルY
 	int Causer;
+	int input_margin;  
+	int now_menu; 
+	int MenuFont; 
 
-	int Select[6]; // セレクト表示
 
 	int AnimeGame[3];
 	int WordExchange[3];

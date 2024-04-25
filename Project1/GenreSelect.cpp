@@ -2,9 +2,12 @@
 #include<stdlib.h>
 #include<time.h>
 #include <DxLib.h>
+#include"DxLib.h"
 #include"PadInput.h"
 #include"Stage1.h"
 #include "GameMain.h"
+#include<iostream>
+#define SCREEN_WIDTH 1280
 GenreSelect::GenreSelect()
 {
 	r = 0;
@@ -29,8 +32,8 @@ GenreSelect::GenreSelect()
 	ijin[2] = LoadGraph("image/Quiz/Greatman/ijin3.png", TRUE);
 
 	Causer = LoadGraph("image/Causer.png", TRUE);
-	CauserX = 200;
-	CauserY = 200;
+	CauserX = 300;
+	CauserY = 250;
 	
 	for (int i = 0; i < 2; i++) 
 	{
@@ -42,42 +45,36 @@ GenreSelect::GenreSelect()
 		Quiz6[i] = 0;
 	}
 
-	for (int i = 0; i < 6; i++)
-	{
-		Select[i] = 0;
-	}
-
+	now_menu = static_cast<int>(SELECT::ANIMEGAME);
+	input_margin = 0;
+	MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
 }
 
 
 AbstractScene* GenreSelect::Update()
 {
 
-	greflection();
-	srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
-
-	r = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
-	result = r; 
+	
 	
 	int x = 0;
 	// 上キー押すか、左スティックを上に倒す
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
 	{
-		if (Genre1 > 1)
+		/*if (Genre1 > 1)
 		{
 			Genre1 -= 1;
 			CauserY = 200 + Genre1 * 50;
-		}
+		}*/
 	}
 
 	// 下キー押すか、左スティックを下に倒す
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
 	{
-		if(Genre1 <= 5)
+		/*if(Genre1 <= 5)
 		{
 			Genre1 += 1;
 			CauserY = 200 + Genre1 * 50;
-		}
+		}*/
 	}
 	
 
@@ -100,49 +97,75 @@ AbstractScene* GenreSelect::Update()
 	//	Genre1 = 6;
 	//}
 
+
+	const int max_input_margin = 15;
+	const int stick_sensitivity = 20000;
+
+	if (input_margin < max_input_margin) {
+		input_margin++;
+	}
+	else {
+		int stick_y = PAD_INPUT::GetLStick().ThumbY;
+
+		if (std::abs(stick_y) > stick_sensitivity || PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP)) {
+			//	PlaySoundMem(CursorImg, DX_PLAYTYPE_BACK, TRUE);
+				//playsoundmem
+			if (stick_y > 0) {
+				now_menu = (now_menu - 1 + static_cast<int>(SELECT::SELECT_SIZE)) % static_cast<int>(SELECT::SELECT_SIZE);
+			}
+			else if (stick_y < 0 || PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) {
+				now_menu = (now_menu + 1) % static_cast<int>(SELECT::SELECT_SIZE);
+			}
+			input_margin = 0;
+		}
+	}
+	//if (CheckHitKey(KEY_INPUT_1) || PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
+	//	return new GameMain();
+
+	//}
+	//if (CheckHitKey(KEY_INPUT_2)) {
+	//	return new GenreSelect;
+	//}
+
+
 	return this;
 }
 
 void GenreSelect::Draw() const
 {
+	DrawBox(0, 0, 1280, 750, GetColor(255, 255, 255), TRUE);
+	// カーソル画像
+	//DrawGraph(CauserX, CauserY, Causer, TRUE);
 
-	DrawGraph(CauserX, CauserY, Causer, TRUE);
-
-	DrawFormatString(100, 100, GetColor(255, 255, 255), "CauserX:%d\n",CauserX);
-	DrawFormatString(200, 100, GetColor(255, 255, 255), "CauserY:%d\n",CauserY);
+	DrawFormatString(100, 100, GetColor(0, 0, 0), "CauserX:%d\n",CauserX);
+	DrawFormatString(200, 100, GetColor(0, 0, 0), "CauserY:%d\n",CauserY);
 	SetFontSize(30);
-	DrawFormatString(500, 250, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[0]);
-	DrawFormatString(500, 300, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[1]);
-	DrawFormatString(500, 350, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[2]);
-	DrawFormatString(500, 400, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[3]);
-	DrawFormatString(500, 450, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[4]);
-	DrawFormatString(500, 500, GetColor(255, 255, 255), "アニメ・ゲーム\n", Select[5]);
-
+	
 
 	// ランダムで出した値に応じて、いくつかのパターンに派生する
 	if (result == 1) 
 	{
-		DrawFormatString(200, 200, GetColor(255, 255, 255), "1", result);
+		DrawFormatString(200, 200, GetColor(0, 0, 0), "1", result);
 	}
 	else if (result == 2) 
 	{
-		DrawFormatString(200, 200, GetColor(255, 255, 255), "2", result);
+		DrawFormatString(200, 200, GetColor(0, 0, 0), "2", result);
 	}
 	else if (result == 3) 
 	{
-		DrawFormatString(200, 200, GetColor(255, 255, 255), "3", result);
+		DrawFormatString(200, 200, GetColor(0, 0, 0), "3", result);
 	}
 	else if (result == 4)
 	{
-		DrawFormatString(200, 200, GetColor(255, 255, 255), "4", result);
+		DrawFormatString(200, 200, GetColor(0, 0, 0), "4", result);
 	}
 	else if (result == 5)
 	{
-		DrawFormatString(200, 200, GetColor(255, 255, 255), "5", result);
+		DrawFormatString(200, 200, GetColor(0, 0, 0), "5", result);
 	}
 	else if (result == 6) 
 	{
-		DrawFormatString(200, 200, GetColor(255, 255, 255), "6", result);
+		DrawFormatString(200, 200, GetColor(0, 0, 0), "6", result);
 	}
 
 	if (Quiz1[0] == 1) 
@@ -161,11 +184,46 @@ void GenreSelect::Draw() const
 	//DrawGraph(500, 0, ijin[0], TRUE);
 	//DrawGraph(0, 500, ijin[1], TRUE);
 	//DrawGraph(500, 500, ijin[2], TRUE);
+
+
+
+	SetFontSize(60);
+	////タイトル表示
+	//DrawFormatString(300, 200, 0xffffff, "Title");
+	//DrawFormatString(300, 500, 0xffffff, "GameMain");
+
+	for (int i = 0; i < static_cast<int>(SELECT::SELECT_SIZE); i++)
+	{
+		// ������̍ŏ�Y���W
+		const int base_y = 200;
+
+		// �������Y���W�Ԋu
+		const int margin_y = 100;
+
+		// �����F
+		int color = 0xFFFFFF;
+		// �����O�g�F
+		int border_color = 0x000000;
+
+		// �J�[�\���������Ă���ꍇ�A�����F�ƕ����O�g�F�𔽓]������
+		if (now_menu == i) {
+			color = ~color;
+			border_color = ~border_color;
+		}
+		DrawStringToHandle(SCREEN_WIDTH / 2 - 100, i * margin_y + base_y, select_items[i], color, MenuFont, border_color);
+	}
+	DrawStringToHandle(150, 100, "Select", 0xffffff, MenuFont);
+
 }
 
 
 void GenreSelect::greflection()
 {
+	greflection();
+	srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
+
+	r = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
+	result = r;
 
 	// gSelectで変数に入れた値を持ちいて、いくつかあるパターンにを派生させる処理
 	if (Genre1 == 1&&Enter == TRUE)
