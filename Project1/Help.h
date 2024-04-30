@@ -3,7 +3,7 @@
 class Help : public AbstractScene
 {
 private:
-	int helpImg;
+	int HelpImg;
 
 public:
 	Help();

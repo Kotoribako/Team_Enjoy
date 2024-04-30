@@ -6,7 +6,8 @@
 
 Help::Help()
 {
-
+	//タイトル画像読み込み
+	HelpImg = LoadGraph("image/help_image.png");
 }
 
 Help::~Help()
@@ -30,10 +31,13 @@ AbstractScene* Help::Update()
 
 void Help::Draw() const
 {
-	SetFontSize(100);
+	//タイトル画像表示
+	DrawGraph(0, 0, HelpImg, TRUE);
+
+	/*SetFontSize(100);
 	DrawFormatString(500, 300, 0xffffff, "Help");
 
 	SetFontSize(30);
 	DrawFormatString(400, 500, 0xffffff, "--- A  →  GAME STARAT ---");
-	DrawFormatString(450, 550, 0xffffff, "--- B  →  TITLE ---");
+	DrawFormatString(450, 550, 0xffffff, "--- B  →  TITLE ---");*/
 }
