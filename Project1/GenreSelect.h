@@ -45,6 +45,7 @@ private:
 	int AnimeGame[3];
 	int WordExchange[3];
 	int ijin[3];
+	int random[9];
 
 public:
 

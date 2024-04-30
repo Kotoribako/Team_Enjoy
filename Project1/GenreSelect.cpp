@@ -13,7 +13,7 @@ GenreSelect::GenreSelect()
 	r = 0;
 	r2 = 0;
 	r3 = 0;
-	max = 6;
+	max = 9;
 	min = 1;
 	result = 0;
 	result2 = 0;
@@ -33,6 +33,17 @@ GenreSelect::GenreSelect()
 	ijin[0] = LoadGraph("image/Quiz/Greatman/ijin1.png", TRUE);
 	ijin[1] = LoadGraph("image/Quiz/Greatman/ijin2.png", TRUE);
 	ijin[2] = LoadGraph("image/Quiz/Greatman/ijin3.png", TRUE);
+
+	random[0] = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png", TRUE);
+	random[1] = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png", TRUE);
+	random[2] = LoadGraph("image/Quiz/Anime&Game/AnimeGame3.png", TRUE);
+	random[3] = LoadGraph("image/Quiz/WordExchange/WordExchange1.png", TRUE);
+	random[4] = LoadGraph("image/Quiz/WordExchange/WordExchange2.png", TRUE);
+	random[5] = LoadGraph("image/Quiz/WordExchange/WordExchange3.png", TRUE);
+	random[6] = LoadGraph("image/Quiz/Greatman/ijin1.png", TRUE);
+	random[7] = LoadGraph("image/Quiz/Greatman/ijin2.png", TRUE);
+	random[8] = LoadGraph("image/Quiz/Greatman/ijin3.png", TRUE);
+
 
 	Causer = LoadGraph("image/Causer.png", TRUE);
 	CauserX = 300;
@@ -120,7 +131,7 @@ AbstractScene* GenreSelect::Update()
 	if (Enter == TRUE) 
 	{
 		// クイズ配列の最後番がTRUEなら、ステージに移行する
-		if (Quiz1[2] == 1 || Quiz2[2] == 1 || Quiz3[2] == 1 || Quiz4[2] == 1) {
+		if (Quiz1[2] == 1 || Quiz2[2] == 1 || Quiz3[2] == 1 || Quiz4[9] == 1) {
 			return new GameMain;
 		}
 	}
