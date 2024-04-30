@@ -78,10 +78,12 @@ AbstractScene* Title::Update()
 		//十字キーでカーソル移動
 		if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
 		{
+			PlaySoundMem(CursorSE, DX_PLAYTYPE_BACK, TRUE);
 			now_menu = (now_menu - 1 + static_cast<int>(TITLE_MENU::TITLE_SIZE)) % static_cast<int>(TITLE_MENU::TITLE_SIZE);
 		}
 		else if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
 		{
+			PlaySoundMem(CursorSE, DX_PLAYTYPE_BACK, TRUE);
 			now_menu = (now_menu + 1) % static_cast<int>(TITLE_MENU::TITLE_SIZE);
 		}
 	}
