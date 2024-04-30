@@ -11,10 +11,13 @@
 GenreSelect::GenreSelect()
 {
 	r = 0;
+	r2 = 0;
+	r3 = 0;
 	max = 6;
 	min = 1;
 	result = 0;
-
+	result2 = 0;
+	result3 = 0;
 	Genre1 = 1;
 
 	Enter = FALSE;
@@ -41,8 +44,7 @@ GenreSelect::GenreSelect()
 		Quiz2[i] = WordExchange[i];
 		Quiz3[i] = ijin[i];
 		Quiz4[i] = 0;
-		Quiz5[i] = 0;
-		Quiz6[i] = 0;
+		
 	}
 
 	now_menu = static_cast<int>(SELECT::ANIMEGAME);
@@ -54,43 +56,31 @@ GenreSelect::GenreSelect()
 AbstractScene* GenreSelect::Update()
 {
 
+	greflection();
+
+	//int x = 0;
+	//// 上キー押すか、左スティックを上に倒す
+	//if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
+	//{
+	//	/*if (Genre1 > 1)
+	//	{
+	//		Genre1 -= 1;
+	//		CauserY = 200 + Genre1 * 50;
+	//	}*/
+	//}
+
+	//// 下キー押すか、左スティックを下に倒す
+	//if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
+	//{
+	//	/*if(Genre1 <= 5)
+	//	{
+	//		Genre1 += 1;
+	//		CauserY = 200 + Genre1 * 50;
+	//	}*/
+	//}
 	
+
 	
-	int x = 0;
-	// 上キー押すか、左スティックを上に倒す
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
-	{
-		/*if (Genre1 > 1)
-		{
-			Genre1 -= 1;
-			CauserY = 200 + Genre1 * 50;
-		}*/
-	}
-
-	// 下キー押すか、左スティックを下に倒す
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
-	{
-		/*if(Genre1 <= 5)
-		{
-			Genre1 += 1;
-			CauserY = 200 + Genre1 * 50;
-		}*/
-	}
-	
-
-	// Aボタンを押すと決定
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
-	{
-		Enter = TRUE;
-	}
-
-	// クイズ配列の最後番がTRUEなら、ステージに移行する
-	if (Quiz1[2] == 1 || Quiz2[2] == 1 || Quiz3[2] == 1 ||
-		Quiz4[2] == 1 || Quiz5[2] == 1 || Quiz6[2] == 1) 
-	{
-		// ステージへ遷移
-	}
-
 	/* カーソルが６より下に言ったら */
 	//if (Genre1 == 6 && PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) {
 	//	// カーソルを動かないようにする（6番を代入させる）
@@ -112,21 +102,28 @@ AbstractScene* GenreSelect::Update()
 				//playsoundmem
 			if (stick_y > 0) {
 				now_menu = (now_menu - 1 + static_cast<int>(SELECT::SELECT_SIZE)) % static_cast<int>(SELECT::SELECT_SIZE);
+				Genre1 -= 1;
 			}
 			else if (stick_y < 0 || PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) {
 				now_menu = (now_menu + 1) % static_cast<int>(SELECT::SELECT_SIZE);
+				Genre1 += 1;
 			}
 			input_margin = 0;
 		}
 	}
-	if (CheckHitKey(KEY_INPUT_1) || PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
-		return new GameMain();
+	// １かAを押すとEnterをTRUEにする
+	if (CheckHitKey(KEY_INPUT_1)|| PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
+		Enter = TRUE;
 
 	}
-	if (CheckHitKey(KEY_INPUT_2)) {
-		return new GenreSelect;
+	// TRUEなら
+	if (Enter == TRUE) 
+	{
+		// クイズ配列の最後番がTRUEなら、ステージに移行する
+		if (Quiz1[2] == 1 || Quiz2[2] == 1 || Quiz3[2] == 1 || Quiz4[2] == 1) {
+			return new GameMain;
+		}
 	}
-
 
 	return this;
 }
@@ -143,30 +140,22 @@ void GenreSelect::Draw() const
 	
 
 	// ランダムで出した値に応じて、いくつかのパターンに派生する
-	if (result == 1) 
+	if (result >= 1) 
 	{
-		DrawFormatString(200, 200, GetColor(0, 0, 0), "1", result);
+		DrawFormatString(200, 200, GetColor(0, 0, 0), "%d", result);
 	}
-	else if (result == 2) 
+
+	if (result2 >= 1) 
 	{
-		DrawFormatString(200, 200, GetColor(0, 0, 0), "2", result);
+		DrawFormatString(200, 250, GetColor(0, 0, 0), "%d", result);
 	}
-	else if (result == 3) 
+
+	if (result3 >= 1) 
 	{
-		DrawFormatString(200, 200, GetColor(0, 0, 0), "3", result);
+		DrawFormatString(200, 300, GetColor(0, 0, 0), "%d", result);
 	}
-	else if (result == 4)
-	{
-		DrawFormatString(200, 200, GetColor(0, 0, 0), "4", result);
-	}
-	else if (result == 5)
-	{
-		DrawFormatString(200, 200, GetColor(0, 0, 0), "5", result);
-	}
-	else if (result == 6) 
-	{
-		DrawFormatString(200, 200, GetColor(0, 0, 0), "6", result);
-	}
+
+	
 
 	if (Quiz1[0] == 1) 
 	{
@@ -194,18 +183,14 @@ void GenreSelect::Draw() const
 
 	for (int i = 0; i < static_cast<int>(SELECT::SELECT_SIZE); i++)
 	{
-		// ������̍ŏ�Y���W
 		const int base_y = 200;
 
-		// �������Y���W�Ԋu
 		const int margin_y = 100;
 
-		// �����F
-		int color = 0xFFFFFF;
-		// �����O�g�F
+		
+		int color = 0xFFFFFF;		
 		int border_color = 0x000000;
 
-		// �J�[�\���������Ă���ꍇ�A�����F�ƕ����O�g�F�𔽓]������
 		if (now_menu == i) {
 			color = ~color;
 			border_color = ~border_color;
@@ -219,11 +204,21 @@ void GenreSelect::Draw() const
 
 void GenreSelect::greflection()
 {
-	greflection();
 	srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
+	if (r == 0 && Enter == TRUE) {
+		r = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
+		result = r;
 
-	r = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
-	result = r;
+		srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
+		r2 = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
+		result2 = r2;
+
+		srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
+		r3 = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
+		result3 = r3;
+	}
+		
+	
 
 	// gSelectで変数に入れた値を持ちいて、いくつかあるパターンにを派生させる処理
 	if (Genre1 == 1&&Enter == TRUE)
@@ -250,25 +245,8 @@ void GenreSelect::greflection()
 	}
 	else if (Genre1 == 4&&Enter == TRUE)
 	{
-		for (int i = 0; i < 2; i++) 
-		{
-			Quiz4[i] = 1;
-		}
-	}
-	else if (Genre1 == 5&&Enter == TRUE) 
-	{
-		for (int i = 0; i < 2; i++) 
-		{
-			Quiz5[i] = 1;
-		}
-	}
-	else if (Genre1 == 6&&Enter == TRUE)
-	{
-		for (int i = 0; i < 2; i++) 
-		{
-
-		}
-	}
-
-	
+		Quiz4[r] = 1;
+		Quiz4[r2] = 1;
+		Quiz4[r3] = 1;
+	}	
 }
