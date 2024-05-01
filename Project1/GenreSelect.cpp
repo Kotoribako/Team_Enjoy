@@ -8,6 +8,10 @@
 #include "GameMain.h"
 #include<iostream>
 #define SCREEN_WIDTH 1280
+int GenreSelect::GetRand(int min = 1, int max = 9)
+{
+	return min + (int)(rand() * (max - min + 1.0) / (1.0 + RAND_MAX));
+}
 GenreSelect::GenreSelect()
 {
 	r = 0;
@@ -15,9 +19,9 @@ GenreSelect::GenreSelect()
 	r3 = 0;
 	max = 9;
 	min = 1;
-	result = 0;
-	result2 = 0;
-	result3 = 0;
+	r = 0;
+	r2 = 0;
+	r3 = 0;
 	Genre1 = 1;
 
 	Enter = FALSE;
@@ -102,20 +106,25 @@ AbstractScene* GenreSelect::Update()
 	const int max_input_margin = 15;
 	const int stick_sensitivity = 20000;
 
-	if (input_margin < max_input_margin) {
+	if (input_margin < max_input_margin) 
+	{
 		input_margin++;
 	}
-	else {
+	else 
+	{
 		int stick_y = PAD_INPUT::GetLStick().ThumbY;
 
-		if (std::abs(stick_y) > stick_sensitivity || PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP)) {
+		if (std::abs(stick_y) > stick_sensitivity || PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
+		{
 			//	PlaySoundMem(CursorImg, DX_PLAYTYPE_BACK, TRUE);
 				//playsoundmem
-			if (stick_y > 0) {
+			if (stick_y > 0) 
+			{
 				now_menu = (now_menu - 1 + static_cast<int>(SELECT::SELECT_SIZE)) % static_cast<int>(SELECT::SELECT_SIZE);
 				Genre1 -= 1;
 			}
-			else if (stick_y < 0 || PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) {
+			else if (stick_y < 0 || PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) 
+			{
 				now_menu = (now_menu + 1) % static_cast<int>(SELECT::SELECT_SIZE);
 				Genre1 += 1;
 			}
@@ -123,7 +132,8 @@ AbstractScene* GenreSelect::Update()
 		}
 	}
 	// １かAを押すとEnterをTRUEにする
-	if (CheckHitKey(KEY_INPUT_1)|| PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
+	if (CheckHitKey(KEY_INPUT_1)|| PAD_INPUT::OnButton(XINPUT_BUTTON_A)) 
+	{
 		Enter = TRUE;
 
 	}
@@ -131,7 +141,8 @@ AbstractScene* GenreSelect::Update()
 	if (Enter == TRUE) 
 	{
 		// クイズ配列の最後番がTRUEなら、ステージに移行する
-		if (Quiz1[2] == 1 || Quiz2[2] == 1 || Quiz3[2] == 1 || Quiz4[9] == 1) {
+		if (Quiz1[2] == 1 || Quiz2[2] == 1 || Quiz3[2] == 1 || Quiz4[2] == 1)
+		{
 			return new GameMain;
 		}
 	}
@@ -151,36 +162,24 @@ void GenreSelect::Draw() const
 	
 
 	// ランダムで出した値に応じて、いくつかのパターンに派生する
-	if (result >= 1) 
+	if (r >= 1) 
 	{
-		DrawFormatString(200, 200, GetColor(0, 0, 0), "%d", result);
+		DrawFormatString(200, 200, GetColor(0, 0, 0), "%d", r);
 	}
 
-	if (result2 >= 1) 
+	if (r2 >= 1) 
 	{
-		DrawFormatString(200, 250, GetColor(0, 0, 0), "%d", result);
+		DrawFormatString(200, 250, GetColor(0, 0, 0), "%d", r2);
 	}
 
-	if (result3 >= 1) 
+	if (r3 >= 1) 
 	{
-		DrawFormatString(200, 300, GetColor(0, 0, 0), "%d", result);
+		DrawFormatString(200, 300, GetColor(0, 0, 0), "%d", r3);
 	}
 
 	
 
-	if (Quiz1[0] == 1) 
-	{
-		DrawGraph(500, 500, Quiz1[0], TRUE);
-	}
-	if (Quiz1[1] == 1) 
-	{
-		DrawGraph(500, 0, Quiz1[1], TRUE);
-	}
-	if (Quiz1[2] == 1) 
-	{
-		DrawGraph(0, 500, Quiz1[2], TRUE);
-	}
-
+	DrawGraph(200, 500, Quiz4[0], TRUE);
 	//DrawGraph(500, 0, ijin[0], TRUE);
 	//DrawGraph(0, 500, ijin[1], TRUE);
 	//DrawGraph(500, 500, ijin[2], TRUE);
@@ -202,7 +201,8 @@ void GenreSelect::Draw() const
 		int color = 0xFFFFFF;		
 		int border_color = 0x000000;
 
-		if (now_menu == i) {
+		if (now_menu == i) 
+		{
 			color = ~color;
 			border_color = ~border_color;
 		}
@@ -216,17 +216,11 @@ void GenreSelect::Draw() const
 void GenreSelect::greflection()
 {
 	srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
-	if (r == 0 && Enter == TRUE) {
-		r = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
-		result = r;
-
-		srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
-		r2 = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
-		result2 = r2;
-
-		srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
-		r3 = (rand() % (max - min + 1)) + min; // 1～６までの数字をランダムで変数に格納する
-		result3 = r3;
+	if (r == 0 && Enter == TRUE)
+	{
+		r = GetRand(1,9);
+		r2 = GetRand(1, 9);
+		r3 = GetRand(1, 9);
 	}
 		
 	
