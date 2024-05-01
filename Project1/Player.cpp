@@ -13,15 +13,19 @@ int   Player::MoveFlg;
 #define PLAYERSTARTX 220
 #define PLAYERSTARTY 630
 
-Player::Player()
+Player::Player():/*is_active(false),*/ image(NULL),location(0.0f),box_size(0.0f),speed(0.0f)
 {
 	playerX = 235;
 	playerY = 615;
 	
-	px = playerX - 15;
+	/*px = playerX - 15;
 	px2 = playerX + 15;
 	py = playerY - 15;
-	py2 = playerY + 15;
+	py2 = playerY + 15;*/
+
+	location = Vector2D(235.0f, 615.0f);
+	box_size = Vector2D(31.0f, 60.0f);
+	speed = 3.0f;
 
 	P_FPS = 0;
 	velocity = 0.0f;
@@ -47,13 +51,15 @@ void Player::Update()
 	else if (P_Seconas1 > 3) {
 		P_Seconas1 = 0;
 	}
-	playerX2 = playerX + 30;
-	playerY2 = playerY - 30;
+	playerX = location.x;
+	playerY = location.y;
+	playerX2 = location.x + 30;
+	playerY2 = location.y - 30;
 }
 
 void Player::Draw()
 {
-	DrawBox(playerX, playerY, playerX2, playerY2, GetColor(0, 0,255 ), TRUE);
+	DrawBox(playerX, playerY, playerX2, playerY2, GetColor(0, 0, 255), TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "standflg:%d", standflg);
 	DrawFormatString(0, 30, GetColor(0, 0, 0), "jumoflg:%d", Jumpflg);
@@ -76,37 +82,37 @@ void Player::Move()
 	int stick_y1 = PAD_INPUT::GetLStick().ThumbY;
 	int stick_x1 = PAD_INPUT::GetLStick().ThumbX;
 
-
-	if (std::abs(stick_y1) > stick_sensitivity) {
-		// スティック上
-		if (stick_y1 > 0) {
-			playerY -= 3;
-		}
-		//ステック下
-		else if (stick_y1 < 0) {
-			playerY += 3;
-		}
-		input_margin = 0;
-	}
+	Vector2D move = Vector2D(0.0f);
+	//if (std::abs(stick_y1) > stick_sensitivity) {
+	//	// スティック上
+	//	if (stick_y1 > 0) {
+	//		playerY -= 3;
+	//	}
+	//	//ステック下
+	//	else if (stick_y1 < 0) {
+	//		playerY += 3;
+	//	}
+	//	input_margin = 0;
+	//}
 	if (std::abs(stick_x1) > stick_sensitivity) {
 		//スティック左
 		if (stick_x1 < 0) {
-			playerX -= 3;
+			move += Vector2D(-1.0f, 0.0f);
 		}
 		//スティック右
 		else if (stick_x1 > 0) {
-			playerX += 3;
+			move += Vector2D(1.0f, 0.0f);
 		}
 		input_margin = 0;
 	}
 
 	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT))
 	{
-		playerX -= 3;
+		move += Vector2D(-3.0f, 0.0f);
 	}
 	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT))
 	{
-		playerX += 3;
+		move += Vector2D(3.0f, 0.0f);
 	}
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && Jumpflg == FALSE)
 	{
@@ -117,37 +123,49 @@ void Player::Move()
 
 	if (Jumpflg == TRUE && Downflg == FALSE)
 	{
-		sy = 12.0f;
-		playerY -= sy;
-		sy += 0.3f;
-		if (playerY <= 200) {
-			playerY = 200;
+		move += Vector2D(0.0f,-12.0f);
+		move += Vector2D(0.0f, 3.0f);
+		if (location.y <= 200) {
+			location.y = 200;
 			Jumpflg = FALSE;
 			Downflg = TRUE;
 		}
 	}
 	 if (Downflg == TRUE && count >= 1)
 	{
-		sy = 12.0f;
-		playerY += sy;
-		sy += 0.3f;
-	}
-	if (playerY >= 630) {//地面に付いたとき
+		move += Vector2D(0.0f, 12.0f);
+		move += Vector2D(0.0f, 3.0f);
+	 }
+	if (location.y >= 630) {//地面に付いたとき
+		location.y = 630;
 		standflg = 1;
 		Jumpflg = FALSE;
 		Downflg = FALSE;
+	
 		count = 0;
 
 	}
-	if (playerX >= 640 && MoveFlg == FALSE) {
-		playerX = 640;
+	if (location.x >= 640 && MoveFlg == FALSE) {
+		location.x = 640;
 	}
-	if (playerX <= 0) {
-		playerX = 0;
+	if (location.x <= 0) {
+		location.x = 0;
 	}
+	location += move;
 	
 }
-
+Vector2D Player::Getlocation()const 
+{
+	return this->location;
+}
+Vector2D Player::GetBoxsize()const
+{
+	return this->box_size;
+}
+float Player::GetSpeed()const
+{
+	return this->speed;
+}
 void Player::PlayerHit()
 {
 	/*if (playerX >= Block::block[1].X && playerX >= Block::block[0].X2 && playerY <= Block::block[0].Y) {

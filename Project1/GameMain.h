@@ -9,9 +9,13 @@ private:
 	Stage1* stage1;
 
 	int mouseX, mouseY;
+
+	bool IsHitCheck(Player* p, Block* b);
 public:
 	GameMain();
 	virtual ~GameMain();
 	virtual AbstractScene* Update() override;
 	virtual void Draw() const override;
+
+	
 };
