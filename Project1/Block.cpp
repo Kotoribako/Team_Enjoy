@@ -37,7 +37,11 @@ void Block::Draw()
 {
 	/*DrawBox(px, py, px2, py2, GetColor(255, 0, 0), TRUE);*/
 	for (int i = 0; i < 11; i++) {
-		DrawBox(bloc[i].X, bloc[i].Y, bloc[i].X2, bloc[i].Y2, GetColor(255, 0, 0), TRUE);
+		//DrawBox(bloc[i].X, bloc[i].Y, bloc[i].X2, bloc[i].Y2, GetColor(255, 0, 0), TRUE);
+		//DrawBox(bloc[i].X, bloc[i].Y, bloc[i].X2, bloc[i].Y+10, GetColor(255, 0, 0), TRUE); // 上のブロックの当たり判定()
+		//DrawBox(bloc[i].X, bloc[i].Y2, bloc[i].X2, bloc[i].Y2+10, GetColor(0, 255, 0), TRUE); // 下のブロックの当たり判定(緑)
+		//DrawBox(bloc[i].X, bloc[i].Y, bloc[i].X+10, bloc[i].Y2, GetColor(0, 0, 255), TRUE); // 左のブロックの当たり判定(青)
+		//DrawBox(bloc[i].X2, bloc[i].Y, bloc[i].X2+10, bloc[i].Y2, GetColor(255, 0, 255), TRUE); // 右のブロックの当たり判定(紫)
 	}
 	//DrawFormatString(0, 70, GetColor(255, 0, 0), "Standflg:%d", flg);
 }
