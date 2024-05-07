@@ -19,6 +19,11 @@ private:
 	Block* block;
 	float px,px2;
 	float py, py2;
+	int HitFlg;  // 地面に足がついているか
+	int BlockNum;
+
+	int eightflg;
+	int threeflg;
 
 public:
 	static  float playerX;  //プレイヤー座標X　左  プレイヤー中心座標
