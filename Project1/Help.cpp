@@ -3,6 +3,7 @@
 #include "Title.h"
 #include "Help.h"
 #include "GameMain.h"
+#include"GenreSelect.h"
 
 Help::Help()
 {
@@ -19,7 +20,7 @@ AbstractScene* Help::Update()
 {
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 	{
-		return new GameMain();
+		return new GenreSelect();
 	}
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
 	{

@@ -41,6 +41,7 @@ private:
 
 public:
 
+	static int Selectgenre;
 	int AnimeGame[3];
 	int WordExchange[3];
 	int ijin[3];
@@ -50,11 +51,9 @@ public:
 	int Ex_Answer[3];
 	int ijin_Answer[3];
 	//int Genre[6][10];
-	int GetRand(int min, int max) ;
 	GenreSelect();
 	virtual ~GenreSelect() {};
 	virtual AbstractScene* Update() override;
 	virtual void Draw() const override;
-	void greflection();
 };
 
