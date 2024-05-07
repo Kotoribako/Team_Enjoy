@@ -25,7 +25,7 @@ GenreSelect::GenreSelect()
 	Genre1 = 1;
 
 	Enter = FALSE;
-
+	// 受け継がせる問題
 	AnimeGame[0] = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png", TRUE);
 	AnimeGame[1] = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png", TRUE);
 	AnimeGame[2] = LoadGraph("image/Quiz/Anime&Game/AnimeGame3.png", TRUE);
@@ -53,13 +53,26 @@ GenreSelect::GenreSelect()
 	CauserX = 300;
 	CauserY = 250;
 	
+	// 受け継がせる答え
+	Anime_Answer[0] = 3;
+	Anime_Answer[1] = 3;
+	Anime_Answer[2] = 1;
+	ijin_Answer[0] = 3;
+	ijin_Answer[1] = 2;
+	ijin_Answer[2] = 3;
+	Ex_Answer[0] = 3;
+	Ex_Answer[1] = 4;
+	Ex_Answer[2] = 3;
 	for (int i = 0; i < 2; i++) 
 	{
 		 AnimeGame[i] = FALSE;
 		 WordExchange[i] = FALSE;
 		 ijin[i] = FALSE;
 	}
-
+	for (int y = 0; y < 8; y++) 
+	{
+		random[y] = FALSE;
+	}
 	now_menu = static_cast<int>(SELECT::ANIMEGAME);
 	input_margin = 0;
 	MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
