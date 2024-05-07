@@ -49,7 +49,6 @@ public:
 	int Anime_Answer[3];
 	int Ex_Answer[3];
 	int ijin_Answer[3];
-	int random_Answer[9];
 	//int Genre[6][10];
 	int GetRand(int min, int max) ;
 	GenreSelect();

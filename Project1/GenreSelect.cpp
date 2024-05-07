@@ -63,6 +63,7 @@ GenreSelect::GenreSelect()
 	Ex_Answer[0] = 3;
 	Ex_Answer[1] = 4;
 	Ex_Answer[2] = 3;
+
 	for (int i = 0; i < 2; i++) 
 	{
 		 AnimeGame[i] = FALSE;
