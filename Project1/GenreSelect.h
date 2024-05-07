@@ -27,9 +27,7 @@ private:
 	int r3;// 乱数の値3
 	int max; //乱数の下限値
 	int min; //乱数の上限値
-	int result; //乱数の結果
-	int result2;//乱数の結果2
-	int result3;//乱数の結果3
+	
 	int Genre1; //ジャンルの反映
 
 	int Enter; // ジャンル決定
@@ -45,6 +43,7 @@ private:
 	int AnimeGame[3];
 	int WordExchange[3];
 	int ijin[3];
+	int random[9];
 
 public:
 
@@ -54,7 +53,7 @@ public:
 	int Quiz4[3];
 	
 	//int Genre[6][10];
-
+	int GetRand(int min, int max) ;
 	GenreSelect();
 	virtual ~GenreSelect() {};
 	virtual AbstractScene* Update() override;
