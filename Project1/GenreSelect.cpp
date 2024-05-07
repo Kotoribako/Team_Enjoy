@@ -55,11 +55,9 @@ GenreSelect::GenreSelect()
 	
 	for (int i = 0; i < 2; i++) 
 	{
-		Quiz1[i] = AnimeGame[i];
-		Quiz2[i] = WordExchange[i];
-		Quiz3[i] = ijin[i];
-		Quiz4[i] = 0;
-		
+		 AnimeGame[i] = FALSE;
+		 WordExchange[i] = FALSE;
+		 ijin[i] = FALSE;
 	}
 
 	now_menu = static_cast<int>(SELECT::ANIMEGAME);
@@ -137,14 +135,15 @@ AbstractScene* GenreSelect::Update()
 		Enter = TRUE;
 
 	}
-	// TRUEなら
-	if (Enter == TRUE) 
-	{
 		// クイズ配列の最後番がTRUEなら、ステージに移行する
-		if (Quiz1[2] == 1 || Quiz2[2] == 1 || Quiz3[2] == 1 || Quiz4[2] == 1)
-		{
-			return new GameMain;
-		}
+	if (AnimeGame[2] == TRUE || WordExchange[2] == TRUE || ijin[2] == TRUE)
+	{
+		return new GameMain;
+	}
+
+	if(random[r3] == TRUE)
+	{
+		return new GameMain;
 	}
 
 	return this;
@@ -179,7 +178,6 @@ void GenreSelect::Draw() const
 
 	
 
-	DrawGraph(200, 500, Quiz4[0], TRUE);
 	//DrawGraph(500, 0, ijin[0], TRUE);
 	//DrawGraph(0, 500, ijin[1], TRUE);
 	//DrawGraph(500, 500, ijin[2], TRUE);
@@ -231,27 +229,27 @@ void GenreSelect::greflection()
 		for (int i = 0; i < 2; i++) 
 		{
 			// この結果をGameMainに受け継がせる
-			Quiz1[i] = 1;
+			AnimeGame[i] = TRUE;
 		}
 	}
-	else if (Genre1 == 2&&Enter == TRUE)
+	if (Genre1 == 2&&Enter == TRUE)
 	{
 		for (int i = 0; i < 2; i++)
 		{
-			Quiz2[i] = 1;
+			WordExchange[i] = TRUE;
 		}
 	}
-	else if (Genre1 == 3&&Enter == TRUE)
+	if (Genre1 == 3&&Enter == TRUE)
 	{
 		for (int i = 0; i < 2; i++) 
 		{
-			Quiz3[i] = 1;
+			ijin[i] = TRUE;
 		}
 	}
-	else if (Genre1 == 4&&Enter == TRUE)
+	if (Genre1 == 4&&Enter == TRUE)
 	{
-		Quiz4[r] = 1;
-		Quiz4[r2] = 1;
-		Quiz4[r3] = 1;
+		random[r] = TRUE;
+		random[r2] = TRUE;
+		random[r3] = TRUE;
 	}	
 }

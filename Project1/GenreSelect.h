@@ -16,9 +16,9 @@ class GenreSelect :public AbstractScene
 private:
 
 	const char* select_items [static_cast<int>(SELECT::SELECT_SIZE)] = {
-	"GAME",
-	"QUIZ",
-	"GREAT",
+	"ANIMEGAME",
+	"EXCHANGE",
+	"GREATMAN",
 	"RANDOM"
 	};
 
@@ -37,21 +37,14 @@ private:
 	int Causer;
 	int input_margin;  
 	int now_menu; 
-	int MenuFont; 
+	int MenuFont;
 
+public:
 
 	int AnimeGame[3];
 	int WordExchange[3];
 	int ijin[3];
 	int random[9];
-
-public:
-
-	int Quiz1[3];
-	int Quiz2[3];
-	int Quiz3[3];
-	int Quiz4[3];
-	
 	//int Genre[6][10];
 	int GetRand(int min, int max) ;
 	GenreSelect();
