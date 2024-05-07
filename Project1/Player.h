@@ -1,21 +1,10 @@
 #pragma once
 #include"PadInput.h"
 #include"Block.h"
-#include"Vector2D.h"
 class Player
 {
 private:
-	//C++の範囲↓
-	//bool is_active; //有効状態か
-	int image;      //画像データ
-	Vector2D location; //位置座標
-	Vector2D box_size; //当たり判定の大きさ
-	float speed;
-	//C++の範囲↑
-
-
-
-
+	int image;
 	int life;       //残機
 	int input_margin;
 	float P_YSpeed;
@@ -30,6 +19,11 @@ private:
 	Block* block;
 	float px,px2;
 	float py, py2;
+	int HitFlg;  // 地面に足がついているか
+	int BlockNum;
+
+	int eightflg;
+	int threeflg;
 
 public:
 	static  float playerX;  //プレイヤー座標X　左  プレイヤー中心座標
@@ -49,11 +43,9 @@ public:
 	void Move();  //プレイヤー動き（ジャンプ含む）
 	void PlayerHit(); //当たり判定のためのプレイヤー座標
 
-	//C++の範囲↓
-	Vector2D Getlocation()const;   //位置座標取得
-	Vector2D GetBoxsize()const;	   //当たり判定の大きさ所得
-	float GetSpeed() const;        //速さの取得
-private:
-	/*void Movement();*/
-	//C++の範囲↑
+	float GetLocationX1() { return px; } // プレイヤーの左端の座標を取る。
+	float GetLocationY1() { return py; } // プレイヤーの頭上の座標を取る。
+	float GetLocationX2() { return px2; }// プレイヤーの右端の座標を取る。
+	float GetLocationY2() { return py2; }// プレイヤーの下側の座標を取る。
+
 };

@@ -7,6 +7,7 @@ class GameMain :public AbstractScene
 private:
 	Player* player;
 	Stage1* stage1;
+	Block* block;
 
 	int mouseX, mouseY;
 
