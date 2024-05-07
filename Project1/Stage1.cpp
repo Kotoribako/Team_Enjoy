@@ -18,6 +18,7 @@ Stage1::Stage1()
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
 	block = new Block();
+	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 }
 
 Stage1::~Stage1()
@@ -45,6 +46,9 @@ void Stage1::Draw()
 
 	}
 	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);
+
+	DrawGraph(700, 0, TestImg, TRUE);
+
 	block->Draw();
 }
 
