@@ -29,7 +29,7 @@ Stage1::~Stage1()
 void Stage1::Update()
 {
 	MoveXStage(); // X軸の画像を動かす処理を入れる	
-	block->Update();
+	//block->Update();
 }
 
 void Stage1::Draw()

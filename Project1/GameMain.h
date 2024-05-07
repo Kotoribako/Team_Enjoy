@@ -10,9 +10,13 @@ private:
 	Block* block;
 
 	int mouseX, mouseY;
+
+	bool IsHitCheck(Player* p, Block* b);
 public:
 	GameMain();
 	virtual ~GameMain();
 	virtual AbstractScene* Update() override;
 	virtual void Draw() const override;
+
+	
 };
