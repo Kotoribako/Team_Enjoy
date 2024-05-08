@@ -2,6 +2,7 @@
 #include"Player.h"
 #include"PadInput.h"
 #include<DxLib.h>
+#include"GenreSelect.h"
 
 int Stage1::StopStage1Xflg;
 float Stage1::Stage1X;
@@ -18,6 +19,7 @@ Stage1::Stage1()
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
 	block = new Block();
+	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 }
 
 Stage1::~Stage1()
@@ -28,7 +30,7 @@ Stage1::~Stage1()
 void Stage1::Update()
 {
 	MoveXStage(); // X軸の画像を動かす処理を入れる	
-	block->Update();
+	//block->Update();
 }
 
 void Stage1::Draw()
@@ -45,7 +47,12 @@ void Stage1::Draw()
 
 	}
 	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);
+
+	DrawGraph(700, 0, TestImg, TRUE);
+
 	block->Draw();
+	DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
+
 }
 
 void Stage1::MoveXStage()

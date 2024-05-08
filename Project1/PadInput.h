@@ -6,6 +6,7 @@
 //�X�e�B�b�N
 struct Stick
 {
+
 	short ThumbX;	//�����l
 	short ThumbY;	//�c���l
 };
@@ -15,9 +16,10 @@ class PAD_INPUT
 private:
 	static char NowKey[BUTTONS]; //����̓��̓L�[
 	static char OldKey[BUTTONS]; //�O��̓��̓L�[
-	static XINPUT_STATE Input; //�p�b�h
+	static XINPUT_STATE Input; //1P�p�b�h
 	static Stick Rstick; //�E�X�e�B�b�N
 	static Stick Lstick; //���X�e�B�b�N
+
 private:
 	//�R���X�g���N�^
 	PAD_INPUT() = default;
@@ -26,7 +28,7 @@ public:
 	static void UpdateKey()
 	{
 		// ���̓L�[�擾
-		GetJoypadXInputState(DX_INPUT_KEY_PAD1, &Input);
+		GetJoypadXInputState(DX_INPUT_KEY_PAD, &Input);
 		for (int i = 0; i < BUTTONS; i++)
 		{
 			OldKey[i] = NowKey[i];
@@ -63,6 +65,7 @@ public:
 		return ret;
 	}
 
+	
 	//�E�X�e�B�b�N�̎擾
 	static Stick GetRStick()
 	{
@@ -74,10 +77,13 @@ public:
 	{
 		return Lstick;
 	}
+
+
 	static char GetNowKey(const int i)
 	{
 		return NowKey[i];
 	}
+
 	static char GetOldKey(const int i)
 	{
 		return OldKey[i];

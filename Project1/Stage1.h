@@ -14,6 +14,8 @@ private:
 
 	int DoorImg;
 
+	int TestImg;
+
 public:
 	static int NowStageNumber; //ステージ数の表示
 

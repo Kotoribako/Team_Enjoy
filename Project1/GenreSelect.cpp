@@ -8,58 +8,11 @@
 #include "GameMain.h"
 #include<iostream>
 #define SCREEN_WIDTH 1280
-int GenreSelect::GetRand(int min = 1, int max = 9)
-{
-	return min + (int)(rand() * (max - min + 1.0) / (1.0 + RAND_MAX));
-}
+
+int GenreSelect::Selectgenre;
+
 GenreSelect::GenreSelect()
 {
-	r = 0;
-	r2 = 0;
-	r3 = 0;
-	max = 9;
-	min = 1;
-	r = 0;
-	r2 = 0;
-	r3 = 0;
-	Genre1 = 1;
-
-	Enter = FALSE;
-
-	AnimeGame[0] = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png", TRUE);
-	AnimeGame[1] = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png", TRUE);
-	AnimeGame[2] = LoadGraph("image/Quiz/Anime&Game/AnimeGame3.png", TRUE);
-
-	WordExchange[0] = LoadGraph("image/Quiz/WordExchange/WordExchange1.png", TRUE);
-	WordExchange[1] = LoadGraph("image/Quiz/WordExchange/WordExchange2.png", TRUE);
-	WordExchange[2] = LoadGraph("image/Quiz/WordExchange/WordExchange3.png", TRUE);
-
-	ijin[0] = LoadGraph("image/Quiz/Greatman/ijin1.png", TRUE);
-	ijin[1] = LoadGraph("image/Quiz/Greatman/ijin2.png", TRUE);
-	ijin[2] = LoadGraph("image/Quiz/Greatman/ijin3.png", TRUE);
-
-	random[0] = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png", TRUE);
-	random[1] = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png", TRUE);
-	random[2] = LoadGraph("image/Quiz/Anime&Game/AnimeGame3.png", TRUE);
-	random[3] = LoadGraph("image/Quiz/WordExchange/WordExchange1.png", TRUE);
-	random[4] = LoadGraph("image/Quiz/WordExchange/WordExchange2.png", TRUE);
-	random[5] = LoadGraph("image/Quiz/WordExchange/WordExchange3.png", TRUE);
-	random[6] = LoadGraph("image/Quiz/Greatman/ijin1.png", TRUE);
-	random[7] = LoadGraph("image/Quiz/Greatman/ijin2.png", TRUE);
-	random[8] = LoadGraph("image/Quiz/Greatman/ijin3.png", TRUE);
-
-
-	Causer = LoadGraph("image/Causer.png", TRUE);
-	CauserX = 300;
-	CauserY = 250;
-	
-	for (int i = 0; i < 2; i++) 
-	{
-		 AnimeGame[i] = FALSE;
-		 WordExchange[i] = FALSE;
-		 ijin[i] = FALSE;
-	}
-
 	now_menu = static_cast<int>(SELECT::ANIMEGAME);
 	input_margin = 0;
 	MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
@@ -68,37 +21,6 @@ GenreSelect::GenreSelect()
 
 AbstractScene* GenreSelect::Update()
 {
-
-	greflection();
-
-	//int x = 0;
-	//// 上キー押すか、左スティックを上に倒す
-	//if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
-	//{
-	//	/*if (Genre1 > 1)
-	//	{
-	//		Genre1 -= 1;
-	//		CauserY = 200 + Genre1 * 50;
-	//	}*/
-	//}
-
-	//// 下キー押すか、左スティックを下に倒す
-	//if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
-	//{
-	//	/*if(Genre1 <= 5)
-	//	{
-	//		Genre1 += 1;
-	//		CauserY = 200 + Genre1 * 50;
-	//	}*/
-	//}
-	
-
-	
-	/* カーソルが６より下に言ったら */
-	//if (Genre1 == 6 && PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) {
-	//	// カーソルを動かないようにする（6番を代入させる）
-	//	Genre1 = 6;
-	//}
 
 
 	const int max_input_margin = 15;
@@ -129,23 +51,29 @@ AbstractScene* GenreSelect::Update()
 			input_margin = 0;
 		}
 	}
-	// １かAを押すとEnterをTRUEにする
-	if (CheckHitKey(KEY_INPUT_1)|| PAD_INPUT::OnButton(XINPUT_BUTTON_A)) 
+	if (PAD_INPUT::GetNowKey(XINPUT_BUTTON_A) && (PAD_INPUT::OnButton(XINPUT_BUTTON_A) == true))
 	{
-		Enter = TRUE;
-
+		input_margin = 0;
+		SELECT current_select = static_cast<SELECT>(now_menu);
+		switch (current_select)
+		{
+		case SELECT::ANIMEGAME:
+			Selectgenre = 0;
+			return new GameMain();
+			break;
+		case SELECT::WORDEXCHANGE:
+			Selectgenre = 1;
+			return new GameMain();
+			break;
+		case SELECT::GREATMAN:
+			Selectgenre = 2;
+			return new GameMain();
+			break;
+		default:
+			//printfDx("�������ȋ@�\�ł��B\n"); 
+			break;
+		}
 	}
-		// クイズ配列の最後番がTRUEなら、ステージに移行する
-	if (AnimeGame[2] == TRUE || WordExchange[2] == TRUE || ijin[2] == TRUE)
-	{
-		return new GameMain;
-	}
-
-	if(random[r3] == TRUE)
-	{
-		return new GameMain;
-	}
-
 	return this;
 }
 
@@ -158,24 +86,6 @@ void GenreSelect::Draw() const
 	DrawFormatString(100, 100, GetColor(0, 0, 0), "CauserX:%d\n",CauserX);
 	DrawFormatString(200, 100, GetColor(0, 0, 0), "CauserY:%d\n",CauserY);
 	SetFontSize(30);
-	
-
-	// ランダムで出した値に応じて、いくつかのパターンに派生する
-	if (r >= 1) 
-	{
-		DrawFormatString(200, 200, GetColor(0, 0, 0), "%d", r);
-	}
-
-	if (r2 >= 1) 
-	{
-		DrawFormatString(200, 250, GetColor(0, 0, 0), "%d", r2);
-	}
-
-	if (r3 >= 1) 
-	{
-		DrawFormatString(200, 300, GetColor(0, 0, 0), "%d", r3);
-	}
-
 	
 
 	//DrawGraph(500, 0, ijin[0], TRUE);
@@ -208,48 +118,4 @@ void GenreSelect::Draw() const
 	}
 	DrawStringToHandle(150, 100, "Select", 0xffffff, MenuFont);
 
-}
-
-
-void GenreSelect::greflection()
-{
-	srand((unsigned)time(NULL)); // 乱数の仕組みの初期化
-	if (r == 0 && Enter == TRUE)
-	{
-		r = GetRand(1,9);
-		r2 = GetRand(1, 9);
-		r3 = GetRand(1, 9);
-	}
-		
-	
-
-	// gSelectで変数に入れた値を持ちいて、いくつかあるパターンにを派生させる処理
-	if (Genre1 == 1&&Enter == TRUE)
-	{
-		for (int i = 0; i < 2; i++) 
-		{
-			// この結果をGameMainに受け継がせる
-			AnimeGame[i] = TRUE;
-		}
-	}
-	if (Genre1 == 2&&Enter == TRUE)
-	{
-		for (int i = 0; i < 2; i++)
-		{
-			WordExchange[i] = TRUE;
-		}
-	}
-	if (Genre1 == 3&&Enter == TRUE)
-	{
-		for (int i = 0; i < 2; i++) 
-		{
-			ijin[i] = TRUE;
-		}
-	}
-	if (Genre1 == 4&&Enter == TRUE)
-	{
-		random[r] = TRUE;
-		random[r2] = TRUE;
-		random[r3] = TRUE;
-	}	
 }

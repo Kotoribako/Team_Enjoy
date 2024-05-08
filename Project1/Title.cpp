@@ -88,15 +88,6 @@ AbstractScene* Title::Update()
 		}
 	}
 
-	/*if (CheckHitKey(KEY_INPUT_1) || PAD_INPUT::OnButton(XINPUT_BUTTON_A)) {
-		return new GameMain();
-		PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
-	}*/
-
-	/*if (CheckHitKey(KEY_INPUT_2)) {
-		return new GenreSelect;
-	}*/
-
 	if (PAD_INPUT::GetNowKey(XINPUT_BUTTON_A) && (PAD_INPUT::OnButton(XINPUT_BUTTON_A) == true))
 	{
 		input_margin = 0;
