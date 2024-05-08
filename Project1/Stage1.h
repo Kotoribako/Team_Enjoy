@@ -16,6 +16,8 @@ private:
 
 	int TestImg;
 
+	int janruImg[3];
+
 public:
 	static int NowStageNumber; //ステージ数の表示
 

@@ -20,6 +20,10 @@ Stage1::Stage1()
 	StopStage1Xflg = FALSE;
 	block = new Block();
 	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
+
+	janruImg[0] = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
+	janruImg[1] = LoadGraph("image/Quiz/Greatman/Ijin1.png");
+	janruImg[2] = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
 }
 
 Stage1::~Stage1()
@@ -48,7 +52,19 @@ void Stage1::Draw()
 	}
 	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);
 
-	DrawGraph(700, 0, TestImg, TRUE);
+	//DrawGraph(700, 0, TestImg, TRUE);
+
+	if (GenreSelect::Selectgenre == 0) {
+		DrawGraph(700, 0, janruImg[0], TRUE);
+	}
+	else if (GenreSelect::Selectgenre == 1)
+	{
+		DrawGraph(700, 0, janruImg[1], TRUE);
+	}
+	else if (GenreSelect::Selectgenre == 2)
+	{
+		DrawGraph(700, 0, janruImg[2], TRUE);
+	}
 
 	block->Draw();
 	DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
