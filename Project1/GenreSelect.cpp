@@ -17,6 +17,8 @@ GenreSelect::GenreSelect()
 	input_margin = 0;
 	GetRand(2);
 	MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
+	  
+	BackGround = LoadGraph("image/BackGround02.png", TRUE);
 }
 
 
@@ -52,7 +54,7 @@ AbstractScene* GenreSelect::Update()
 	}
 	if (PAD_INPUT::GetNowKey(XINPUT_BUTTON_A) && (PAD_INPUT::OnButton(XINPUT_BUTTON_A) == true))
 	{
-		input_margin = 0;
+		input_margin = 0; 
 		SELECT current_select = static_cast<SELECT>(now_menu);
 		switch (current_select)
 		{
@@ -81,8 +83,8 @@ AbstractScene* GenreSelect::Update()
 }
 
 void GenreSelect::Draw() const
-{
-	DrawBox(0, 0, 1280, 750, GetColor(255, 255, 255), TRUE);
+{ 
+	DrawGraph(0, 0, BackGround, TRUE);
 	// カーソル画像
 	//DrawGraph(CauserX, CauserY, Causer, TRUE);
 
