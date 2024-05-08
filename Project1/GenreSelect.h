@@ -39,6 +39,8 @@ private:
 	int now_menu; 
 	int MenuFont;
 
+	int BackGround; // 背景画像
+
 public:
 
 	static int Selectgenre;
