@@ -120,7 +120,7 @@ AbstractScene* Title::Update()
 			return nullptr;
 			break;
 		default:
-			//printfDx("�������ȋ@�\�ł��B\n"); 
+			//printfDx("\n"); 
 			break;
 		}
 	}
@@ -157,7 +157,7 @@ void Title::Draw()const
 	}
 	DrawStringToHandle(150, 100, "Title", 0xffffff, MenuFont);
 
-	////�J�[�\���̕`��
+	////
 	//int select_y = 230 + Select * 80;
 	//DrawGraph(650, select_y, CursorImg, TRUE);
 }
