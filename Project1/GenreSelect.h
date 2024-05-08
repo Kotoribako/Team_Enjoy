@@ -22,11 +22,11 @@ private:
 	"RANDOM"
 	};
 
-	int r; // 乱数の値
-	int r2;// 乱数の値2
-	int r3;// 乱数の値3
-	int max; //乱数の下限値
-	int min; //乱数の上限値
+	//int r; // 乱数の値
+	//int r2;// 乱数の値2
+	//int r3;// 乱数の値3
+	//int max; //乱数の下限値
+	//int min; //乱数の上限値
 	
 	int Genre1; //ジャンルの反映
 
