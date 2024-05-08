@@ -209,22 +209,45 @@ void Player::PlayerHit()
 			// フラグを立てる
 			HitFlg = TRUE;
 			BlockNum = i;
+			// 上にプレイヤーがいる処理
+			if (GetLocationY2() >= block->bloc[BlockNum].Y && HitFlg == TRUE)
+			{
+				/* 下に落ちない処理を書く */
+				Jumpflg = FALSE;
+				Downflg = FALSE;
+				count = 0;
+			}
+			else
+			{
+				HitFlg = FALSE;
+				BlockNum = -1;
+			}
+			if (BlockNum == -1 && P_moveY == 0) // ブロックないときの落下処理
+			{
+				count += 1;
+				Downflg = TRUE;
+			}
 			break;
 
 		}
 	}
-	// 上にプレイヤーがいる処理
-	if (GetLocationY2() >= block->bloc[BlockNum].Y && HitFlg == TRUE)
-	{
-		/* 下に落ちない処理を書く */
-		Jumpflg = FALSE;
-		Downflg = FALSE;
-		count = 0;
-	}
-	else
-	{
-		HitFlg = FALSE;
-	}
+	//// 上にプレイヤーがいる処理
+	//if (GetLocationY2() >= block->bloc[BlockNum].Y && HitFlg == TRUE)
+	//{
+	//	/* 下に落ちない処理を書く */
+	//	Jumpflg = FALSE;
+	//	Downflg = FALSE;
+	//	count = 0;
+	//}
+	//else
+	//{
+	//	HitFlg = FALSE;
+	//	BlockNum = -1;
+	//}
+	//if (BlockNum == -1 && P_moveY == 0)
+	//{
+	//	Downflg = TRUE;
+	//}
 	//if (GetLocationY1() >= block->bloc[i].Y2 /*&&*/ /*GetLocationX1() >= block->bloc[i].X2*/) // ブロックの下とプレイヤーの頭上が当たっている時、
 	//{
 	//	/* 下に落ちる処理を書く */
