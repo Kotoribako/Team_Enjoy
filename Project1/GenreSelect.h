@@ -39,8 +39,7 @@ private:
 	int now_menu; 
 	int MenuFont;
 
-	int GetRand;
-	int i;
+	//int GetRand;
 
 public:
 
