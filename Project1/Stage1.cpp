@@ -2,6 +2,7 @@
 #include"Player.h"
 #include"PadInput.h"
 #include<DxLib.h>
+#include"GenreSelect.h"
 
 int Stage1::StopStage1Xflg;
 float Stage1::Stage1X;
@@ -46,6 +47,8 @@ void Stage1::Draw()
 	}
 	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);
 	block->Draw();
+	DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
+
 }
 
 void Stage1::MoveXStage()

@@ -2,6 +2,7 @@
 #include "Stage1.h"
 #include<iostream>
 #include"DxLib.h"
+#include"GenreSelect.h"
 float Player::playerX;  //左
 float Player::playerX2; //右
 float Player::playerY;  //下
@@ -101,7 +102,7 @@ void Player::Draw()
 	DrawBox(playerX, playerY, playerX2, playerY2, GetColor(0, 0,255 ), TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
 	DrawFormatString(0, 80, GetColor(0, 0, 0), "threeflgflg:%d", threeflg);
-	DrawFormatString(0, 30, GetColor(0, 0, 0), "eightflg:%d", eightflg);
+	DrawFormatString(0, 30, GetColor(0, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
 	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
 	DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
 }

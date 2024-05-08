@@ -1,4 +1,5 @@
 #include "GameMain.h"
+#include"GenreSelect.h"
 
 GameMain::GameMain()
 {
