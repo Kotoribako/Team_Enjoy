@@ -8,6 +8,7 @@
 #include "GameMain.h"
 #include<iostream>
 #define SCREEN_WIDTH 1280
+#define RAND_MAX 3
 
 int GenreSelect::Selectgenre;
 
@@ -21,8 +22,6 @@ GenreSelect::GenreSelect()
 
 AbstractScene* GenreSelect::Update()
 {
-
-
 	const int max_input_margin = 15;
 	const int stick_sensitivity = 20000;
 
@@ -67,6 +66,10 @@ AbstractScene* GenreSelect::Update()
 			break;
 		case SELECT::GREATMAN:
 			Selectgenre = 2;
+			return new GameMain();
+			break;
+		case SELECT::RANDOMSELECT:
+			Selectgenre = GetRand;
 			return new GameMain();
 			break;
 		default:
