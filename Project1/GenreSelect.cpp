@@ -15,14 +15,13 @@ GenreSelect::GenreSelect()
 {
 	now_menu = static_cast<int>(SELECT::ANIMEGAME);
 	input_margin = 0;
+	GetRand(2);
 	MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
 }
 
 
 AbstractScene* GenreSelect::Update()
 {
-
-
 	const int max_input_margin = 15;
 	const int stick_sensitivity = 20000;
 
@@ -67,6 +66,10 @@ AbstractScene* GenreSelect::Update()
 			break;
 		case SELECT::GREATMAN:
 			Selectgenre = 2;
+			return new GameMain();
+			break;
+		case SELECT::RANDOMSELECT:
+			Selectgenre = GetRand(2);
 			return new GameMain();
 			break;
 		default:

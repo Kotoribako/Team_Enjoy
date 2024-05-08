@@ -39,6 +39,8 @@ private:
 	int now_menu; 
 	int MenuFont;
 
+	//int GetRand;
+
 public:
 
 	static int Selectgenre;
