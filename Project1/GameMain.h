@@ -18,5 +18,7 @@ public:
 	virtual AbstractScene* Update() override;
 	virtual void Draw() const override;
 
+	static int NowStage; // 今もステージ
+
 	
 };
