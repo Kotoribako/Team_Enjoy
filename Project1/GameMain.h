@@ -7,16 +7,17 @@ class GameMain :public AbstractScene
 private:
 	Player* player;
 	Stage1* stage1;
-	Block* block;
 
 	int mouseX, mouseY;
 
-	bool IsHitCheck(Player* p, Block* b);
+	//bool IsHitCheck(Player* p, Block* b);
 public:
 	GameMain();
 	virtual ~GameMain();
 	virtual AbstractScene* Update() override;
 	virtual void Draw() const override;
+
+	void Initialize();  //ステージ遷移用の初期化処理
 
 	
 };
