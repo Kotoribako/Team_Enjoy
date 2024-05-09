@@ -38,7 +38,7 @@ private:
 	int input_margin;  
 	int now_menu; 
 	int MenuFont;
-
+	int BackGround;
 	//int GetRand;
 
 public:
