@@ -3,6 +3,7 @@
 #include"PadInput.h"
 #include<DxLib.h>
 #include"GenreSelect.h"
+#include"GameMain.h"
 
 int Stage1::StopStage1Xflg;
 float Stage1::Stage1X;
@@ -10,12 +11,10 @@ float Stage1::Stage1X;
 #define Stage1MaxX 1700 // 画像の最大Xの値
 #define Stage1MinX 0 // 画像の最小のXの値
 
-int Stage1::NowStageNumber;
 Stage1::Stage1()
 {
 	Stage1Img = LoadGraph("image/Dummy/FirstStage(temporary).png");
 	DoorImg = LoadGraph("image/Dummy/DummyDoor.png");
-	NowStageNumber = 0; // 現在のステージを管理する
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
 	block = new Block();
@@ -24,6 +23,8 @@ Stage1::Stage1()
 	janruImg[0] = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 	janruImg[1] = LoadGraph("image/Quiz/Greatman/Ijin1.png");
 	janruImg[2] = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
+
+	GameMain::NowStage = 1;
 }
 
 Stage1::~Stage1()
@@ -111,5 +112,10 @@ void Stage1::MoveXStage()
 	if (Stage1X >= 0) // ステージ画像のX座標が0以下の時、
 	{
 		Stage1X = 0; // ステージ画像のX座標を0に固定する
+	}
+
+	if (Player::playerX + ( - 1 * Stage1X ) >= 1500)
+	{
+		GameMain::NowStage = 2;
 	}
 }

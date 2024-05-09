@@ -1,5 +1,7 @@
 #include "GameMain.h"
 #include"GenreSelect.h"
+#include"Title.h"
+int GameMain::NowStage;
 
 GameMain::GameMain()
 {
@@ -15,7 +17,20 @@ AbstractScene* GameMain::Update()
 {
 	GetMousePoint(&mouseX, &mouseY);
 	player->Update();
-	stage1->Update();
+	switch (NowStage) {
+	case 1:
+		stage1->Update();
+		break;
+	case 2:
+		/* Stage2の処理 */
+		return new Title();
+		break;
+	case 3:
+		/* Stage3の処理 */
+		break;
+	default:
+		return 0;
+	}
 
 	return this;
 }
