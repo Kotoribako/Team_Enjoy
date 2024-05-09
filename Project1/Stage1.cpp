@@ -11,7 +11,6 @@ float Stage1::Stage1X;
 #define Stage1MaxX 1700 // 画像の最大Xの値
 #define Stage1MinX 0 // 画像の最小のXの値
 
-int Stage1::NowStageNumber;
 Stage1::Stage1()
 {
 	Stage1Img = LoadGraph("image/Dummy/FirstStage(temporary).png");
@@ -138,5 +137,10 @@ void Stage1::MoveXStage()
 	if (Stage1X >= 0) // ステージ画像のX座標が0以下の時、
 	{
 		Stage1X = 0; // ステージ画像のX座標を0に固定する
+	}
+
+	if (Player::playerX + ( - 1 * Stage1X ) >= 1500)
+	{
+		GameMain::NowStage = 2;
 	}
 }

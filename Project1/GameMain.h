@@ -17,6 +17,8 @@ public:
 	virtual AbstractScene* Update() override;
 	virtual void Draw() const override;
 
+	static int NowStage; // 今もステージ
+
 	void Initialize();  //ステージ遷移用の初期化処理
 
 	

@@ -1,5 +1,7 @@
 #include "GameMain.h"
 #include"GenreSelect.h"
+#include"Title.h"
+int GameMain::NowStage;
 
 GameMain::GameMain()
 {
@@ -22,23 +24,20 @@ AbstractScene* GameMain::Update()
 {
 	GetMousePoint(&mouseX, &mouseY);
 	player->Update();
-	stage1->Update();
-	for (int i = 0; i < 4; i++) {
-		if (Player::playerX >= stage1->door[i].X - 30 && Player::playerX <= stage1->door[i].X + 30 && Player::playerY >= 550 && Player::playerY <= 605)
-		{
-			if (PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_UP))
-			{
-				switch (stage1->door[i].answer)
-				{
-				case 0:
-					return new GameMain();
-					break;
-				case 1:
-					return new GenreSelect();
-					break;
-				default:
-					break;
-				}
+	switch (NowStage) {
+	case 1:
+		stage1->Update();
+		break;
+	case 2:
+		/* Stage2の処理 */
+		return new Title();
+		break;
+	case 3:
+		/* Stage3の処理 */
+		break;
+	default:
+		return 0;
+	}
 
 			}
 		}

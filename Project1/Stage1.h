@@ -34,7 +34,6 @@ private:
 	};
 
 public:
-	static int NowStageNumber; //ステージ数の表示
 
 	static int StopStage1Xflg; // ステージの横が動いてるかどうか
 

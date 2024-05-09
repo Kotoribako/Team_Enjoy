@@ -230,6 +230,12 @@ void Player::PlayerHit()
 			break;
 
 		}
+		else if (i == 10) // ブロックのX軸の範囲内にいなかった時
+		{
+			// 落下処理させる
+			count += 1;
+			Downflg = TRUE;
+		}
 	}
 	//// 上にプレイヤーがいる処理
 	//if (GetLocationY2() >= block->bloc[BlockNum].Y && HitFlg == TRUE)
