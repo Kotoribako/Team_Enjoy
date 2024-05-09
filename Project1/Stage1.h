@@ -1,6 +1,6 @@
 #pragma once
 #include"Block.h"
-
+#include"GameMain.h"
 class Stage1
 {
 private:
@@ -17,6 +17,21 @@ private:
 	int TestImg;
 
 	int janruImg[3];
+	struct QUIZ
+	{
+		int Img;
+		int X;
+		int Y;
+		int Answer[4]; //答え格納場所
+	};
+
+	typedef struct DOOR 
+	{
+		int Img;
+		int X;
+		int Y;
+		int answer;
+	};
 
 public:
 	static int NowStageNumber; //ステージ数の表示
@@ -33,6 +48,6 @@ public:
 	void Draw(); // 描画をアップデート
 
 	void MoveXStage(); // ステージ画像を横に移動するための関数
-
-	
+	DOOR door[4];
+	QUIZ quiz[3];
 };

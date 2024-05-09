@@ -99,7 +99,7 @@ void Player::Update()
 
 void Player::Draw()
 {
-	DrawBox(playerX, playerY, playerX2, playerY2, GetColor(0, 0,255 ), TRUE);
+	DrawBox(px, py, px2, py2, GetColor(0, 0,255 ), TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
 	DrawFormatString(0, 80, GetColor(0, 0, 0), "threeflgflg:%d", threeflg);
 	DrawFormatString(0, 30, GetColor(0, 0, 0), "Genre:%d", GenreSelect::Selectgenre);

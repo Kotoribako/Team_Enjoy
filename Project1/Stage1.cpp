@@ -3,6 +3,7 @@
 #include"PadInput.h"
 #include<DxLib.h>
 #include"GenreSelect.h"
+#include"GameMain.h"
 
 int Stage1::StopStage1Xflg;
 float Stage1::Stage1X;
@@ -14,16 +15,37 @@ int Stage1::NowStageNumber;
 Stage1::Stage1()
 {
 	Stage1Img = LoadGraph("image/Dummy/FirstStage(temporary).png");
-	DoorImg = LoadGraph("image/Dummy/DummyDoor.png");
+	//アニメゲームのクイズ情報
+	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
+	quiz[0].Answer[0] = 0; //選択肢１
+	quiz[0].Answer[1] = 0; //選択肢２
+	quiz[0].Answer[2] = 1; //選択肢３
+	quiz[0].Answer[3] = 0; //選択肢４
+	//偉人のクイズ情報
+	quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin1.png");
+	quiz[1].Answer[0] = 0; //選択肢１
+	quiz[1].Answer[1] = 0; //選択肢２
+	quiz[1].Answer[2] = 1; //選択肢３
+	quiz[1].Answer[3] = 0; //選択肢４
+	//並び替えのクイズ情報
+	quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
+	quiz[2].Answer[0] = 0; //選択肢１
+	quiz[2].Answer[1] = 0; //選択肢２
+	quiz[2].Answer[2] = 1; //選択肢３
+	quiz[2].Answer[3] = 0; //選択肢４
+	for (int i = 0; i < 4; i++)
+	{
+		door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+		door[i].answer = quiz[GenreSelect::Selectgenre].Answer[i];
+	}
 	NowStageNumber = 0; // 現在のステージを管理する
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
 	block = new Block();
+
 	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 
-	janruImg[0] = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
-	janruImg[1] = LoadGraph("image/Quiz/Greatman/Ijin1.png");
-	janruImg[2] = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
+	
 }
 
 Stage1::~Stage1()
@@ -34,7 +56,12 @@ Stage1::~Stage1()
 void Stage1::Update()
 {
 	MoveXStage(); // X軸の画像を動かす処理を入れる	
-	//block->Update();
+	for(int i = 0;i < 4; i++)
+	{
+		door[i].X = 1300 + Stage1X + i * 80;
+		door[i].Y = 550;
+	}
+	//block->Update()
 }
 
 void Stage1::Draw()
@@ -47,28 +74,28 @@ void Stage1::Draw()
 	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
 
 	for (int i = 0; i < 4; i++) {
-		DrawGraph(1300 + Stage1X + i * 80, 550, DoorImg, TRUE);
-
+		DrawGraph(/*1300 + Stage1X + i * 80, 550*/door[i].X,door[i].Y,door[i].Img, TRUE);
 	}
+
 	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);
 
 	//DrawGraph(700, 0, TestImg, TRUE);
 
 	if (GenreSelect::Selectgenre == 0) {
-		DrawGraph(700, 0, janruImg[0], TRUE);
+		DrawGraph(700, 0, quiz[0].Img, TRUE);
 	}
 	else if (GenreSelect::Selectgenre == 1)
 	{
-		DrawGraph(700, 0, janruImg[1], TRUE);
+		DrawGraph(700, 0, quiz[1].Img, TRUE);
 	}
 	else if (GenreSelect::Selectgenre == 2)
 	{
-		DrawGraph(700, 0, janruImg[2], TRUE);
+		DrawGraph(700, 0, quiz[2].Img, TRUE);
 	}
+
 
 	block->Draw();
 	DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
-
 }
 
 void Stage1::MoveXStage()
