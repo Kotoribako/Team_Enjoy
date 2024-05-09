@@ -7,7 +7,11 @@ Enemy::Enemy()
 
 void Enemy::Update()
 {
-
+	count++;
+	if (count == 60) 
+	{
+		count = 0;
+	}
 }
 
 void Enemy::Draw()
