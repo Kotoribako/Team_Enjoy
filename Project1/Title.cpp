@@ -6,6 +6,7 @@
 #include"GameMain.h"
 #include"GenreSelect.h"
 #include "Help.h"
+#include "Clear.h"
 
 #define SCREEN_WIDTH 1280
 
@@ -59,7 +60,7 @@ AbstractScene* Title::Update()
 		int stick_y = PAD_INPUT::GetLStick().ThumbY;
 
 		//スティックでカーソル移動
-		if (std::abs(stick_y) > stick_sensitivity /*|| PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP)*/) {
+		if (std::abs(stick_y) > stick_sensitivity) {
 			//ボタンが押された時SE再生
 			PlaySoundMem(CursorSE, DX_PLAYTYPE_BACK, TRUE);
 			//playsoundmem
@@ -102,10 +103,10 @@ AbstractScene* Title::Update()
 			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
 			return new Help;
 			break;
-		/*case TITLE_MENU::RANKING:
-		* PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
-			return new Ranking;
-			break;*/
+		case TITLE_MENU::RANKING:
+			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
+			return new Clear;
+			break;
 		case TITLE_MENU::GAME_END:
 			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
 			return nullptr;
