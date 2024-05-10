@@ -13,16 +13,39 @@ float Stage1::Stage1X;
 
 Stage1::Stage1()
 {
+	quiz->X = 770;
+	quiz->Y = 0;
+	//アニメゲームのクイズ情報
+	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
+	quiz[0].answer[0] = 0; //選択肢１
+	quiz[0].answer[1] = 0; //選択肢２
+	quiz[0].answer[2] = 1; //選択肢３
+	quiz[0].answer[3] = 0; //選択肢４
+	//偉人のクイズ情報
+	quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin1.png");
+	quiz[1].answer[0] = 0; //選択肢１
+	quiz[1].answer[1] = 0; //選択肢２
+	quiz[1].answer[2] = 1; //選択肢３
+	quiz[1].answer[3] = 0; //選択肢４
+	//並び替えのクイズ情報
+	quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
+	quiz[2].answer[0] = 0; //選択肢１
+	quiz[2].answer[1] = 0; //選択肢２
+	quiz[2].answer[2] = 1; //選択肢３
+	quiz[2].answer[3] = 0; //選択肢４
+
+	for (int i = 0; i < 4; i++)
+	{
+		door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+		door[i].Y = 550;
+		door[i].answer = quiz[GenreSelect::Selectgenre].answer[i];
+	}
+
+	block = new Block();
 	Stage1Img = LoadGraph("image/Dummy/FirstStage(temporary).png");
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
-	block = new Block();
 	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
-
-	janruImg[0] = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
-	janruImg[1] = LoadGraph("image/Quiz/Greatman/Ijin1.png");
-	janruImg[2] = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
-
 	GameMain::NowStage = 1;
 }
 
@@ -33,7 +56,13 @@ Stage1::~Stage1()
 
 void Stage1::Update()
 {
-	MoveXStage(); // X軸の画像を動かす処理を入れる	
+	for (int i = 0; i < 4; i++)
+
+	{
+		door[i].X = 1300 + Stage1X + i * 80;
+	}
+	MoveXStage(); // X軸の画像を動かす処理を入れる
+	ChangeStage();
 	//block->Update();
 }
 
@@ -50,19 +79,23 @@ void Stage1::Draw()
 
 	//DrawGraph(700, 0, TestImg, TRUE);
 
+	block->Draw();
+	for (int i = 0; i < 4; i++)
+	{
+		DrawGraph(door[i].X, door[i].Y, door[i].Img, TRUE);
+
+	}
 	if (GenreSelect::Selectgenre == 0) {
-		DrawGraph(700, 0, janruImg[0], TRUE);
+		DrawGraph(700, 0, quiz[0].Img, TRUE);
 	}
 	else if (GenreSelect::Selectgenre == 1)
 	{
-		DrawGraph(700, 0, janruImg[1], TRUE);
+		DrawGraph(700, 0, quiz[1].Img, TRUE);
 	}
 	else if (GenreSelect::Selectgenre == 2)
 	{
-		DrawGraph(700, 0, janruImg[2], TRUE);
+		DrawGraph(700, 0, quiz[2].Img, TRUE);
 	}
-
-	block->Draw();
 	DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
 
 }
@@ -109,8 +142,20 @@ void Stage1::MoveXStage()
 		Stage1X = 0; // ステージ画像のX座標を0に固定する
 	}
 
-	if (Player::playerX + ( - 1 * Stage1X ) >= 1500)
-	{
-		GameMain::NowStage = 2;
+	//if (Player::playerX + ( - 1 * Stage1X ) >= 1500)
+	//{
+	//	GameMain::NowStage = 2;
+	//}
+}
+
+void Stage1::ChangeStage()
+{
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP)) {
+		if (Player::playerX >= door[0].X - 50 && Player::playerX <= door[0].X + 50 && Player::playerY >= door[0].Y - 60 && Player::playerY <= door[0].Y + 60)
+		{
+		
+			GameMain::NowStage = 2;
+		}
+		//Stage::NowStage = 2; 
 	}
 }
