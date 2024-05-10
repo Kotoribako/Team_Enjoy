@@ -55,19 +55,25 @@ void Stage1::Draw()
 
 	//DrawGraph(700, 0, TestImg, TRUE);
 
-	if (GenreSelect::Selectgenre == 0) {
-		DrawGraph(700, 0, janruImg[0], TRUE);
-	}
-	else if (GenreSelect::Selectgenre == 1)
+	if (Player::playerX + Stage1X * (-1) > 1050) // プレイヤーのX座標が1050を超えると、
 	{
-		DrawGraph(700, 0, janruImg[1], TRUE);
-	}
-	else if (GenreSelect::Selectgenre == 2)
-	{
-		DrawGraph(700, 0, janruImg[2], TRUE);
+		// ジャンルによって問題変える
+		if (GenreSelect::Selectgenre == 0) {
+			DrawGraph(700, 0, janruImg[0], TRUE);
+		}
+		else if (GenreSelect::Selectgenre == 1)
+		{
+			DrawGraph(700, 0, janruImg[1], TRUE);
+		}
+		else if (GenreSelect::Selectgenre == 2)
+		{
+			DrawGraph(700, 0, janruImg[2], TRUE);
+		}
+
 	}
 
 	block->Draw();
+
 	DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
 
 }
