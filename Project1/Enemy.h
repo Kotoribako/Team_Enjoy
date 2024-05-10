@@ -28,6 +28,10 @@ public:
 	static float enemyY;
 	static float enemyY2;
 
+	float GetLocationX() { return ex;}
+	float GetLocationX2() { return ex2;}
+	float GetLocationY() { return ey;}
+	float GetLocationY2() { return ey2;}
 
 
 	Enemy();
