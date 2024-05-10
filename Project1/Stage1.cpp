@@ -37,7 +37,7 @@ Stage1::Stage1()
 		door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
 		door[i].answer = quiz[GenreSelect::Selectgenre].Answer[i];
 	}
-	NowStageNumber = 0; // 現在のステージを管理する
+	GameMain::NowStage = 0; // 現在のステージを管理する
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
 	block = new Block();

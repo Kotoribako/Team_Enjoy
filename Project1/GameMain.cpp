@@ -13,12 +13,12 @@ GameMain::~GameMain()
 {
 }
 
-void GameMain::Initialize()
-{
-	player = new Player();
-	stage1 = new Stage1();
-
-}
+//void GameMain::Initialize()
+//{
+//	player = new Player();
+//	stage1 = new Stage1();
+//
+//}
 
 AbstractScene* GameMain::Update()
 {
@@ -39,9 +39,6 @@ AbstractScene* GameMain::Update()
 		return 0;
 	}
 
-			}
-		}
-	}
 	return this;
 }
 

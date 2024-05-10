@@ -26,6 +26,8 @@ Door::Door()
 	{
 		door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
 		door[i].answer = quiz[GenreSelect::Selectgenre].Answer[i];
+			door[i].x = 1300 + Stage1::Stage1X + i * 80;
+			door[i].y = 550;
 	}
 }
 
@@ -37,15 +39,15 @@ void Door::Update()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		door[i].X = 1300 + Stage1::Stage1X + i * 80;
-		door[i].Y = 550;
+		door[i].x = 1300 + Stage1::Stage1X + i * 80;
+		door[i].y = 550;
 	}
 }
 
 void Door::Draw()
 {
 	for (int i = 0; i < 4; i++) {
-		DrawGraph(/*1300 + Stage1X + i * 80, 550*/door[i].X, door[i].Y, door[i].Img, TRUE);
+		DrawGraph(/*1300 + Stage1X + i * 80, 550*/door[i].x, door[i].y, door[i].Img, TRUE);
 	}
 	if (GenreSelect::Selectgenre == 0) {
 		DrawGraph(700, 0, quiz[0].Img, TRUE);
