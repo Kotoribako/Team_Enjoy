@@ -1,15 +1,26 @@
 #pragma once
+#include"Block.h"
 class Enemy
 {
 private:
 
+	struct enemy
+	{
+		int X, Y;
+		int X2,Y2;
+		bool flg;
+		int No[3];
+	};
+
+	struct enemy gEnemy;
+
 	int img;
-	int enemyX, enemyY;
-	int enemyX2, enemyY2;
-	
 	int count;
 	int Hitflg;
 	int speed;
+
+	Block* block;
+
 public:
 	Enemy();
 	void Update();
