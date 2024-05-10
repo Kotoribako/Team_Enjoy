@@ -18,10 +18,18 @@ private:
 	int count;
 	int Hitflg;
 	int speed;
-
+	int ex,ex2;
+	int ey, ey2;
 	Block* block;
 
 public:
+	static float enemyX;
+	static float enemyX2;
+	static float enemyY;
+	static float enemyY2;
+
+
+
 	Enemy();
 	void Update();
 	void Draw();
