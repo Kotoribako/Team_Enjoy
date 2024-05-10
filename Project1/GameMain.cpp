@@ -48,5 +48,7 @@ void GameMain::Draw() const
 	stage1->Draw();
 	player->Draw();
 	DrawFormatString(500, 0, GetColor(0, 0, 0), "mouseX:%d  mouseY:%d", mouseX, mouseY);
+	DrawFormatString(1000, 0, GetColor(0, 0, 0), "NowStage:%d", NowStage);
+
 }
 

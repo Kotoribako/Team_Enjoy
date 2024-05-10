@@ -18,7 +18,7 @@ Player::Player()
 {
 	block = new Block();
 
-	playerX = 235;
+	playerX = 1000;
 	playerY = 615;
 	
 	px = playerX - 15;
