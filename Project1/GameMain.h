@@ -11,7 +11,7 @@ private:
 
 	int mouseX, mouseY;
 
-	bool IsHitCheck(Player* p, Block* b);
+	//bool IsHitCheck(Player* p, Block* b);
 public:
 	GameMain();
 	virtual ~GameMain();
