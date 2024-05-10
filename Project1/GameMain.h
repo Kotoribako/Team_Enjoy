@@ -2,6 +2,7 @@
 #include"AbstractScene.h"
 #include"Player.h"
 #include"Stage1.h"
+
 class GameMain :public AbstractScene
 {
 private:
@@ -11,7 +12,7 @@ private:
 
 	int mouseX, mouseY;
 
-	bool IsHitCheck(Player* p, Block* b);
+	//bool IsHitCheck(Player* p, Block* b);
 public:
 	GameMain();
 	virtual ~GameMain();
