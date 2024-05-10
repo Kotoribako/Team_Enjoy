@@ -14,7 +14,6 @@ float Stage1::Stage1X;
 Stage1::Stage1()
 {
 	Stage1Img = LoadGraph("image/Dummy/FirstStage(temporary).png");
-	DoorImg = LoadGraph("image/Dummy/DummyDoor.png");
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
 	block = new Block();
@@ -47,10 +46,6 @@ void Stage1::Draw()
 	//DrawFormatString(0, 600, GetColor(255, 0, 0), "stage1X:%f\n", Stage1X);
 	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
 
-	for (int i = 0; i < 4; i++) {
-		DrawGraph(1300 + Stage1X + i * 80, 550, DoorImg, TRUE);
-
-	}
 	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);
 
 	//DrawGraph(700, 0, TestImg, TRUE);
