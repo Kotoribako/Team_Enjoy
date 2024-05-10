@@ -2,6 +2,7 @@
 #include "Stage1.h"
 #include<iostream>
 #include"DxLib.h"
+#include"GenreSelect.h"
 float Player::playerX;  //左
 float Player::playerX2; //右
 float Player::playerY;  //下
@@ -15,6 +16,8 @@ int   Player::MoveFlg;
 
 Player::Player()
 {
+	block = new Block();
+
 	playerX = 235;
 	playerY = 615;
 	
@@ -27,6 +30,9 @@ Player::Player()
 	velocity = 0.0f;
 	MoveFlg = FALSE;
 	standflg = 1;
+
+	HitFlg = FALSE;
+
 }
 
 Player::~Player()
@@ -38,6 +44,10 @@ void Player::Update()
 	
 	P_FPS++;
 	Move();
+	px = playerX - 15;
+	px2 = playerX + 15;
+	py = playerY - 15;
+	py2 = playerY + 15;
 	
 	if (P_FPS > 59) {
 		P_FPS = 0;
@@ -49,14 +59,50 @@ void Player::Update()
 	}
 	playerX2 = playerX + 30;
 	playerY2 = playerY - 30;
+
+	PlayerHit(); // 当たり判定
+
+	if (playerY >= 800) // リスポーン処理（後で消す）
+	{
+		playerX = 235;
+		playerY = 615;
+		Stage1::Stage1X = 0;
+
+		//block = new Block();
+
+		block->bloc[0] = { 0,270,630,720 };
+		block->bloc[1] = { 340,440,565,615 };
+		block->bloc[2] = { 475,555,510,555 };
+		block->bloc[3] = { 510,555,470,510 };
+		block->bloc[4] = { 580,735,420,455 };
+		block->bloc[5] = { 780,845,365,415 };
+		block->bloc[6] = { 875,940,310,360 };
+		block->bloc[7] = { 950,1010,425,480 };
+		block->bloc[8] = { 980,1035,235,290 };
+		block->bloc[9] = { 1055,1120,350,410 };
+		block->bloc[10] = { 1125,1700,610,720 };
+
+	}
+	if (BlockNum == 8) {
+		eightflg = TRUE;
+		threeflg = FALSE;
+	}
+	else if(BlockNum == 3){
+		threeflg = TRUE;
+		eightflg = FALSE;
+	}
+	else {
+		threeflg = FALSE;
+		eightflg = FALSE;
+	}
 }
 
 void Player::Draw()
 {
 	DrawBox(playerX, playerY, playerX2, playerY2, GetColor(0, 0,255 ), TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
-	DrawFormatString(0, 50, GetColor(0, 0, 0), "standflg:%d", standflg);
-	DrawFormatString(0, 30, GetColor(0, 0, 0), "jumoflg:%d", Jumpflg);
+	DrawFormatString(0, 80, GetColor(0, 0, 0), "threeflgflg:%d", threeflg);
+	DrawFormatString(0, 30, GetColor(0, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
 	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
 	DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
 }
@@ -65,6 +111,7 @@ void Player::Move()
 {
 	float Jump;
 	float y;
+	int MaxY = 0; // ジャンプする高さの上限
 	float y_temp;
 	float y_prev = 20.0f;
 	float sy = 0.0f;
@@ -110,6 +157,7 @@ void Player::Move()
 	}
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && Jumpflg == FALSE)
 	{
+		MaxY = playerY - 50;
 		Jumpflg = TRUE;
 		standflg = 0;
 		count += 1;
@@ -120,10 +168,12 @@ void Player::Move()
 		sy = 12.0f;
 		playerY -= sy;
 		sy += 0.3f;
-		if (playerY <= 200) {
-			playerY = 200;
+		P_moveY += sy;
+		if (P_moveY > 200.0) {
+			//playerY = MaxY;
 			Jumpflg = FALSE;
 			Downflg = TRUE;
+			P_moveY = 0; // 動かした値をリセットする
 		}
 	}
 	 if (Downflg == TRUE && count >= 1)
@@ -132,13 +182,13 @@ void Player::Move()
 		playerY += sy;
 		sy += 0.3f;
 	}
-	if (playerY >= 630) {//地面に付いたとき
-		standflg = 1;
-		Jumpflg = FALSE;
-		Downflg = FALSE;
-		count = 0;
+	//if (playerY >= 630) {//地面に付いたとき
+	//	standflg = 1;
+	//	Jumpflg = FALSE;
+	//	Downflg = FALSE;
+	//	count = 0;
 
-	}
+	//}
 	if (playerX >= 640 && MoveFlg == FALSE) {
 		playerX = 640;
 	}
@@ -150,6 +200,71 @@ void Player::Move()
 
 void Player::PlayerHit()
 {
+	float sy = 0.0f;
+	for (int i = 0; i < 11; i++)
+	{
+
+		if (GetLocationX1() + -1 * (Stage1::Stage1X) <= block->bloc[i].X2 && GetLocationX2() + -1 * (Stage1::Stage1X) >= block->bloc[i].X)
+		{
+			// フラグを立てる
+			HitFlg = TRUE;
+			BlockNum = i;
+			// 上にプレイヤーがいる処理
+			if (GetLocationY2() >= block->bloc[BlockNum].Y && HitFlg == TRUE)
+			{
+				/* 下に落ちない処理を書く */
+				Jumpflg = FALSE;
+				Downflg = FALSE;
+				count = 0;
+			}
+			else
+			{
+				HitFlg = FALSE;
+				BlockNum = -1;
+			}
+			if (BlockNum == -1 && P_moveY == 0) // ブロックないときの落下処理
+			{
+				count += 1;
+				Downflg = TRUE;
+			}
+			break;
+
+		}
+		else if (i == 10) // ブロックのX軸の範囲内にいなかった時
+		{
+			// 落下処理させる
+			count += 1;
+			Downflg = TRUE;
+		}
+	}
+	//// 上にプレイヤーがいる処理
+	//if (GetLocationY2() >= block->bloc[BlockNum].Y && HitFlg == TRUE)
+	//{
+	//	/* 下に落ちない処理を書く */
+	//	Jumpflg = FALSE;
+	//	Downflg = FALSE;
+	//	count = 0;
+	//}
+	//else
+	//{
+	//	HitFlg = FALSE;
+	//	BlockNum = -1;
+	//}
+	//if (BlockNum == -1 && P_moveY == 0)
+	//{
+	//	Downflg = TRUE;
+	//}
+	//if (GetLocationY1() >= block->bloc[i].Y2 /*&&*/ /*GetLocationX1() >= block->bloc[i].X2*/) // ブロックの下とプレイヤーの頭上が当たっている時、
+	//{
+	//	/* 下に落ちる処理を書く */
+	//	Jumpflg = FALSE;
+	//	Downflg = TRUE;
+	//	count = 0;
+
+	//}
+
+
+
 	/*if (playerX >= Block::block[1].X && playerX >= Block::block[0].X2 && playerY <= Block::block[0].Y) {
 		py2 = Block::block[0].Y;
 	}*/
