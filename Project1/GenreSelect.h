@@ -41,7 +41,6 @@ private:
 	int BackGround;
 	//int GetRand;
 
-
 public:
 
 	static int Selectgenre;
