@@ -2,6 +2,7 @@
 #include"AbstractScene.h"
 #include"Player.h"
 #include"Stage1.h"
+
 class GameMain :public AbstractScene
 {
 private:
