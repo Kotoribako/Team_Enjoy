@@ -25,6 +25,8 @@ private:
 	int eightflg;
 	int threeflg;
 
+	int Life;
+
 public:
 	static  float playerX;  //プレイヤー座標X　左  プレイヤー中心座標
 	static	float playerX2;	//プレイヤー座標Y　右
