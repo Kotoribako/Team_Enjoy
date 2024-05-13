@@ -8,7 +8,7 @@ enum class TITLE_MENU
     HELP,
     RANKING,
     GAME_END,
-    TITLE_SIZE
+    TITLE_SIZE,
 };
 
 class Title : public AbstractScene

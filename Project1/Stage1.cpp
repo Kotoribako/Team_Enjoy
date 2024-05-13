@@ -59,7 +59,7 @@ void Stage1::Update()
 	for (int i = 0; i < 4; i++)
 
 	{
-		door[i].X = 1300 + Stage1X + i * 80;
+		door[i].X = 1150 + Stage1X + i * 150;
 	}
 	MoveXStage(); // X軸の画像を動かす処理を入れる
 	ChangeStage();
@@ -83,6 +83,12 @@ void Stage1::Draw()
 	{
 		DrawGraph(door[i].X, door[i].Y, door[i].Img, TRUE);
 	}
+
+	DrawBox(door[0].X - 10, door[0].Y, door[0].X + 70, door[0].Y + 60, 0x00ff00, FALSE);
+	DrawBox(door[1].X - 10, door[1].Y, door[1].X + 70, door[1].Y + 60, 0xff0000, FALSE);
+	DrawBox(door[2].X - 10, door[2].Y, door[2].X + 70, door[2].Y + 60, 0x0000ff, FALSE);
+	DrawBox(door[3].X - 10, door[3].Y, door[3].X + 70, door[3].Y + 60, 0xffff00, FALSE);
+
 
 	if (Player::quizflg == 1) // プレイヤーのX座標が1050を超えると、
 	{
@@ -157,10 +163,20 @@ void Stage1::MoveXStage()
 void Stage1::ChangeStage()
 {
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP)) {
-		if (Player::playerX >= door[0].X - 50 && Player::playerX <= door[0].X + 50 && Player::playerY >= door[0].Y - 60 && Player::playerY <= door[0].Y + 60)
+		for (int i = 0; i < 4; i++)
 		{
-		
-			GameMain::NowStage = 2;
+			if (Player::playerX >= door[i].X - 10 && Player::playerX <= door[i].X + 70 && Player::playerY >= door[i].Y && Player::playerY <= door[i].Y + 60)
+			{
+				if (door[i].answer == 1) // 正解のドアを選んだら、
+				{
+					GameMain::NowStage = 2; // 次のステージへ進む。
+				}
+				else
+				{
+					GameMain::NowStage = 0;
+				}
+			}
+			
 		}
 		//Stage::NowStage = 2; 
 	}
