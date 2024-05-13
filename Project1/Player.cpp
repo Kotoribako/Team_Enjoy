@@ -10,7 +10,7 @@ float Player::playerY2; //上
 int   Player::standflg; //立ってるかのフラグ
 float Player::velocity;
 int   Player::MoveFlg;
-
+int   Player::quizflg;
 #define PLAYERSTARTX 220
 #define PLAYERSTARTY 630
 
@@ -101,8 +101,7 @@ void Player::Draw()
 {
 	DrawBox(px, py, px2, py2, GetColor(0, 0,255 ), TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
-	DrawFormatString(0, 80, GetColor(0, 0, 0), "threeflgflg:%d", threeflg);
-	DrawFormatString(0, 30, GetColor(0, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
+	DrawFormatString(0, 80, GetColor(0, 0, 0), "BlockNum:%d", BlockNum);
 	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
 	DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
 }
@@ -216,6 +215,13 @@ void Player::PlayerHit()
 				Jumpflg = FALSE;
 				Downflg = FALSE;
 				count = 0;
+				if (BlockNum >= 9) {
+					quizflg = 1;
+				}
+				else
+				{
+					quizflg = 0;
+				}
 			}
 			else
 			{
