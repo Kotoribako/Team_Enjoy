@@ -32,7 +32,7 @@ public:
 	static	float playerY2; //プレイヤー座標Y　上
 	static  int   standflg;
 	static float  velocity;
-
+	static int quizflg;
 	static int MoveFlg; // スクロール終了後移動する
 
 	Player();

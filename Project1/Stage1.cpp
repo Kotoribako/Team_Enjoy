@@ -70,6 +70,7 @@ void Stage1::Draw()
 {
 	
 	DrawGraph(Stage1X, 0, Stage1Img, TRUE);
+	DrawFormatString(0, 30, GetColor(255, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
 	////DrawLine(0, 400, 1280, 400, GetColor(255, 0, 0), TRUE);
 	////DrawLine(0, 200, 1280, 200, GetColor(255, 0, 0), TRUE);
 	//DrawFormatString(0, 600, GetColor(255, 0, 0), "stage1X:%f\n", Stage1X);
@@ -78,24 +79,27 @@ void Stage1::Draw()
 	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);
 
 	//DrawGraph(700, 0, TestImg, TRUE);
-
-	if (Player::playerX + Stage1X * (-1) > 1050) // プレイヤーのX座標が1050を超えると、
+	for (int i = 0; i < 4; i++)
 	{
-		// ジャンルによって問題変える
-		if (GenreSelect::Selectgenre == 0) {
-			DrawGraph(700, 0, janruImg[0], TRUE);
-		}
-		else if (GenreSelect::Selectgenre == 1)
-		{
-			DrawGraph(700, 0, janruImg[1], TRUE);
-		}
-		else if (GenreSelect::Selectgenre == 2)
-		{
-			DrawGraph(700, 0, janruImg[2], TRUE);
-		}
-
+		DrawGraph(door[i].X, door[i].Y, door[i].Img, TRUE);
 	}
 
+	if (Player::quizflg == 1) // プレイヤーのX座標が1050を超えると、
+	{
+		// ジャンルによって問題変え
+		switch(GenreSelect::Selectgenre)
+		{
+			case 0:
+			DrawGraph(700, 0, quiz[0].Img, TRUE);
+			break;
+			case 1:
+			DrawGraph(700, 0, quiz[1].Img, TRUE);
+			break;
+			case 2:
+			DrawGraph(700, 0, quiz[2].Img, TRUE);
+			break;
+		}
+	}
 	block->Draw();
 
 	DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
