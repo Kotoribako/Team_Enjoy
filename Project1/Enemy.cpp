@@ -43,5 +43,5 @@ void Enemy::Draw()
 
 void Enemy::Enemyhit()
 {
-
+ 
 } 
