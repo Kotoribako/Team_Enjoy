@@ -8,7 +8,6 @@ class GameMain :public AbstractScene
 private:
 	Player* player;
 	Stage1* stage1;
-	Block* block;
 
 	int mouseX, mouseY;
 
@@ -20,6 +19,8 @@ public:
 	virtual void Draw() const override;
 
 	static int NowStage; // 今もステージ
+
+	void Initialize();  //ステージ遷移用の初期化処理
 
 	
 };

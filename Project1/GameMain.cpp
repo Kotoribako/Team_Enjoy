@@ -13,6 +13,13 @@ GameMain::~GameMain()
 {
 }
 
+void GameMain::Initialize()
+{
+	player = new Player();
+	stage1 = new Stage1();
+
+}
+
 AbstractScene* GameMain::Update()
 {
 	GetMousePoint(&mouseX, &mouseY);
@@ -44,3 +51,4 @@ void GameMain::Draw() const
 	DrawFormatString(1000, 0, GetColor(0, 0, 0), "NowStage:%d", NowStage);
 
 }
+
