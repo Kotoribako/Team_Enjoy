@@ -56,6 +56,11 @@ Stage1::~Stage1()
 
 void Stage1::Update()
 {
+	if (GameMain::NowStage == 4) // 間違った選択肢入った時、
+	{
+		Initialize(); // ステージを初期化する（死んでもループ出来る）
+	}
+
 	for (int i = 0; i < 4; i++)
 
 	{
@@ -173,11 +178,49 @@ void Stage1::ChangeStage()
 				}
 				else
 				{
-					GameMain::NowStage = 0;
+					GameMain::NowStage = 4;
 				}
 			}
 			
 		}
 		//Stage::NowStage = 2; 
 	}
+}
+
+void Stage1::Initialize()
+{
+	quiz->X = 770;
+	quiz->Y = 0;
+	//アニメゲームのクイズ情報
+	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
+	quiz[0].answer[0] = 0; //選択肢１
+	quiz[0].answer[1] = 0; //選択肢２
+	quiz[0].answer[2] = 1; //選択肢３
+	quiz[0].answer[3] = 0; //選択肢４
+	//偉人のクイズ情報
+	quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin1.png");
+	quiz[1].answer[0] = 0; //選択肢１
+	quiz[1].answer[1] = 0; //選択肢２
+	quiz[1].answer[2] = 1; //選択肢３
+	quiz[1].answer[3] = 0; //選択肢４
+	//並び替えのクイズ情報
+	quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
+	quiz[2].answer[0] = 0; //選択肢１
+	quiz[2].answer[1] = 0; //選択肢２
+	quiz[2].answer[2] = 1; //選択肢３
+	quiz[2].answer[3] = 0; //選択肢４
+
+	for (int i = 0; i < 4; i++)
+	{
+		door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+		door[i].Y = 550;
+		door[i].answer = quiz[GenreSelect::Selectgenre].answer[i];
+	}
+
+	block = new Block();
+	Stage1Img = LoadGraph("image/Dummy/FirstStage(temporary).png");
+	Stage1X = 0.0; // 最初の画像のX座標を0にする
+	StopStage1Xflg = FALSE;
+	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
+	GameMain::NowStage = 1;
 }

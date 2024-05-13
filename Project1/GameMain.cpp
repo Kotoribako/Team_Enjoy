@@ -35,6 +35,9 @@ AbstractScene* GameMain::Update()
 	case 3:
 		/* Stage3の処理 */
 		break;
+	case 4:
+		stage1->Update();
+		break;
 	default:
 		return 0;
 	}
