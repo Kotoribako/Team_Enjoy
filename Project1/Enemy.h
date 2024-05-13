@@ -4,22 +4,17 @@ class Enemy
 {
 private:
 
-	struct enemy
-	{
-		int X, Y;
-		int X2,Y2;
-		bool flg;
-		int No[3];
-	};
-
-	struct enemy gEnemy;
+	
 
 	int img;
 	int count;
-	int Hitflg;
+	bool Hitflg;
 	int speed;
 	int ex,ex2;
 	int ey, ey2;
+	int countup;
+	int moveX;
+	int direction; // エネミーの方向
 	Block* block;
 
 public:
