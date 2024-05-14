@@ -47,7 +47,7 @@ public:
 
 	void MoveXStage(); // ステージ画像を横に移動するための関数
 
-	void ChangeStage();
+	void ChangeStage(); // ステージ遷移
 
-	
+	void Initialize(); // ステージ初期化
 };

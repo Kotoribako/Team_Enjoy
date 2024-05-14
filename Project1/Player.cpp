@@ -3,6 +3,7 @@
 #include<iostream>
 #include"DxLib.h"
 #include"GenreSelect.h"
+#include"GameMain.h"
 float Player::playerX;  //左
 float Player::playerX2; //右
 float Player::playerY;  //下
@@ -33,6 +34,7 @@ Player::Player()
 
 	HitFlg = FALSE;
 
+	Life = 3;
 }
 
 Player::~Player()
@@ -67,6 +69,10 @@ void Player::Update()
 		playerX = 235;
 		playerY = 615;
 		Stage1::Stage1X = 0;
+		Life--;
+		if (Life == -1) {
+			GameMain::NowStage = 0;
+		}
 
 		//block = new Block();
 
@@ -101,7 +107,7 @@ void Player::Draw()
 {
 	DrawBox(px, py, px2, py2, GetColor(0, 0,255 ), TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
-	DrawFormatString(0, 80, GetColor(0, 0, 0), "BlockNum:%d", BlockNum);
+	DrawFormatString(0, 80, GetColor(0, 0, 0), "Life:%d", Life);
 	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
 	DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
 }
