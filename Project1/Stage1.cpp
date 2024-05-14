@@ -7,6 +7,7 @@
 
 int Stage1::StopStage1Xflg;
 float Stage1::Stage1X;
+int Stage1::S1DecisionToAnswerFlg;
 
 #define Stage1MaxX 1700 // 画像の最大Xの値
 #define Stage1MinX 0 // 画像の最小のXの値
@@ -47,6 +48,8 @@ Stage1::Stage1()
 	StopStage1Xflg = FALSE;
 	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 	GameMain::NowStage = 1;
+
+	S1DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }
 
 Stage1::~Stage1()
@@ -180,8 +183,8 @@ void Stage1::ChangeStage()
 				{
 					GameMain::NowStage = 4;
 				}
-			}
-			
+				S1DecisionToAnswerFlg = TRUE; // 回答を決定した状態にする
+			}			
 		}
 		//Stage::NowStage = 2; 
 	}
@@ -223,4 +226,6 @@ void Stage1::Initialize()
 	StopStage1Xflg = FALSE;
 	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 	GameMain::NowStage = 1;
+
+	S1DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }
