@@ -29,18 +29,18 @@ void Enemy::Update()
 	ey = enemyX - 165;
 	ey2 = enemyY + 15;
 
-	
+	Enemyhit();
 
 	count++;
-	if (count == 60) 
-	{	
+	if (count == 60)
+	{
 		countup += 1;
-		if (direction == 0) 
+		if (direction == 0)
 		{
 			moveX += speed;
 
 		}
-		else if (direction == 1) 
+		else if (direction == 1)
 		{
 			moveX -= speed;
 		}
@@ -48,38 +48,41 @@ void Enemy::Update()
 	}
 
 
-	if (countup == 5) 
+	if (countup == 5)
 	{
-		if (direction == 0) 
+		if (direction == 0)
 		{
 			direction = 1;
 		}
-		else if (direction == 1) 
+		else if (direction == 1)
 		{
 			direction = 0;
 		}
 		countup = 0;
 	}
 
-	
+
 
 }
 
 void Enemy::Draw()
 {
-	DrawFormatString(200, 200, GetColor(0, 0, 255),"countup:%d",countup);
+	DrawFormatString(200, 200, GetColor(0, 0, 255), "countup:%d", countup);
 	DrawBox(ex + moveX, ey, ex2 + moveX, ey2, GetColor(0, 255, 0), TRUE);
-	if (Hitflg == TRUE) 
+	if (Hitflg == TRUE)
 	{
 		DrawFormatString(200, 250, GetColor(0, 0, 255), "Hit!!", Hitflg);
-
 	}
 }
 
 void Enemy::Enemyhit()
 {
-	if (ex >= Player::playerX || ex2 >= Player::playerX2 || ey >= Player::playerY || ey2 >= Player::playerY2)
+	if ((( Player::playerX> ex && Player::playerX < ex + ex2) ||
+		(ex > Player::playerX && ex < Player::playerX + Player::playerX2)) &&
+		((Player::playerY > ey && Player::playerY < ey + ey2) ||
+			(ey > Player::playerY && ey < Player::playerY + Player::playerY2)))
 	{
 		Hitflg = TRUE;
-    }
+	}
+
 } 
