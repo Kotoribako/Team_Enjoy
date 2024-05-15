@@ -79,16 +79,22 @@ void Enemy::Draw()
 
 void Enemy::Enemyhit()
 {
-	
-	if (Player::playerX + IMAGE_SIZE >= ex && Player::playerX <= ex + IMAGE_SIZE) 
+
+	if (Player::playerX + IMAGE_SIZE >= ex && Player::playerX <= ex2 + IMAGE_SIZE) 
 	{
-		if (Player::playerY +  IMAGE_SIZE >= ey && Player::playerY && Player::playerY <= ey + IMAGE_SIZE)
+		if (Player::playerY +  IMAGE_SIZE >= ey &&  Player::playerY <= ey2 + IMAGE_SIZE)
 		{
 			Hitflg = TRUE;
 		}
 	}
-	else {
-		Hitflg = FALSE;
+	else if (Player::playerX2 + IMAGE_SIZE >= ex2 && Player::playerX2 <= ex + IMAGE_SIZE)
+	{
+		if (Player::playerY2 + IMAGE_SIZE >= ey2 && Player::playerY2 <= ey + IMAGE_SIZE)
+		{
+			Hitflg = TRUE;
+		}
 	}
+
+	Hitflg = FALSE;
 
 } 
