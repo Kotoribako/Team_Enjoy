@@ -2,6 +2,7 @@
 #include"DxLib.h"
 #include"Stage1.h"
 #include"Player.h"
+#define IMAGE_SIZE 50 // 画像一枚の大きさ
 float Enemy::enemyX;
 float Enemy::enemyX2;
 float Enemy::enemyY;
@@ -24,9 +25,9 @@ Enemy::Enemy()
 void Enemy::Update()
 {
 
-	ex = enemyX - 165;
+	ex = enemyX - 205;
 	ex2 = enemyY + 15;
-	ey = enemyX - 165;
+	ey = enemyX - 205;
 	ey2 = enemyY + 15;
 
 	Enemyhit();
@@ -52,6 +53,7 @@ void Enemy::Update()
 	{
 		if (direction == 0)
 		{
+
 			direction = 1;
 		}
 		else if (direction == 1)
@@ -77,12 +79,16 @@ void Enemy::Draw()
 
 void Enemy::Enemyhit()
 {
-	if ((( Player::playerX> ex && Player::playerX < ex + ex2) ||
-		(ex > Player::playerX && ex < Player::playerX + Player::playerX2)) &&
-		((Player::playerY > ey && Player::playerY < ey + ey2) ||
-			(ey > Player::playerY && ey < Player::playerY + Player::playerY2)))
+	
+	if (Player::playerX + IMAGE_SIZE >= ex && Player::playerX <= ex + IMAGE_SIZE) 
 	{
-		Hitflg = TRUE;
+		if (Player::playerY +  IMAGE_SIZE >= ey && Player::playerY && Player::playerY <= ey + IMAGE_SIZE)
+		{
+			Hitflg = TRUE;
+		}
+	}
+	else {
+		Hitflg = FALSE;
 	}
 
 } 
