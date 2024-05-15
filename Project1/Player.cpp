@@ -19,8 +19,8 @@ Player::Player()
 {
 	block = new Block();
 
-	playerX = 1000;
-	playerY = 615;
+	playerX = PLAYERSTARTX;
+	playerY = PLAYERSTARTY;
 	
 	px = playerX - 15;
 	px2 = playerX + 15;
@@ -100,6 +100,12 @@ void Player::Update()
 	else {
 		threeflg = FALSE;
 		eightflg = FALSE;
+	}
+
+	if (Stage1::S1DecisionToAnswerFlg == TRUE) {
+		// プレイヤーをスタート地点に戻す
+		playerX = PLAYERSTARTX;
+		playerY = PLAYERSTARTY;
 	}
 }
 

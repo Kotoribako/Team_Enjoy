@@ -38,6 +38,8 @@ public:
 
 	static float Stage1X; // ステージのX座標のデータ
 
+	static int S1DecisionToAnswerFlg; // ステージ１の答えを決定したかどうか確認するフラグ
+
 	Stage1();
 
 	~Stage1();
