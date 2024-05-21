@@ -18,7 +18,7 @@ Enemy::Enemy()
 	enemyY = 420;
 	moveX = 0;
 	direction = 0;
-	speed = 20;
+	speed = 30;
 	Hitflg = FALSE;
 }
 
@@ -35,6 +35,7 @@ void Enemy::Update()
 	if (count == 60)
 	{
 		countup += 1;
+		
 		if (direction == 0)
 		{
 			moveX += speed;
@@ -44,6 +45,7 @@ void Enemy::Update()
 		{
 			moveX -= speed;
 		}
+		
 		count = 0;
 	}
 
@@ -62,14 +64,14 @@ void Enemy::Update()
 		countup = 0;
 	}
 
-
-
 }
 
 void Enemy::Draw()
 {
 	DrawFormatString(200, 200, GetColor(0, 0, 255), "countup:%d", countup);
-	DrawBox(ex + moveX, ey, ex2 + moveX, ey2, GetColor(0, 255, 0), TRUE);
+	
+		DrawBox(ex + moveX + Stage1::Stage1X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 255, 0), TRUE);
+	
 	if (Hitflg == TRUE)
 	{
 		DrawFormatString(200, 250, GetColor(0, 0, 255), "Hit!!", Hitflg);
@@ -79,16 +81,10 @@ void Enemy::Draw()
 void Enemy::Enemyhit()
 {
 
-	if (Player::playerX + IMAGE_SIZE >= ex && Player::playerX <= ex2 + IMAGE_SIZE) 
+	// プレイヤー画像と敵画像で当たり判定
+	if (Player::playerX + IMAGE_SIZE >= ex && Player::playerX <= ex + IMAGE_SIZE) 
 	{
-		if (Player::playerY +  IMAGE_SIZE >= ey &&  Player::playerY <= ey2 + IMAGE_SIZE)
-		{
-			Hitflg = TRUE;
-		}
-	}
-	else if (Player::playerX2 + IMAGE_SIZE >= ex2 && Player::playerX2 <= ex + IMAGE_SIZE)
-	{
-		if (Player::playerY2 + IMAGE_SIZE >= ey2 && Player::playerY2 <= ey + IMAGE_SIZE)
+		if (Player::playerY + IMAGE_SIZE >= ey && Player::playerY <= ey + IMAGE_SIZE)
 		{
 			Hitflg = TRUE;
 		}

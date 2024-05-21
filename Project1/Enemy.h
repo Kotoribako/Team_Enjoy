@@ -16,7 +16,7 @@ private:
 	int moveX;
 	int direction; // エネミーの方向
 	Block* block;
-
+	int flg;
 public:
 	static float enemyX;
 	static float enemyX2;
