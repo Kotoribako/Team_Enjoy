@@ -2,12 +2,16 @@
 #include"AbstractScene.h"
 #include"Player.h"
 #include"Stage1.h"
+#include"Stage2.h"
+#include"Stage3.h"
 #include"Enemy.h"
 class GameMain :public AbstractScene
 {
 private:
 	Player* player;
 	Stage1* stage1;
+	Stage2* stage2;
+	Stage3* stage3;
 	Enemy* enemy;
 	int mouseX, mouseY;
 

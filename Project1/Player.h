@@ -25,7 +25,6 @@ private:
 	int eightflg;
 	int threeflg;
 
-	int Life;
 
 public:
 	static  float playerX;  //プレイヤー座標X　左  プレイヤー中心座標
@@ -36,6 +35,7 @@ public:
 	static float  velocity;
 	static int quizflg;
 	static int MoveFlg; // スクロール終了後移動する
+	static int Life;  //残機
 
 	Player();
 	~Player();
