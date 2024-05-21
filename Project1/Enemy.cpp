@@ -14,8 +14,8 @@ Enemy::Enemy()
 	count = 0;
 	block = new Block();
 	countup = 0;
-	enemyX = 600;
-	enemyY = 350;
+	enemyX = 580;
+	enemyY = 420;
 	moveX = 0;
 	direction = 0;
 	speed = 20;
@@ -24,11 +24,10 @@ Enemy::Enemy()
 
 void Enemy::Update()
 {
-
-	ex = enemyX - 205;
-	ex2 = enemyY + 15;
-	ey = enemyX - 205;
-	ey2 = enemyY + 15;
+	ex = enemyX - 25;
+	ex2 = enemyX + 20;
+	ey = enemyY ;
+	ey2 = enemyY - 35;
 
 	Enemyhit();
 
