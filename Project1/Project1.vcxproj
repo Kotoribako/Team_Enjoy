@@ -152,6 +152,8 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stage1.cpp" />
+    <ClCompile Include="Stage2.cpp" />
+    <ClCompile Include="Stage3.cpp" />
     <ClCompile Include="StageEditer.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
@@ -169,6 +171,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Stage1.h" />
+    <ClInclude Include="Stage2.h" />
+    <ClInclude Include="Stage3.h" />
     <ClInclude Include="StageEditer.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="Vector2D.h" />
