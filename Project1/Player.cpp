@@ -12,6 +12,7 @@ int   Player::standflg; //立ってるかのフラグ
 float Player::velocity;
 int   Player::MoveFlg;
 int   Player::quizflg;
+int   Player::Life;
 #define PLAYERSTARTX 220
 #define PLAYERSTARTY 630
 
