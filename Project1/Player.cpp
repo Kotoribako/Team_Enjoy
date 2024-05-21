@@ -184,11 +184,11 @@ void Player::Move()
 			//playerY = MaxY;
 			Jumpflg = FALSE;
 			Downflg = TRUE;
-			P_moveY = 0; // 動かした値をリセットする
 		}
 	}
-	 if (Downflg == TRUE && count >= 1)
+	if (Downflg == TRUE && count >= 1)
 	{
+		P_moveY = 0; // 動かした値をリセットする
 		sy = 12.0f;
 		playerY += sy;
 		sy += 0.3f;
