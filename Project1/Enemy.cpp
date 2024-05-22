@@ -1,7 +1,6 @@
 #include "Enemy.h"
 #include"DxLib.h"
 #include"Stage1.h"
-#include"Player.h"
 #define IMAGE_SIZE 50 // 画像一枚の大きさ
 float Enemy::enemyX;
 float Enemy::enemyX2;
@@ -13,6 +12,7 @@ Enemy::Enemy()
 	img = 0; //仮
 	count = 0;
 	block = new Block();
+	player = new Player();
 	countup = 0;
 	enemyX = 600;
 	enemyY = 350;
@@ -87,9 +87,9 @@ void Enemy::Enemyhit()
 			Hitflg = TRUE;
 		}
 	}
-	else if (Player::playerX2 + IMAGE_SIZE >= ex2 && Player::playerX2 <= ex + IMAGE_SIZE)
+	else if (player->GetLocationX2() + IMAGE_SIZE >= ex2 && player->GetLocationX2() <= ex + IMAGE_SIZE)
 	{
-		if (Player::playerY2 + IMAGE_SIZE >= ey2 && Player::playerY2 <= ey + IMAGE_SIZE)
+		if (player->GetLocationX2() + IMAGE_SIZE >= ey2 && player->GetLocationX2() <= ey + IMAGE_SIZE)
 		{
 			Hitflg = TRUE;
 		}

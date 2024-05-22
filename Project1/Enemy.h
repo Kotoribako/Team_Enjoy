@@ -1,5 +1,6 @@
 #pragma once
 #include"Block.h"
+#include"Player.h"
 class Enemy
 {
 private:
@@ -16,6 +17,7 @@ private:
 	int moveX;
 	int direction; // エネミーの方向
 	Block* block;
+	Player* player;
 
 public:
 	static float enemyX;

@@ -5,9 +5,7 @@
 #include"GenreSelect.h"
 #include"GameMain.h"
 float Player::playerX;  //左
-float Player::playerX2; //右
 float Player::playerY;  //下
-float Player::playerY2; //上
 int   Player::standflg; //立ってるかのフラグ
 float Player::velocity;
 int   Player::MoveFlg;
@@ -60,8 +58,6 @@ void Player::Update()
 	else if (P_Seconas1 > 3) {
 		P_Seconas1 = 0;
 	}
-	playerX2 = playerX + 30;
-	playerY2 = playerY - 30;
 
 	PlayerHit(); // 当たり判定
 
@@ -116,7 +112,7 @@ void Player::Draw()
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
 	DrawFormatString(0, 80, GetColor(0, 0, 0), "Life:%d", Life);
 	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
-	DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
+	//DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
 }
 
 void Player::Move()
@@ -181,7 +177,7 @@ void Player::Move()
 		playerY -= sy;
 		sy += 0.3f;
 		P_moveY += sy;
-		if (P_moveY > 200.0) {
+		if (P_moveY > 300.0) {
 			//playerY = MaxY;
 			Jumpflg = FALSE;
 			Downflg = TRUE;
@@ -222,12 +218,21 @@ void Player::PlayerHit()
 			HitFlg = TRUE;
 			BlockNum = i;
 			// 上にプレイヤーがいる処理
-			if (GetLocationY2() >= block->bloc[BlockNum].Y && HitFlg == TRUE)
+			if (GetLocationY2() > block->bloc[BlockNum].Y && HitFlg == TRUE)
 			{
-				/* 下に落ちない処理を書く */
-				Jumpflg = FALSE;
-				Downflg = FALSE;
-				count = 0;
+				// プレイヤーの頭上よりも下のブロックが座標が高いか？
+				if (GetLocationY1() < block->bloc[BlockNum].Y2) {
+					/* 下に落ちない処理を書く */
+					Jumpflg = FALSE;
+					Downflg = FALSE;
+					count = 0;
+				}
+				else {
+					HitFlg = FALSE;
+					BlockNum = -1;
+
+				}
+
 				if (BlockNum >= 9) {
 					quizflg = 1;
 				}
