@@ -33,7 +33,7 @@ void Enemy::Update()
 	enemyY2 = enemyY + 30;
 
 	Enemyhit();
-
+	EnemyControl();
 	count++;
 	if (count == 60)
 	{
@@ -66,6 +66,8 @@ void Enemy::Update()
 		countup = 0;
 	}
 
+
+	
 }
 
 void Enemy::Draw()
@@ -80,7 +82,15 @@ void Enemy::Draw()
 	}
 }
 
-void Enemy::Enemyhit()
+void Enemy::EnemyControl()
+{
+	if (Enemyhit() == TRUE)
+	{
+		Hitflg = TRUE;
+	}
+}
+
+int Enemy::Enemyhit()
 {
 	//// プレイヤー画像と敵画像で当たり判定
 	//if (Player::playerX >= GetLocationX() && Player::playerX >= GetLocationX() + GetLocationX2())
@@ -103,17 +113,33 @@ void Enemy::Enemyhit()
 	//	Hitflg = FALSE;
 	//}
 
-	// プレイヤーの右 ＋ プレイヤーの下(右下)　&&　敵の左　＋　敵の上(左上)
-	if (player->GetLocationX2() + player->GetLocationY2() && ex + ey ||
-		// プレイヤーの左　＋　プレイヤーの上(左上)　&&　敵の右　＋　敵の下(右下)
-		player->GetLocationX1() + player->GetLocationY1() && ex2 + ey2)
+	//// プレイヤー右と敵左を比べる　&&　プレイヤーの下と敵の上を比べる  ||  プレイヤーの左と敵の右を比べる　&&　プレイヤーの上と敵の下を比べる
+	//if (player->GetLocationX2() >= GetLocationX() && player->GetLocationY2() >= GetLocationY() || 
+	//	player->GetLocationX1() <= GetLocationX2() && player->GetLocationY1() <= GetLocationY2())
+	//{
+	//	Hitflg = TRUE;
+	//}
+	//else
+	//{
+	//	Hitflg = FALSE;
+	//}
+
+
+
+	/*if (((player->GetLocationX1() >= ex && player->GetLocationX1() <= ex + ex2) ||
+		(ex > player->GetLocationX1() && ex < player->GetLocationX1() + player->GetLocationX2()) &&
+		((player->GetLocationY1() > ey && player->GetLocationY1() < ey + ey2) ||
+			(ey > player->GetLocationY1() && ey < player->GetLocationY1() + player->GetLocationY2()))))
 	{
 		Hitflg = TRUE;
 	}
 	else
 	{
 		Hitflg = FALSE;
-	}
+	}*/
+
+
+
 
 
 	//if (Player::playerX  <= GetLocationX() + 100 && GetLocationX() <= Player::playerX + 20) {
@@ -126,7 +152,27 @@ void Enemy::Enemyhit()
 	//{
 	//	Hitflg = FALSE;
 	//}
+	
 
+	// プレイヤーの矩形
+	int sx1 = player->GetLocationX1() - (player->GetLocationX2() / 2);
+	int sy1 = player->GetLocationY1() - (player->GetLocationY2() / 2);
+	int sx2 = sx1 + player->GetLocationX2();
+	int sy2 = sy1 + player->GetLocationY2();
+	// 敵の矩形
+	int dx1 = GetLocationX() - (GetLocationX2() / 2);
+	int dy1 = GetLocationY() - (GetLocationY2() / 2);
+	int dx2 = dx1 + GetLocationX2();
+	int dy2 = dy1 + GetLocationY2();
 
+	//矩形が重なっていれば当たり
+	if (sx1 >= dx2 && dx1 >= sx2 && sy1 >= dy2 && dy1 >= sy2) 
+	{
+		 return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
 
 } 

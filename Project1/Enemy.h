@@ -34,6 +34,7 @@ public:
 	Enemy();
 	void Update();
 	void Draw();
-	void Enemyhit();
+	void EnemyControl();
+	int Enemyhit();
 };
 
