@@ -63,7 +63,6 @@ AbstractScene* Title::Update()
 		if (std::abs(stick_y) > stick_sensitivity) {
 			//ボタンが押された時SE再生
 			PlaySoundMem(CursorSE, DX_PLAYTYPE_BACK, TRUE);
-			//playsoundmem
 			//
 			if (stick_y > 0) {
 				//
