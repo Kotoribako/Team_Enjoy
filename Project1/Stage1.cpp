@@ -83,6 +83,7 @@ void Stage1::Draw()
 	////DrawLine(0, 200, 1280, 200, GetColor(255, 0, 0), TRUE);
 	//DrawFormatString(0, 600, GetColor(255, 0, 0), "stage1X:%f\n", Stage1X);
 	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
+	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
 
 	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);
 

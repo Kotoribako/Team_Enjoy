@@ -18,7 +18,7 @@ private:
 	int direction; // エネミーの方向
 	Block* block;
 	Player* player;
-
+	int flg;
 public:
 	static float enemyX;
 	static float enemyX2;
@@ -34,6 +34,7 @@ public:
 	Enemy();
 	void Update();
 	void Draw();
-	void Enemyhit();
+	void EnemyControl();
+	int Enemyhit();
 };
 
