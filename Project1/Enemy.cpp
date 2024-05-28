@@ -1,6 +1,9 @@
 #include "Enemy.h"
 #include"DxLib.h"
 #include"Stage1.h"
+#include"Stage2.h"
+#include"Stage3.h"
+#include"GameMain.h"
 #define IMAGE_SIZE 50 // 画像一枚の大きさ
 float Enemy::enemyX;
 float Enemy::enemyX2;
@@ -73,8 +76,19 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 	DrawFormatString(200, 200, GetColor(0, 0, 255), "countup:%d", countup);
-	
+	switch (GameMain::NowStage)
+	{
+	case 1:
 		DrawBox(ex + moveX + Stage1::Stage1X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 255, 0), TRUE);
+		break;
+	case 2:
+		DrawBox(ex + moveX + Stage2::Stage2X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 255, 0), TRUE);
+		break;
+	case 3:
+		DrawBox(ex + moveX + Stage3::Stage3X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 255, 0), TRUE);
+		break;
+	}
+	
 	
 	if (Hitflg == TRUE)
 	{
