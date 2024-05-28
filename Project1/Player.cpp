@@ -118,6 +118,10 @@ void Player::Draw()
 	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
 	//DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
 	DrawFormatString(0, 120, GetColor(0, 0, 0), "BlockNum:%d", BlockNum);
+	for (int i = 0; i < Life; i++)
+	{
+		DrawBox(100 + 50 * i, 100, 130 + 50 * i, 130, GetColor(255, 0, 0), TRUE);
+	}
 }
 
 void Player::Move()
@@ -210,7 +214,9 @@ void Player::Move()
 	if (playerX <= 0) {
 		playerX = 0;
 	}
-
+	if (playerX >= 1280) {
+		playerX = 1280;
+	}
 }
 
 void Player::PlayerHit()
