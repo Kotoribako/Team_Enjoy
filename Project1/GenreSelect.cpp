@@ -35,23 +35,18 @@ AbstractScene* GenreSelect::Update()
 	{
 		int stick_y = PAD_INPUT::GetLStick().ThumbY;
 
-		if (std::abs(stick_y) > stick_sensitivity || PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
+		if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
 		{
-			//	PlaySoundMem(CursorImg, DX_PLAYTYPE_BACK, TRUE);
-				//playsoundmem
-			if (stick_y > 0) 
-			{
-				now_menu = (now_menu - 1 + static_cast<int>(SELECT::SELECT_SIZE)) % static_cast<int>(SELECT::SELECT_SIZE);
-				Genre1 -= 1;
-			}
-			else if (stick_y < 0 || PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN)) 
-			{
-				now_menu = (now_menu + 1) % static_cast<int>(SELECT::SELECT_SIZE);
-				Genre1 += 1;
-			}
-			input_margin = 0;
+		now_menu = (now_menu - 1 + static_cast<int>(SELECT::SELECT_SIZE)) % static_cast<int>(SELECT::SELECT_SIZE);
+		Genre1 -= 1;			
+		}
+		if (/*stick_y < 0 ||*/ PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
+		{
+			now_menu = (now_menu + 1) % static_cast<int>(SELECT::SELECT_SIZE);
+			Genre1 += 1;
 		}
 	}
+	
 	if (PAD_INPUT::GetNowKey(XINPUT_BUTTON_A) && (PAD_INPUT::OnButton(XINPUT_BUTTON_A) == true))
 	{
 		input_margin = 0; 
