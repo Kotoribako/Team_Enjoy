@@ -21,16 +21,15 @@ private:
 	float py, py2;
 	int HitFlg;  // 地面に足がついているか
 	int BlockNum;
+	int NoHitBlockFlg;
 
 	int eightflg;
 	int threeflg;
 
 
 public:
-	static  float playerX;  //プレイヤー座標X　左  プレイヤー中心座標
-	static	float playerX2;	//プレイヤー座標Y　右
-	static  float playerY;	//プレイヤー座標X　下	プレイヤー中心座標
-	static	float playerY2; //プレイヤー座標Y　上
+	static  float playerX;  //プレイヤー座標X プレイヤーX軸の中心座標
+	static  float playerY;	//プレイヤー座標X プレイヤーY軸の中心座標
 	static  int   standflg;
 	static float  velocity;
 	static int quizflg;
