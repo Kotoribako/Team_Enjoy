@@ -168,25 +168,32 @@ int Enemy::Enemyhit()
 	//}
 	
 
-	// プレイヤーの矩形
-	int sx1 = player->GetLocationX1() - (player->GetLocationX2() / 2);
-	int sy1 = player->GetLocationY1() - (player->GetLocationY2() / 2);
-	int sx2 = sx1 + player->GetLocationX2();
-	int sy2 = sy1 + player->GetLocationY2();
-	// 敵の矩形
-	int dx1 = GetLocationX() - (GetLocationX2() / 2);
-	int dy1 = GetLocationY() - (GetLocationY2() / 2);
-	int dx2 = dx1 + GetLocationX2();
-	int dy2 = dy1 + GetLocationY2();
+	//// プレイヤーの矩形
+	//int sx1 = player->GetLocationX1() - (player->GetLocationX2() / 2);
+	//int sy1 = player->GetLocationY1() - (player->GetLocationY2() / 2);
+	//int sx2 = sx1 + player->GetLocationX2();
+	//int sy2 = sy1 + player->GetLocationY2();
+	//// 敵の矩形
+	//int dx1 = GetLocationX() - (GetLocationX2() / 2);
+	//int dy1 = GetLocationY() - (GetLocationY2() / 2);
+	//int dx2 = dx1 + GetLocationX2();
+	//int dy2 = dy1 + GetLocationY2();
 
-	//矩形が重なっていれば当たり
-	if (sx1 >= dx2 && dx1 >= sx2 && sy1 >= dy2 && dy1 >= sy2) 
+	////矩形が重なっていれば当たり
+	//if (sx1 >= dx2 && dx1 >= sx2 && sy1 >= dy2 && dy1 >= sy2) 
+	//{
+	//	 return TRUE;
+	//}
+	//else
+	//{
+	//	return FALSE;
+	//}
+
+	if (int(player->GetLocationX1() + -1 * (Stage1::Stage1X)) <= ex2 && int(player->GetLocationX2() + -1 * (Stage1::Stage1X)) >= ex)
 	{
-		 return TRUE;
+		Hitflg = TRUE;
 	}
-	else
-	{
-		return FALSE;
-	}
+
+	return 0;
 
 } 

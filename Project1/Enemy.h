@@ -11,8 +11,8 @@ private:
 	int count;
 	bool Hitflg;
 	int speed;
-	int ex,ex2;
-	int ey, ey2;
+	int ex,ex2; // 敵の左座標(ex)と右座標を取る(ex2) 
+	int ey, ey2;// 敵の上座標(ey)と下座標を取る(ey2)
 	int countup;
 	int moveX;
 	int direction; // エネミーの方向
