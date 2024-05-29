@@ -24,6 +24,8 @@ public:
 	void Update();
 	void Draw();
 
-	BLOCK bloc[11];
+	BLOCK S1bloc[11];
+	BLOCK S2bloc[19];
+	BLOCK S3bloc[27];
 	/*void PlayerStand();*/
 };

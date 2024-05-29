@@ -5,12 +5,12 @@ int GameMain::NowStage;
 
 GameMain::GameMain()
 {
+	NowStage = 1;
 	player = new Player();
 	stage1 = new Stage1();
 	stage2 = new Stage2();
 	stage3 = new Stage3();
 	enemy = new Enemy();
-	NowStage = 2;
 }
 
 GameMain::~GameMain()
@@ -48,6 +48,7 @@ AbstractScene* GameMain::Update()
 	switch (NowStage) {
 	case 1:
 	case 4:
+		NowStage = 1;
 		stage1->Update();
 		if (Stage1::S1DecisionToAnswerFlg == TRUE)
 		{
@@ -56,6 +57,7 @@ AbstractScene* GameMain::Update()
 		break;
 	case 2:
 		/* Stage2の処理 */
+		NowStage = 2;
 		stage2->Update();
 		if (Stage2::S2DecisionToAnswerFlg == TRUE)
 		{
@@ -64,6 +66,7 @@ AbstractScene* GameMain::Update()
 		break;
 	case 3:
 		/* Stage3の処理 */
+		NowStage = 3;
 		stage3->Update();
 		if (Stage3::S3DecisionToAnswerFlg == TRUE)
 		{

@@ -145,7 +145,7 @@ void Stage2::MoveXStage()
 	//プレイヤーのX座標が640未満かつ、左ボタンを押している時、
 	if (Player::playerX < 640.0 && PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT))
 	{
-		GameMain::NowStage = 3;
+		//GameMain::NowStage = 3;
 		Stage2X += 3; // 画像を右に動かす。
 		//if (Player::playerX + -(Stage1X) >= 640.0) {
 		//	for (int i = 0; i < 11; i++)
