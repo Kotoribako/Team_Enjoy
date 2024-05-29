@@ -9,7 +9,7 @@
 Clear::Clear()
 {
 	//タイトル画像読み込み
-	ClearImg = LoadGraph("image/noname.png");
+	ClearImg = LoadGraph("image/Clear_Img.png");
 	BackImg = LoadGraph("image/BackGround02.png");
 }
 
@@ -29,5 +29,5 @@ void Clear::Draw() const
 	//タイトル画像表示
 	DrawGraph(0, 0, BackImg, TRUE);
 	//タイトル画像表示
-	DrawGraph(0, 100, ClearImg, TRUE);
+	DrawGraph(0, 0, ClearImg, TRUE);
 }

@@ -21,13 +21,6 @@ private:
     "END"
     };
 
-    //int Select;     //�I��
-    //int OldKey;		//�O�̓��̓L�[
-    //int NowKey;		//���̓��̓L�[
-    //int KeyFlg;		//���̓L�[���
-
-    //bool Once;      //L�X�e�B�b�N�ŃJ�[�\���𓮂����p
-
     int TitleBGM;       //タイトルBGM
     int TitleImg;       //タイトル画像
 
