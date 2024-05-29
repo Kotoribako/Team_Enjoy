@@ -9,7 +9,7 @@ int Stage2::StopStage2Xflg;
 float Stage2::Stage2X;
 int Stage2::S2DecisionToAnswerFlg;
 
-#define Stage2MaxX 1700 // 画像の最大Xの値
+#define Stage2MaxX 2560 // 画像の最大Xの値
 #define Stage2MinX 0 // 画像の最小のXの値
 
 Stage2::Stage2()
@@ -17,23 +17,23 @@ Stage2::Stage2()
 	quiz->X = 770;
 	quiz->Y = 0;
 	//アニメゲームのクイズ情報
-	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
+	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png");
 	quiz[0].answer[0] = 0; //選択肢１
-	quiz[0].answer[1] = 0; //選択肢２
-	quiz[0].answer[2] = 1; //選択肢３
+	quiz[0].answer[1] = 1; //選択肢２
+	quiz[0].answer[2] = 0; //選択肢３
 	quiz[0].answer[3] = 0; //選択肢４
 	//偉人のクイズ情報
-	quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin1.png");
+	quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin2.png");
 	quiz[1].answer[0] = 0; //選択肢１
-	quiz[1].answer[1] = 0; //選択肢２
-	quiz[1].answer[2] = 1; //選択肢３
+	quiz[1].answer[1] = 1; //選択肢２
+	quiz[1].answer[2] = 0; //選択肢３
 	quiz[1].answer[3] = 0; //選択肢４
 	//並び替えのクイズ情報
-	quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
+	quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange2.png");
 	quiz[2].answer[0] = 0; //選択肢１
 	quiz[2].answer[1] = 0; //選択肢２
-	quiz[2].answer[2] = 1; //選択肢３
-	quiz[2].answer[3] = 0; //選択肢４
+	quiz[2].answer[2] = 0; //選択肢３
+	quiz[2].answer[3] = 1; //選択肢４
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -46,7 +46,6 @@ Stage2::Stage2()
 	Stage2Img = LoadGraph("image/Dummy/Stage2.png");
 	Stage2X = 0.0; // 最初の画像のX座標を0にする
 	StopStage2Xflg = FALSE;
-	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 	GameMain::NowStage = 2;
 
 	S2DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
@@ -81,7 +80,7 @@ void Stage2::Draw()
 	DrawFormatString(0, 30, GetColor(255, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
 	////DrawLine(0, 400, 1280, 400, GetColor(255, 0, 0), TRUE);
 	////DrawLine(0, 200, 1280, 200, GetColor(255, 0, 0), TRUE);
-	//DrawFormatString(0, 600, GetColor(255, 0, 0), "stage1X:%f\n", Stage1X);
+	DrawFormatString(0, 600, GetColor(255, 0, 0), "stage2X:%f\n", Stage2X);
 	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
 
 	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);
@@ -146,7 +145,7 @@ void Stage2::MoveXStage()
 	//プレイヤーのX座標が640未満かつ、左ボタンを押している時、
 	if (Player::playerX < 640.0 && PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT))
 	{
-		GameMain::NowStage = 3;
+		//GameMain::NowStage = 3;
 		Stage2X += 3; // 画像を右に動かす。
 		//if (Player::playerX + -(Stage1X) >= 640.0) {
 		//	for (int i = 0; i < 11; i++)
@@ -178,11 +177,11 @@ void Stage2::ChangeStage()
 			{
 				if (door[i].answer == 1) // 正解のドアを選んだら、
 				{
-					GameMain::NowStage = 2; // 次のステージへ進む。
+					GameMain::NowStage = 3; // 次のステージへ進む。
 				}
 				else
 				{
-					GameMain::NowStage = 4;
+					GameMain::NowStage = 5;
 				}
 				S2DecisionToAnswerFlg = TRUE; // 回答を決定した状態にする
 			}
@@ -196,23 +195,23 @@ void Stage2::Initialize()
 	quiz->X = 770;
 	quiz->Y = 0;
 	//アニメゲームのクイズ情報
-	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
+	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png");
 	quiz[0].answer[0] = 0; //選択肢１
-	quiz[0].answer[1] = 0; //選択肢２
-	quiz[0].answer[2] = 1; //選択肢３
+	quiz[0].answer[1] = 1; //選択肢２
+	quiz[0].answer[2] = 0; //選択肢３
 	quiz[0].answer[3] = 0; //選択肢４
 	//偉人のクイズ情報
-	quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin1.png");
+	quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin2.png");
 	quiz[1].answer[0] = 0; //選択肢１
-	quiz[1].answer[1] = 0; //選択肢２
-	quiz[1].answer[2] = 1; //選択肢３
+	quiz[1].answer[1] = 1; //選択肢２
+	quiz[1].answer[2] = 0; //選択肢３
 	quiz[1].answer[3] = 0; //選択肢４
 	//並び替えのクイズ情報
-	quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
+	quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange2.png");
 	quiz[2].answer[0] = 0; //選択肢１
 	quiz[2].answer[1] = 0; //選択肢２
-	quiz[2].answer[2] = 1; //選択肢３
-	quiz[2].answer[3] = 0; //選択肢４
+	quiz[2].answer[2] = 0; //選択肢３
+	quiz[2].answer[3] = 1; //選択肢４
 
 	for (int i = 0; i < 4; i++)
 	{
