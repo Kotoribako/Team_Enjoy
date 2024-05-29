@@ -9,7 +9,7 @@ int Stage3::StopStage3Xflg;
 float Stage3::Stage3X;
 int Stage3::S3DecisionToAnswerFlg;
 
-#define Stage1MaxX 1920 // 画像の最大Xの値
+#define Stage1MaxX 2560 // 画像の最大Xの値
 #define Stage1MinX 0 // 画像の最小のXの値
 
 Stage3::Stage3()
@@ -81,7 +81,7 @@ void Stage3::Draw()
 	DrawFormatString(0, 30, GetColor(255, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
 	////DrawLine(0, 400, 1280, 400, GetColor(255, 0, 0), TRUE);
 	////DrawLine(0, 200, 1280, 200, GetColor(255, 0, 0), TRUE);
-	//DrawFormatString(0, 600, GetColor(255, 0, 0), "stage1X:%f\n", Stage1X);
+	DrawFormatString(0, 600, GetColor(255, 0, 0), "stage3X:%f\n", Stage3X);
 	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
 
 	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);

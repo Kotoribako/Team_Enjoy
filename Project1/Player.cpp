@@ -118,7 +118,7 @@ void Player::Draw()
 	DrawBox(px, py, px2, py2, GetColor(0, 0,255 ), TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
 	DrawFormatString(0, 80, GetColor(0, 0, 0), "Life:%d", Life);
-	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
+	DrawFormatString(100, 0, GetColor(0, 255, 0), "playerX:%f  playerY:%f", playerX, playerY);
 	//DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
 	DrawFormatString(0, 120, GetColor(0, 0, 0), "BlockNum:%d", BlockNum);
 	for (int i = 0; i < Life; i++)
