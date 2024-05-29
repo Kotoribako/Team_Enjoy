@@ -12,7 +12,7 @@ int   Player::MoveFlg;
 int   Player::quizflg;
 int   Player::Life;
 #define PLAYERSTARTX 220
-#define PLAYERSTARTY 630
+#define PLAYERSTARTY 430
 
 Player::Player()
 {
@@ -33,6 +33,8 @@ Player::Player()
 
 	HitFlg = FALSE;
 
+	NoHitBlockFlg = TRUE;
+
 	Life = 3;
 }
 
@@ -44,6 +46,9 @@ void Player::Update()
 {
 	
 	P_FPS++;
+
+	PlayerHit(); // 当たり判定
+
 	Move();
 	px = playerX - 15;
 	px2 = playerX + 15;
@@ -59,7 +64,6 @@ void Player::Update()
 		P_Seconas1 = 0;
 	}
 
-	PlayerHit(); // 当たり判定
 
 	if (playerY >= 800) // リスポーン処理（後で消す）
 	{
@@ -113,6 +117,11 @@ void Player::Draw()
 	DrawFormatString(0, 80, GetColor(0, 0, 0), "Life:%d", Life);
 	DrawFormatString(100, 0, GetColor(0, 0, 0), "playerX:%f  playerY:%f", playerX, playerY);
 	//DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
+	DrawFormatString(0, 120, GetColor(0, 0, 0), "BlockNum:%d", BlockNum);
+	for (int i = 0; i < Life; i++)
+	{
+		DrawBox(100 + 50 * i, 100, 130 + 50 * i, 130, GetColor(255, 0, 0), TRUE);
+	}
 }
 
 void Player::Move()
@@ -155,15 +164,17 @@ void Player::Move()
 		input_margin = 0;
 	}
 
-	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT))
+	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT) && NoHitBlockFlg == TRUE)
 	{
-		playerX -= 3;
+		P_moveX = -3;
+		playerX += P_moveX;
 	}
-	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT))
+	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) && NoHitBlockFlg == TRUE)
 	{
-		playerX += 3;
+		P_moveX = 3;
+		playerX += P_moveX;
 	}
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && Jumpflg == FALSE)
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && Jumpflg == FALSE && NoHitBlockFlg == TRUE)
 	{
 		MaxY = playerY - 50;
 		Jumpflg = TRUE;
@@ -183,7 +194,7 @@ void Player::Move()
 			Downflg = TRUE;
 		}
 	}
-	if (Downflg == TRUE && count >= 1)
+	if (Downflg == TRUE && count >= 1 || NoHitBlockFlg == FALSE)
 	{
 		P_moveY = 0; // 動かした値をリセットする
 		sy = 12.0f;
@@ -203,36 +214,101 @@ void Player::Move()
 	if (playerX <= 0) {
 		playerX = 0;
 	}
-	
+	if (playerX >= 1280) {
+		playerX = 1280;
+	}
 }
 
 void Player::PlayerHit()
 {
 	float sy = 0.0f;
+
 	for (int i = 0; i < 11; i++)
 	{
+		if (i > 8)
+		{
+			if (int((px + -1 * (Stage1::Stage1X)) == block->bloc[9].X2 && int(py2) > block->bloc[9].Y))
+			{
+				P_moveX = 3;
+				playerX += P_moveX;
+				NoHitBlockFlg = FALSE;
+				// 落下処理させる
+				count += 1;
+				Downflg = TRUE;
+				HitFlg = FALSE;
 
-		if (GetLocationX1() + -1 * (Stage1::Stage1X) <= block->bloc[i].X2 && GetLocationX2() + -1 * (Stage1::Stage1X) >= block->bloc[i].X)
+				if (int(py2) > block->bloc[10].Y)
+				{
+					py2 = block->bloc[10].Y;
+				}
+			}
+		}
+		else
+		{
+			/* 処理ここから */
+			if (/*PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT) &&*/ int(px + -1 * (Stage1::Stage1X)) == block->bloc[i].X2 && int(py2) > block->bloc[i].Y)
+			{
+				P_moveX = 3;
+				playerX += P_moveX;
+				NoHitBlockFlg = FALSE;
+				// 落下処理させる
+				count += 1;
+				Downflg = TRUE;
+				HitFlg = FALSE;
+
+			}
+			else if (/*PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) &&*/ int(px2 + -1 * (Stage1::Stage1X)) == block->bloc[i].X && int(py2) > block->bloc[i].Y)
+			{
+				//playerX += 0;
+				P_moveX = -3;
+				playerX += P_moveX;
+				NoHitBlockFlg = FALSE;
+				// 落下処理させる
+				count += 1;
+				Downflg = TRUE;
+				HitFlg = FALSE;
+			}
+			else
+			{
+				NoHitBlockFlg = TRUE;
+			}
+		}
+		/* 処理ここまで */
+
+		if (int(GetLocationX1() + -1 * (Stage1::Stage1X)) <= block->bloc[i].X2 && int(GetLocationX2() + -1 * (Stage1::Stage1X)) >= block->bloc[i].X)
 		{
 			// フラグを立てる
 			HitFlg = TRUE;
 			BlockNum = i;
 			// 上にプレイヤーがいる処理
-			if (GetLocationY2() > block->bloc[BlockNum].Y && HitFlg == TRUE)
+			if (int(GetLocationY2()) <= block->bloc[BlockNum].Y && HitFlg == TRUE && NoHitBlockFlg == TRUE)
+			{
+				HitFlg = FALSE;
+				BlockNum = -1;
+			}
+			else
 			{
 				// プレイヤーの頭上よりも下のブロックが座標が高いか？
-				if (GetLocationY1() < block->bloc[BlockNum].Y2) {
+				if (int(GetLocationY1()) < block->bloc[BlockNum].Y2) 
+				{
 					/* 下に落ちない処理を書く */
 					Jumpflg = FALSE;
 					Downflg = FALSE;
 					count = 0;
 				}
-				else {
+				// プレイヤーの頭上と下のブロックがぶつかった時
+				else if(int(GetLocationY1()) == block->bloc[BlockNum].Y2)
+				{
+					/* 下に落ちる処理を書く */
 					HitFlg = FALSE;
 					BlockNum = -1;
-
 				}
-
+				else 
+				{
+					HitFlg = FALSE;
+					BlockNum = -1;
+				}
+				// 特定の足場を踏んでいるかどうか
 				if (BlockNum >= 9) {
 					quizflg = 1;
 				}
@@ -240,11 +316,7 @@ void Player::PlayerHit()
 				{
 					quizflg = 0;
 				}
-			}
-			else
-			{
-				HitFlg = FALSE;
-				BlockNum = -1;
+
 			}
 			if (BlockNum == -1 && P_moveY == 0) // ブロックないときの落下処理
 			{
@@ -260,37 +332,88 @@ void Player::PlayerHit()
 			count += 1;
 			Downflg = TRUE;
 		}
+	//}
+		// ブロックに当たっているか確認
+		if (int(px + -1 * (Stage1::Stage1X)) <= block->bloc[i].X2 && int(px2 + -1 * (Stage1::Stage1X)) <= block->bloc[i].X && int(py) == block->bloc[i].Y2)
+		{
+			HitFlg = TRUE;
+			BlockNum = i;
+			///* 下に落ちない処理を書く */
+			//Jumpflg = FALSE;
+			//Downflg = FALSE;
+			//count = 0;
+			break;
+			// ブロックの右側にプレイヤーの左側に当たっているか確認
+			if (int(px + -1 * (Stage1::Stage1X)) == block->bloc[BlockNum].X2 && int(py) > block->bloc[BlockNum].Y2)
+			{
+				playerX -= 0;
+				// 落下処理させる
+				count += 1;
+				Downflg = TRUE;
+			}
+			// ブロックの左側にプレイヤーの右側に当たっているか確認
+			else if (int(px2 + -1 * (Stage1::Stage1X)) == block->bloc[BlockNum].X && int(py) > block->bloc[BlockNum].Y2)
+			{
+				playerX += 0;
+				// 落下処理させる
+				count += 1;
+				Downflg = TRUE;
+			}
+			else
+			{
+				/* 下に落ちない処理を書く */
+				Jumpflg = FALSE;
+				Downflg = FALSE;
+				count = 0;
+			}
+
+			// 上にプレイヤーがいる処理
+			if (int(py2) <= block->bloc[BlockNum].Y && HitFlg == TRUE)
+			{
+				HitFlg = FALSE;
+				BlockNum = -1;
+			}
+			else
+			{
+				// プレイヤーの頭上よりも下のブロックが座標が高いか？
+				if (int(py) < block->bloc[BlockNum].Y2)
+				{
+					/* 下に落ちない処理を書く */
+					Jumpflg = FALSE;
+					Downflg = FALSE;
+					count = 0;
+				}
+				// プレイヤーの頭上と下のブロックがぶつかった時
+				else if (int(py) == block->bloc[BlockNum].Y2)
+				{
+					/* 下に落ちる処理を書く */
+					HitFlg = FALSE;
+					BlockNum = -1;
+				}
+				/*else
+				{
+					HitFlg = FALSE;
+					BlockNum = -1;
+				}*/
+				// 特定の足場を踏んでいるかどうか
+				if (BlockNum >= 9) {
+					quizflg = 1;
+				}
+				else
+				{
+					quizflg = 0;
+				}
+
+
+			}
+		}
+		else if (i == 10)
+		{
+			count += 1;
+			Downflg = TRUE;
+		}
+
 	}
-	//// 上にプレイヤーがいる処理
-	//if (GetLocationY2() >= block->bloc[BlockNum].Y && HitFlg == TRUE)
-	//{
-	//	/* 下に落ちない処理を書く */
-	//	Jumpflg = FALSE;
-	//	Downflg = FALSE;
-	//	count = 0;
-	//}
-	//else
-	//{
-	//	HitFlg = FALSE;
-	//	BlockNum = -1;
-	//}
-	//if (BlockNum == -1 && P_moveY == 0)
-	//{
-	//	Downflg = TRUE;
-	//}
-	//if (GetLocationY1() >= block->bloc[i].Y2 /*&&*/ /*GetLocationX1() >= block->bloc[i].X2*/) // ブロックの下とプレイヤーの頭上が当たっている時、
-	//{
-	//	/* 下に落ちる処理を書く */
-	//	Jumpflg = FALSE;
-	//	Downflg = TRUE;
-	//	count = 0;
 
-	//}
-
-
-
-	/*if (playerX >= Block::block[1].X && playerX >= Block::block[0].X2 && playerY <= Block::block[0].Y) {
-		py2 = Block::block[0].Y;
-	}*/
 }
 

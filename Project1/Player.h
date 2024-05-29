@@ -21,6 +21,7 @@ private:
 	float py, py2;
 	int HitFlg;  // 地面に足がついているか
 	int BlockNum;
+	int NoHitBlockFlg;
 
 	int eightflg;
 	int threeflg;
