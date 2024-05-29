@@ -10,7 +10,7 @@ GameMain::GameMain()
 	stage2 = new Stage2();
 	stage3 = new Stage3();
 	enemy = new Enemy();
-	NowStage = 1;
+	NowStage = 2;
 }
 
 GameMain::~GameMain()
