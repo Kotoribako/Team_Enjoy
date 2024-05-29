@@ -4,11 +4,10 @@
 #include"Stage2.h"
 #include"Stage3.h"
 #include"GameMain.h"
-#define IMAGE_SIZE 50 // 画像一枚の大きさ
-float Enemy::enemyX;
-float Enemy::enemyX2;
-float Enemy::enemyY;
-float Enemy::enemyY2;
+int Enemy::ex;
+int Enemy::ex2;
+int Enemy::ey;
+int Enemy::ey2;
 
 Enemy::Enemy()
 {
@@ -69,8 +68,6 @@ void Enemy::Update()
 		countup = 0;
 	}
 
-
-	
 }
 
 void Enemy::Draw()
@@ -106,80 +103,32 @@ void Enemy::EnemyControl()
 
 int Enemy::Enemyhit()
 {
-	//// プレイヤー画像と敵画像で当たり判定
-	//if (Player::playerX >= GetLocationX() && Player::playerX >= GetLocationX() + GetLocationX2())
-	//{
-	//	if (Player::playerY >= GetLocationY() && Player::playerY >= GetLocationY()+ GetLocationY2())
-	//	{
+	//if (player->GetLocationX2() >= GetLocationX() + 15 && player->GetLocationX1() >= GetLocationX2()) {
+	//	Hitflg = TRUE;
+	//	if (player->GetLocationY1() <= GetLocationY() + 10 && GetLocationY() <= player->GetLocationY1()) {
+	//		//当たった処理
 	//		Hitflg = TRUE;
 	//	}
 	//}
-	//// プレイヤーの左 <= 敵の右 && 敵の左 <= プレイヤーの右&&
-	//if (player->GetLocationX1() <= ex2 && ex <= player->GetLocationX2() 
-	//	&&
-	//	// プレイヤーの上 <= 敵の下 && 敵の上 <= プレイヤーの下
-	//	player->GetLocationY1() <= ey2 && ey <= player->GetLocationY2())
-	//{
-	//	Hitflg = TRUE;
-	//}
 	//else
 	//{
 	//	Hitflg = FALSE;
 	//}
 
-	//// プレイヤー右と敵左を比べる　&&　プレイヤーの下と敵の上を比べる  ||  プレイヤーの左と敵の右を比べる　&&　プレイヤーの上と敵の下を比べる
-	//if (player->GetLocationX2() >= GetLocationX() && player->GetLocationY2() >= GetLocationY() || 
-	//	player->GetLocationX1() <= GetLocationX2() && player->GetLocationY1() <= GetLocationY2())
-	//{
-	//	Hitflg = TRUE;
-	//}
-	//else
-	//{
-	//	Hitflg = FALSE;
-	//}
-
-
-
-	/*if (((player->GetLocationX1() >= ex && player->GetLocationX1() <= ex + ex2) ||
-		(ex > player->GetLocationX1() && ex < player->GetLocationX1() + player->GetLocationX2()) &&
-		((player->GetLocationY1() > ey && player->GetLocationY1() < ey + ey2) ||
-			(ey > player->GetLocationY1() && ey < player->GetLocationY1() + player->GetLocationY2()))))
+	// プレイヤー画像と敵画像で当たり判定
+	if (player->GetLocationX1() + player->GetLocationX2() >= ex && player->GetLocationX1() <= player->GetLocationX1() + player->GetLocationX2())
 	{
-		Hitflg = TRUE;
-	}
-	else
-	{
-		Hitflg = FALSE;
-	}*/
-
-
-
-
-
-	if (player->GetLocationX2() >= GetLocationX() + 15 && player->GetLocationX1() >= GetLocationX2()) {
-		Hitflg = TRUE;
-		if (player->GetLocationY1() <= GetLocationY() + 10 && GetLocationY() <= player->GetLocationY1()) {
-			//当たった処理
-			Hitflg = TRUE;
+		if (player->GetLocationY1() + player->GetLocationY2() >= ey && player->GetLocationY1() <= ey + ey2)
+		{
+			Hitflg = TRUE; 
+		
 		}
 	}
-	else
-	{
-		Hitflg = FALSE;
-	}
-	
-
-	
-
-	//if (player->GetLocationX1() >= ex2 + 15 || player->GetLocationX2() >= ex - 15)
-	//{
-	//	Hitflg = TRUE;
-	//}
-	//if (player->GetLocationY1() >= ey/*&&player->GetLocationX1()>=ex -15*/)
-	//{
-	//	Hitflg = TRUE;
-	//}
-
 	return 0;
+}
 
-} 
+	
+
+	
+
+	

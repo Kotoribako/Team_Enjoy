@@ -11,8 +11,7 @@ private:
 	int count;
 	bool Hitflg;
 	int speed;
-	int ex,ex2; // 敵の左座標(ex)と右座標を取る(ex2) 
-	int ey, ey2;// 敵の上座標(ey)と下座標を取る(ey2 b)
+	
 	int countup;
 	int moveX;
 	int direction; // エネミーの方向
@@ -20,10 +19,12 @@ private:
 	Player* player;
 	int flg;
 public:
-	static float enemyX;
-	static float enemyX2;
-	static float enemyY;
-	static float enemyY2;
+	float enemyX;
+    float enemyX2;
+    float enemyY;
+	float enemyY2;
+	static int ex, ex2; // 敵の左座標(ex)と右座標を取る(ex2) 
+	static int ey, ey2;// 敵の上座標(ey)と下座標を取る(ey2 b)
 
 	float GetLocationX() { return ex;}
 	float GetLocationX2() { return ex2;}
