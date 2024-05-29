@@ -9,7 +9,7 @@ int Stage2::StopStage2Xflg;
 float Stage2::Stage2X;
 int Stage2::S2DecisionToAnswerFlg;
 
-#define Stage2MaxX 1700 // 画像の最大Xの値
+#define Stage2MaxX 1920 // 画像の最大Xの値
 #define Stage2MinX 0 // 画像の最小のXの値
 
 Stage2::Stage2()
@@ -178,11 +178,11 @@ void Stage2::ChangeStage()
 			{
 				if (door[i].answer == 1) // 正解のドアを選んだら、
 				{
-					GameMain::NowStage = 2; // 次のステージへ進む。
+					GameMain::NowStage = 3; // 次のステージへ進む。
 				}
 				else
 				{
-					GameMain::NowStage = 4;
+					GameMain::NowStage = 5;
 				}
 				S2DecisionToAnswerFlg = TRUE; // 回答を決定した状態にする
 			}

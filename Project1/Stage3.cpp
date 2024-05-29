@@ -9,7 +9,7 @@ int Stage3::StopStage3Xflg;
 float Stage3::Stage3X;
 int Stage3::S3DecisionToAnswerFlg;
 
-#define Stage1MaxX 1700 // 画像の最大Xの値
+#define Stage1MaxX 1920 // 画像の最大Xの値
 #define Stage1MinX 0 // 画像の最小のXの値
 
 Stage3::Stage3()
@@ -59,7 +59,7 @@ Stage3::~Stage3()
 
 void Stage3::Update()
 {
-	if (GameMain::NowStage == 4) // 間違った選択肢入った時、
+	if (GameMain::NowStage == 6) // 間違った選択肢入った時、
 	{
 		Initialize(); // ステージを初期化する（死んでもループ出来る）
 	}
@@ -177,11 +177,11 @@ void Stage3::ChangeStage()
 			{
 				if (door[i].answer == 1) // 正解のドアを選んだら、
 				{
-					GameMain::NowStage = 2; // 次のステージへ進む。
+					GameMain::NowStage = 3; // 次のステージへ進む。
 				}
 				else
 				{
-					GameMain::NowStage = 4;
+					GameMain::NowStage = 6;
 				}
 				S3DecisionToAnswerFlg = TRUE; // 回答を決定した状態にする
 			}
