@@ -91,6 +91,13 @@ void Enemy::Draw()
 	if (Hitflg == TRUE)
 	{
 		DrawFormatString(200, 250, GetColor(0, 0, 255), "Hit!!");
+
+		Player::Life -= 1;
+
+		if (Player::Life <= 0)
+		{
+			// タイトルかゲームオーバーに戻す
+		}
 	}
 }
 
