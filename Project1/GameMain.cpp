@@ -5,12 +5,12 @@ int GameMain::NowStage;
 
 GameMain::GameMain()
 {
+	NowStage = 1;
 	player = new Player();
 	stage1 = new Stage1();
 	stage2 = new Stage2();
 	stage3 = new Stage3();
 	enemy = new Enemy();
-	NowStage = 1;
 }
 
 GameMain::~GameMain()
@@ -19,8 +19,23 @@ GameMain::~GameMain()
 
 void GameMain::Initialize()
 {
-	player = new Player();
-	stage1 = new Stage1();
+	switch (NowStage) {
+	case 1:
+	case 4:
+		stage1 = new Stage1();
+		//player = new Player();
+		break;
+	case 2:
+	case 5:
+		stage2 = new Stage2();
+		//player = new Player();
+		break;
+	case 3:
+	case 6:
+		stage3 = new Stage3();
+		//player = new Player();
+		break;
+	}
 	enemy = new Enemy();
 
 }
@@ -28,26 +43,44 @@ void GameMain::Initialize()
 AbstractScene* GameMain::Update()
 {
 	GetMousePoint(&mouseX, &mouseY);
-	player->Update();
-	enemy->Update();
+	//player->Update();
+	//enemy->Update();
 	switch (NowStage) {
 	case 1:
+	case 4:
+		NowStage = 1;
 		stage1->Update();
+		if (Stage1::S1DecisionToAnswerFlg == TRUE)
+		{
+			Initialize();
+		}
 		break;
 	case 2:
 		/* Stage2の処理 */
+		NowStage = 2;
 		stage2->Update();
+		if (Stage2::S2DecisionToAnswerFlg == TRUE)
+		{
+			Initialize();
+		}
 		break;
 	case 3:
 		/* Stage3の処理 */
+		NowStage = 3;
 		stage3->Update();
+		if (Stage3::S3DecisionToAnswerFlg == TRUE)
+		{
+			Initialize();
+		}
 		break;
-	case 4:
-		stage1->Update();
-		break;
+	//case 4:
+	//	stage1->Update();
+	//	break;
 	default:
 		return 0;
 	}
+	player->Update();
+	enemy->Update();
 
 	return this;
 }
