@@ -26,16 +26,17 @@ Enemy::Enemy()
 
 void Enemy::Update()
 {
+	enemyX2 = enemyX + 30;
+	enemyY2 = enemyY + 30;
+
 	ex = enemyX - 25;
 	ex2 = enemyX + 20;
 	ey = enemyY ;
 	ey2 = enemyY - 35;
 
-	enemyX2 = enemyX + 30;
-	enemyY2 = enemyY + 30;
+
 
 	Enemyhit();
-	EnemyControl();
 	count++;
 	if (count == 60)
 	{
@@ -89,17 +90,11 @@ void Enemy::Draw()
 	
 	if (Hitflg == TRUE)
 	{
-		DrawFormatString(200, 250, GetColor(0, 0, 255), "Hit!!", Hitflg);
+		DrawFormatString(200, 250, GetColor(0, 0, 255), "Hit!!");
 	}
 }
 
-void Enemy::EnemyControl()
-{
-	if (Enemyhit() == TRUE)
-	{
-		Hitflg = TRUE;
-	}
-}
+
 
 int Enemy::Enemyhit()
 {
@@ -115,15 +110,21 @@ int Enemy::Enemyhit()
 	//	Hitflg = FALSE;
 	//}
 
-	// プレイヤー画像と敵画像で当たり判定
-	if (player->GetLocationX1() + player->GetLocationX2() >= ex && player->GetLocationX1() <= player->GetLocationX1() + player->GetLocationX2())
+	//// プレイヤー画像と敵画像で当たり判定
+	//if (player->GetLocationX1() + player->GetLocationX2() >= ex && player->GetLocationX1() <= player->GetLocationX1() + player->GetLocationX2())
+	//{
+	//	if (player->GetLocationY1() + player->GetLocationY2() >= ey && player->GetLocationY1() <= ey + ey2)
+	//	{
+	//		Hitflg = TRUE; 
+	//	
+	//	}
+	//}
+
+	if (int(player->GetLocationX1()) < ex2 && ex < int(player->GetLocationX2()) /*&& int(player->GetLocationY1()) < ey2 && ey < int(player->GetLocationY2())*/)
 	{
-		if (player->GetLocationY1() + player->GetLocationY2() >= ey && player->GetLocationY1() <= ey + ey2)
-		{
-			Hitflg = TRUE; 
-		
-		}
+		Hitflg = TRUE;
 	}
+
 	return 0;
 }
 

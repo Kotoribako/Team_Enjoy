@@ -17,8 +17,8 @@ private:
 	float P_moveX;
 	float PlayerLocationY;
 	Block* block;
-	float px,px2;
-	float py, py2;
+	float px = playerX - 15, px2 = playerX + 15;
+	float py = playerY - 15, py2 = playerY + 15;
 	int HitFlg;  // 地面に足がついているか
 	int BlockNum;
 	int NoHitBlockFlg;
