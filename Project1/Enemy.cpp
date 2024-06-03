@@ -16,8 +16,21 @@ Enemy::Enemy()
 	block = new Block();
 	player = new Player();
 	countup = 0;
-	enemyX = 580;
-	enemyY = 420;
+	switch (GameMain::NowStage)
+	{
+	case 1:
+		enemyX = 580;
+		enemyY = 420;
+		break;
+	case 2:
+		enemyX = Stage2::Stage2X + 580;
+		enemyY = 420;
+		break;
+	case 3:
+		enemyX = Stage3::Stage3X + 580;
+		enemyY = 420;
+	}
+	
 	moveX = 0;
 	direction = 0;
 	speed = 30;
@@ -74,21 +87,27 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 	DrawFormatString(200, 200, GetColor(0, 0, 255), "countup:%d", countup);
+
+	DrawBox(ex + moveX + Stage1::Stage1X, ey - 15, ex2 + moveX + Stage1::Stage1X, ey2 - 15, GetColor(255, 0, 0), ex);
+	DrawBox(ex - 15 + moveX + Stage1::Stage1X, ey, ex2 - 15 + moveX + Stage1::Stage1X, ey2, GetColor(255, 255, 0), ex);
+	DrawBox(ex + moveX + Stage1::Stage1X, ey + 15, ex2 + moveX + Stage1::Stage1X, ey2 + 15, GetColor(0, 0, 255), ex);
+	DrawBox(ex + moveX + Stage1::Stage1X, ey, ex2 +15 + moveX + Stage1::Stage1X, ey2 , GetColor(255, 0, 255), ex);
+	
 	switch (GameMain::NowStage)
 	{
 	case 1:
-		DrawBox(ex + moveX + Stage1::Stage1X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 255, 0), TRUE);
+		DrawBox(ex + moveX + Stage1::Stage1X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 0, 0), TRUE);
 		break;
 	case 2:
-		DrawBox(ex + moveX + Stage2::Stage2X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 255, 0), TRUE);
+		DrawBox(ex + moveX + Stage2::Stage2X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 0, 0), TRUE);
 		break;
 	case 3:
-		DrawBox(ex + moveX + Stage3::Stage3X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 255, 0), TRUE);
+		DrawBox(ex + moveX + Stage3::Stage3X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 0, 0), TRUE);
 		break;
 	}
 	
 	
-	if (Hitflg == TRUE)
+	if (Hitflg == TRUE )
 	{
 		DrawFormatString(200, 250, GetColor(0, 0, 255), "Hit!!");
 
