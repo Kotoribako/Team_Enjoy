@@ -14,6 +14,9 @@ int Stage2::S2DecisionToAnswerFlg;
 
 Stage2::Stage2()
 {
+	//タイトルBGM読み込み
+	((Stage2BGM = LoadSoundMem("sound/BGM/Stage2_BGM.wav")) == -1);
+
 	quiz->X = 770;
 	quiz->Y = 0;
 	//アニメゲームのクイズ情報
@@ -53,11 +56,19 @@ Stage2::Stage2()
 
 Stage2::~Stage2()
 {
-
+	//BGM削除
+	DeleteSoundMem(Stage2BGM);
+	StopSoundMem(Stage2BGM);
 }
 
 void Stage2::Update()
 {
+	//BGM再生（ループ）
+	if (CheckSoundMem(Stage2BGM) == 0)
+	{
+		PlaySoundMem(Stage2BGM, DX_PLAYTYPE_LOOP, TRUE);
+	}
+
 	if (GameMain::NowStage == 5) // 間違った選択肢入った時、
 	{
 		Initialize(); // ステージを初期化する（死んでもループ出来る）
@@ -177,6 +188,9 @@ void Stage2::ChangeStage()
 			{
 				if (door[i].answer == 1) // 正解のドアを選んだら、
 				{
+					//BGM削除
+					DeleteSoundMem(Stage2BGM);
+					StopSoundMem(Stage2BGM);
 					GameMain::NowStage = 3; // 次のステージへ進む。
 				}
 				else

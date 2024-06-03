@@ -7,6 +7,9 @@ private:
 	int ClearImg;
 	int BackImg;
 
+	int S_FPS;
+	int S_Seconas;
+
 public:
 	Clear();
 	~Clear();
