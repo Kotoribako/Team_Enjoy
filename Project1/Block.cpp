@@ -99,13 +99,40 @@ void Block::Update()
 
 void Block::Draw()
 {
-	/*DrawBox(px, py, px2, py2, GetColor(255, 0, 0), TRUE);*/
-	for (int i = 0; i < 11; i++) {
-		//DrawBox(bloc[i].X, bloc[i].Y, bloc[i].X2, bloc[i].Y2, GetColor(255, 0, 0), TRUE);
-		//DrawBox(bloc[i].X, bloc[i].Y, bloc[i].X2, bloc[i].Y+10, GetColor(255, 0, 0), TRUE); // 上のブロックの当たり判定()
-		//DrawBox(bloc[i].X, bloc[i].Y2, bloc[i].X2, bloc[i].Y2+10, GetColor(0, 255, 0), TRUE); // 下のブロックの当たり判定(緑)
-		//DrawBox(bloc[i].X, bloc[i].Y, bloc[i].X+10, bloc[i].Y2, GetColor(0, 0, 255), TRUE); // 左のブロックの当たり判定(青)
-		//DrawBox(bloc[i].X2, bloc[i].Y, bloc[i].X2+10, bloc[i].Y2, GetColor(255, 0, 255), TRUE); // 右のブロックの当たり判定(紫)
+	switch (GameMain::NowStage)
+	{
+	case 1:
+	case 4:
+		for (int i = 0; i < 11; i++) {
+			//DrawBox(bloc[i].X, bloc[i].Y, bloc[i].X2, bloc[i].Y2, GetColor(255, 0, 0), TRUE);
+			////DrawBox(S1bloc[i].X + Stage1::Stage1X, S1bloc[i].Y, S1bloc[i].X2 + Stage1::Stage1X, S1bloc[i].Y + 10, GetColor(255, 0, 0), TRUE); // 上のブロックの当たり判定()
+			////DrawBox(S1bloc[i].X + Stage1::Stage1X, S1bloc[i].Y2, S1bloc[i].X2 + Stage1::Stage1X, S1bloc[i].Y2 + 10, GetColor(0, 255, 0), TRUE); // 下のブロックの当たり判定(緑)
+			////DrawBox(S1bloc[i].X + Stage1::Stage1X, S1bloc[i].Y, S1bloc[i].X + Stage1::Stage1X + 10, S1bloc[i].Y2, GetColor(0, 0, 255), TRUE); // 左のブロックの当たり判定(青)
+			////DrawBox(S1bloc[i].X2 + Stage1::Stage1X, S1bloc[i].Y, S1bloc[i].X2 + Stage1::Stage1X + 10, S1bloc[i].Y2, GetColor(255, 0, 255), TRUE); // 右のブロックの当たり判定(紫)
+		}
+		break;
+	case 2:
+	case 5:
+		for (int i = 0; i < 19; i++) {
+			//DrawBox(S2bloc[i].X+Stage2::Stage2X, S2bloc[i].Y, S2bloc[i].X2+Stage2::Stage2X, S2bloc[i].Y2, GetColor(255, 0, 0), TRUE);
+			////DrawBox(S2bloc[i].X + Stage2::Stage2X, S2bloc[i].Y, S2bloc[i].X2 + Stage2::Stage2X, S2bloc[i].Y+10, GetColor(255, 0, 0), TRUE); // 上のブロックの当たり判定()
+			////DrawBox(S2bloc[i].X + Stage2::Stage2X, S2bloc[i].Y2, S2bloc[i].X2 + Stage2::Stage2X, S2bloc[i].Y2+10, GetColor(0, 255, 0), TRUE); // 下のブロックの当たり判定(緑)
+			////DrawBox(S2bloc[i].X + Stage2::Stage2X, S2bloc[i].Y, S2bloc[i].X + Stage2::Stage2X +10, S2bloc[i].Y2, GetColor(0, 0, 255), TRUE); // 左のブロックの当たり判定(青)
+			////DrawBox(S2bloc[i].X2 + Stage2::Stage2X, S2bloc[i].Y, S2bloc[i].X2 + Stage2::Stage2X +10, S2bloc[i].Y2, GetColor(255, 0, 255), TRUE); // 右のブロックの当たり判定(紫)
+		}
+		break;
+	case 3:
+	case 6:
+		for (int i = 0; i < 27; i++) {
+			//DrawBox(bloc[i].X+ Stage3::Stage3X, bloc[i].Y, bloc[i].X2+ Stage3::Stage3X, bloc[i].Y2, GetColor(255, 0, 0), TRUE);
+			////DrawBox(S3bloc[i].X+ Stage3::Stage3X, S3bloc[i].Y, S3bloc[i].X2+ Stage3::Stage3X, S3bloc[i].Y+10, GetColor(255, 0, 0), TRUE); // 上のブロックの当たり判定()
+			////DrawBox(S3bloc[i].X+ Stage3::Stage3X, S3bloc[i].Y2, S3bloc[i].X2+ Stage3::Stage3X, S3bloc[i].Y2+10, GetColor(0, 255, 0), TRUE); // 下のブロックの当たり判定(緑)
+			////DrawBox(S3bloc[i].X+ Stage3::Stage3X, S3bloc[i].Y, S3bloc[i].X+ Stage3::Stage3X+10, S3bloc[i].Y2, GetColor(0, 0, 255), TRUE); // 左のブロックの当たり判定(青)
+			////DrawBox(S3bloc[i].X2+ Stage3::Stage3X, S3bloc[i].Y, S3bloc[i].X2+ Stage3::Stage3X+10, S3bloc[i].Y2, GetColor(255, 0, 255), TRUE); // 右のブロックの当たり判定(紫)
+		}
+		break;
+	default:
+		break;
 	}
 	//DrawFormatString(0, 70, GetColor(255, 0, 0), "Standflg:%d", flg);
 }
