@@ -17,6 +17,14 @@ Stage1::Stage1()
 	//タイトルBGM読み込み
 	((Stage1BGM = LoadSoundMem("sound/BGM/Stage1_BGM.wav")) == -1);
 
+	//SE読み込み
+	((SeikaiSE = LoadSoundMem("sound/SE/Seikai_SE.wav")) == -1);
+	//SE読み込み
+	((HazureSE = LoadSoundMem("sound/SE/Hazure_SE.wav")) == -1);
+	//BGM音量
+	ChangeVolumeSoundMem(300, SeikaiSE);
+	ChangeVolumeSoundMem(300, HazureSE);
+
 	quiz->X = 770;
 	quiz->Y = 0;
 	//アニメゲームのクイズ情報
@@ -189,13 +197,22 @@ void Stage1::ChangeStage()
 			{
 				if (door[i].answer == 1) // 正解のドアを選んだら、
 				{
-					GameMain::NowStage = 2; // 次のステージへ進む。
+					//ボタンが押された時SE再生
+					PlaySoundMem(SeikaiSE, DX_PLAYTYPE_BACK, TRUE);
 					//BGM削除
 					DeleteSoundMem(Stage1BGM);
 					StopSoundMem(Stage1BGM);
+
+					GameMain::NowStage = 2; // 次のステージへ進む。
 				}
 				else
 				{
+					//ボタンが押された時SE再生
+					PlaySoundMem(HazureSE, DX_PLAYTYPE_BACK, TRUE);
+					//BGM削除
+					DeleteSoundMem(Stage1BGM);
+					StopSoundMem(Stage1BGM);
+
 					GameMain::NowStage = 4;
 				}
 				S1DecisionToAnswerFlg = TRUE; // 回答を決定した状態にする
