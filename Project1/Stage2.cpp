@@ -188,7 +188,6 @@ void Stage2::ChangeStage()
 			{
 				if (door[i].answer == 1) // 正解のドアを選んだら、
 				{
-					GameMain::NowStage = 2; // 次のステージへ進む。
 					//BGM削除
 					DeleteSoundMem(Stage2BGM);
 					StopSoundMem(Stage2BGM);
