@@ -26,16 +26,15 @@ public:
 	static int ex, ex2; // 敵の左座標(ex)と右座標を取る(ex2) 
 	static int ey, ey2;// 敵の上座標(ey)と下座標を取る(ey2 b)
 
-	float GetLocationX() { return ex;}
-	float GetLocationX2() { return ex2;}
-	float GetLocationY() { return ey;}
-	float GetLocationY2() { return ey2;}
+	float GetLocationX() { return ex;}  // 左側
+	float GetLocationX2() { return ex2;}// 右側
+	float GetLocationY() { return ey;}  // 上側
+	float GetLocationY2() { return ey2;}// 下側
 
 
 	Enemy();
 	void Update();
 	void Draw();
-	void EnemyControl();
 	int Enemyhit();
 };
 
