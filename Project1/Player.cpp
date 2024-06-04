@@ -44,8 +44,8 @@ Player::Player()
 		//左、右、上、下
 		block->S1bloc[0] = { 0,270,630,720 };
 		block->S1bloc[1] = { 340,440,565,615 };
-		block->S1bloc[2] = { 475,555,510,555 };
-		block->S1bloc[3] = { 510,555,470,510 };
+		block->S1bloc[2] = { 510,555,470,510 };
+		block->S1bloc[3] = { 475,555,510,555 };
 		block->S1bloc[4] = { 580,735,420,455 };
 		block->S1bloc[5] = { 780,845,365,415 };
 		block->S1bloc[6] = { 875,940,310,360 };
@@ -369,9 +369,9 @@ void Player::Move()
 	if (playerX >= 1280) {
 		playerX = 1280;
 	}
-	if (playerY >= 640) {
-		playerY = 640;
-	}
+	//if (playerY >= 640) {
+	//	playerY = 640;
+	//}
 }
 
 void Player::PlayerHit()
@@ -573,56 +573,56 @@ void Player::PlayerHit()
 		}
 		break;
 	case 2:
-		for (int i = 0; i < 11; i++)
+		for (int i = 0; i < 19; i++)
 		{
-			if (i > 8)
-			{
-				if (int((px + -1 * (Stage2::Stage2X)) == block->S2bloc[9].X2 && int(py2) > block->S2bloc[9].Y))
-				{
-					P_moveX = 3;
-					playerX += P_moveX;
-					NoHitBlockFlg = FALSE;
-					// 落下処理させる
-					count += 1;
-					Downflg = TRUE;
-					HitFlg = FALSE;
+			////if (i > 8)
+			////{
+			////	if (int((px + -1 * (Stage2::Stage2X)) == block->S2bloc[9].X2 && int(py2) > block->S2bloc[9].Y))
+			////	{
+			////		P_moveX = 3;
+			////		playerX += P_moveX;
+			////		NoHitBlockFlg = FALSE;
+			////		// 落下処理させる
+			////		count += 1;
+			////		Downflg = TRUE;
+			////		HitFlg = FALSE;
 
-					if (int(py2) > block->S2bloc[10].Y)
-					{
-						py2 = block->S2bloc[10].Y;
-					}
-				}
-			}
-			else
-			{
-				/* 処理ここから */
-				if (/*PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT) &&*/ int(px + -1 * (Stage2::Stage2X)) == block->S2bloc[i].X2 && int(py2) > block->S2bloc[i].Y)
-				{
-					P_moveX = 3;
-					playerX += P_moveX;
-					NoHitBlockFlg = FALSE;
-					// 落下処理させる
-					count += 1;
-					Downflg = TRUE;
-					HitFlg = FALSE;
+			////		if (int(py2) > block->S2bloc[10].Y)
+			////		{
+			////			py2 = block->S2bloc[10].Y;
+			////		}
+			////	}
+			////}
+			////else
+			////{
+			////	/* 処理ここから */
+			////	if (/*PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT) &&*/ int(px + -1 * (Stage2::Stage2X)) == block->S2bloc[i].X2 && int(py2) > block->S2bloc[i].Y)
+			////	{
+			////		P_moveX = 3;
+			////		playerX += P_moveX;
+			////		NoHitBlockFlg = FALSE;
+			////		// 落下処理させる
+			////		count += 1;
+			////		Downflg = TRUE;
+			////		HitFlg = FALSE;
 
-				}
-				else if (/*PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) &&*/ int(px2 + -1 * (Stage2::Stage2X)) == block->S2bloc[i].X && int(py2) > block->S2bloc[i].Y)
-				{
-					//playerX += 0;
-					P_moveX = -3;
-					playerX += P_moveX;
-					NoHitBlockFlg = FALSE;
-					// 落下処理させる
-					count += 1;
-					Downflg = TRUE;
-					HitFlg = FALSE;
-				}
-				else
-				{
-					NoHitBlockFlg = TRUE;
-				}
-			}
+			////	}
+			////	else if (/*PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) &&*/ int(px2 + -1 * (Stage2::Stage2X)) == block->S2bloc[i].X && int(py2) > block->S2bloc[i].Y)
+			////	{
+			////		//playerX += 0;
+			////		P_moveX = -3;
+			////		playerX += P_moveX;
+			////		NoHitBlockFlg = FALSE;
+			////		// 落下処理させる
+			////		count += 1;
+			////		Downflg = TRUE;
+			////		HitFlg = FALSE;
+			////	}
+			////	else
+			////	{
+			////		NoHitBlockFlg = TRUE;
+			////	}
+			////}
 			/* 処理ここまで */
 
 			if (int(px + -1 * (Stage2::Stage2X)) <= block->S2bloc[i].X2 && int(px2 + -1 * (Stage2::Stage2X)) >= block->S2bloc[i].X)
@@ -659,7 +659,7 @@ void Player::PlayerHit()
 						BlockNum = -1;
 					}
 					// 特定の足場を踏んでいるかどうか
-					if (BlockNum >= 9) {
+					if (BlockNum >= 18) {
 						quizflg = 1;
 					}
 					else
@@ -676,7 +676,7 @@ void Player::PlayerHit()
 				break;
 
 			}
-			else if (i == 10) // ブロックのX軸の範囲内にいなかった時
+			else if (i == 18) // ブロックのX軸の範囲内にいなかった時
 			{
 				// 落下処理させる
 				count += 1;
@@ -746,7 +746,7 @@ void Player::PlayerHit()
 						BlockNum = -1;
 					}*/
 					// 特定の足場を踏んでいるかどうか
-					if (BlockNum >= 9) {
+					if (BlockNum >= 17) {
 						quizflg = 1;
 					}
 					else
@@ -766,56 +766,56 @@ void Player::PlayerHit()
 		}
 		break;
 	case 3:
-		for (int i = 0; i < 11; i++)
+		for (int i = 0; i < 27; i++)
 		{
-			if (i > 8)
-			{
-				if (int((px + -1 * (Stage3::Stage3X)) == block->S3bloc[9].X2 && int(py2) > block->S3bloc[9].Y))
-				{
-					P_moveX = 3;
-					playerX += P_moveX;
-					NoHitBlockFlg = FALSE;
-					// 落下処理させる
-					count += 1;
-					Downflg = TRUE;
-					HitFlg = FALSE;
+			////if (i > 8)
+			////{
+			////	if (int((px + -1 * (Stage3::Stage3X)) == block->S3bloc[9].X2 && int(py2) > block->S3bloc[9].Y))
+			////	{
+			////		P_moveX = 3;
+			////		playerX += P_moveX;
+			////		NoHitBlockFlg = FALSE;
+			////		// 落下処理させる
+			////		count += 1;
+			////		Downflg = TRUE;
+			////		HitFlg = FALSE;
 
-					if (int(py2) > block->S3bloc[10].Y)
-					{
-						py2 = block->S3bloc[10].Y;
-					}
-				}
-			}
-			else
-			{
-				/* 処理ここから */
-				if (/*PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT) &&*/ int(px + -1 * (Stage3::Stage3X)) == block->S3bloc[i].X2 && int(py2) > block->S3bloc[i].Y)
-				{
-					P_moveX = 3;
-					playerX += P_moveX;
-					NoHitBlockFlg = FALSE;
-					// 落下処理させる
-					count += 1;
-					Downflg = TRUE;
-					HitFlg = FALSE;
+			////		if (int(py2) > block->S3bloc[10].Y)
+			////		{
+			////			py2 = block->S3bloc[10].Y;
+			////		}
+			////	}
+			////}
+			////else
+			////{
+			////	/* 処理ここから */
+			////	if (/*PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT) &&*/ int(px + -1 * (Stage3::Stage3X)) == block->S3bloc[i].X2 && int(py2) > block->S3bloc[i].Y)
+			////	{
+			////		P_moveX = 3;
+			////		playerX += P_moveX;
+			////		NoHitBlockFlg = FALSE;
+			////		// 落下処理させる
+			////		count += 1;
+			////		Downflg = TRUE;
+			////		HitFlg = FALSE;
 
-				}
-				else if (/*PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) &&*/ int(px2 + -1 * (Stage3::Stage3X)) == block->S3bloc[i].X && int(py2) > block->S3bloc[i].Y)
-				{
-					//playerX += 0;
-					P_moveX = -3;
-					playerX += P_moveX;
-					NoHitBlockFlg = FALSE;
-					// 落下処理させる
-					count += 1;
-					Downflg = TRUE;
-					HitFlg = FALSE;
-				}
-				else
-				{
-					NoHitBlockFlg = TRUE;
-				}
-			}
+			////	}
+			////	else if (/*PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) &&*/ int(px2 + -1 * (Stage3::Stage3X)) == block->S3bloc[i].X && int(py2) > block->S3bloc[i].Y)
+			////	{
+			////		//playerX += 0;
+			////		P_moveX = -3;
+			////		playerX += P_moveX;
+			////		NoHitBlockFlg = FALSE;
+			////		// 落下処理させる
+			////		count += 1;
+			////		Downflg = TRUE;
+			////		HitFlg = FALSE;
+			////	}
+			////	else
+			////	{
+			////		NoHitBlockFlg = TRUE;
+			////	}
+			////}
 			/* 処理ここまで */
 
 			if (int(px + -1 * (Stage3::Stage3X)) <= block->S3bloc[i].X2 && int(px2 + -1 * (Stage3::Stage3X)) >= block->S3bloc[i].X)
@@ -869,7 +869,7 @@ void Player::PlayerHit()
 				break;
 
 			}
-			else if (i == 10) // ブロックのX軸の範囲内にいなかった時
+			else if (i == 28) // ブロックのX軸の範囲内にいなかった時
 			{
 				// 落下処理させる
 				count += 1;
@@ -939,7 +939,7 @@ void Player::PlayerHit()
 						BlockNum = -1;
 					}*/
 					// 特定の足場を踏んでいるかどうか
-					if (BlockNum >= 9) {
+					if (BlockNum >= 27) {
 						quizflg = 1;
 					}
 					else
@@ -950,7 +950,7 @@ void Player::PlayerHit()
 
 				}
 			}
-			else if (i == 10)
+			else if (i == 28)
 			{
 				count += 1;
 				Downflg = TRUE;
