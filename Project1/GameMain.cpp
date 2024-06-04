@@ -5,12 +5,12 @@ int GameMain::NowStage;
 
 GameMain::GameMain()
 {
-	NowStage = 1;
 	player = new Player();
 	stage1 = new Stage1();
 	stage2 = new Stage2();
 	stage3 = new Stage3();
 	enemy = new Enemy();
+	NowStage = 1;
 }
 
 GameMain::~GameMain()
@@ -56,6 +56,7 @@ AbstractScene* GameMain::Update()
 		}
 		break;
 	case 2:
+	case 5:
 		/* Stage2の処理 */
 		NowStage = 2;
 		stage2->Update();
@@ -65,6 +66,7 @@ AbstractScene* GameMain::Update()
 		}
 		break;
 	case 3:
+	case 6:
 		/* Stage3の処理 */
 		NowStage = 3;
 		stage3->Update();
@@ -89,23 +91,17 @@ void GameMain::Draw() const
 {
 	switch (NowStage) {
 	case 1:
+	case 4:
 		stage1->Draw();
 		break;
 	case 2:
+	case 5:
 		/* Stage2の処理 */
 		stage2->Draw();
 		break;
 	case 3:
-		/* Stage3の処理 */
-		stage3->Draw();
-		break;
-	case 4:
-		stage1->Draw();
-		break;
-	case 5:
-		stage2->Draw();
-		break;
 	case 6:
+		/* Stage3の処理 */
 		stage3->Draw();
 		break;
 	}
