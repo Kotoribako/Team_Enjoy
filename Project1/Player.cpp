@@ -11,6 +11,7 @@ float Player::velocity;
 int   Player::MoveFlg;
 int   Player::quizflg;
 int   Player::Life;
+int   Player::Range;
 #define PLAYERSTARTX 220
 #define PLAYERSTARTY 430
 
@@ -26,6 +27,7 @@ Player::Player()
 	py = playerY - 15;
 	py2 = playerY + 15;
 
+	Range = 15;
 	P_FPS = 0;
 	velocity = 0.0f;
 	MoveFlg = FALSE;
@@ -264,7 +266,8 @@ void Player::Update()
 
 void Player::Draw()
 {
-	DrawBox(px, py, px2, py2, GetColor(0, 0,255 ), TRUE);
+	DrawBox(px, py, px2, py2, GetColor(0, 0,255 ), FALSE);
+	DrawCircle(playerX, playerY, Range, GetColor(255, 0, 0),TRUE);
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
 	DrawFormatString(0, 80, GetColor(0, 0, 0), "Life:%d", Life);
 	DrawFormatString(100, 0, GetColor(0, 255, 0), "playerX:%f  playerY:%f", playerX, playerY);
