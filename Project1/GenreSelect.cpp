@@ -13,6 +13,11 @@ int GenreSelect::Selectgenre;
 
 GenreSelect::GenreSelect()
 {
+	//SE読み込み
+	((CursorSE = LoadSoundMem("sound/SE/cursor_SE.wav")) == -1);
+	//SE読み込み
+	((MenuSE = LoadSoundMem("sound/SE/kettei_SE.wav")) == -1);
+
 	now_menu = static_cast<int>(SELECT::ANIMEGAME);
 	input_margin = 0;
 	GetRand(2);
@@ -37,11 +42,13 @@ AbstractScene* GenreSelect::Update()
 
 		if (PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_UP))
 		{
+			PlaySoundMem(CursorSE, DX_PLAYTYPE_BACK, TRUE);
 		now_menu = (now_menu - 1 + static_cast<int>(SELECT::SELECT_SIZE)) % static_cast<int>(SELECT::SELECT_SIZE);
 		Genre1 -= 1;			
 		}
 		if (/*stick_y < 0 ||*/ PAD_INPUT::OnButton(XINPUT_BUTTON_DPAD_DOWN))
 		{
+			PlaySoundMem(CursorSE, DX_PLAYTYPE_BACK, TRUE);
 			now_menu = (now_menu + 1) % static_cast<int>(SELECT::SELECT_SIZE);
 			Genre1 += 1;
 		}
@@ -54,18 +61,22 @@ AbstractScene* GenreSelect::Update()
 		switch (current_select)
 		{
 		case SELECT::ANIMEGAME:
+			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
 			Selectgenre = 0;
 			return new GameMain();
 			break;
 		case SELECT::WORDEXCHANGE:
+			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
 			Selectgenre = 1;
 			return new GameMain();
 			break;
 		case SELECT::GREATMAN:
+			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
 			Selectgenre = 2;
 			return new GameMain();
 			break;
 		case SELECT::RANDOMSELECT:
+			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
 			Selectgenre = GetRand(2);
 			return new GameMain();
 			break;

@@ -32,6 +32,9 @@ private:
 
 	int Enter; // ジャンル決定
 
+	int MenuSE;         //決定音
+	int CursorSE;       //カーソル移動音
+
 	int CauserX; //ジャンル選択用のカーソルX
 	int CauserY; //ジャンル選択用のカーソルY
 	int Causer;

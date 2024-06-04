@@ -50,7 +50,7 @@ Stage3::Stage3()
 	Stage3X = 0.0; // 最初の画像のX座標を0にする
 	StopStage3Xflg = FALSE;
 	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
-	GameMain::NowStage = 1;
+	GameMain::NowStage = 3;
 
 	S3DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }
@@ -191,10 +191,15 @@ void Stage3::ChangeStage()
 					//BGM削除
 					DeleteSoundMem(Stage3BGM);
 					StopSoundMem(Stage3BGM);
+
 					GameMain::NowStage = 2; // 次のステージへ進む。
 				}
 				else
 				{
+					//BGM削除
+					DeleteSoundMem(Stage3BGM);
+					StopSoundMem(Stage3BGM);
+
 					GameMain::NowStage = 6;
 				}
 				S3DecisionToAnswerFlg = TRUE; // 回答を決定した状態にする
