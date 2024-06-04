@@ -102,6 +102,12 @@ void GameMain::Draw() const
 	case 4:
 		stage1->Draw();
 		break;
+	case 5:
+		stage2->Draw();
+		break;
+	case 6:
+		stage3->Draw();
+		break;
 	}
 	player->Draw();
 	enemy->Draw();
