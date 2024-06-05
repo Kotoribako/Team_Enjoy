@@ -8,6 +8,7 @@ float Enemy::ex;
 float Enemy::ex2;
 float Enemy::ey;
 float Enemy::ey2;
+int   Enemy::Range;
 
 Enemy::Enemy()
 {
@@ -16,35 +17,24 @@ Enemy::Enemy()
 	block = new Block();
 	player = new Player();
 	countup = 0;
-	switch (GameMain::NowStage)
-	{
-	case 1:
-		enemyX = 580;
-		enemyY = 400;
-		break;
-	case 2:
-		enemyX = Stage2::Stage2X + 580;
-		enemyY = 400;
-		break;
-	case 3:
-		enemyX = Stage3::Stage3X + 580;
-		enemyY = 400;
-	}
-	
+	enemyX = 580;
+	enemyY = 406;
 	moveX = 0;
 	direction = 0;
 	speed = 30;
 	Hitflg = FALSE;
+	Range = 15;
 }
 
 void Enemy::Update()
 {
-	
+	enemyX2 = enemyX + 30;
+	enemyY2 = enemyY + 30;
 
-	ex = enemyX - 20;
-	ex2 = enemyX + 20;
-	ey = enemyY - 20;
-	ey2 = enemyY + 20;
+	ex = enemyX - 15;
+	ex2 = enemyX + 15;
+	ey = enemyY - 15;
+	ey2 = enemyY + 15;
 
 
 
@@ -56,12 +46,12 @@ void Enemy::Update()
 		
 		if (direction == 0)
 		{
-			moveX += speed;
+			enemyX += speed;
 
 		}
 		else if (direction == 1)
 		{
-			moveX -= speed;
+			enemyX -= speed;
 		}
 		
 		count = 0;
@@ -85,42 +75,29 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	DrawFormatString(200, 200, GetColor(0, 0, 255), "countup:%d", countup);
-
-	// 当たり判定の可視化
-	DrawBox(ex + moveX + Stage1::Stage1X, ey - 15, ex2 + moveX + Stage1::Stage1X, ey2 - 15, GetColor(255, 0, 0), ex);
-	DrawBox(ex - 15 + moveX + Stage1::Stage1X, ey, ex2 - 15 + moveX + Stage1::Stage1X, ey2, GetColor(255, 255, 0), ex);
-	DrawBox(ex + moveX + Stage1::Stage1X, ey + 15, ex2 + moveX + Stage1::Stage1X, ey2 + 15, GetColor(0, 0, 255), ex);
-	DrawBox(ex + moveX + Stage1::Stage1X, ey, ex2 +15 + moveX + Stage1::Stage1X, ey2 , GetColor(255, 0, 255), ex);
-	
-	// ステージに応じて、場所を変更する
+	DrawFormatString(200, 200, GetColor(0, 0, 255), "ex:%f ex2:%f ey:%f ey2:%f", ex,ex2,ey,ey2);
+	//DrawFormatString(200, 200, GetColor(0, 0, 255), "countup:%d", countup);
 	switch (GameMain::NowStage)
 	{
 	case 1:
-		DrawBox(ex + moveX + Stage1::Stage1X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 0, 0), TRUE);
+		DrawBox(ex + /*moveX +*/ Stage1::Stage1X, ey, ex2 + /*moveX +*/ Stage1::Stage1X, ey2, GetColor(0, 255, 0), FALSE);
+		DrawCircle(enemyX + Stage1::Stage1X, enemyY, Range, GetColor(0, 255, 0), TRUE);
 		break;
 	case 2:
-		DrawBox(ex + moveX + Stage2::Stage2X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 0, 0), TRUE);
+		DrawBox(ex + /*moveX +*/ Stage2::Stage2X, ey, ex2 +/* moveX +*/ Stage2::Stage2X, ey2, GetColor(0, 255, 0), FALSE);
+		DrawCircle(enemyX + Stage2::Stage2X, enemyY, Range, GetColor(0, 255, 0), TRUE);
 		break;
 	case 3:
-		DrawBox(ex + moveX + Stage3::Stage3X, ey, ex2 + moveX + Stage1::Stage1X, ey2, GetColor(0, 0, 0), TRUE);
+		DrawBox(ex + /*moveX +*/ Stage3::Stage3X, ey, ex2 + /*moveX +*/ Stage3::Stage3X, ey2, GetColor(0, 255, 0), FALSE);
+		DrawCircle(enemyX + Stage3::Stage3X, enemyY, Range, GetColor(0, 255, 0), TRUE);
 		break;
 	}
 	
-	// 敵にプレイヤーが当たったあとの処理
-	if (Hitflg == TRUE )
+	
+	if (Hitflg == TRUE)
 	{
 		DrawFormatString(200, 250, GetColor(0, 0, 255), "Hit!!");
-
-		Player::Life -= 1;
-
-		if (Player::Life <= 0)
-		{
-			//// タイトルかゲームオーバーに戻す
-			//new return GameOver;
-		}
 	}
-	
 }
 
 
@@ -147,25 +124,34 @@ void Enemy::Enemyhit()
 	//		Hitflg = TRUE; 
 	//	
 	//	}
-	//} 
-	 
-	
+	//}
 
-	// 当たり判定	
-	/*if (int(player->GetLocationX1()) >= ex2 && ex >= int(player->GetLocationX2()) && int(player->GetLocationY1()) >= ey2 && ey >= int(player->GetLocationY2()))
+	//if (player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY2()*/ ||
+	//	player->GetLocationX1() < GetLocationX2() && player->GetLocationX2() > GetLocationX() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY2() */||
+	//	player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX2() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY()*/ ||
+	
+	//	player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX2() /*&& player->GetLocationY1() < GetLocationY2() && player->GetLocationY2() > GetLocationY2()*/)
+	int x = player->playerX - enemyX;
+	int y = player->playerY - enemyY;
+	int Hitrange = player->Range + Range;
+	if(x*x+y*y < Hitrange*Hitrange)
 	{
-		Hitflg = TRUE;
+
+		/*if ((player->GetLocationY1() <= ey  && ey2 <= player->GetLocationY2())) {*/
+			Hitflg = TRUE;
+			Player::Life -= 1;
+			Player::playerX = 220;
+			Player::playerY = 430;
+			//}
 	}
 	else {
 		Hitflg = FALSE;
-	}*/
 
-	if ((player->GetLocationX1() > ex && player->GetLocationX1() < ex + ex2) ||
-		(ex > player->GetLocationX1() && ex < player->GetLocationX1() + player->GetLocationX2()) &&
-		((player->GetLocationY1() > ey && player->GetLocationY1() < ey + ey2) ||
-			(ey > player->GetLocationY1() && ey < player->GetLocationY1() + player->GetLocationY2())))
+	
+	}
+	if (Player::Life <= 0)
 	{
-		Hitflg = TRUE;
+		// タイトルかゲームオーバーに戻す
 	}
 }
 
