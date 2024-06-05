@@ -22,7 +22,7 @@ Stage3::Stage3()
 	//アニメゲームのクイズ情報
 	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame4.png");
 	quiz[0].answer[0] = 0; //選択肢１
-	quiz[0].answer[1] = 2; //選択肢２
+	quiz[0].answer[1] = 1; //選択肢２
 	quiz[0].answer[2] = 0; //選択肢３
 	quiz[0].answer[3] = 0; //選択肢４
 	//偉人のクイズ情報
