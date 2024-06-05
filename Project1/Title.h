@@ -11,6 +11,8 @@ enum class TITLE_MENU
     TITLE_SIZE,
 };
 
+
+
 class Title : public AbstractScene
 {
 private:
