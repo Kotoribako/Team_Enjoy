@@ -17,13 +17,14 @@ Enemy::Enemy()
 	block = new Block();
 	player = new Player();
 	countup = 0;
-	enemyX = 580;
-	enemyY = 406;
+	enemyX = block->S1bloc[4].X2 - 15;
+	enemyY = block->S1bloc[4].Y - 15;
 	moveX = 0;
 	direction = 0;
 	speed = 30;
 	Hitflg = FALSE;
 	Range = 15;
+
 }
 
 void Enemy::Update()
@@ -94,65 +95,58 @@ void Enemy::Draw()
 	}
 	
 	
-	if (Hitflg == TRUE)
-	{
-		DrawFormatString(200, 250, GetColor(0, 0, 255), "Hit!!");
-	}
+	//if (Hitflg == TRUE)
+	//{
+	//	DrawFormatString(200, 250, GetColor(0, 0, 255), "Hit!!");
+	//}
 }
 
 
 
 void Enemy::Enemyhit()
 {
-	//if (player->GetLocationX2() >= GetLocationX() + 15 && player->GetLocationX1() >= GetLocationX2()) {
-	//	Hitflg = TRUE;
-	//	if (player->GetLocationY1() <= GetLocationY() + 10 && GetLocationY() <= player->GetLocationY1()) {
-	//		//当たった処理
-	//		Hitflg = TRUE;
-	//	}
-	//}
-	//else
-	//{
-	//	Hitflg = FALSE;
-	//}
-
-	//// プレイヤー画像と敵画像で当たり判定
-	//if (player->GetLocationX1() + player->GetLocationX2() >= ex && player->GetLocationX1() <= player->GetLocationX1() + player->GetLocationX2())
-	//{
-	//	if (player->GetLocationY1() + player->GetLocationY2() >= ey && player->GetLocationY1() <= ey + ey2)
-	//	{
-	//		Hitflg = TRUE; 
-	//	
-	//	}
-	//}
-
-	//if (player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY2()*/ ||
-	//	player->GetLocationX1() < GetLocationX2() && player->GetLocationX2() > GetLocationX() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY2() */||
-	//	player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX2() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY()*/ ||
-	
-	//	player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX2() /*&& player->GetLocationY1() < GetLocationY2() && player->GetLocationY2() > GetLocationY2()*/)
 	int x = player->playerX - enemyX;
 	int y = player->playerY - enemyY;
 	int Hitrange = player->Range + Range;
 	if(x*x+y*y < Hitrange*Hitrange)
 	{
 
-		/*if ((player->GetLocationY1() <= ey  && ey2 <= player->GetLocationY2())) {*/
 			Hitflg = TRUE;
 			Player::Life -= 1;
 			Player::playerX = 220;
 			Player::playerY = 430;
-			//}
 	}
 	else {
 		Hitflg = FALSE;
 
 	
 	}
-	if (Player::Life <= 0)
+}
+
+void Enemy::Init()
+{
+	img = 0; //仮
+	count = 0;
+	block = new Block();
+	player = new Player();
+	countup = 0;
+	switch (GameMain::NowStage)
 	{
-		// タイトルかゲームオーバーに戻す
+	case 1:
+		enemyX = block->S1bloc[4].X2 - 15;
+		enemyY = block->S1bloc[4].Y - 15;
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
 	}
+	
+	moveX = 0;
+	direction = 0;
+	speed = 30;
+	Hitflg = FALSE;
+	Range = 15;
 }
 
 	

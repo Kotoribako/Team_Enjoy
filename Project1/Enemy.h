@@ -26,7 +26,7 @@ public:
 	
 	static float ex, ex2; // 敵の左座標(ex)と右座標を取る(ex2) 
 	static float  ey, ey2;// 敵の上座標(ey)と下座標を取る(ey2 b)
-	static 	int Range;
+	static int  Range;
 
 
 	float GetLocationX() { return ex;}  // 左側
@@ -39,5 +39,6 @@ public:
 	void Update();
 	void Draw();
 	void Enemyhit();
+	void Init();
 };
 
