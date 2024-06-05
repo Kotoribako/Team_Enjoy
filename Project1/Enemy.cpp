@@ -116,7 +116,8 @@ void Enemy::Draw()
 
 		if (Player::Life <= 0)
 		{
-			// タイトルかゲームオーバーに戻す
+			//// タイトルかゲームオーバーに戻す
+			//new return GameOver;
 		}
 	}
 	
