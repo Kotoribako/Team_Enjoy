@@ -34,16 +34,10 @@ private:
     int input_margin;   //
 
 public:
-    //
     Title();
-
-    //
     ~Title();
 
-    //
     AbstractScene* Update() override;
-
-    //
     void Draw() const override;
 };
 

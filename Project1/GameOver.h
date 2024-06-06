@@ -1,13 +1,13 @@
 #pragma once
+#pragma once
 #include "AbstractScene.h"
 
-class Clear : public AbstractScene
+class GameOver : public AbstractScene
 {
 private:
 	int BackImg;
-	int ClearImg;
+	int GameOverImg;
 	int ModoruImg;
-	
 
 	int S_FPS;
 	int S_FPS1;
@@ -15,11 +15,10 @@ private:
 	int S_Seconas1;
 
 public:
-	Clear();
-	~Clear();
-	//
+	GameOver();
+	~GameOver();
+	
 	AbstractScene* Update() override;
 
-	//
 	void Draw() const override;
 };

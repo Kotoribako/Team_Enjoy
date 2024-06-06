@@ -1,4 +1,4 @@
-#include "Clear.h"
+#include "GameOver.h"
 #include <DxLib.h>
 #include "Title.h"
 #include "PadInput.h"
@@ -6,12 +6,12 @@
 #include"GameMain.h"
 #include"GenreSelect.h"
 
-Clear::Clear()
+GameOver::GameOver()
 {
 	//タイトル画像読み込み
 	BackImg = LoadGraph("image/BackGround02.png");
-	ClearImg = LoadGraph("image/Clear_Img.png");
-	ModoruImg = LoadGraph("image/modoru_Img.png");
+	GameOverImg = LoadGraph("image/GameOver2.png");
+	ModoruImg = LoadGraph("image/GameOver_Modoru.png");
 
 	S_FPS = 0;
 	S_FPS1 = 0;
@@ -19,12 +19,12 @@ Clear::Clear()
 	S_Seconas1 = 0;
 }
 
-Clear::~Clear()
+GameOver::~GameOver()
 {
 
 }
 
-AbstractScene* Clear::Update()
+AbstractScene* GameOver::Update()
 {
 	S_FPS++;
 	S_FPS1++;
@@ -51,7 +51,7 @@ AbstractScene* Clear::Update()
 	return this;
 }
 
-void Clear::Draw() const
+void GameOver::Draw() const
 {
 	//タイトル画像表示
 	DrawGraph(0, 0, BackImg, TRUE);
@@ -62,11 +62,11 @@ void Clear::Draw() const
 
 	//画像表示
 	if (S_Seconas >= 3) {
-		DrawGraph(0, 0, ClearImg, TRUE);
+		DrawGraph(0, 0, GameOverImg, TRUE);
 	}
 
 	//画像表示
-	if (S_Seconas1 >= 3) {
+	/*if (S_Seconas1 >= 3) {
 		DrawGraph(0, 230, ModoruImg, TRUE);
-	}
+	}*/
 }
