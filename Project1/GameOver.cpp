@@ -10,7 +10,7 @@ GameOver::GameOver()
 {
 	//タイトル画像読み込み
 	BackImg = LoadGraph("image/BackGround02.png");
-	GameOverImg = LoadGraph("image/GameOver2.png");
+	GameOverImg = LoadGraph("image/GameOver.png");
 	ModoruImg = LoadGraph("image/GameOver_Modoru.png");
 
 	S_FPS = 0;
@@ -66,7 +66,7 @@ void GameOver::Draw() const
 	}
 
 	//画像表示
-	/*if (S_Seconas1 >= 3) {
+	if (S_Seconas1 >= 3) {
 		DrawGraph(0, 230, ModoruImg, TRUE);
-	}*/
+	}
 }
