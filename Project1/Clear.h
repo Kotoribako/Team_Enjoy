@@ -4,11 +4,15 @@
 class Clear : public AbstractScene
 {
 private:
-	int ClearImg;
 	int BackImg;
+	int ClearImg;
+	int ModoruImg;
+	
 
 	int S_FPS;
+	int S_FPS1;
 	int S_Seconas;
+	int S_Seconas1;
 
 public:
 	Clear();
@@ -18,6 +22,4 @@ public:
 
 	//
 	void Draw() const override;
-
-
 };
