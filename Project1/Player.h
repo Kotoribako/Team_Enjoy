@@ -17,8 +17,10 @@ private:
 	float P_moveX;
 	float PlayerLocationY;
 	Block* block;
-	float px = playerX - 15, px2 = playerX + 15;
-	float py = playerY - 15, py2 = playerY + 15;
+	float px = playerX - 15;
+	float px2 = playerX + 15;
+	float py = playerY - 15;
+	float py2 = playerY + 15;
 	int HitFlg;  // 地面に足がついているか
 	int BlockNum;
 	int NoHitBlockFlg;
@@ -35,6 +37,7 @@ public:
 	static int quizflg;
 	static int MoveFlg; // スクロール終了後移動する
 	static int Life;  //残機
+	static 	int Range;
 
 	Player();
 	~Player();
@@ -43,6 +46,8 @@ public:
 	void Draw();
 	void Move();  //プレイヤー動き（ジャンプ含む）
 	void PlayerHit(); //当たり判定のためのプレイヤー座標
+
+	int BlockHitY(); // Y軸の別の当たり判定をやってみる
 
 	float GetLocationX1() { return px; } // プレイヤーの左端の座標を取る。
 	float GetLocationY1() { return py; } // プレイヤーの頭上の座標を取る。

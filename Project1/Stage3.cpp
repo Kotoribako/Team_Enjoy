@@ -22,7 +22,7 @@ Stage3::Stage3()
 	//アニメゲームのクイズ情報
 	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame4.png");
 	quiz[0].answer[0] = 0; //選択肢１
-	quiz[0].answer[1] = 2; //選択肢２
+	quiz[0].answer[1] = 1; //選択肢２
 	quiz[0].answer[2] = 0; //選択肢３
 	quiz[0].answer[3] = 0; //選択肢４
 	//偉人のクイズ情報
@@ -50,7 +50,7 @@ Stage3::Stage3()
 	Stage3X = 0.0; // 最初の画像のX座標を0にする
 	StopStage3Xflg = FALSE;
 	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
-	GameMain::NowStage = 1;
+	GameMain::NowStage = 3;
 
 	S3DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }
