@@ -48,6 +48,7 @@ public:
 	void PlayerHit(); //当たり判定のためのプレイヤー座標
 
 	int BlockHitY(); // Y軸の別の当たり判定をやってみる
+	int BlockHitX(); // X軸の別の当たり判定をやってみる(0.X軸ヒットなし 1.ブロックの右側とプレイヤーの左側がヒットしたとき 2.ブロックの左側とプレイヤーの右側がヒットしたとき)
 
 	float GetLocationX1() { return px; } // プレイヤーの左端の座標を取る。
 	float GetLocationY1() { return py; } // プレイヤーの頭上の座標を取る。
