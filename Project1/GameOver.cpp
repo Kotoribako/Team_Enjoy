@@ -34,7 +34,7 @@ AbstractScene* GameOver::Update()
 		S_FPS = 0;
 		S_Seconas++;
 	}
-
+	//FPS1
 	if (S_FPS1 > 30) {
 		S_FPS1 = 0;
 		S_Seconas1++;
@@ -46,6 +46,9 @@ AbstractScene* GameOver::Update()
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A))
 	{
 		return new Title();
+	}
+	else if (PAD_INPUT::OnButton(XINPUT_BUTTON_B)) {
+		return new GenreSelect();
 	}
 
 	return this;
@@ -67,6 +70,6 @@ void GameOver::Draw() const
 
 	//画像表示
 	if (S_Seconas1 >= 3) {
-		DrawGraph(0, 230, ModoruImg, TRUE);
+			DrawGraph(0, 230, ModoruImg, TRUE);
 	}
 }
