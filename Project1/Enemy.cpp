@@ -131,7 +131,7 @@ void Enemy::Enemyhit()
 	//	player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX2() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY()*/ ||
 	
 	//	player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX2() /*&& player->GetLocationY1() < GetLocationY2() && player->GetLocationY2() > GetLocationY2()*/)
-	int x = player->playerX - enemyX;
+	int x = player->playerX - enemyX - Stage1::Stage1X;
 	int y = player->playerY - enemyY;
 	int Hitrange = player->Range + Range;
 	if(x*x+y*y < Hitrange*Hitrange)

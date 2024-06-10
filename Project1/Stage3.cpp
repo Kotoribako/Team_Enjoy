@@ -4,6 +4,7 @@
 #include<DxLib.h>
 #include"GenreSelect.h"
 #include"GameMain.h"
+#include "Clear.h"
 
 int Stage3::StopStage3Xflg;
 float Stage3::Stage3X;
@@ -192,7 +193,7 @@ void Stage3::ChangeStage()
 					DeleteSoundMem(Stage3BGM);
 					StopSoundMem(Stage3BGM);
 
-					GameMain::NowStage = 2; // 次のステージへ進む。
+					GameMain::NowStage = 10; // 次のステージへ進む。
 				}
 				else
 				{
