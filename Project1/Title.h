@@ -11,6 +11,8 @@ enum class TITLE_MENU
     TITLE_SIZE,
 };
 
+
+
 class Title : public AbstractScene
 {
 private:
@@ -32,16 +34,10 @@ private:
     int input_margin;   //
 
 public:
-    //
     Title();
-
-    //
     ~Title();
 
-    //
     AbstractScene* Update() override;
-
-    //
     void Draw() const override;
 };
 

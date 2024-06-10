@@ -13,6 +13,11 @@ int GenreSelect::Selectgenre;
 
 GenreSelect::GenreSelect()
 {
+	BackGround = LoadGraph("image/BackGround02.png", TRUE);
+	//タイトルBGM読み込み
+	((TitleBGM = LoadSoundMem("sound/BGM/Title_BGM.wav")) == -1);
+	//BGM音量
+	ChangeVolumeSoundMem(200, TitleBGM);
 	//SE読み込み
 	((CursorSE = LoadSoundMem("sound/SE/cursor_SE.wav")) == -1);
 	//SE読み込み
@@ -23,12 +28,26 @@ GenreSelect::GenreSelect()
 	GetRand(2);
 	MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
 	  
-	BackGround = LoadGraph("image/BackGround02.png", TRUE);
+	CauserX = 0;
+	CauserY = 0;
+	Causer = 0;
 }
 
+GenreSelect::~GenreSelect()
+{
+	//BGM削除
+	DeleteSoundMem(TitleBGM);
+	StopSoundMem(TitleBGM);
+}
 
 AbstractScene* GenreSelect::Update()
 {
+	//BGM再生（ループ）
+	if (CheckSoundMem(TitleBGM) == 0)
+	{
+		PlaySoundMem(TitleBGM, DX_PLAYTYPE_LOOP, TRUE);
+	}
+
 	const int max_input_margin = 15;
 	const int stick_sensitivity = 20000;
 
