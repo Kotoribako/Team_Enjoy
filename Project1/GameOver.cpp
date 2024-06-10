@@ -67,9 +67,8 @@ void GameOver::Draw() const
 	if (S_Seconas >= 3) {
 		DrawGraph(0, 0, GameOverImg, TRUE);
 	}
-
 	//画像表示
 	if (S_Seconas1 >= 3) {
-			DrawGraph(0, 230, ModoruImg, TRUE);
+		DrawGraph(0, 230, ModoruImg, TRUE);
 	}
 }
