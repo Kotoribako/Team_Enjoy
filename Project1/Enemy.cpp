@@ -4,6 +4,7 @@
 #include"Stage2.h"
 #include"Stage3.h"
 #include"GameMain.h"
+#include"math.h"
 float Enemy::ex;
 float Enemy::ex2;
 float Enemy::ey;
@@ -12,7 +13,7 @@ int   Enemy::Range;
 
 Enemy::Enemy()
 {
-	img = 0; //仮
+	if (LoadDivGraph("image/Dummy/enemy.png", 2, 2, 1, 64, 64, img)) {};
 	count = 0;
 	block = new Block();
 	player = new Player();
@@ -48,7 +49,6 @@ void Enemy::Update()
 		if (direction == 0)
 		{
 			enemyX += speed;
-
 		}
 		else if (direction == 1)
 		{
@@ -81,34 +81,36 @@ void Enemy::Draw()
 	switch (GameMain::NowStage)
 	{
 	case 1:
+		DrawGraph(enemyX + Stage1::Stage1X -30, enemyY - 30,img[0], TRUE);
 		DrawBox(ex + /*moveX +*/ Stage1::Stage1X, ey, ex2 + /*moveX +*/ Stage1::Stage1X, ey2, GetColor(0, 255, 0), FALSE);
-		DrawCircle(enemyX + Stage1::Stage1X, enemyY, Range, GetColor(0, 255, 0), TRUE);
+		DrawCircle(enemyX + Stage1::Stage1X, enemyY, Range, GetColor(0, 255, 0), FALSE);
 		break;
 	case 2:
 		DrawBox(ex + /*moveX +*/ Stage2::Stage2X, ey, ex2 +/* moveX +*/ Stage2::Stage2X, ey2, GetColor(0, 255, 0), FALSE);
-		DrawCircle(enemyX + Stage2::Stage2X, enemyY, Range, GetColor(0, 255, 0), TRUE);
+		DrawCircle(enemyX + Stage2::Stage2X, enemyY, Range, GetColor(0, 255, 0), FALSE);
 		break;
 	case 3:
 		DrawBox(ex + /*moveX +*/ Stage3::Stage3X, ey, ex2 + /*moveX +*/ Stage3::Stage3X, ey2, GetColor(0, 255, 0), FALSE);
-		DrawCircle(enemyX + Stage3::Stage3X, enemyY, Range, GetColor(0, 255, 0), TRUE);
+		DrawCircle(enemyX + Stage3::Stage3X, enemyY, Range, GetColor(0, 255, 0), FALSE);
 		break;
 	}
 	
 	
-	//if (Hitflg == TRUE)
-	//{
-	//	DrawFormatString(200, 250, GetColor(0, 0, 255), "Hit!!");
-	//}
+	if (Hitflg == TRUE)
+	{
+		DrawFormatString(enemyX, enemyY - 30, GetColor(0, 0, 255), "Hit!!");
+	}
 }
 
 
 
 void Enemy::Enemyhit()
 {
-	int x = player->playerX - enemyX;
-	int y = player->playerY - enemyY;
-	int Hitrange = player->Range + Range;
-	if(x*x+y*y < Hitrange*Hitrange)
+	float a = player->GetLocationCenterX() - enemyX - Stage1::Stage1X;
+	float b = player->GetLocationCenterY() - enemyY;
+	float c = a*a + b*b;
+	float Hitrange = (player->Range + Range) * (player->Range * Range)/4;
+	if( c <= Hitrange)
 	{
 
 			Hitflg = TRUE;
@@ -116,30 +118,9 @@ void Enemy::Enemyhit()
 			Player::playerX = 220;
 			Player::playerY = 430;
 	}
-	else {
-		Hitflg = FALSE;
-
-	
-	}
-}
-
-void Enemy::Init()
-{
-	img = 0; //仮
-	count = 0;
-	block = new Block();
-	player = new Player();
-	countup = 0;
-	switch (GameMain::NowStage)
+	else
 	{
-	case 1:
-		enemyX = block->S1bloc[4].X2 - 15;
-		enemyY = block->S1bloc[4].Y - 15;
-		break;
-	case 2:
-		break;
-	case 3:
-		break;
+		Hitflg = FALSE;
 	}
 	
 	moveX = 0;

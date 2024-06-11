@@ -21,7 +21,9 @@ Player::Player()
 
 	playerX = PLAYERSTARTX;
 	playerY = PLAYERSTARTY;
-	
+
+	if (LoadDivGraph("image/Dummy/player.png", 3, 3, 1, 64, 64, image)) {};
+	P_img = image[0];
 	px = playerX - 15;
 	px2 = playerX + 15;
 	py = playerY - 15;
@@ -34,9 +36,12 @@ Player::Player()
 	standflg = 1;
 
 	HitFlg = FALSE;
+	Animflg = 0;
+	Rightflg = 0;
+	Leftflg = 0;
+
 
 	NoHitBlockFlg = TRUE;
-
 	Life = 3;
 
 	//switch (GameMain::NowStage)
@@ -178,6 +183,14 @@ void Player::Update()
 	}
 
 	Move();
+	if (Animflg == 1 /*&& Moveflg == 0*/)
+	{
+		PlayerAnim();
+	}
+	/*else
+	{
+		P_img = image[0];
+	}*/
 	px = playerX - 15;
 	px2 = playerX + 15;
 	py = playerY - 15;
@@ -215,17 +228,34 @@ void Player::Update()
 		playerX = PLAYERSTARTX;
 		playerY = PLAYERSTARTY;
 	}
+	if (Rightflg == 0 && Leftflg == 0 && Turnflg == 0)
+	{
+		P_img = image[0];
+	}
 }
 
 void Player::Draw()
 {
+	if (Turnflg == 0) {
+		DrawGraph(playerX - 30, playerY - 50, P_img, TRUE);
+	}
 	DrawBox(px, py, px2, py2, GetColor(0, 0,255 ), FALSE);
-	DrawCircle(playerX, playerY, Range, GetColor(255, 0, 0),TRUE);
-	DrawFormatString(0, 50, GetColor(0, 0, 0), "count:%d",count);
-	DrawFormatString(0, 80, GetColor(0, 0, 0), "Life:%d", Life);
+	DrawCircle(playerX, playerY, Range, GetColor(255, 0, 0),FALSE);
+
+	DrawBox(px, py-30, px2, py2-30, GetColor(0, 0, 255), FALSE);
+	DrawCircle(playerX, playerY-30, Range, GetColor(255, 0, 0), FALSE);
+
+	if (Turnflg == 1)
+	{
+		DrawTurnGraph(playerX - 30, playerY - 50, P_img, TRUE);
+	}
+
+	DrawFormatString(0, 50, GetColor(0, 0, 0), "Animflg:%d", Animflg);
+	DrawFormatString(0, 80, GetColor(0, 0, 0), "Right:%d",Rightflg );
+	DrawFormatString(0, 110, GetColor(0, 0, 0), "Left:%d", Leftflg);
 	DrawFormatString(100, 0, GetColor(0, 255, 0), "playerX:%f  playerY:%f", playerX, playerY);
 	//DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
-	DrawFormatString(0, 120, GetColor(0, 0, 0), "BlockNum:%d", BlockNum);
+	//DrawFormatString(0, 120, GetColor(0, 0, 0), "BlockNum:%d", BlockNum);
 	for (int i = 0; i < Life; i++)
 	{
 		DrawBox(100 + 50 * i, 100, 130 + 50 * i, 130, GetColor(255, 0, 0), TRUE);
@@ -272,15 +302,39 @@ void Player::Move()
 		input_margin = 0;
 	}
 
-	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT) /*&& NoHitBlockFlg == TRUE*/)
+	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT)/*&& NoHitBlockFlg == TRUE*/)
 	{
+		Animflg = 1;
+		Turnflg = 1;
+		Leftflg = 1;
 		P_moveX = -3;
 		playerX += P_moveX;
 	}
+	else
+	{
+		Leftflg = 0;
+		Turnflg = 0;
+		//Animflg = 0;
+		//P_img = image[0];
+	}
 	if (PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_RIGHT) /*&& NoHitBlockFlg == TRUE*/)
 	{
+		Animflg = 1;
+		Turnflg = 0;
+		Rightflg = 1;
 		P_moveX = 3;
-		playerX += P_moveX;
+		//playerX += P_moveX;
+		playerX += 3;
+	}
+	else {
+		Rightflg = 0;
+	}
+	if(Rightflg == 0 && Leftflg == 0)
+	{
+		Animflg = 0;
+		//Moveflg = 0;
+		//P_img = image[0];
+
 	}
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && Jumpflg == FALSE /*&& NoHitBlockFlg == TRUE*/)
 	{
@@ -329,7 +383,6 @@ void Player::Move()
 	//	playerY = 640;
 	//}
 }
-
 void Player::PlayerHit()
 {
 	float sy = 0.0f;
@@ -920,6 +973,36 @@ void Player::PlayerHit()
 	}
 
 }
+
+void Player::PlayerAnim()
+{
+	if (P_FPS % 20 == 0 || P_FPS % 20 == 1 || P_FPS % 20 == 2 || P_FPS % 20 == 3 || P_FPS % 20 == 4)
+	{
+		P_img = image[1];
+	}
+	else if (P_FPS % 20 == 5 || P_FPS % 20 == 6 || P_FPS % 20 == 7 || P_FPS % 20 == 8 || P_FPS % 20 == 9) {
+		P_img = image[2];
+	}
+	else if (P_FPS % 20 == 10 || P_FPS % 20 == 11 || P_FPS % 20 == 12 || P_FPS % 20 == 13 || P_FPS % 20 == 14) {
+		P_img = image[1];
+	}
+	else if (P_FPS % 20 == 15 || P_FPS % 20 == 16 || P_FPS % 20 == 17 || P_FPS % 20 == 18 || P_FPS % 20 == 19) {
+		P_img = image[2];
+	}
+	/*else
+	{
+		if (P_FPS % 15 == 0 || P_FPS % 15 == 1 || P_FPS % 15 == 2 || P_FPS % 15 == 3 || P_FPS % 15 == 4) {
+			P_img = image[0];
+		}
+		else if (P_FPS % 15 == 5 || P_FPS % 15 == 6 || P_FPS % 15 == 7 || P_FPS % 15 == 8 || P_FPS % 15 == 9) {
+			P_img = image[1];
+		}
+		else if (P_FPS % 15 == 10 || P_FPS % 15 == 11 || P_FPS % 15 == 12 || P_FPS % 15 == 13 || P_FPS % 15 == 14) {
+			P_img = image[2];
+		}
+	}*/
+}
+
 
 int Player::BlockHitY()
 {

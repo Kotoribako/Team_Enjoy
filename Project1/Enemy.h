@@ -7,10 +7,10 @@ private:
 
 	
 
-	int img;
+	int img[2];
 	int count;
 	bool Hitflg;
-	int speed;
+	float speed;
 	
 	int countup;
 	int moveX;
