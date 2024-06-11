@@ -133,15 +133,13 @@ void Enemy::Enemyhit()
 	//	}
 	//}
 
-	//if (player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY2()*/ ||
-	//	player->GetLocationX1() < GetLocationX2() && player->GetLocationX2() > GetLocationX() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY2() */||
-	//	player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX2() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY()*/ ||
 	
-	//	player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX2() /*&& player->GetLocationY1() < GetLocationY2() && player->GetLocationY2() > GetLocationY2()*/)
+
 	int x = player->playerX - enemyX;
 	int y = player->playerY - enemyY;
 	int Hitrange = player->Range + Range;
-	if(x*x+y*y < Hitrange*Hitrange)
+
+	if(x * x + y * y < Hitrange * Hitrange)
 	{
 
 		/*if ((player->GetLocationY1() <= ey  && ey2 <= player->GetLocationY2())) {*/
