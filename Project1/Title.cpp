@@ -7,6 +7,7 @@
 #include"GenreSelect.h"
 #include "Help.h"
 #include "Clear.h"
+#include "GameOver.h"
 
 #define SCREEN_WIDTH 1280
 
@@ -16,7 +17,7 @@ Title::Title()
 	TitleImg = LoadGraph("image/BackGround02.png");
 
 	//タイトルBGM読み込み
-	((TitleBGM = LoadSoundMem("sound/BGM/Title_BGM2.wav")) == -1);
+	((TitleBGM = LoadSoundMem("sound/BGM/Title_BGM.wav")) == -1);
 	//BGM音量
 	ChangeVolumeSoundMem(200, TitleBGM);
 
@@ -111,7 +112,7 @@ AbstractScene* Title::Update()
 			return nullptr;
 			break;
 		default:
-			//printfDx("\n"); 
+			printf("Error\n"); 
 			break;
 		}
 	}

@@ -32,6 +32,10 @@ private:
 
 	int Enter; // ジャンル決定
 
+	int TitleBGM;       //タイトルBGM
+	int MenuSE;         //決定音
+	int CursorSE;       //カーソル移動音
+
 	int CauserX; //ジャンル選択用のカーソルX
 	int CauserY; //ジャンル選択用のカーソルY
 	int Causer;
@@ -39,7 +43,6 @@ private:
 	int now_menu; 
 	int MenuFont;
 	int BackGround;
-	//int GetRand;
 
 public:
 
@@ -54,7 +57,7 @@ public:
 	int ijin_Answer[3];
 	//int Genre[6][10];
 	GenreSelect();
-	virtual ~GenreSelect() {};
+	virtual ~GenreSelect();
 	virtual AbstractScene* Update() override;
 	virtual void Draw() const override;
 };

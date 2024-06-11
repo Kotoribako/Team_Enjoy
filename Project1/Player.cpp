@@ -4,8 +4,8 @@
 #include"DxLib.h"
 #include"GenreSelect.h"
 #include"GameMain.h"
-float Player::playerX;  //左
-float Player::playerY;  //下
+float Player::playerX;  //プレイヤー座標X プレイヤーX軸の中心座標
+float Player::playerY;  //プレイヤー座標X プレイヤーY軸の中心座標
 int   Player::standflg; //立ってるかのフラグ
 float Player::velocity;
 int   Player::MoveFlg;
@@ -43,6 +43,8 @@ Player::Player()
 
 	NoHitBlockFlg = TRUE;
 	Life = 3;
+
+	Downflg = FALSE;
 
 	//switch (GameMain::NowStage)
 	//{
@@ -120,6 +122,92 @@ Player::Player()
 	//};
 
 }
+
+Player::~Player()
+{
+}
+
+void Player::Update()
+{
+	
+	block = new Block();
+
+	P_FPS++;
+
+	px = playerX - 15;
+	px2 = playerX + 15;
+	py = playerY - 15;
+	py2 = playerY + 15;
+
+	//PlayerHit(); // 当たり判定
+
+	/*else */if (BlockHitY() == 3)
+	{
+		// 落下処理させる
+		count += 1;
+		Downflg = TRUE;
+		HitFlg = FALSE;
+	}
+	/*else */if (BlockHitY() == 0 && Jumpflg == FALSE /*&& Life ==3*/)
+	{
+		// 落下処理させる
+		count += 1;
+		Downflg = TRUE;
+		HitFlg = FALSE;
+	}
+
+
+	if (BlockHitY() == 1)
+	{
+		/* 下に落ちない処理を書く */
+		Jumpflg = FALSE;
+		Downflg = FALSE;
+		count = 0;
+		switch (GameMain::NowStage) {
+		case 1:
+		case 4:
+			if (px + -1 * (Stage1::Stage1X) < block->S1bloc[9].X2 && block->S1bloc[9].X < px2 + -1 * (Stage1::Stage1X) && block->S1bloc[9].Y < py2 ||
+				px + -1 * (Stage1::Stage1X) < block->S1bloc[10].X2 && block->S1bloc[10].X < px2 + -1 * (Stage1::Stage1X) && block->S1bloc[10].Y < py2)
+			{
+				quizflg = 1;
+			}
+			else
+			{
+				quizflg = 0;
+			}
+			break;
+		case 2:
+		case 5:
+			if (px + -1 * (Stage2::Stage2X) < block->S2bloc[18].X2 && block->S2bloc[18].X < px2 + -1 * (Stage2::Stage2X) && block->S2bloc[18].Y < py2)
+			{
+				quizflg = 1;
+			}
+			else
+			{
+				quizflg = 0;
+			}
+			break;
+		case 3:
+		case 6:
+			if (px + -1 * (Stage3::Stage3X) < block->S3bloc[26].X2 && block->S3bloc[26].X < px2 + -1 * (Stage3::Stage3X) && block->S3bloc[26].Y < py2)
+			{
+				quizflg = 1;
+			}
+			else
+			{
+				quizflg = 0;
+			}
+		}
+	}
+
+	Move();
+
+	//if (px + -1 * (Stage1::Stage1X) < block->S1bloc[0].X2 && block->S1bloc[0].X < px2 + -1 * (Stage1::Stage1X))
+	//{
+	//	playerX = block->S1bloc[0].X2 / 2;
+	//	playerY = block->S1bloc[0].Y - 15;
+
+	//}
 
 Player::~Player()
 {
@@ -223,6 +311,51 @@ void Player::Update()
 
 	}
 
+
+	if (BlockHitX() == 1)
+	{
+		// ブロックにめり込ませないようにする
+		P_moveX = 3;
+		playerX += P_moveX;
+		//playerX = block->S1bloc[BlockNum].X2 - 15;
+	}
+	if (BlockHitX() == 2)
+	{
+		// ブロックにめり込ませないようにする
+		P_moveX = -3;
+		playerX += P_moveX;
+		//playerX = block->S1bloc[BlockNum].X2 + 15;
+	}
+	
+	if (P_FPS > 59) {
+		P_FPS = 0;
+		P_Seconas1++;
+
+	}// P_FPS_INC 
+	else if (P_Seconas1 > 3) {
+		P_Seconas1 = 0;
+	}
+
+
+	if (playerY >= 800) // リスポーン処理（後で消す）
+	{
+		playerX = PLAYERSTARTX;
+		playerY = PLAYERSTARTY;
+		Jumpflg = FALSE;
+		Downflg = FALSE;
+		Stage1::Stage1X = 0;
+		Stage2::Stage2X = 0;
+		Stage3::Stage3X = 0;
+		Life--;
+		if (Life == -1) {
+			/* ここにゲームオーバー処理を入れる */
+			GameMain::NowStage = 0;
+		}
+
+		block = new Block();
+
+	}
+
 	if (Stage1::S1DecisionToAnswerFlg == TRUE && GameMain::NowStage == 4) {
 		// プレイヤーをスタート地点に戻す
 		playerX = PLAYERSTARTX;
@@ -254,8 +387,9 @@ void Player::Draw()
 	DrawFormatString(0, 80, GetColor(0, 0, 0), "Right:%d",Rightflg );
 	DrawFormatString(0, 110, GetColor(0, 0, 0), "Left:%d", Leftflg);
 	DrawFormatString(100, 0, GetColor(0, 255, 0), "playerX:%f  playerY:%f", playerX, playerY);
-	//DrawFormatString(100, 20, GetColor(0, 0, 0), "playerX2:%f  playerY2:%f", playerX2, playerY2);
-	//DrawFormatString(0, 120, GetColor(0, 0, 0), "BlockNum:%d", BlockNum);
+	DrawFormatString(100, 20, GetColor(0, 255, 255), "px2:%f py2:%f", px2 + -1 * (Stage1::Stage1X), py2);
+	DrawFormatString(100, 40, GetColor(0, 0, 0), "HitY:%d", BlockHitY());
+	DrawFormatString(0, 120, GetColor(0, 0, 0), "BlockNum:%d", BlockNum);
 	for (int i = 0; i < Life; i++)
 	{
 		DrawBox(100 + 50 * i, 100, 130 + 50 * i, 130, GetColor(255, 0, 0), TRUE);
@@ -356,7 +490,7 @@ void Player::Move()
 			Downflg = TRUE;
 		}
 	}
-	if (Downflg == TRUE && count >= 1 || NoHitBlockFlg == FALSE)
+	if (Downflg == TRUE && count >= 1 /*|| NoHitBlockFlg == FALSE*/)
 	{
 		P_moveY = 0; // 動かした値をリセットする
 		sy = 12.0f;
@@ -1003,7 +1137,6 @@ void Player::PlayerAnim()
 	}*/
 }
 
-
 int Player::BlockHitY()
 {
 	switch (GameMain::NowStage)
@@ -1085,6 +1218,40 @@ int Player::BlockHitY()
 				return 0;
 			}
 		}
+		break;
+	}
+}
+
+int Player::BlockHitX()
+{
+	switch (GameMain::NowStage)
+	{
+	case 1:
+	case 4:
+		for (int i = 0; i < 11; i++)
+		{
+			if (px + -1 * (Stage1::Stage1X) == block->S1bloc[i].X2 && py2 > block->S1bloc[i].Y && py< block->S1bloc[i].Y2 /*&& px + -1 * (Stage1::Stage1X) == block->S1bloc[i-1].X2*/)
+			{
+				BlockNum = i;
+				return 1;
+				break;
+			}
+			else if (block->S1bloc[i].X == px2 + -1 * (Stage1::Stage1X) && py2 > block->S1bloc[i].Y && py < block->S1bloc[i].Y2)
+			{
+				BlockNum = i;
+				return 2;
+			}
+			else if (i == 10)
+			{
+				return 0;
+			}
+		}
+		break;
+	case 2:
+	case 5:
+		break;
+	case 3:
+	case 6:
 		break;
 	}
 }

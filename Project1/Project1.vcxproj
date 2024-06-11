@@ -145,6 +145,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FpsController.cpp" />
     <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GenreSelect.cpp" />
     <ClCompile Include="Help.cpp" />
     <ClCompile Include="main.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FpsController.h" />
     <ClInclude Include="GameMain.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="GenreSelect.h" />
     <ClInclude Include="Help.h" />
     <ClInclude Include="PadInput.h" />
