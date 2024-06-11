@@ -1245,9 +1245,48 @@ int Player::BlockHitX()
 		break;
 	case 2:
 	case 5:
+		for (int i = 0; i < 19; i++)
+		{
+			if (px + -1 * (Stage2::Stage2X) == block->S2bloc[i].X2 && py2 > block->S2bloc[i].Y && py < block->S2bloc[i].Y2 /*&& px + -1 * (Stage1::Stage1X) == block->S1bloc[i-1].X2*/)
+			{
+				BlockNum = i;
+				return 1;
+				break;
+			}
+			else if (block->S2bloc[i].X == px2 + -1 * (Stage3::Stage3X) && py2 > block->S2bloc[i].Y && py < block->S2bloc[i].Y2)
+			{
+				BlockNum = i;
+				return 2;
+			}
+			else if (i == 18)
+			{
+				return 0;
+			}
+		}
+
 		break;
 	case 3:
 	case 6:
+		for (int i = 0; i < 27; i++)
+		{
+			if (px + -1 * (Stage3::Stage3X) == block->S3bloc[i].X2 && py2 > block->S3bloc[i].Y && py < block->S3bloc[i].Y2 /*&& px + -1 * (Stage1::Stage1X) == block->S1bloc[i-1].X2*/)
+			{
+				BlockNum = i;
+				return 1;
+				break;
+			}
+			else if (block->S3bloc[i].X == px2 + -1 * (Stage3::Stage3X) && py2 > block->S3bloc[i].Y && py < block->S3bloc[i].Y2)
+			{
+				BlockNum = i;
+				return 2;
+			}
+			else if (i == 26)
+			{
+				return 0;
+			}
+		}
+
+
 		break;
 	}
 }
