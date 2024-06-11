@@ -214,6 +214,8 @@ void Player::Update()
 	
 	P_FPS++;
 
+	block = new Block();
+
 	//PlayerHit(); // 当たり判定
 
 	if (BlockHitY() == 1)
