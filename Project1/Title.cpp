@@ -105,7 +105,7 @@ AbstractScene* Title::Update()
 			break;
 		case TITLE_MENU::RANKING:
 			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
-			return new Clear;
+			return new GameOver;
 			break;
 		case TITLE_MENU::GAME_END:
 			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
