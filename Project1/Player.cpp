@@ -127,92 +127,88 @@ Player::~Player()
 {
 }
 
-void Player::Update()
-{
-	
-	block = new Block();
-
-	P_FPS++;
-
-	px = playerX - 15;
-	px2 = playerX + 15;
-	py = playerY - 15;
-	py2 = playerY + 15;
-
-	//PlayerHit(); // 当たり判定
-
-	/*else */if (BlockHitY() == 3)
-	{
-		// 落下処理させる
-		count += 1;
-		Downflg = TRUE;
-		HitFlg = FALSE;
-	}
-	/*else */if (BlockHitY() == 0 && Jumpflg == FALSE /*&& Life ==3*/)
-	{
-		// 落下処理させる
-		count += 1;
-		Downflg = TRUE;
-		HitFlg = FALSE;
-	}
-
-
-	if (BlockHitY() == 1)
-	{
-		/* 下に落ちない処理を書く */
-		Jumpflg = FALSE;
-		Downflg = FALSE;
-		count = 0;
-		switch (GameMain::NowStage) {
-		case 1:
-		case 4:
-			if (px + -1 * (Stage1::Stage1X) < block->S1bloc[9].X2 && block->S1bloc[9].X < px2 + -1 * (Stage1::Stage1X) && block->S1bloc[9].Y < py2 ||
-				px + -1 * (Stage1::Stage1X) < block->S1bloc[10].X2 && block->S1bloc[10].X < px2 + -1 * (Stage1::Stage1X) && block->S1bloc[10].Y < py2)
-			{
-				quizflg = 1;
-			}
-			else
-			{
-				quizflg = 0;
-			}
-			break;
-		case 2:
-		case 5:
-			if (px + -1 * (Stage2::Stage2X) < block->S2bloc[18].X2 && block->S2bloc[18].X < px2 + -1 * (Stage2::Stage2X) && block->S2bloc[18].Y < py2)
-			{
-				quizflg = 1;
-			}
-			else
-			{
-				quizflg = 0;
-			}
-			break;
-		case 3:
-		case 6:
-			if (px + -1 * (Stage3::Stage3X) < block->S3bloc[26].X2 && block->S3bloc[26].X < px2 + -1 * (Stage3::Stage3X) && block->S3bloc[26].Y < py2)
-			{
-				quizflg = 1;
-			}
-			else
-			{
-				quizflg = 0;
-			}
-		}
-	}
-
-	Move();
-
-	//if (px + -1 * (Stage1::Stage1X) < block->S1bloc[0].X2 && block->S1bloc[0].X < px2 + -1 * (Stage1::Stage1X))
-	//{
-	//	playerX = block->S1bloc[0].X2 / 2;
-	//	playerY = block->S1bloc[0].Y - 15;
-
-	//}
-
-Player::~Player()
-{
-}
-
+//void Player::Update()
+//{
+//
+//	block = new Block();
+//
+//	P_FPS++;
+//
+//	px = playerX - 15;
+//	px2 = playerX + 15;
+//	py = playerY - 15;
+//	py2 = playerY + 15;
+//
+//	//PlayerHit(); // 当たり判定
+//
+//	/*else */if (BlockHitY() == 3)
+//	{
+//		// 落下処理させる
+//		count += 1;
+//		Downflg = TRUE;
+//		HitFlg = FALSE;
+//	}
+//	/*else */if (BlockHitY() == 0 && Jumpflg == FALSE /*&& Life ==3*/)
+//	{
+//		// 落下処理させる
+//		count += 1;
+//		Downflg = TRUE;
+//		HitFlg = FALSE;
+//	}
+//
+//
+//	if (BlockHitY() == 1)
+//	{
+//		/* 下に落ちない処理を書く */
+//		Jumpflg = FALSE;
+//		Downflg = FALSE;
+//		count = 0;
+//		switch (GameMain::NowStage) {
+//		case 1:
+//		case 4:
+//			if (px + -1 * (Stage1::Stage1X) < block->S1bloc[9].X2 && block->S1bloc[9].X < px2 + -1 * (Stage1::Stage1X) && block->S1bloc[9].Y < py2 ||
+//				px + -1 * (Stage1::Stage1X) < block->S1bloc[10].X2 && block->S1bloc[10].X < px2 + -1 * (Stage1::Stage1X) && block->S1bloc[10].Y < py2)
+//			{
+//				quizflg = 1;
+//			}
+//			else
+//			{
+//				quizflg = 0;
+//			}
+//			break;
+//		case 2:
+//		case 5:
+//			if (px + -1 * (Stage2::Stage2X) < block->S2bloc[18].X2 && block->S2bloc[18].X < px2 + -1 * (Stage2::Stage2X) && block->S2bloc[18].Y < py2)
+//			{
+//				quizflg = 1;
+//			}
+//			else
+//			{
+//				quizflg = 0;
+//			}
+//			break;
+//		case 3:
+//		case 6:
+//			if (px + -1 * (Stage3::Stage3X) < block->S3bloc[26].X2 && block->S3bloc[26].X < px2 + -1 * (Stage3::Stage3X) && block->S3bloc[26].Y < py2)
+//			{
+//				quizflg = 1;
+//			}
+//			else
+//			{
+//				quizflg = 0;
+//			}
+//		}
+//	}
+//
+//	Move();
+//
+//	//if (px + -1 * (Stage1::Stage1X) < block->S1bloc[0].X2 && block->S1bloc[0].X < px2 + -1 * (Stage1::Stage1X))
+//	//{
+//	//	playerX = block->S1bloc[0].X2 / 2;
+//	//	playerY = block->S1bloc[0].Y - 15;
+//
+//	//}
+//}
 void Player::Update()
 {
 	
