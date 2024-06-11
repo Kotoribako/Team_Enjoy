@@ -4,6 +4,7 @@
 #include"Stage2.h"
 #include"Stage3.h"
 #include"GameMain.h"
+#include"GameOver.h"
 float Enemy::ex;
 float Enemy::ex2;
 float Enemy::ey;
@@ -24,6 +25,7 @@ Enemy::Enemy()
 	speed = 30;
 	Hitflg = FALSE;
 	Range = 15;
+	OverFlg = 0; // ゲームオーバー用フラグ
 }
 
 void Enemy::Update()
@@ -69,6 +71,11 @@ void Enemy::Update()
 			direction = 0;
 		}
 		countup = 0;
+	}
+
+	if (OverFlg == 1)
+	{
+		
 	}
 
 }
@@ -151,7 +158,8 @@ void Enemy::Enemyhit()
 	}
 	if (Player::Life <= 0)
 	{
-		// タイトルかゲームオーバーに戻す 
+		// ゲームオーバーに遷移する
+		OverFlg = 1;
 	}
 }
 
