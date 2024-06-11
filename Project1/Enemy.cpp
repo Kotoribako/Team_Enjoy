@@ -4,7 +4,6 @@
 #include"Stage2.h"
 #include"Stage3.h"
 #include"GameMain.h"
-#include"GameOver.h"
 float Enemy::ex;
 float Enemy::ex2;
 float Enemy::ey;
@@ -25,7 +24,6 @@ Enemy::Enemy()
 	speed = 30;
 	Hitflg = FALSE;
 	Range = 15;
-	OverFlg = 0; // ゲームオーバー用フラグ
 }
 
 void Enemy::Update()
@@ -71,11 +69,6 @@ void Enemy::Update()
 			direction = 0;
 		}
 		countup = 0;
-	}
-
-	if (OverFlg == 1)
-	{
-		
 	}
 
 }
@@ -133,31 +126,62 @@ void Enemy::Enemyhit()
 	//	}
 	//}
 
+	//if (player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY2()*/ ||
+	//	player->GetLocationX1() < GetLocationX2() && player->GetLocationX2() > GetLocationX() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY2() */||
+	//	player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX2() /*&& player->GetLocationY1() < GetLocationY() && player->GetLocationY2() > GetLocationY()*/ ||
 	
-
-	int x = player->playerX - enemyX;
+	//	player->GetLocationX1() < GetLocationX() && player->GetLocationX2()  > GetLocationX2() /*&& player->GetLocationY1() < GetLocationY2() && player->GetLocationY2() > GetLocationY2()*/)
+	int x = player->playerX - enemyX - Stage1::Stage1X; // ステージのずれを考慮する
 	int y = player->playerY - enemyY;
 	int Hitrange = player->Range + Range;
-
-	if(x * x + y * y < Hitrange * Hitrange)
+	switch (GameMain::NowStage)
 	{
-
-		/*if ((player->GetLocationY1() <= ey  && ey2 <= player->GetLocationY2())) {*/
+	case 1:
+	case 4:
+		if (x * x  + y * y < Hitrange * Hitrange)
+		{
 			Hitflg = TRUE;
 			Player::Life -= 1;
 			Player::playerX = 220;
 			Player::playerY = 430;
-			//}
-	}
-	else {
-		Hitflg = FALSE;
+			Stage1::Stage1X = 0;
+			break;
 
-	
+		}
 	}
+	//if(x*x+y*y < Hitrange*Hitrange)
+	//{
+
+	//	/*if ((player->GetLocationY1() <= ey  && ey2 <= player->GetLocationY2())) {*/
+	//		Hitflg = TRUE;
+	//		Player::Life -= 1;
+	//		Player::playerX = 220;
+	//		Player::playerY = 430;
+	//		switch (GameMain::NowStage)
+	//		{
+	//		case 1:
+	//		case 4:
+	//			Stage1::Stage1X = 0;
+	//			break;
+	//		case 2:
+	//		case 5:
+	//			Stage2::Stage2X = 0;
+	//			break;
+	//		case 3:
+	//		case 6:
+	//			Stage3::Stage3X = 0;
+	//			break;
+	//		}
+	//		//}
+	//}
+	//else {
+	//	Hitflg = FALSE;
+
+	//
+	//}
 	if (Player::Life <= 0)
 	{
-		// ゲームオーバーに遷移する
-		OverFlg = 1;
+		// タイトルかゲームオーバーに戻す 
 	}
 }
 
