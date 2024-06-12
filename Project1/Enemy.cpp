@@ -152,6 +152,11 @@ void Enemy::Enemyhit()
 			Player::Life -= 1;
 			Player::playerX = 220;
 			Player::playerY = 430;
+			Stage1::Stage1X = 0;
+			Stage2::Stage2X = 0;
+			Stage3::Stage3X = 0;
+
+			Hitflg = FALSE;
 	}
 	else
 	{
