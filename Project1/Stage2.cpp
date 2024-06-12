@@ -57,7 +57,7 @@ Stage2::Stage2()
 	Stage2Img = LoadGraph("image/Dummy/Stage2.png");
 	Stage2X = 0.0; // 最初の画像のX座標を0にする
 	StopStage2Xflg = FALSE;
-	GameMain::NowStage = 2;
+	//GameMain::NowStage = 2;
 
 	S2DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }

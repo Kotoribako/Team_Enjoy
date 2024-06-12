@@ -39,7 +39,8 @@ Enemy::Enemy()
 		break;
 	case 3:
 	case 6:
-
+		enemyX = 1746;
+		enemyY = 221;
 		break;
 	}
 }
@@ -58,6 +59,12 @@ void Enemy::Update()
 
 	Enemyhit();
 	count++;
+	//switch (GameMain::NowStage)
+	//{
+	//case 1:
+	//case 4:
+
+	//}
 	if (count == 60)
 	{
 		countup += 1;
@@ -78,7 +85,6 @@ void Enemy::Update()
 	{
 		if (direction == 0)
 		{
-
 			direction = 1;
 		}
 		else if (direction == 1)
