@@ -49,8 +49,7 @@ Stage2::Stage2()
 	for (int i = 0; i < 4; i++)
 	{
 		door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
-		//door[i].X = 1500;
-		door[i].Y = 550;
+		door[i].Y = 460;
 		door[i].answer = quiz[GenreSelect::Selectgenre].answer[i];
 	}
 
@@ -84,8 +83,9 @@ void Stage2::Update()
 	}
 
 	for (int i = 0; i < 4; i++)
+
 	{
-		door[i].X = 1150 + Stage2X + i * 150;
+		door[i].X = 2000 + Stage2X + i * 150;
 	}
 	MoveXStage(); // X軸の画像を動かす処理を入れる
 	ChangeStage();
@@ -107,13 +107,13 @@ void Stage2::Draw()
 	//DrawGraph(700, 0, TestImg, TRUE);
 	for (int i = 0; i < 4; i++)
 	{
-		DrawGraph(door[i].X + 850, door[i].Y - 90, door[i].Img, TRUE);
+		DrawGraph(door[i].X, door[i].Y, door[i].Img, TRUE);
 	}
 
-	DrawBox(door[0].X + 840, door[0].Y - 20, door[0].X + 920, door[0].Y - 90, 0x00ff00, FALSE);
-	DrawBox(door[1].X + 840, door[1].Y - 20, door[1].X + 920, door[1].Y - 90, 0xff0000, FALSE);
-	DrawBox(door[2].X + 840, door[2].Y - 20, door[2].X + 920, door[2].Y - 90, 0x0000ff, FALSE);
-	DrawBox(door[3].X + 840, door[3].Y - 20, door[3].X + 920, door[3].Y - 90, 0xffff00, FALSE);
+	DrawBox(door[0].X - 10, door[0].Y, door[0].X + 70, door[0].Y + 60, 0x00ff00, FALSE);
+	DrawBox(door[1].X - 10, door[1].Y, door[1].X + 70, door[1].Y + 60, 0xff0000, FALSE);
+	DrawBox(door[2].X - 10, door[2].Y, door[2].X + 70, door[2].Y + 60, 0x0000ff, FALSE);
+	DrawBox(door[3].X - 10, door[3].Y, door[3].X + 70, door[3].Y + 60, 0xffff00, FALSE);
 
 
 	if (Player::quizflg == 1) // プレイヤーのX座標が1050を超えると、

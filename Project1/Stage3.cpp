@@ -42,7 +42,7 @@ Stage3::Stage3()
 	for (int i = 0; i < 4; i++)
 	{
 		door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
-		door[i].Y = 550;
+		door[i].Y = 500;
 		door[i].answer = quiz[GenreSelect::Selectgenre].answer[i];
 	}
 
@@ -79,7 +79,7 @@ void Stage3::Update()
 	for (int i = 0; i < 4; i++)
 
 	{
-		door[i].X = 1150 + Stage3X + i * 150;
+		door[i].X = 2100 + Stage3X + i * 130;
 	}
 	MoveXStage(); // X軸の画像を動かす処理を入れる
 	ChangeStage();
