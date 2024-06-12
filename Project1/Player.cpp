@@ -267,6 +267,14 @@ void Player::Update()
 		Downflg = TRUE;
 		HitFlg = FALSE;
 	}
+	else if (BlockHitY() == 0 && Jumpflg == FALSE)
+	{
+		// 落下処理させる
+		count += 1;
+		Downflg = TRUE;
+		HitFlg = FALSE;
+	}
+
 
 	Move();
 	if (Animflg == 1 /*&& Moveflg == 0*/)
