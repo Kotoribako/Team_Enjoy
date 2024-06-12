@@ -22,6 +22,8 @@ private:
 	float enemyX2;
 	float enemyY;
 	float enemyY2;
+
+	int OverFlg;
 public:
 	
 	static float ex, ex2; // 敵の左座標(ex)と右座標を取る(ex2) 
