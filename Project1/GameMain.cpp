@@ -15,6 +15,7 @@ GameMain::GameMain()
 
 GameMain::~GameMain()
 {
+
 }
 
 void GameMain::Initialize()
