@@ -18,13 +18,30 @@ Enemy::Enemy()
 	block = new Block();
 	player = new Player();
 	countup = 0;
-	enemyX = 580;
-	enemyY = 406;
+	//enemyX = 580;
+	//enemyY = 406;
 	moveX = 0;
 	direction = 0;
 	speed = 30;
 	Hitflg = FALSE;
 	Range = 15;
+	switch (GameMain::NowStage)
+	{
+	case 1:
+	case 4:
+		enemyX = 580;
+		enemyY = 406;
+		break;
+	case 2:
+	case 5:
+		enemyX = 1746;
+		enemyY = 221;
+		break;
+	case 3:
+	case 6:
+
+		break;
+	}
 }
 
 void Enemy::Update()
@@ -86,10 +103,12 @@ void Enemy::Draw()
 		break;
 	case 2:
 		DrawBox(ex + /*moveX +*/ Stage2::Stage2X, ey, ex2 +/* moveX +*/ Stage2::Stage2X, ey2, GetColor(0, 255, 0), FALSE);
+		DrawGraph(enemyX + Stage2::Stage2X - 30, enemyY - 30, img[0], TRUE);
 		DrawCircle(enemyX + Stage2::Stage2X, enemyY, Range, GetColor(0, 255, 0), FALSE);
 		break;
 	case 3:
 		DrawBox(ex + /*moveX +*/ Stage3::Stage3X, ey, ex2 + /*moveX +*/ Stage3::Stage3X, ey2, GetColor(0, 255, 0), FALSE);
+		DrawGraph(enemyX + Stage3::Stage3X - 30, enemyY - 30, img[0], TRUE);
 		DrawCircle(enemyX + Stage3::Stage3X, enemyY, Range, GetColor(0, 255, 0), FALSE);
 		break;
 	}
@@ -105,8 +124,25 @@ void Enemy::Draw()
 
 void Enemy::Enemyhit()
 {
-	float a = player->GetLocationCenterX() - enemyX - Stage1::Stage1X;
-	float b = player->GetLocationCenterY() - enemyY;
+	float a, b;
+	switch (GameMain::NowStage)
+	{
+	case 1:
+	case 4:
+		 a = player->GetLocationCenterX() - enemyX - Stage1::Stage1X;
+		 b = player->GetLocationCenterY() - enemyY;
+		break;
+	case 2:
+	case 5:
+		 a = player->GetLocationCenterX() - enemyX - Stage2::Stage2X;
+		 b = player->GetLocationCenterY() - enemyY;
+		break;
+	case 3:
+	case 6:
+		 a = player->GetLocationCenterX() - enemyX - Stage3::Stage3X;
+		 b = player->GetLocationCenterY() - enemyY;
+		break;
+	}
 	float c = a*a + b*b;
 	float Hitrange = (player->Range + Range) * (player->Range * Range)/4;
 	if( c <= Hitrange)
