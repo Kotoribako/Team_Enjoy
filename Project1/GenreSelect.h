@@ -17,8 +17,8 @@ private:
 
 	const char* select_items [static_cast<int>(SELECT::SELECT_SIZE)] = {
 	"ANIMEGAME",
-	"EXCHANGE",
 	"GREATMAN",
+	"EXCHANGE",
 	"RANDOM"
 	};
 
