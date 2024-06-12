@@ -74,7 +74,7 @@ void Stage2::Update()
 	//BGM再生（ループ）
 	if (CheckSoundMem(Stage2BGM) == 0)
 	{
-		PlaySoundMem(Stage2BGM, DX_PLAYTYPE_LOOP, TRUE);
+		PlaySoundMem(Stage2BGM, DX_PLAYTYPE_BACK, TRUE);
 	}
 
 	if (GameMain::NowStage == 5) // 間違った選択肢入った時、
