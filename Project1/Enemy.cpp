@@ -40,7 +40,9 @@ void Enemy::Update()
 
 
 	Enemyhit();
+
 	count++;
+
 	if (count == 60)
 	{
 		countup += 1;
