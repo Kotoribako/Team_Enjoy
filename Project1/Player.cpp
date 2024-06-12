@@ -260,8 +260,9 @@ void Player::Update()
 			}
 		}
 	}
-	else if(BlockHitY() == 3)
+	else if(BlockHitY() == 3 /*&& Jumpflg == TRUE*/)
 	{
+		Jumpflg = FALSE;
 		// 落下処理させる
 		count += 1;
 		Downflg = TRUE;
@@ -303,12 +304,12 @@ void Player::Update()
 	if (playerY >= 800) // リスポーン処理（後で消す）
 	{
 		playerX = 235;
-		playerY = 615;
+		playerY = 500;
 		Stage1::Stage1X = 0;
 		Stage2::Stage2X = 0;
 		Stage3::Stage3X = 0;
 		Life--;
-		if (Life == -1) {
+		if (Life < 0) {
 			/* ここにゲームオーバー処理を入れる */
 			GameMain::NowStage = 0;
 		}
@@ -1162,7 +1163,7 @@ int Player::BlockHitY()
 				{
 					return 2;
 				}
-				else if (py < block->S1bloc[i].Y2 && Jumpflg == FALSE) // プレイヤーの頭上とブロックの下がヒットしたとき、
+				else if (py > block->S1bloc[i].Y2 && Jumpflg == TRUE) // プレイヤーの頭上とブロックの下がヒットしたとき、
 				{
 					return 3;
 				}

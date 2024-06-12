@@ -50,7 +50,7 @@ Stage3::Stage3()
 	Stage3X = 0.0; // 最初の画像のX座標を0にする
 	StopStage3Xflg = FALSE;
 	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
-	GameMain::NowStage = 3;
+	//GameMain::NowStage = 3;
 
 	S3DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }
@@ -67,7 +67,7 @@ void Stage3::Update()
 	//BGM再生（ループ）
 	if (CheckSoundMem(Stage3BGM) == 0)
 	{
-		PlaySoundMem(Stage3BGM, DX_PLAYTYPE_LOOP, TRUE);
+		PlaySoundMem(Stage3BGM, DX_PLAYTYPE_BACK, TRUE);
 	}
 
 	if (GameMain::NowStage == 6) // 間違った選択肢入った時、

@@ -57,7 +57,7 @@ Stage2::Stage2()
 	Stage2Img = LoadGraph("image/Dummy/Stage2.png");
 	Stage2X = 0.0; // 最初の画像のX座標を0にする
 	StopStage2Xflg = FALSE;
-	GameMain::NowStage = 2;
+	//GameMain::NowStage = 2;
 
 	S2DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }
@@ -74,7 +74,7 @@ void Stage2::Update()
 	//BGM再生（ループ）
 	if (CheckSoundMem(Stage2BGM) == 0)
 	{
-		PlaySoundMem(Stage2BGM, DX_PLAYTYPE_LOOP, TRUE);
+		PlaySoundMem(Stage2BGM, DX_PLAYTYPE_BACK, TRUE);
 	}
 
 	if (GameMain::NowStage == 5) // 間違った選択肢入った時、

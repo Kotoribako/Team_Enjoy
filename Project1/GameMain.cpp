@@ -5,12 +5,12 @@ int GameMain::NowStage;
 
 GameMain::GameMain()
 {
+	NowStage = 1;
 	player = new Player();
 	stage1 = new Stage1();
 	stage2 = new Stage2();
 	stage3 = new Stage3();
 	enemy = new Enemy();
-	NowStage = 1;
 }
 
 GameMain::~GameMain()

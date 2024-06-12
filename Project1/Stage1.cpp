@@ -296,7 +296,7 @@ Stage1::Stage1()
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
 	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
-	GameMain::NowStage = 1;
+	//GameMain::NowStage = 1;
 
 	S1DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }
@@ -313,7 +313,7 @@ void Stage1::Update()
 	//BGM再生（ループ）
 	if (CheckSoundMem(Stage1BGM) == 0)
 	{
-		PlaySoundMem(Stage1BGM, DX_PLAYTYPE_LOOP, TRUE);
+		PlaySoundMem(Stage1BGM, DX_PLAYTYPE_BACK, TRUE);
 	}
 
 	if (GameMain::NowStage == 4) // 間違った選択肢入った時、
