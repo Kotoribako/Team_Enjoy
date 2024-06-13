@@ -5,7 +5,12 @@ class Enemy
 {
 private:
 
-	
+	struct BlockX
+	{
+		float X;
+		float X2;
+	};
+	struct BlockX blockx[4];
 
 	int img[2];
 	int count;

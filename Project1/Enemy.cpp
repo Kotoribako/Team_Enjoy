@@ -25,24 +25,49 @@ Enemy::Enemy()
 	speed = 30;
 	Hitflg = FALSE;
 	Range = 15;
+	//switch (GameMain::NowStage)
+	//{
+	//case 1:
+	//case 4:
+	//	enemyX = 580;
+	//	enemyY = 406;
+	//	break;
+	//case 2:
+	//case 5:
+	//	enemyX = 1746;
+	//	enemyY = 221;
+	//	break;
+	//case 3:
+	//case 6:
+	//	enemyX = 1746;
+	//	enemyY = 221;
+	//	break;
+	//}
 	switch (GameMain::NowStage)
 	{
 	case 1:
 	case 4:
-		enemyX = 580;
-		enemyY = 406;
+		blockx[1].X = block->S1bloc[4].X;
+		blockx[1].X2 = block->S1bloc[4].X2;
+		enemyX = block->S1bloc[4].X;
+		enemyY = block->S1bloc[4].Y - 15;
 		break;
 	case 2:
 	case 5:
-		enemyX = 1746;
-		enemyY = 221;
+		blockx[2].X = block->S2bloc[8].X;
+		blockx[2].X2 = block->S2bloc[8].X2;
+		enemyX = block->S2bloc[8].X - 30;
+		enemyY = block->S2bloc[8].Y - 30;
 		break;
 	case 3:
 	case 6:
-		enemyX = 1746;
-		enemyY = 221;
+		blockx[3].X = block->S3bloc[6].X;
+		blockx[3].X2 = block->S3bloc[6].X2;
+		enemyX = block->S3bloc[8].X - 30;
+		enemyY = block->S3bloc[8].Y - 30;
 		break;
 	}
+
 }
 
 void Enemy::Update()
@@ -57,6 +82,7 @@ void Enemy::Update()
 
 
 
+	speed = (blockx[GameMain::NowStage].X2 - blockx[GameMain::NowStage].X) / 6.0f;
 	Enemyhit();
 	count++;
 	//switch (GameMain::NowStage)
