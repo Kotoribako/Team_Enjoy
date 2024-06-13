@@ -29,15 +29,11 @@ Stage1::Stage1()
 	quiz->X = 770;
 	quiz->Y = 0;
 
-	Quizflg = 0;
-
 	
 	srand((unsigned int)time(NULL));
-	i = rand() % 9;
-	srand((unsigned int)time(NULL));
-	y = rand() % 9;
-	srand((unsigned int)time(NULL));
-	x = rand() % 9;
+	i = rand() % 3;
+	y = rand() % 3;
+	x = rand() % 3;
 
 	
 	
@@ -72,68 +68,19 @@ Stage1::Stage1()
 		 quiz[0].answer[3] = 0; //選択肢４
 		 break;
 	 case 1:
-		 quiz[1].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png");
-		 quiz[1].answer[0] = 0; //選択肢１
-		 quiz[1].answer[1] = 1; //選択肢２
+		 quiz[1].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame3.png");
+		 quiz[1].answer[0] = 1; //選択肢１
+		 quiz[1].answer[1] = 0; //選択肢２
 		 quiz[1].answer[2] = 0; //選択肢３
 		 quiz[1].answer[3] = 0; //選択肢４
 		 break;
 
 	 case 2:
-		 quiz[2].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame3.png");
-		 quiz[2].answer[0] = 1; //選択肢１
-		 quiz[2].answer[1] = 0; //選択肢２
+		 quiz[2].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame7.png");
+		 quiz[2].answer[0] = 0; //選択肢１
+		 quiz[2].answer[1] = 1; //選択肢２
 		 quiz[2].answer[2] = 0; //選択肢３
 		 quiz[2].answer[3] = 0; //選択肢４
-		 break;
-
-	 case 3:
-		 quiz[3].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame4.png");
-		 quiz[3].answer[0] = 0; //選択肢１
-		 quiz[3].answer[1] = 1; //選択肢２
-		 quiz[3].answer[2] = 0; //選択肢３
-		 quiz[3].answer[3] = 0; //選択肢４
-		 break;
-
-	 case 4:
-		 quiz[4].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame5.png");
-		 quiz[4].answer[0] = 1; //選択肢１
-		 quiz[4].answer[1] = 0; //選択肢２
-		 quiz[4].answer[2] = 0; //選択肢３
-		 quiz[4].answer[3] = 0; //選択肢４
-		 break;
-
-	 case 5:
-		 quiz[5].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame6.png");
-		 quiz[5].answer[0] = 0; //選択肢１
-		 quiz[5].answer[1] = 1; //選択肢２
-		 quiz[5].answer[2] = 0; //選択肢３
-		 quiz[5].answer[3] = 0; //選択肢４
-		 break;
-
-	 case 6:
-		 quiz[6].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame7.png");
-		 quiz[6].answer[0] = 0; //選択肢１
-		 quiz[6].answer[1] = 1; //選択肢２
-		 quiz[6].answer[2] = 0; //選択肢３
-		 quiz[6].answer[3] = 0; //選択肢４		 
-		 break;
-
-
-	 case 7:
-		 quiz[7].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame8.png");
-		 quiz[7].answer[0] = 0; //選択肢１
-		 quiz[7].answer[1] = 1; //選択肢２
-		 quiz[7].answer[2] = 0; //選択肢３
-		 quiz[7].answer[3] = 0; //選択肢４
-		 break;
-
-	 case 8:
-		 quiz[8].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame9.png");
-		 quiz[8].answer[0] = 1; //選択肢１
-		 quiz[8].answer[1] = 0; //選択肢２
-		 quiz[8].answer[2] = 0; //選択肢３
-		 quiz[8].answer[3] = 0; //選択肢４
 		 break;
 
 	 default:
@@ -144,7 +91,7 @@ Stage1::Stage1()
 	 {
 	 case 0:
 		 
-		 quiz2[0].Img = LoadGraph("image/Quiz/Greatman/Ijin1.png");
+		 quiz2[0].Img = LoadGraph("image/Quiz/Greatman/Ijin5.png");
 		 quiz2[0].answer[0] = 0; //選択肢１
 		 quiz2[0].answer[1] = 0; //選択肢２
 		 quiz2[0].answer[2] = 1; //選択肢３
@@ -164,49 +111,7 @@ Stage1::Stage1()
 		 quiz2[2].answer[2] = 1; //選択肢３
 		 quiz2[2].answer[3] = 0; //選択肢４
 		 break; 
-	 case 3:
-		 quiz2[3].Img = LoadGraph("image/Quiz/Greatman/Ijin4.png");
-		 quiz2[3].answer[0] = 0; //選択肢１
-		 quiz2[3].answer[1] = 0; //選択肢２
-		 quiz2[3].answer[2] = 1; //選択肢３
-		 quiz2[3].answer[3] = 0; //選択肢４
-		 break; 
-	 case 4:
-
-		 quiz2[4].Img = LoadGraph("image/Quiz/Greatman/Ijin5.png");
-		 quiz2[4].answer[0] = 0; //選択肢１
-		 quiz2[4].answer[1] = 0; //選択肢２
-		 quiz2[4].answer[2] = 1; //選択肢３
-		 quiz2[4].answer[3] = 0; //選択肢４
-		 break; 
-	 case 5:
-		 quiz2[5].Img = LoadGraph("image/Quiz/Greatman/Ijin6.png");
-		 quiz2[5].answer[0] = 1; //選択肢１
-		 quiz2[5].answer[1] = 0; //選択肢２
-		 quiz2[5].answer[2] = 0; //選択肢３
-		 quiz2[5].answer[3] = 0; //選択肢４
-		 break; 
-	 case 6:
-		 quiz2[6].Img = LoadGraph("image/Quiz/Greatman/Ijin7.png");
-		 quiz2[6].answer[0] = 0; //選択肢１
-		 quiz2[6].answer[1] = 1; //選択肢２
-		 quiz2[6].answer[2] = 0; //選択肢３
-		 quiz2[6].answer[3] = 0; //選択肢４
-		 break; 
-	 case 7:
-		 quiz2[7].Img = LoadGraph("image/Quiz/Greatman/Ijin8.png");
-		 quiz2[7].answer[0] = 0; //選択肢１
-		 quiz2[7].answer[1] = 0; //選択肢２
-		 quiz2[7].answer[2] = 0; //選択肢３
-		 quiz2[7].answer[3] = 1; //選択肢４
-		 break; 
-	 case 8:
-		 quiz2[8].Img = LoadGraph("image/Quiz/Greatman/Ijin9.png");
-		 quiz2[8].answer[0] = 0; //選択肢１
-		 quiz2[8].answer[1] = 1; //選択肢２
-		 quiz2[8].answer[2] = 0; //選択肢３
-		 quiz2[8].answer[3] = 0; //選択肢４
-		 break;
+	 
 	 default:
 		 break;
 	 }
@@ -233,50 +138,8 @@ Stage1::Stage1()
 		quiz3[2].answer[1] = 0; //選択肢２
 		quiz3[2].answer[2] = 1; //選択肢３
 		quiz3[2].answer[3] = 0; //選択肢４
-
 		 break;
-	case 3:
-		quiz3[3].Img = LoadGraph("image/Quiz/WordExchange/WordExchange4.png");
-		quiz3[3].answer[0] = 1; //選択肢１
-		quiz3[3].answer[1] = 0; //選択肢２
-		quiz3[3].answer[2] = 0; //選択肢３
-		quiz3[3].answer[3] = 0; //選択肢４
-		 break;
-	case 4:
-		quiz3[4].Img = LoadGraph("image/Quiz/WordExchange/WordExchange5.png");
-		quiz3[4].answer[0] = 0; //選択肢１
-		quiz3[4].answer[1] = 0; //選択肢２
-		quiz3[4].answer[2] = 1; //選択肢３
-		quiz3[4].answer[3] = 0; //選択肢４
-		 break;
-	case 5:
-		quiz3[5].Img = LoadGraph("image/Quiz/WordExchange/WordExchange6.png");
-		quiz3[5].answer[0] = 0; //選択肢１
-		quiz3[5].answer[1] = 0; //選択肢２
-		quiz3[5].answer[2] = 0; //選択肢３
-		quiz3[5].answer[3] = 1; //選択肢４
-		 break;
-	case 6:
-		quiz3[6].Img = LoadGraph("image/Quiz/WordExchange/WordExchange7.png");
-		quiz3[6].answer[0] = 1; //選択肢１
-		quiz3[6].answer[1] = 0; //選択肢２
-		quiz3[6].answer[2] = 0; //選択肢３
-		quiz3[6].answer[3] = 0; //選択肢４
-		 break;
-	case 7:
-		quiz3[7].Img = LoadGraph("image/Quiz/WordExchange/WordExchange8.png");
-		quiz3[7].answer[0] = 0; //選択肢１
-		quiz3[7].answer[1] = 0; //選択肢２
-		quiz3[7].answer[2] = 1; //選択肢３
-		quiz3[7].answer[3] = 0; //選択肢４
-		 break;
-	case 8:
-		quiz3[8].Img = LoadGraph("image/Quiz/WordExchange/WordExchange9.png");
-		quiz3[8].answer[0] = 0; //選択肢１
-		quiz3[8].answer[1] = 0; //選択肢２
-		quiz3[8].answer[2] = 0; //選択肢３
-		quiz3[8].answer[3] = 1; //選択肢４
-		 break;
+	
 	 default:
 		 break;
 	 }
@@ -286,7 +149,6 @@ Stage1::Stage1()
 	 int i2 = i;
 	 int y2 = y;
 	 int x2 = x;
-
 	 if (GenreSelect::Selectgenre == 0)
 	 {
 		 for (int i = 0; i < 4; i++)
@@ -302,7 +164,7 @@ Stage1::Stage1()
 		 {
 			 door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
 			 door[i].Y = 550;
-			 door[i].answer = quiz[y2].answer[i];
+			 door[i].answer = quiz2[y2].answer[i];
 		 }
 	 }
 	 else if (GenreSelect::Selectgenre == 2)
@@ -311,7 +173,7 @@ Stage1::Stage1()
 		 {
 			 door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
 			 door[i].Y = 550;
-			 door[i].answer = quiz[x2].answer[i];
+			 door[i].answer = quiz3[x2].answer[i];
 		 }
 	 }
 	

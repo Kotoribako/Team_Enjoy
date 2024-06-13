@@ -19,9 +19,9 @@ private:
 		int Y;
 		int answer[4];
 	};
-	struct QUIZ quiz[9];
-	struct QUIZ quiz2[9];
-	struct QUIZ quiz3[9];
+	struct QUIZ quiz[3];
+	struct QUIZ quiz2[3];
+	struct QUIZ quiz3[3];
 	Block* block;
 	int Stage1Img; //ステージ１画像
 	//↑か↓のどちらかを使う
@@ -39,7 +39,7 @@ private:
 	int i;
 	int y;
 	int x;
-	int Quizflg;
+
 public:
 
 	static int StopStage1Xflg; // ステージの横が動いてるかどうか
