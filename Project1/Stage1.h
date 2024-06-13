@@ -19,7 +19,9 @@ private:
 		int Y;
 		int answer[4];
 	};
-	struct QUIZ quiz[3][9];
+	struct QUIZ quiz[9];
+	struct QUIZ quiz2[9];
+	struct QUIZ quiz3[9];
 	Block* block;
 	int Stage1Img; //ステージ１画像
 	//↑か↓のどちらかを使う

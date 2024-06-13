@@ -149,7 +149,7 @@ void Enemy::Enemyhit()
 		 b = player->GetLocationCenterY() - enemyY;
 		break;
 	}
-	float c = a*a + b*b;
+ 	float c = a*a + b*b;
 	float Hitrange = (player->Range + Range) * (player->Range * Range)/4;
 	if( c <= Hitrange)
 	{
