@@ -6,7 +6,6 @@ enum class TITLE_MENU
 {
     GAME_START,
     HELP,
-    RANKING,
     GAME_END,
     TITLE_SIZE,
 };
@@ -19,7 +18,6 @@ private:
     const char* menu_items[static_cast<int>(TITLE_MENU::TITLE_SIZE)] = {
     "START",
     "HELP",
-    "RANKING",
     "END"
     };
 
