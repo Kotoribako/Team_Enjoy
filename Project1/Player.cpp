@@ -313,13 +313,14 @@ void Player::Update()
 		Stage2::Stage2X = 0;
 		Stage3::Stage3X = 0;
 		Life--;
-		if (Life < 0) {
-			/* ここにゲームオーバー処理を入れる */
-			GameMain::NowStage = 8;
-		}
+		
 
 		block = new Block();
 
+	}
+	if (Life < 0) {
+		/* ここにゲームオーバー処理を入れる */
+		GameMain::NowStage = 8;
 	}
 
 

@@ -47,8 +47,8 @@ Enemy::Enemy()
 	case 6:
 		blockx[3].X = block->S3bloc[6].X;
 		blockx[3].X2 = block->S3bloc[6].X2;
-		enemyX = block->S3bloc[8].X - 30;
-		enemyY = block->S3bloc[8].Y - 30;
+		enemyX = block->S3bloc[6].X - 30;
+		enemyY = block->S3bloc[6].Y - 30;
 		break;
 	}
 
@@ -139,13 +139,29 @@ void Enemy::Draw()
 		DrawCircle(enemyX + Stage1::Stage1X, enemyY, Range, GetColor(0, 255, 0), FALSE);
 		break;
 	case 2:
+		if (Turnflg == 1)
+		{
+	
+			DrawTurnGraph(enemyX + Stage2::Stage2X - 30, enemyY - 30, E_Img, TRUE);
+		}
+		else if (Turnflg == 0)
+		{
+			DrawGraph(enemyX + Stage2::Stage2X - 30, enemyY - 30, E_Img, TRUE);
+		}
 		DrawBox(ex + /*moveX +*/ Stage2::Stage2X, ey, ex2 +/* moveX +*/ Stage2::Stage2X, ey2, GetColor(0, 255, 0), FALSE);
-		DrawGraph(enemyX + Stage2::Stage2X - 30, enemyY - 30, img[0], TRUE);
 		DrawCircle(enemyX + Stage2::Stage2X, enemyY, Range, GetColor(0, 255, 0), FALSE);
 		break;
 	case 3:
+		if (Turnflg == 1)
+		{
+			DrawTurnGraph(enemyX + Stage3::Stage3X - 30, enemyY - 30, E_Img, TRUE);
+		}
+		else if (Turnflg == 0)
+		{
+			DrawGraph(enemyX + Stage3::Stage3X - 30, enemyY - 30, E_Img, TRUE);
+		}
+
 		DrawBox(ex + /*moveX +*/ Stage3::Stage3X, ey, ex2 + /*moveX +*/ Stage3::Stage3X, ey2, GetColor(0, 255, 0), FALSE);
-		DrawGraph(enemyX + Stage3::Stage3X - 30, enemyY - 30, img[0], TRUE);
 		DrawCircle(enemyX + Stage3::Stage3X, enemyY, Range, GetColor(0, 255, 0), FALSE);
 		break;
 	}
