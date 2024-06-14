@@ -193,6 +193,12 @@ void Enemy::Enemyhit()
 		 a = player->GetLocationCenterX() - enemyX - Stage3::Stage3X;
 		 b = player->GetLocationCenterY() - enemyY;
 		break;
+	/* ゲームオーバーかゲームクリアに入った時 */
+	case 7:
+	case 8:
+		a = 0; // 例外スロー対策
+		b = 0; // 例外スロー対策
+		break;
 	}
 	if (Player::Life >= 0)
 	{
