@@ -331,6 +331,95 @@ void Stage3::Initialize()
 	//quiz[2].answer[2] = 1; //選択肢３
 	//quiz[2].answer[3] = 0; //選択肢４
 
+
+
+	switch (i)
+	{
+	case 0:
+		quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png");
+		quiz[0].answer[0] = 0; //選択肢１
+		quiz[0].answer[1] = 0; //選択肢２
+		quiz[0].answer[2] = 1; //選択肢３
+		quiz[0].answer[3] = 0; //選択肢４
+		break;
+	case 1:
+		quiz[1].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame5.png");
+		quiz[1].answer[0] = 0; //選択肢１
+		quiz[1].answer[1] = 1; //選択肢２
+		quiz[1].answer[2] = 0; //選択肢３
+		quiz[1].answer[3] = 0; //選択肢４
+		break;
+
+	case 2:
+		quiz[2].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame4.png");
+		quiz[2].answer[0] = 1; //選択肢１
+		quiz[2].answer[1] = 0; //選択肢２
+		quiz[2].answer[2] = 0; //選択肢３
+		quiz[2].answer[3] = 0; //選択肢４
+		break;
+
+	default:
+		break;
+	}
+
+	switch (y)
+	{
+	case 0:
+
+		quiz2[0].Img = LoadGraph("image/Quiz/Greatman/Ijin7.png");
+		quiz2[0].answer[0] = 0; //選択肢１
+		quiz2[0].answer[1] = 0; //選択肢２
+		quiz2[0].answer[2] = 1; //選択肢３
+		quiz2[0].answer[3] = 0; //選択肢４
+		break;
+	case 1:
+		quiz2[1].Img = LoadGraph("image/Quiz/Greatman/Ijin6.png");
+		quiz2[1].answer[0] = 0; //選択肢１
+		quiz2[1].answer[1] = 1; //選択肢２
+		quiz2[1].answer[2] = 0; //選択肢３
+		quiz2[1].answer[3] = 0; //選択肢４
+		break;
+	case 2:
+		quiz2[2].Img = LoadGraph("image/Quiz/Greatman/Ijin9.png");
+		quiz2[2].answer[0] = 0; //選択肢１
+		quiz2[2].answer[1] = 0; //選択肢２
+		quiz2[2].answer[2] = 1; //選択肢３
+		quiz2[2].answer[3] = 0; //選択肢４
+		break;
+
+	default:
+		break;
+	}
+
+	switch (x)
+	{
+	case 0:
+		quiz3[0].Img = LoadGraph("image/Quiz/WordExchange/WordExchange7.png");
+		quiz3[0].answer[0] = 0; //選択肢１
+		quiz3[0].answer[1] = 0; //選択肢２
+		quiz3[0].answer[2] = 1; //選択肢３
+		quiz3[0].answer[3] = 0; //選択肢４
+		break;
+	case 1:
+		quiz3[1].Img = LoadGraph("image/Quiz/WordExchange/WordExchange8.png");
+		quiz3[1].answer[0] = 0; //選択肢１
+		quiz3[1].answer[1] = 0; //選択肢２
+		quiz3[1].answer[2] = 0; //選択肢３
+		quiz3[1].answer[3] = 1; //選択肢４
+		break;
+	case 2:
+		quiz3[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange9.png");
+		quiz3[2].answer[0] = 0; //選択肢１
+		quiz3[2].answer[1] = 0; //選択肢２
+		quiz3[2].answer[2] = 1; //選択肢３
+		quiz3[2].answer[3] = 0; //選択肢4
+		break;
+
+	default:
+		break;
+	}
+
+
 	int i2 = i;
 	int y2 = y;
 	int x2 = x;

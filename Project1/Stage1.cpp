@@ -372,224 +372,92 @@ void Stage1::Initialize()
 	//quiz[2][x].answer[3] = 0; //選択肢４
 
 
-	//switch (i)
-	//{
-	//case 0:
-	//	quiz[0][0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
-	//	quiz[0][0].answer[0] = 0; //選択肢１
-	//	quiz[0][0].answer[1] = 0; //選択肢２
-	//	quiz[0][0].answer[2] = 1; //選択肢３
-	//	quiz[0][0].answer[3] = 0; //選択肢４
-	//	break;
-	//case 1:
-	//	quiz[0][1].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png");
-	//	quiz[0][1].answer[0] = 0; //選択肢１
-	//	quiz[0][1].answer[1] = 1; //選択肢２
-	//	quiz[0][1].answer[2] = 0; //選択肢３
-	//	quiz[0][1].answer[3] = 0; //選択肢４
-	//	break;
+	switch (i)
+	{
+	case 0:
+		quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
+		quiz[0].answer[0] = 0; //選択肢１
+		quiz[0].answer[1] = 0; //選択肢２
+		quiz[0].answer[2] = 1; //選択肢３
+		quiz[0].answer[3] = 0; //選択肢４
+		break;
+	case 1:
+		quiz[1].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame3.png");
+		quiz[1].answer[0] = 0; //選択肢１
+		quiz[1].answer[1] = 1; //選択肢２
+		quiz[1].answer[2] = 0; //選択肢３
+		quiz[1].answer[3] = 0; //選択肢４
+		break;
 
-	//case 2:
-	//	quiz[0][2].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame3.png");
-	//	quiz[0][2].answer[0] = 1; //選択肢１
-	//	quiz[0][2].answer[1] = 0; //選択肢２
-	//	quiz[0][2].answer[2] = 0; //選択肢３
-	//	quiz[0][2].answer[3] = 0; //選択肢４
-	//	break;
+	case 2:
+		quiz[2].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame7.png");
+		quiz[2].answer[0] = 1; //選択肢１
+		quiz[2].answer[1] = 0; //選択肢２
+		quiz[2].answer[2] = 0; //選択肢３
+		quiz[2].answer[3] = 0; //選択肢４
+		break;
 
-	//case 3:
-	//	quiz[0][3].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame4.png");
-	//	quiz[0][3].answer[0] = 0; //選択肢１
-	//	quiz[0][3].answer[1] = 1; //選択肢２
-	//	quiz[0][3].answer[2] = 0; //選択肢３
-	//	quiz[0][3].answer[3] = 0; //選択肢４
-	//	break;
+	default:
+		break;
+	}
 
-	//case 4:
-	//	quiz[0][4].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame5.png");
-	//	quiz[0][4].answer[0] = 1; //選択肢１
-	//	quiz[0][4].answer[1] = 0; //選択肢２
-	//	quiz[0][4].answer[2] = 0; //選択肢３
-	//	quiz[0][4].answer[3] = 0; //選択肢４
-	//	break;
+	switch (y)
+	{
+	case 0:
 
-	//case 5:
-	//	quiz[0][5].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame6.png");
-	//	quiz[0][5].answer[0] = 0; //選択肢１
-	//	quiz[0][5].answer[1] = 1; //選択肢２
-	//	quiz[0][5].answer[2] = 0; //選択肢３
-	//	quiz[0][5].answer[3] = 0; //選択肢４
-	//	break;
+		quiz2[0].Img = LoadGraph("image/Quiz/Greatman/Ijin5.png");
+		quiz2[0].answer[0] = 0; //選択肢１
+		quiz2[0].answer[1] = 0; //選択肢２
+		quiz2[0].answer[2] = 1; //選択肢３
+		quiz2[0].answer[3] = 0; //選択肢４
+		break;
+	case 1:
+		quiz2[1].Img = LoadGraph("image/Quiz/Greatman/Ijin2.png");
+		quiz2[1].answer[0] = 0; //選択肢１
+		quiz2[1].answer[1] = 1; //選択肢２
+		quiz2[1].answer[2] = 0; //選択肢３
+		quiz2[1].answer[3] = 0; //選択肢４
+		break;
+	case 2:
+		quiz2[2].Img = LoadGraph("image/Quiz/Greatman/Ijin3.png");
+		quiz2[2].answer[0] = 0; //選択肢１
+		quiz2[2].answer[1] = 0; //選択肢２
+		quiz2[2].answer[2] = 1; //選択肢３
+		quiz2[2].answer[3] = 0; //選択肢４
+		break;
+	
+	default:
+		break;
+	}
 
-	//case 6:
-	//	quiz[0][6].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame7.png");
-	//	quiz[0][6].answer[0] = 0; //選択肢１
-	//	quiz[0][6].answer[1] = 1; //選択肢２
-	//	quiz[0][6].answer[2] = 0; //選択肢３
-	//	quiz[0][6].answer[3] = 0; //選択肢４		 
-	//	break;
+	switch (x)
+	{
+	case 0:
+		quiz3[0].Img = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
+		quiz3[0].answer[0] = 0; //選択肢１
+		quiz3[0].answer[1] = 0; //選択肢２
+		quiz3[0].answer[2] = 1; //選択肢３
+		quiz3[0].answer[3] = 0; //選択肢４
+		break;
+	case 1:
+		quiz3[1].Img = LoadGraph("image/Quiz/WordExchange/WordExchange2.png");
+		quiz3[1].answer[0] = 0; //選択肢１
+		quiz3[1].answer[1] = 0; //選択肢２
+		quiz3[1].answer[2] = 0; //選択肢３
+		quiz3[1].answer[3] = 1; //選択肢４
+		break;
+	case 2:
+		quiz3[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange3.png");
+		quiz3[2].answer[0] = 0; //選択肢１
+		quiz3[2].answer[1] = 0; //選択肢２
+		quiz3[2].answer[2] = 1; //選択肢３
+		quiz3[2].answer[3] = 0; //選択肢４
 
+		break;
 
-	//case 7:
-	//	quiz[0][7].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame8.png");
-	//	quiz[0][7].answer[0] = 0; //選択肢１
-	//	quiz[0][7].answer[1] = 1; //選択肢２
-	//	quiz[0][7].answer[2] = 0; //選択肢３
-	//	quiz[0][7].answer[3] = 0; //選択肢４
-	//	break;
-
-	//case 8:
-	//	quiz[0][8].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame9.png");
-	//	quiz[0][8].answer[0] = 1; //選択肢１
-	//	quiz[0][8].answer[1] = 0; //選択肢２
-	//	quiz[0][8].answer[2] = 0; //選択肢３
-	//	quiz[0][8].answer[3] = 0; //選択肢４
-	//	break;
-
-	//default:
-	//	break;
-	//}
-
-	//switch (y)
-	//{
-	//case 0:
-
-	//	quiz[1][0].Img = LoadGraph("image/Quiz/Greatman/Ijin1.png");
-	//	quiz[1][0].answer[0] = 0; //選択肢１
-	//	quiz[1][0].answer[1] = 0; //選択肢２
-	//	quiz[1][0].answer[2] = 1; //選択肢３
-	//	quiz[1][0].answer[3] = 0; //選択肢４
-	//	break;
-	//case 1:
-	//	quiz[1][1].Img = LoadGraph("image/Quiz/Greatman/Ijin2.png");
-	//	quiz[1][1].answer[0] = 0; //選択肢１
-	//	quiz[1][1].answer[1] = 1; //選択肢２
-	//	quiz[1][1].answer[2] = 0; //選択肢３
-	//	quiz[1][1].answer[3] = 0; //選択肢４
-	//	break;
-	//case 2:
-	//	quiz[1][2].Img = LoadGraph("image/Quiz/Greatman/Ijin3.png");
-	//	quiz[1][2].answer[0] = 0; //選択肢１
-	//	quiz[1][2].answer[1] = 0; //選択肢２
-	//	quiz[1][2].answer[2] = 1; //選択肢３
-	//	quiz[1][2].answer[3] = 0; //選択肢４
-	//	break;
-	//case 3:
-	//	quiz[1][3].Img = LoadGraph("image/Quiz/Greatman/Ijin4.png");
-	//	quiz[1][3].answer[0] = 0; //選択肢１
-	//	quiz[1][3].answer[1] = 0; //選択肢２
-	//	quiz[1][3].answer[2] = 1; //選択肢３
-	//	quiz[1][3].answer[3] = 0; //選択肢４
-	//	break;
-	//case 4:
-
-	//	quiz[1][4].Img = LoadGraph("image/Quiz/Greatman/Ijin5.png");
-	//	quiz[1][4].answer[0] = 0; //選択肢１
-	//	quiz[1][4].answer[1] = 0; //選択肢２
-	//	quiz[1][4].answer[2] = 1; //選択肢３
-	//	quiz[1][4].answer[3] = 0; //選択肢４
-	//	break;
-	//case 5:
-	//	quiz[1][5].Img = LoadGraph("image/Quiz/Greatman/Ijin6.png");
-	//	quiz[1][5].answer[0] = 1; //選択肢１
-	//	quiz[1][5].answer[1] = 0; //選択肢２
-	//	quiz[1][5].answer[2] = 0; //選択肢３
-	//	quiz[1][5].answer[3] = 0; //選択肢４
-	//	break;
-	//case 6:
-	//	quiz[1][6].Img = LoadGraph("image/Quiz/Greatman/Ijin7.png");
-	//	quiz[1][6].answer[0] = 0; //選択肢１
-	//	quiz[1][6].answer[1] = 1; //選択肢２
-	//	quiz[1][6].answer[2] = 0; //選択肢３
-	//	quiz[1][6].answer[3] = 0; //選択肢４
-	//	break;
-	//case 7:
-	//	quiz[1][7].Img = LoadGraph("image/Quiz/Greatman/Ijin8.png");
-	//	quiz[1][7].answer[0] = 0; //選択肢１
-	//	quiz[1][7].answer[1] = 0; //選択肢２
-	//	quiz[1][7].answer[2] = 0; //選択肢３
-	//	quiz[1][7].answer[3] = 1; //選択肢４
-	//	break;
-	//case 8:
-	//	quiz[1][8].Img = LoadGraph("image/Quiz/Greatman/Ijin9.png");
-	//	quiz[1][8].answer[0] = 0; //選択肢１
-	//	quiz[1][8].answer[1] = 1; //選択肢２
-	//	quiz[1][8].answer[2] = 0; //選択肢３
-	//	quiz[1][8].answer[3] = 0; //選択肢４
-	//	break;
-	//default:
-	//	break;
-	//}
-
-	//switch (x)
-	//{
-	//case 0:
-	//	quiz[2][0].Img = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
-	//	quiz[2][0].answer[0] = 0; //選択肢１
-	//	quiz[2][0].answer[1] = 0; //選択肢２
-	//	quiz[2][0].answer[2] = 1; //選択肢３
-	//	quiz[2][0].answer[3] = 0; //選択肢４
-	//	break;
-	//case 1:
-	//	quiz[2][1].Img = LoadGraph("image/Quiz/WordExchange/WordExchange2.png");
-	//	quiz[2][1].answer[0] = 0; //選択肢１
-	//	quiz[2][1].answer[1] = 0; //選択肢２
-	//	quiz[2][1].answer[2] = 0; //選択肢３
-	//	quiz[2][1].answer[3] = 1; //選択肢４
-	//	break;
-	//case 2:
-	//	quiz[2][2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange3.png");
-	//	quiz[2][2].answer[0] = 0; //選択肢１
-	//	quiz[2][2].answer[1] = 0; //選択肢２
-	//	quiz[2][2].answer[2] = 1; //選択肢３
-	//	quiz[2][2].answer[3] = 0; //選択肢４
-
-	//	break;
-	//case 3:
-	//	quiz[2][3].Img = LoadGraph("image/Quiz/WordExchange/WordExchange4.png");
-	//	quiz[2][3].answer[0] = 1; //選択肢１
-	//	quiz[2][3].answer[1] = 0; //選択肢２
-	//	quiz[2][3].answer[2] = 0; //選択肢３
-	//	quiz[2][3].answer[3] = 0; //選択肢４
-	//	break;
-	//case 4:
-	//	quiz[2][4].Img = LoadGraph("image/Quiz/WordExchange/WordExchange5.png");
-	//	quiz[2][4].answer[0] = 0; //選択肢１
-	//	quiz[2][4].answer[1] = 0; //選択肢２
-	//	quiz[2][4].answer[2] = 1; //選択肢３
-	//	quiz[2][4].answer[3] = 0; //選択肢４
-	//	break;
-	//case 5:
-	//	quiz[2][5].Img = LoadGraph("image/Quiz/WordExchange/WordExchange6.png");
-	//	quiz[2][5].answer[0] = 0; //選択肢１
-	//	quiz[2][5].answer[1] = 0; //選択肢２
-	//	quiz[2][5].answer[2] = 0; //選択肢３
-	//	quiz[2][5].answer[3] = 1; //選択肢４
-	//	break;
-	//case 6:
-	//	quiz[2][6].Img = LoadGraph("image/Quiz/WordExchange/WordExchange7.png");
-	//	quiz[2][6].answer[0] = 1; //選択肢１
-	//	quiz[2][6].answer[1] = 0; //選択肢２
-	//	quiz[2][6].answer[2] = 0; //選択肢３
-	//	quiz[2][6].answer[3] = 0; //選択肢４
-	//	break;
-	//case 7:
-	//	quiz[2][7].Img = LoadGraph("image/Quiz/WordExchange/WordExchange8.png");
-	//	quiz[2][7].answer[0] = 0; //選択肢１
-	//	quiz[2][7].answer[1] = 0; //選択肢２
-	//	quiz[2][7].answer[2] = 1; //選択肢３
-	//	quiz[2][7].answer[3] = 0; //選択肢４
-	//	break;
-	//case 8:
-	//	quiz[2][8].Img = LoadGraph("image/Quiz/WordExchange/WordExchange9.png");
-	//	quiz[2][8].answer[0] = 0; //選択肢１
-	//	quiz[2][8].answer[1] = 0; //選択肢２
-	//	quiz[2][8].answer[2] = 0; //選択肢３
-	//	quiz[2][8].answer[3] = 1; //選択肢４
-	//	break;
-	//default:
-	//	break;
-	//}
+	default:
+		break;
+	}
 
 	int i2 = i;
 	int y2 = y;
