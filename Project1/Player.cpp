@@ -315,7 +315,7 @@ void Player::Update()
 		Life--;
 		if (Life < 0) {
 			/* ここにゲームオーバー処理を入れる */
-			GameMain::NowStage = 0;
+			GameMain::NowStage = 8;
 		}
 
 		block = new Block();
@@ -348,24 +348,24 @@ void Player::Update()
 	}
 
 
-	if (playerY >= 800) // リスポーン処理（後で消す）
-	{
-		playerX = PLAYERSTARTX;
-		playerY = PLAYERSTARTY;
-		Jumpflg = FALSE;
-		Downflg = FALSE;
-		Stage1::Stage1X = 0;
-		Stage2::Stage2X = 0;
-		Stage3::Stage3X = 0;
-		Life--;
-		if (Life == -1) {
-			/* ここにゲームオーバー処理を入れる */
-			GameMain::NowStage = 0;
-		}
+	//if (playerY >= 800) // リスポーン処理（後で消す）
+	//{
+	//	playerX = PLAYERSTARTX;
+	//	playerY = PLAYERSTARTY;
+	//	Jumpflg = FALSE;
+	//	Downflg = FALSE;
+	//	Stage1::Stage1X = 0;
+	//	Stage2::Stage2X = 0;
+	//	Stage3::Stage3X = 0;
+	//	Life--;
+	//	if (Life == -1) {
+	//		/* ここにゲームオーバー処理を入れる */
+	//		GameMain::NowStage = 8;
+	//	}
 
-		block = new Block();
+	//	block = new Block();
 
-	}
+	//}
 
 	if (Stage1::S1DecisionToAnswerFlg == TRUE && GameMain::NowStage == 4) {
 		// プレイヤーをスタート地点に戻す

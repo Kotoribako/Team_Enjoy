@@ -2,6 +2,7 @@
 #include"GenreSelect.h"
 #include"Title.h"
 #include "Clear.h"
+#include "GameOver.h"
 int GameMain::NowStage;
 
 GameMain::GameMain()
@@ -81,6 +82,10 @@ AbstractScene* GameMain::Update()
 	case 7:
 		return new Clear();
 		break;
+	case 8:
+		return new GameOver();
+		break;
+
 	default:
 		return 0;
 	}
