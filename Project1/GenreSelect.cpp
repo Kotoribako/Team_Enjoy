@@ -5,6 +5,7 @@
 #include"DxLib.h"
 #include"PadInput.h"
 #include"Stage1.h"
+#include "Title.h"
 #include "GameMain.h"
 #include<iostream>
 #define SCREEN_WIDTH 1280
@@ -104,6 +105,13 @@ AbstractScene* GenreSelect::Update()
 			break;
 		}
 	}
+
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_B))
+	{
+		PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
+		return new Title();
+	}
+
 	return this;
 }
 
