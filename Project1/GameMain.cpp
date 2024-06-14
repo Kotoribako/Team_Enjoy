@@ -51,6 +51,7 @@ AbstractScene* GameMain::Update()
 	case 4:
 		NowStage = 1;
 		stage1->Update();
+		enemy->Update();
 		if (Stage1::S1DecisionToAnswerFlg == TRUE)
 		{
 			Initialize();
@@ -83,7 +84,7 @@ AbstractScene* GameMain::Update()
 		return 0;
 	}
 	player->Update();
-	enemy->Update();
+	//enemy->Update();
 
 	return this;
 }
