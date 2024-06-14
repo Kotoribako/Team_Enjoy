@@ -9,6 +9,8 @@ private:
 	int GameOverImg;
 	int ModoruImg;
 
+	int GameOverBGM;
+
 	int S_FPS;
 	int S_FPS1;
 	int S_Seconas;

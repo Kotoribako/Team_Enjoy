@@ -18,8 +18,6 @@ Title::Title()
 
 	//タイトルBGM読み込み
 	((TitleBGM = LoadSoundMem("sound/BGM/Title_BGM.wav")) == -1);
-	//BGM音量
-	ChangeVolumeSoundMem(200, TitleBGM);
 
 	//SE読み込み
 	((CursorSE = LoadSoundMem("sound/SE/cursor_SE.wav")) == -1);

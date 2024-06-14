@@ -11,7 +11,10 @@ Clear::Clear()
 	//タイトル画像読み込み
 	BackImg = LoadGraph("image/BackGround02.png");
 	ClearImg = LoadGraph("image/Clear_Img.png");
-	ModoruImg = LoadGraph("image/modoru_Img.png");
+	ModoruImg = LoadGraph("image/modoru.png");
+
+	//BGM読み込み
+	((ClearBGM = LoadSoundMem("sound/BGM/GameClear_BGM.wav")) == -1);
 
 	S_FPS = 0;
 	S_FPS1 = 0;
@@ -21,11 +24,19 @@ Clear::Clear()
 
 Clear::~Clear()
 {
-
+	//BGM削除
+	DeleteSoundMem(ClearBGM);
+	StopSoundMem(ClearBGM);
 }
 
 AbstractScene* Clear::Update()
 {
+	//BGM再生（ループ）
+	if (CheckSoundMem(ClearBGM) == 0)
+	{
+		PlaySoundMem(ClearBGM, DX_PLAYTYPE_LOOP, TRUE);
+	}
+
 	S_FPS++;
 	S_FPS1++;
 

@@ -7,7 +7,7 @@ private:
 	int BackImg;
 	int ClearImg;
 	int ModoruImg;
-	
+	int ClearBGM;
 
 	int S_FPS;
 	int S_FPS1;

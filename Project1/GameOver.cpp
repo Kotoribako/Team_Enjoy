@@ -13,6 +13,9 @@ GameOver::GameOver()
 	GameOverImg = LoadGraph("image/GameOver.png");
 	ModoruImg = LoadGraph("image/GameOver_Modoru.png");
 
+	//BGM読み込み
+	((GameOverBGM = LoadSoundMem("sound/BGM/GameOver_BGM.wav")) == -1);
+
 	S_FPS = 0;
 	S_FPS1 = 0;
 	S_Seconas = 0;
@@ -21,11 +24,20 @@ GameOver::GameOver()
 
 GameOver::~GameOver()
 {
-
+	//BGM削除
+	DeleteSoundMem(GameOverBGM);
+	StopSoundMem(GameOverBGM);
 }
 
 AbstractScene* GameOver::Update()
 {
+
+	//BGM再生（ループ）
+	if (CheckSoundMem(GameOverBGM) == 0)
+	{
+		PlaySoundMem(GameOverBGM, DX_PLAYTYPE_LOOP, TRUE);
+	}
+
 	S_FPS++;
 	S_FPS1++;
 
