@@ -294,7 +294,7 @@ void Stage3::ChangeStage()
 					DeleteSoundMem(Stage3BGM);
 					StopSoundMem(Stage3BGM);
 
-					GameMain::NowStage = 2; // 次のステージへ進む。
+					GameMain::NowStage = 7; // ゲームクリア画面に行く。
 				}
 				else
 				{

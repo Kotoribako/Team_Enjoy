@@ -1,6 +1,7 @@
 #include "GameMain.h"
 #include"GenreSelect.h"
 #include"Title.h"
+#include "Clear.h"
 int GameMain::NowStage;
 
 GameMain::GameMain()
@@ -77,9 +78,9 @@ AbstractScene* GameMain::Update()
 			Initialize();
 		}
 		break;
-	//case 4:
-	//	stage1->Update();
-	//	break;
+	case 7:
+		return new Clear();
+		break;
 	default:
 		return 0;
 	}
