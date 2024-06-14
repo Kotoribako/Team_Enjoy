@@ -61,22 +61,22 @@ Stage3::Stage3()
 
 		quiz2[0].Img = LoadGraph("image/Quiz/Greatman/Ijin7.png");
 		quiz2[0].answer[0] = 0; //選択肢１
-		quiz2[0].answer[1] = 0; //選択肢２
-		quiz2[0].answer[2] = 1; //選択肢３
+		quiz2[0].answer[1] = 1; //選択肢２
+		quiz2[0].answer[2] = 0; //選択肢３
 		quiz2[0].answer[3] = 0; //選択肢４
 		break;
 	case 1:
 		quiz2[1].Img = LoadGraph("image/Quiz/Greatman/Ijin8.png");
 		quiz2[1].answer[0] = 0; //選択肢１
-		quiz2[1].answer[1] = 1; //選択肢２
+		quiz2[1].answer[1] = 0; //選択肢２
 		quiz2[1].answer[2] = 0; //選択肢３
-		quiz2[1].answer[3] = 0; //選択肢４
+		quiz2[1].answer[3] = 1; //選択肢４
 		break;
 	case 2:
 		quiz2[2].Img = LoadGraph("image/Quiz/Greatman/Ijin9.png");
 		quiz2[2].answer[0] = 0; //選択肢１
-		quiz2[2].answer[1] = 0; //選択肢２
-		quiz2[2].answer[2] = 1; //選択肢３
+		quiz2[2].answer[1] = 1; //選択肢２
+		quiz2[2].answer[2] = 0; //選択肢３
 		quiz2[2].answer[3] = 0; //選択肢４
 		break;
 
