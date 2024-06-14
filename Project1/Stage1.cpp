@@ -144,7 +144,8 @@ Stage1::Stage1()
 		 break;
 	 }
 
-
+	 // ドアの画像を分割読み込み
+	 LoadDivGraph("image/door.png", 4, 4, 1, 64, 64, LoadDoorImg);
 
 	 int i2 = i;
 	 int y2 = y;
@@ -153,7 +154,7 @@ Stage1::Stage1()
 	 {
 		 for (int i = 0; i < 4; i++)
 		 {
-			 door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			 door[i].Img = LoadDoorImg[i];
 			 door[i].Y = 550;
 			 door[i].answer = quiz[i2].answer[i];
 		 }
@@ -162,7 +163,7 @@ Stage1::Stage1()
 	 {
 		 for (int i = 0; i < 4; i++)
 		 {
-			 door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			 door[i].Img = LoadDoorImg[i];
 			 door[i].Y = 550;
 			 door[i].answer = quiz2[y2].answer[i];
 		 }
@@ -171,7 +172,7 @@ Stage1::Stage1()
 	 {
 		 for (int i = 0; i < 4; i++)
 		 {
-			 door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			 door[i].Img = LoadDoorImg[i];
 			 door[i].Y = 550;
 			 door[i].answer = quiz3[x2].answer[i];
 		 }
