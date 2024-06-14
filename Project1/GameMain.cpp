@@ -1,6 +1,8 @@
 #include "GameMain.h"
 #include"GenreSelect.h"
 #include"Title.h"
+#include "Clear.h"
+#include "GameOver.h"
 int GameMain::NowStage;
 
 GameMain::GameMain()
@@ -51,6 +53,7 @@ AbstractScene* GameMain::Update()
 	case 4:
 		NowStage = 1;
 		stage1->Update();
+		enemy->Update();
 		if (Stage1::S1DecisionToAnswerFlg == TRUE)
 		{
 			Initialize();
@@ -76,14 +79,18 @@ AbstractScene* GameMain::Update()
 			Initialize();
 		}
 		break;
-	//case 4:
-	//	stage1->Update();
-	//	break;
+	case 7:
+		return new Clear();
+		break;
+	case 8:
+		return new GameOver();
+		break;
+
 	default:
 		return 0;
 	}
 	player->Update();
-	enemy->Update();
+	//enemy->Update();
 
 	return this;
 }
