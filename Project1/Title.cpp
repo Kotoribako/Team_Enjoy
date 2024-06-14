@@ -101,10 +101,6 @@ AbstractScene* Title::Update()
 			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
 			return new Help;
 			break;
-		case TITLE_MENU::RANKING:
-			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
-			return new Clear;
-			break;
 		case TITLE_MENU::GAME_END:
 			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
 			return nullptr;
@@ -131,7 +127,7 @@ void Title::Draw()const
 		const int base_y = 200;
 
 		//
-		const int margin_y = 100;
+		const int margin_y = 150;
 
 		//
 		int color = 0xFFFFFF;
@@ -145,7 +141,7 @@ void Title::Draw()const
 		}
 		DrawStringToHandle(SCREEN_WIDTH / 2 - 100, i * margin_y + base_y, menu_items[i], color, MenuFont, border_color);
 	}
-	DrawStringToHandle(150, 100, "Title", 0xffffff, MenuFont);
+	DrawStringToHandle(SCREEN_WIDTH / 2 - 300, 100, "Mystery Action", 0xff000ff, MenuFont);
 
 	////
 	//int select_y = 230 + Select * 80;
