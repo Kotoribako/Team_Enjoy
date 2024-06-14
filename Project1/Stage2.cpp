@@ -149,7 +149,7 @@ Stage2::Stage2()
 		for (int i = 0; i < 4; i++)
 		{
 			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
-			door[i].Y = 550;
+			door[i].Y = 460;
 			door[i].answer = quiz[i2].answer[i];
 		}
 	}
@@ -158,7 +158,7 @@ Stage2::Stage2()
 		for (int i = 0; i < 4; i++)
 		{
 			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
-			door[i].Y = 550;
+			door[i].Y = 460;
 			door[i].answer = quiz2[y2].answer[i];
 		}
 	}
@@ -167,7 +167,7 @@ Stage2::Stage2()
 		for (int i = 0; i < 4; i++)
 		{
 			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
-			door[i].Y = 550;
+			door[i].Y = 460;
 			door[i].answer = quiz3[x2].answer[i];
 		}
 	}
