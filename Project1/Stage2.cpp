@@ -57,14 +57,14 @@ Stage2::Stage2()
 	switch (i)
 	{
 	case 0:
-		quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
+		quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame6.png");
 		quiz[0].answer[0] = 0; //選択肢１
-		quiz[0].answer[1] = 0; //選択肢２
-		quiz[0].answer[2] = 1; //選択肢３
+		quiz[0].answer[1] = 1; //選択肢２
+		quiz[0].answer[2] = 0; //選択肢３
 		quiz[0].answer[3] = 0; //選択肢４
 		break;
 	case 1:
-		quiz[1].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame3.png");
+		quiz[1].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame9.png");
 		quiz[1].answer[0] = 1; //選択肢１
 		quiz[1].answer[1] = 0; //選択肢２
 		quiz[1].answer[2] = 0; //選択肢３
@@ -72,7 +72,7 @@ Stage2::Stage2()
 		break;
 
 	case 2:
-		quiz[2].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame7.png");
+		quiz[2].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame8.png");
 		quiz[2].answer[0] = 0; //選択肢１
 		quiz[2].answer[1] = 1; //選択肢２
 		quiz[2].answer[2] = 0; //選択肢３
@@ -87,21 +87,21 @@ Stage2::Stage2()
 	{
 	case 0:
 
-		quiz2[0].Img = LoadGraph("image/Quiz/Greatman/Ijin5.png");
+		quiz2[0].Img = LoadGraph("image/Quiz/Greatman/Ijin4.png");
 		quiz2[0].answer[0] = 0; //選択肢１
 		quiz2[0].answer[1] = 0; //選択肢２
 		quiz2[0].answer[2] = 1; //選択肢３
 		quiz2[0].answer[3] = 0; //選択肢４
 		break;
 	case 1:
-		quiz2[1].Img = LoadGraph("image/Quiz/Greatman/Ijin2.png");
+		quiz2[1].Img = LoadGraph("image/Quiz/Greatman/Ijin1.png");
 		quiz2[1].answer[0] = 0; //選択肢１
 		quiz2[1].answer[1] = 1; //選択肢２
 		quiz2[1].answer[2] = 0; //選択肢３
 		quiz2[1].answer[3] = 0; //選択肢４
 		break;
 	case 2:
-		quiz2[2].Img = LoadGraph("image/Quiz/Greatman/Ijin3.png");
+		quiz2[2].Img = LoadGraph("image/Quiz/Greatman/Ijin6.png");
 		quiz2[2].answer[0] = 0; //選択肢１
 		quiz2[2].answer[1] = 0; //選択肢２
 		quiz2[2].answer[2] = 1; //選択肢３
@@ -115,21 +115,21 @@ Stage2::Stage2()
 	switch (x)
 	{
 	case 0:
-		quiz3[0].Img = LoadGraph("image/Quiz/WordExchange/WordExchange1.png");
+		quiz3[0].Img = LoadGraph("image/Quiz/WordExchange/WordExchange4.png");
 		quiz3[0].answer[0] = 0; //選択肢１
 		quiz3[0].answer[1] = 0; //選択肢２
 		quiz3[0].answer[2] = 1; //選択肢３
 		quiz3[0].answer[3] = 0; //選択肢４
 		break;
 	case 1:
-		quiz3[1].Img = LoadGraph("image/Quiz/WordExchange/WordExchange2.png");
+		quiz3[1].Img = LoadGraph("image/Quiz/WordExchange/WordExchange5.png");
 		quiz3[1].answer[0] = 0; //選択肢１
 		quiz3[1].answer[1] = 0; //選択肢２
 		quiz3[1].answer[2] = 0; //選択肢３
 		quiz3[1].answer[3] = 1; //選択肢４
 		break;
 	case 2:
-		quiz3[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange3.png");
+		quiz3[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange6.png");
 		quiz3[2].answer[0] = 0; //選択肢１
 		quiz3[2].answer[1] = 0; //選択肢２
 		quiz3[2].answer[2] = 1; //選択肢３
