@@ -82,11 +82,11 @@ AbstractScene* GameMain::Update()
 		return new Clear();
 		break;
 	case 8:
-		/* BGM消す用の処理 */
+		/* BGM消す用の処理↓ */
 		delete stage1;
 		delete stage2;
 		delete stage3;
-		/* BGM消す用の処理 */
+		/* BGM消す用の処理↑ */
 		return new GameOver();
 		break;
 
