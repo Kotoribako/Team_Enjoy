@@ -11,7 +11,7 @@ Clear::Clear()
 	//タイトル画像読み込み
 	BackImg = LoadGraph("image/BackGround02.png");
 	ClearImg = LoadGraph("image/Clear_Img.png");
-	ModoruImg = LoadGraph("image/modoru_Img.png");
+	ModoruImg = LoadGraph("image/modoru.png");
 
 	S_FPS = 0;
 	S_FPS1 = 0;
