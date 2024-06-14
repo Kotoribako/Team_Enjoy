@@ -40,6 +40,8 @@ private:
 	int y;
 	int x;
 
+	int LoadDoorImg[4]; // ドア読み込ます用の配列 
+
 public:
 
 	static int StopStage1Xflg; // ステージの横が動いてるかどうか

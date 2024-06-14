@@ -5,9 +5,16 @@ class Enemy
 {
 private:
 
-	
+	struct BlockX
+	{
+		float X;
+		float X2;
+	};
+	struct BlockX blockx[4];
 
 	int img[2];
+	int slimeImg[3];
+	int E_Img;
 	int count;
 	bool Hitflg;
 	float speed;
@@ -24,6 +31,10 @@ private:
 	float enemyY2;
 
 	int OverFlg;
+	int Turnflg;
+	int E_FPS;     //FPScnt
+	int E_Seconas1;  //秒数
+
 public:
 	
 	static float ex, ex2; // 敵の左座標(ex)と右座標を取る(ex2) 
@@ -41,5 +52,6 @@ public:
 	void Update();
 	void Draw();
 	void Enemyhit();
+	void EnemyAnim();
 };
 

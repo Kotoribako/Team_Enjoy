@@ -276,6 +276,10 @@ void Player::Update()
 		HitFlg = FALSE;
 	}
 
+	if (BlockHitY() == 11)
+	{
+		count += 1;
+	}
 
 	Move();
 	if (Animflg == 1 /*&& Moveflg == 0*/)
@@ -309,13 +313,14 @@ void Player::Update()
 		Stage2::Stage2X = 0;
 		Stage3::Stage3X = 0;
 		Life--;
-		if (Life < 0) {
-			/* ここにゲームオーバー処理を入れる */
-			GameMain::NowStage = 0;
-		}
+		
 
 		block = new Block();
 
+	}
+	if (Life < 0) {
+		/* ここにゲームオーバー処理を入れる */
+		GameMain::NowStage = 8;
 	}
 
 
@@ -344,24 +349,24 @@ void Player::Update()
 	}
 
 
-	if (playerY >= 800) // リスポーン処理（後で消す）
-	{
-		playerX = PLAYERSTARTX;
-		playerY = PLAYERSTARTY;
-		Jumpflg = FALSE;
-		Downflg = FALSE;
-		Stage1::Stage1X = 0;
-		Stage2::Stage2X = 0;
-		Stage3::Stage3X = 0;
-		Life--;
-		if (Life == -1) {
-			/* ここにゲームオーバー処理を入れる */
-			GameMain::NowStage = 0;
-		}
+	//if (playerY >= 800) // リスポーン処理（後で消す）
+	//{
+	//	playerX = PLAYERSTARTX;
+	//	playerY = PLAYERSTARTY;
+	//	Jumpflg = FALSE;
+	//	Downflg = FALSE;
+	//	Stage1::Stage1X = 0;
+	//	Stage2::Stage2X = 0;
+	//	Stage3::Stage3X = 0;
+	//	Life--;
+	//	if (Life == -1) {
+	//		/* ここにゲームオーバー処理を入れる */
+	//		GameMain::NowStage = 8;
+	//	}
 
-		block = new Block();
+	//	block = new Block();
 
-	}
+	//}
 
 	if (Stage1::S1DecisionToAnswerFlg == TRUE && GameMain::NowStage == 4) {
 		// プレイヤーをスタート地点に戻す
@@ -399,7 +404,8 @@ void Player::Draw()
 	DrawFormatString(0, 120, GetColor(0, 0, 0), "BlockNum:%d", BlockNum);
 	for (int i = 0; i < Life; i++)
 	{
-		DrawBox(100 + 50 * i, 100, 130 + 50 * i, 130, GetColor(255, 0, 0), TRUE);
+		//DrawBox(100 + 50 * i, 100, 130 + 50 * i, 130, GetColor(255, 0, 0), TRUE);
+		DrawGraph(100 + 50 * i, 100, image[0], TRUE);
 	}
 }
 
@@ -1158,21 +1164,21 @@ int Player::BlockHitY()
 				if (py < block->S1bloc[i].Y2 && block->S1bloc[i].Y < py2) // 地面に着地している状態
 				{
 					return 1;
+					break;
 				}
-				else if (block->S1bloc[i].Y < py2 && Jumpflg == TRUE) // ジャンプ中
+				else if (block->S1bloc[i].Y > py2 && Jumpflg == TRUE) // ジャンプ中
 				{
 					return 2;
+					break;
 				}
 				else if (py > block->S1bloc[i].Y2 && Jumpflg == TRUE) // プレイヤーの頭上とブロックの下がヒットしたとき、
 				{
 					return 3;
+					break;
 				}
 			}
-			else if (i == 10)
-			{
-				return 0;
-			}
 		}
+		return 0;
 		break;
 	case 2:
 	case 5:
