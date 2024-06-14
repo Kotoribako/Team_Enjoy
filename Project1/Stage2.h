@@ -22,6 +22,8 @@ private:
 		int answer[4];
 	};
 	struct QUIZ quiz[3];
+	struct QUIZ quiz2[3];
+	struct QUIZ quiz3[3];
 	Block* block;
 	int Stage2Img; //ステージ2画像
 	//↑か↓のどちらかを使う
@@ -36,6 +38,12 @@ private:
 	int TestImg;
 
 	int janruImg[3];
+
+	int i;
+	int y;
+	int x;
+
+	int LoadDoorImg[4]; // ドア読み込ます用の配列 
 
 public:
 

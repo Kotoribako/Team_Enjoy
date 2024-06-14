@@ -4,6 +4,7 @@
 #include<DxLib.h>
 #include"GenreSelect.h"
 #include"GameMain.h"
+#include <time.h>
 
 int Stage2::StopStage2Xflg;
 float Stage2::Stage2X;
@@ -27,30 +28,151 @@ Stage2::Stage2()
 
 	quiz->X = 770;
 	quiz->Y = 0;
-	//アニメゲームのクイズ情報
-	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png");
-	quiz[0].answer[0] = 0; //選択肢１
-	quiz[0].answer[1] = 1; //選択肢２
-	quiz[0].answer[2] = 0; //選択肢３
-	quiz[0].answer[3] = 0; //選択肢４
-	//偉人のクイズ情報
-	quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin2.png");
-	quiz[1].answer[0] = 0; //選択肢１
-	quiz[1].answer[1] = 1; //選択肢２
-	quiz[1].answer[2] = 0; //選択肢３
-	quiz[1].answer[3] = 0; //選択肢４
-	//並び替えのクイズ情報
-	quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange2.png");
-	quiz[2].answer[0] = 0; //選択肢１
-	quiz[2].answer[1] = 0; //選択肢２
-	quiz[2].answer[2] = 0; //選択肢３
-	quiz[2].answer[3] = 1; //選択肢４
+	////アニメゲームのクイズ情報
+	//quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png");
+	//quiz[0].answer[0] = 0; //選択肢１
+	//quiz[0].answer[1] = 1; //選択肢２
+	//quiz[0].answer[2] = 0; //選択肢３
+	//quiz[0].answer[3] = 0; //選択肢４
+	////偉人のクイズ情報
+	//quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin2.png");
+	//quiz[1].answer[0] = 0; //選択肢１
+	//quiz[1].answer[1] = 1; //選択肢２
+	//quiz[1].answer[2] = 0; //選択肢３
+	//quiz[1].answer[3] = 0; //選択肢４
+	////並び替えのクイズ情報
+	//quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange2.png");
+	//quiz[2].answer[0] = 0; //選択肢１
+	//quiz[2].answer[1] = 0; //選択肢２
+	//quiz[2].answer[2] = 0; //選択肢３
+	//quiz[2].answer[3] = 1; //選択肢４
 
-	for (int i = 0; i < 4; i++)
+
+	srand((unsigned int)time(NULL));
+	i = rand() % 3;
+	y = rand() % 3;
+	x = rand() % 3;
+
+
+	switch (i)
 	{
-		door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
-		door[i].Y = 460;
-		door[i].answer = quiz[GenreSelect::Selectgenre].answer[i];
+	case 0:
+		quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame6.png");
+		quiz[0].answer[0] = 0; //選択肢１
+		quiz[0].answer[1] = 1; //選択肢２
+		quiz[0].answer[2] = 0; //選択肢３
+		quiz[0].answer[3] = 0; //選択肢４
+		break;
+	case 1:
+		quiz[1].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame9.png");
+		quiz[1].answer[0] = 1; //選択肢１
+		quiz[1].answer[1] = 0; //選択肢２
+		quiz[1].answer[2] = 0; //選択肢３
+		quiz[1].answer[3] = 0; //選択肢４
+		break;
+
+	case 2:
+		quiz[2].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame8.png");
+		quiz[2].answer[0] = 0; //選択肢１
+		quiz[2].answer[1] = 1; //選択肢２
+		quiz[2].answer[2] = 0; //選択肢３
+		quiz[2].answer[3] = 0; //選択肢４
+		break;
+
+	default:
+		break;
+	}
+
+	switch (y)
+	{
+	case 0:
+
+		quiz2[0].Img = LoadGraph("image/Quiz/Greatman/Ijin4.png");
+		quiz2[0].answer[0] = 0; //選択肢１
+		quiz2[0].answer[1] = 0; //選択肢２
+		quiz2[0].answer[2] = 1; //選択肢３
+		quiz2[0].answer[3] = 0; //選択肢４
+		break;
+	case 1:
+		quiz2[1].Img = LoadGraph("image/Quiz/Greatman/Ijin1.png");
+		quiz2[1].answer[0] = 0; //選択肢１
+		quiz2[1].answer[1] = 1; //選択肢２
+		quiz2[1].answer[2] = 0; //選択肢３
+		quiz2[1].answer[3] = 0; //選択肢４
+		break;
+	case 2:
+		quiz2[2].Img = LoadGraph("image/Quiz/Greatman/Ijin6.png");
+		quiz2[2].answer[0] = 0; //選択肢１
+		quiz2[2].answer[1] = 0; //選択肢２
+		quiz2[2].answer[2] = 1; //選択肢３
+		quiz2[2].answer[3] = 0; //選択肢４
+		break;
+
+	default:
+		break;
+	}
+
+	switch (x)
+	{
+	case 0:
+		quiz3[0].Img = LoadGraph("image/Quiz/WordExchange/WordExchange4.png");
+		quiz3[0].answer[0] = 0; //選択肢１
+		quiz3[0].answer[1] = 0; //選択肢２
+		quiz3[0].answer[2] = 1; //選択肢３
+		quiz3[0].answer[3] = 0; //選択肢４
+		break;
+	case 1:
+		quiz3[1].Img = LoadGraph("image/Quiz/WordExchange/WordExchange5.png");
+		quiz3[1].answer[0] = 0; //選択肢１
+		quiz3[1].answer[1] = 0; //選択肢２
+		quiz3[1].answer[2] = 0; //選択肢３
+		quiz3[1].answer[3] = 1; //選択肢４
+		break;
+	case 2:
+		quiz3[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange6.png");
+		quiz3[2].answer[0] = 0; //選択肢１
+		quiz3[2].answer[1] = 0; //選択肢２
+		quiz3[2].answer[2] = 1; //選択肢３
+		quiz3[2].answer[3] = 0; //選択肢４
+		break;
+
+	default:
+		break;
+	}
+
+	// ドアの画像を分割読み込み
+	LoadDivGraph("image/door.png", 4, 4, 1, 64, 64, LoadDoorImg);
+
+	int i2 = i;
+	int y2 = y;
+	int x2 = x;
+
+	if (GenreSelect::Selectgenre == 0)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			door[i].Img = LoadDoorImg[i];
+			door[i].Y = 460;
+			door[i].answer = quiz[i2].answer[i];
+		}
+	}
+	else if (GenreSelect::Selectgenre == 1)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			door[i].Img = LoadDoorImg[i];
+			door[i].Y = 460;
+			door[i].answer = quiz2[y2].answer[i];
+		}
+	}
+	else if (GenreSelect::Selectgenre == 2)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			door[i].Img = LoadDoorImg[i];
+			door[i].Y = 460;
+			door[i].answer = quiz3[x2].answer[i];
+		}
 	}
 
 	block = new Block();
@@ -122,13 +244,13 @@ void Stage2::Draw()
 		switch (GenreSelect::Selectgenre)
 		{
 		case 0:
-			DrawGraph(700, 0, quiz[0].Img, TRUE);
+			DrawGraph(700, 0, quiz[i].Img, TRUE);
 			break;
 		case 1:
-			DrawGraph(700, 0, quiz[1].Img, TRUE);
+			DrawGraph(700, 0, quiz2[y].Img, TRUE);
 			break;
 		case 2:
-			DrawGraph(700, 0, quiz[2].Img, TRUE);
+			DrawGraph(700, 0, quiz3[x].Img, TRUE);
 			break;
 		}
 	}
@@ -226,30 +348,55 @@ void Stage2::Initialize()
 {
 	quiz->X = 770;
 	quiz->Y = 0;
-	//アニメゲームのクイズ情報
-	quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png");
-	quiz[0].answer[0] = 0; //選択肢１
-	quiz[0].answer[1] = 1; //選択肢２
-	quiz[0].answer[2] = 0; //選択肢３
-	quiz[0].answer[3] = 0; //選択肢４
-	//偉人のクイズ情報
-	quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin2.png");
-	quiz[1].answer[0] = 0; //選択肢１
-	quiz[1].answer[1] = 1; //選択肢２
-	quiz[1].answer[2] = 0; //選択肢３
-	quiz[1].answer[3] = 0; //選択肢４
-	//並び替えのクイズ情報
-	quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange2.png");
-	quiz[2].answer[0] = 0; //選択肢１
-	quiz[2].answer[1] = 0; //選択肢２
-	quiz[2].answer[2] = 0; //選択肢３
-	quiz[2].answer[3] = 1; //選択肢４
+	////アニメゲームのクイズ情報
+	//quiz[0].Img = LoadGraph("image/Quiz/Anime&Game/AnimeGame2.png");
+	//quiz[0].answer[0] = 0; //選択肢１
+	//quiz[0].answer[1] = 1; //選択肢２
+	//quiz[0].answer[2] = 0; //選択肢３
+	//quiz[0].answer[3] = 0; //選択肢４
+	////偉人のクイズ情報
+	//quiz[1].Img = LoadGraph("image/Quiz/Greatman/Ijin2.png");
+	//quiz[1].answer[0] = 0; //選択肢１
+	//quiz[1].answer[1] = 1; //選択肢２
+	//quiz[1].answer[2] = 0; //選択肢３
+	//quiz[1].answer[3] = 0; //選択肢４
+	////並び替えのクイズ情報
+	//quiz[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange2.png");
+	//quiz[2].answer[0] = 0; //選択肢１
+	//quiz[2].answer[1] = 0; //選択肢２
+	//quiz[2].answer[2] = 0; //選択肢３
+	//quiz[2].answer[3] = 1; //選択肢４
 
-	for (int i = 0; i < 4; i++)
+	int i2 = i;
+	int y2 = y;
+	int x2 = x;
+
+	if (GenreSelect::Selectgenre == 0)
 	{
-		door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
-		door[i].Y = 550;
-		door[i].answer = quiz[GenreSelect::Selectgenre].answer[i];
+		for (int i = 0; i < 4; i++)
+		{
+			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			door[i].Y = 550;
+			door[i].answer = quiz[i2].answer[i];
+		}
+	}
+	else if (GenreSelect::Selectgenre == 1)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			door[i].Y = 550;
+			door[i].answer = quiz2[y2].answer[i];
+		}
+	}
+	else if (GenreSelect::Selectgenre == 2)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			door[i].Y = 550;
+			door[i].answer = quiz3[x2].answer[i];
+		}
 	}
 
 	block = new Block();		
