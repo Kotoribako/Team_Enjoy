@@ -88,24 +88,24 @@ Stage3::Stage3()
 	{
 	case 0:
 		quiz3[0].Img = LoadGraph("image/Quiz/WordExchange/WordExchange7.png");
-		quiz3[0].answer[0] = 0; //選択肢１
+		quiz3[0].answer[0] = 1; //選択肢１
 		quiz3[0].answer[1] = 0; //選択肢２
-		quiz3[0].answer[2] = 1; //選択肢３
+		quiz3[0].answer[2] = 0; //選択肢３
 		quiz3[0].answer[3] = 0; //選択肢４
 		break;
 	case 1:
 		quiz3[1].Img = LoadGraph("image/Quiz/WordExchange/WordExchange8.png");
 		quiz3[1].answer[0] = 0; //選択肢１
 		quiz3[1].answer[1] = 0; //選択肢２
-		quiz3[1].answer[2] = 0; //選択肢３
-		quiz3[1].answer[3] = 1; //選択肢４
+		quiz3[1].answer[2] = 1; //選択肢３
+		quiz3[1].answer[3] = 0; //選択肢４
 		break;
 	case 2:
 		quiz3[2].Img = LoadGraph("image/Quiz/WordExchange/WordExchange9.png");
 		quiz3[2].answer[0] = 0; //選択肢１
 		quiz3[2].answer[1] = 0; //選択肢２
-		quiz3[2].answer[2] = 1; //選択肢３
-		quiz3[2].answer[3] = 0; //選択肢４
+		quiz3[2].answer[2] = 0; //選択肢３
+		quiz3[2].answer[3] = 1; //選択肢４
 		break;
 
 	default:
@@ -152,7 +152,6 @@ Stage3::Stage3()
 	Stage3X = 0.0; // 最初の画像のX座標を0にする
 	StopStage3Xflg = FALSE;
 	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
-	//GameMain::NowStage = 3;
 
 	S3DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }
@@ -184,7 +183,6 @@ void Stage3::Update()
 	}
 	MoveXStage(); // X軸の画像を動かす処理を入れる
 	ChangeStage();
-	//block->Update();
 }
 
 void Stage3::Draw()
@@ -192,14 +190,10 @@ void Stage3::Draw()
 
 	DrawGraph(Stage3X, 0, Stage3Img, TRUE);
 	DrawFormatString(0, 30, GetColor(255, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
-	////DrawLine(0, 400, 1280, 400, GetColor(255, 0, 0), TRUE);
-	////DrawLine(0, 200, 1280, 200, GetColor(255, 0, 0), TRUE);
+	
 	DrawFormatString(0, 600, GetColor(255, 0, 0), "stage3X:%f\n", Stage3X);
 	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
 
-	////DrawLine(0, 630, 1280, 630, GetColor(0, 255, 0), TRUE);
-
-	//DrawGraph(700, 0, TestImg, TRUE);
 	for (int i = 0; i < 4; i++)
 	{
 		DrawGraph(door[i].X, door[i].Y, door[i].Img, TRUE);
@@ -243,11 +237,6 @@ void Stage3::MoveXStage()
 			Stage3X -= 3; // 画像を左に動かす。
 			Player::MoveFlg = FALSE; // 真ん中よりも右に進めないようにする
 
-			//for (int i = 0; i < 11; i++)
-			//{
-			//	//block->bloc[i].X += -2.9; // 左側の当たり判定ずらす
-			//	//block->bloc[i].X2 += -2.9; // 右側の当たり判定ずらす
-			//}
 		}
 		else // 画像の端に到達したとき、
 		{
@@ -260,25 +249,12 @@ void Stage3::MoveXStage()
 	if (Player::playerX < 640.0 && PAD_INPUT::OnPressed(XINPUT_BUTTON_DPAD_LEFT))
 	{
 		Stage3X += 3; // 画像を右に動かす。
-		//if (Player::playerX + -(Stage1X) >= 640.0) {
-		//	for (int i = 0; i < 11; i++)
-		//	{
-		//		//block->bloc[i].X += 3.0; // 左側の当たり判定ずらす
-		//		//block->bloc[i].X2 += 3.0; // 右側の当たり判定ずらす
-		//	}
-
-		//}
 	}
 
 	if (Stage3X >= 0) // ステージ画像のX座標が0以下の時、
 	{
 		Stage3X = 0; // ステージ画像のX座標を0に固定する
 	}
-
-	//if (Player::playerX + ( - 1 * Stage1X ) >= 1500)
-	//{
-	//	GameMain::NowStage = 2;
-	//}
 }
 
 void Stage3::ChangeStage()
@@ -307,7 +283,6 @@ void Stage3::ChangeStage()
 				S3DecisionToAnswerFlg = TRUE; // 回答を決定した状態にする
 			}
 		}
-		//Stage::NowStage = 2; 
 	}
 }
 

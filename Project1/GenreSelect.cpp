@@ -118,24 +118,12 @@ AbstractScene* GenreSelect::Update()
 void GenreSelect::Draw() const
 { 
 	DrawGraph(0, 0, BackGround, TRUE);
-	// カーソル画像
-	//DrawGraph(CauserX, CauserY, Causer, TRUE);
 
 	DrawFormatString(100, 100, GetColor(0, 0, 0), "CauserX:%d\n",CauserX);
 	DrawFormatString(200, 100, GetColor(0, 0, 0), "CauserY:%d\n",CauserY);
-	SetFontSize(30);
-	
-
-	//DrawGraph(500, 0, ijin[0], TRUE);
-	//DrawGraph(0, 500, ijin[1], TRUE);
-	//DrawGraph(500, 500, ijin[2], TRUE);
-
 
 
 	SetFontSize(60);
-	////タイトル表示
-	//DrawFormatString(300, 200, 0xffffff, "Title");
-	//DrawFormatString(300, 500, 0xffffff, "GameMain");
 
 	for (int i = 0; i < static_cast<int>(SELECT::SELECT_SIZE); i++)
 	{
