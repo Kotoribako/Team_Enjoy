@@ -55,7 +55,6 @@ public:
 	int Anime_Answer[3];
 	int Ex_Answer[3];
 	int ijin_Answer[3];
-	//int Genre[6][10];
 	GenreSelect();
 	virtual ~GenreSelect();
 	virtual AbstractScene* Update() override;
