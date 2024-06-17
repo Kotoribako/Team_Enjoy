@@ -198,7 +198,6 @@ void Stage1::Update()
 
 void Stage1::Draw()
 {
-	
 	DrawGraph(Stage1X, 0, Stage1Img, TRUE);
 	DrawFormatString(0, 30, GetColor(255, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
 	////DrawLine(0, 400, 1280, 400, GetColor(255, 0, 0), TRUE);
