@@ -27,9 +27,9 @@ GenreSelect::GenreSelect()
 	now_menu = static_cast<int>(SELECT::ANIMEGAME);
 	input_margin = 0;
 	GetRand(2);
-	MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
-	  
-	CauserX = 0;
+	//MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
+	//  
+	//CauserX = 0;
 	CauserY = 0;
 	Causer = 0;
 }
