@@ -282,6 +282,8 @@ void Stage2::ChangeStage()
 					DeleteSoundMem(Stage2BGM);
 					StopSoundMem(Stage2BGM);
 
+					Player::quizflg = 0; // 回答後は問題消えるようにする
+
 					GameMain::NowStage = 3; // 次のステージへ進む。
 				}
 				else
@@ -291,6 +293,8 @@ void Stage2::ChangeStage()
 					//BGM削除
 					DeleteSoundMem(Stage2BGM);
 					StopSoundMem(Stage2BGM);
+
+					Player::quizflg = 0; // 回答後は問題消えるようにする
 
 					GameMain::NowStage = 5;
 				}
