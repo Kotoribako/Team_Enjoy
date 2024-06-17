@@ -7,6 +7,7 @@
 #include"GenreSelect.h"
 #include "Help.h"
 #include "Clear.h"
+#include "End.h"
 #include "GameOver.h"
 
 #define SCREEN_WIDTH 1280
@@ -103,7 +104,7 @@ AbstractScene* Title::Update()
 			break;
 		case TITLE_MENU::GAME_END:
 			PlaySoundMem(MenuSE, DX_PLAYTYPE_BACK, TRUE);
-			return nullptr;
+			return new End;
 			break;
 		default:
 			printf("Error\n"); 
