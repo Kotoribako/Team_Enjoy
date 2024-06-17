@@ -6,7 +6,7 @@
 
 End::End()
 {
-
+	S_FPS = 0;
 }
 
 End::~End()
@@ -21,4 +21,5 @@ AbstractScene* End::Update()
 
 void End::Draw() const
 {
+
 }
