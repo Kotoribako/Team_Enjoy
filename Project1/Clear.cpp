@@ -72,9 +72,7 @@ void Clear::Draw() const
 	DrawFormatString(0, 50, 0x000000, "S_Seconas1 : %d", Clear::S_Seconas1);*/
 
 	//画像表示
-	if (S_Seconas >= 3) {
-		DrawGraph(0, 0, ClearImg, TRUE);
-	}
+	DrawGraph(0, 0, ClearImg, TRUE);
 
 	//画像表示
 	if (S_Seconas1 >= 3) {
