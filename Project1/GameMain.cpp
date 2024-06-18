@@ -7,7 +7,7 @@ int GameMain::NowStage;
 
 GameMain::GameMain()
 {
-	NowStage = 1;
+	NowStage = 2;
 	player = new Player();
 	stage1 = new Stage1();
 	stage2 = new Stage2();

@@ -40,14 +40,14 @@ Enemy::Enemy()
 	case 5:
 		blockx[2].X = block->S2bloc[8].X;
 		blockx[2].X2 = block->S2bloc[8].X2;
-		enemyX = block->S2bloc[8].X - 30;
+		enemyX = block->S2bloc[8].X;
 		enemyY = block->S2bloc[8].Y - 30;
 		break;
 	case 3:
 	case 6:
 		blockx[3].X = block->S3bloc[6].X;
 		blockx[3].X2 = block->S3bloc[6].X2;
-		enemyX = block->S3bloc[6].X - 30;
+		enemyX = block->S3bloc[6].X;
 		enemyY = block->S3bloc[6].Y - 30;
 		break;
 	}
@@ -68,7 +68,7 @@ void Enemy::Update()
 
 
 
-	speed = (blockx[GameMain::NowStage].X2 - blockx[GameMain::NowStage].X) / 6.0f;
+	speed = (blockx[GameMain::NowStage].X2 - blockx[GameMain::NowStage].X) / 5.0f;
 	Enemyhit();
 	count++;
 	//switch (GameMain::NowStage)
