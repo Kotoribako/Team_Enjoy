@@ -44,6 +44,7 @@ public:
 	static int MoveFlg; // スクロール終了後移動する
 	static int Life;  //残機
 	static 	int Range;
+	static int Death;
 
 	Player();
 	~Player();
