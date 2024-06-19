@@ -243,7 +243,7 @@ void Player::Draw()
 	DrawFormatString(0, 80, GetColor(0, 0, 0), "Right:%d",Rightflg );
 	DrawFormatString(0, 110, GetColor(0, 0, 0), "Left:%d", Leftflg);
 	DrawFormatString(100, 0, GetColor(0, 255, 0), "playerX:%f  playerY:%f", playerX, playerY);
-	DrawFormatString(100, 20, GetColor(0, 255, 255), "px2:%f py2:%f", px2 + -1 * (Stage1::Stage1X), py2);
+	DrawFormatString(100, 20, GetColor(0, 255, 255), "px2:%f py2:%f", px2 + -1 * (Stage2::Stage2X), py2);
 	DrawFormatString(100, 40, GetColor(0, 0, 0), "HitY:%d", BlockHitY());
 	DrawFormatString(0, 120, GetColor(0, 0, 0), "Death:%d", Death);
 	for (int i = 0; i < Life; i++)
