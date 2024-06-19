@@ -71,6 +71,9 @@ void Player::Update()
 		switch (GameMain::NowStage) {
 		case 1:
 		case 4:
+			if (py2 > block->S1bloc[BlockNum].Y) {
+				playerY = block->S1bloc[BlockNum].Y - 15;
+			}
 			if (px + -1 * (Stage1::Stage1X) < block->S1bloc[9].X2 && block->S1bloc[9].X < px2 + -1 * (Stage1::Stage1X) && block->S1bloc[9].Y < py2 ||
 				px + -1 * (Stage1::Stage1X) < block->S1bloc[10].X2 && block->S1bloc[10].X < px2 + -1 * (Stage1::Stage1X) && block->S1bloc[10].Y < py2)
 			{
@@ -83,6 +86,9 @@ void Player::Update()
 			break;
 		case 2:
 		case 5:
+			if (py2 > block->S2bloc[BlockNum].Y) {
+				playerY = block->S2bloc[BlockNum].Y - 15;
+			}
 			if (px + -1 * (Stage2::Stage2X) < block->S2bloc[18].X2 && block->S2bloc[18].X < px2 + -1 * (Stage2::Stage2X) && block->S2bloc[18].Y < py2)
 			{
 				quizflg = 1;
@@ -94,6 +100,9 @@ void Player::Update()
 			break;
 		case 3:
 		case 6:
+			if (py2 > block->S3bloc[BlockNum].Y) {
+				playerY = block->S3bloc[BlockNum].Y - 15;
+			}
 			if (px + -1 * (Stage3::Stage3X) < block->S3bloc[26].X2 && block->S3bloc[26].X < px2 + -1 * (Stage3::Stage3X) && block->S3bloc[26].Y < py2)
 			{
 				quizflg = 1;
@@ -120,10 +129,10 @@ void Player::Update()
 		HitFlg = FALSE;
 	}
 
-	if (BlockHitY() == 11)
-	{
-		count += 1;
-	}
+	//if (BlockHitY() == 11)
+	//{
+	//	count += 1;
+	//}
 
 	Move();
 	if (Animflg == 1 /*&& Moveflg == 0*/)
@@ -1005,21 +1014,23 @@ int Player::BlockHitY()
 			// 上に乗っているか確認
 			if (px + -1 * (Stage1::Stage1X) < block->S1bloc[i].X2 && block->S1bloc[i].X < px2 + -1 * (Stage1::Stage1X) /*&& py < block->S1bloc[i].Y2 && block->S1bloc[i].Y<py2*/)
 			{
-				if (py < block->S1bloc[i].Y2 && block->S1bloc[i].Y < py2) // 地面に着地している状態
-				{
-					return 1;
-					break;
-				}
-				else if (block->S1bloc[i].Y > py2 && Jumpflg == TRUE) // ジャンプ中
+				if (block->S1bloc[i].Y > py2 && Jumpflg == TRUE) // ジャンプ中
 				{
 					return 2;
 					break;
 				}
-				else if (py > block->S1bloc[i].Y2 && Jumpflg == TRUE) // プレイヤーの頭上とブロックの下がヒットしたとき、
+				if (py < block->S1bloc[i].Y2 && Jumpflg == TRUE) // プレイヤーの頭上とブロックの下がヒットしたとき、
 				{
 					return 3;
 					break;
 				}
+				if (py < block->S1bloc[i].Y2 && block->S1bloc[i].Y < py2 && Jumpflg == FALSE) // 地面に着地している状態
+				{
+					i = BlockNum;
+					return 1;
+					break;
+				}
+
 			}
 		}
 		return 0;
@@ -1031,24 +1042,26 @@ int Player::BlockHitY()
 			// 上に乗っているか確認
 			if (px + -1 * (Stage2::Stage2X) < block->S2bloc[i].X2 && block->S2bloc[i].X < px2 + -1 * (Stage2::Stage2X))
 			{
-				if (py < block->S2bloc[i].Y2 && block->S2bloc[i].Y < py2) // 地面に着地している状態
-				{
-					return 1;
-				}
-				else if (block->S2bloc[i].Y < py2 && Jumpflg == TRUE) // ジャンプ中
+				if (block->S2bloc[i].Y > py2 && Jumpflg == TRUE) // ジャンプ中
 				{
 					return 2;
+					break;
 				}
-				else if (py < block->S2bloc[i].Y2 && Jumpflg == FALSE) // プレイヤーの頭上とブロックの下がヒットしたとき、
+				if (py < block->S2bloc[i].Y2 /*&& py < block->S2bloc[i].Y*/ && Jumpflg == TRUE) // プレイヤーの頭上とブロックの下がヒットしたとき、
 				{
 					return 3;
+					break;
 				}
-			}
-			else if (i == 18)
-			{
-				return 0;
+				if (py < block->S2bloc[i].Y2 && block->S2bloc[i].Y < py2 && Jumpflg == FALSE) // 地面に着地している状態
+				{
+					i = BlockNum;
+					return 1;
+					break;
+				}
+
 			}
 		}
+		return 0;
 		break;
 	case 3:
 	case 6:
@@ -1057,24 +1070,26 @@ int Player::BlockHitY()
 			// 上に乗っているか確認
 			if (px + -1 * (Stage3::Stage3X) < block->S3bloc[i].X2 && block->S3bloc[i].X < px2 + -1 * (Stage3::Stage3X))
 			{
-				if (py < block->S3bloc[i].Y2 && block->S3bloc[i].Y < py2) // 地面に着地している状態
-				{
-					return 1;
-				}
-				else if (block->S3bloc[i].Y < py2 && Jumpflg == TRUE) // ジャンプ中
+				if (block->S3bloc[i].Y > py2 && Jumpflg == TRUE) // ジャンプ中
 				{
 					return 2;
+					break;
 				}
-				else if (py < block->S3bloc[i].Y2 && Jumpflg == FALSE) // プレイヤーの頭上とブロックの下がヒットしたとき、
+				if (py < block->S3bloc[i].Y2 && Jumpflg == TRUE) // プレイヤーの頭上とブロックの下がヒットしたとき、
 				{
 					return 3;
+					break;
 				}
-			}
-			else if (i == 26)
-			{
-				return 0;
+				if (py < block->S3bloc[i].Y2 && block->S3bloc[i].Y < py2) // 地面に着地している状態
+				{
+					i = BlockNum;
+					return 1;
+					break;
+				}
+
 			}
 		}
+		return 0;
 		break;
 	}
 }
