@@ -288,7 +288,7 @@ void Stage1::ChangeStage()
 					//BGM削除
 					DeleteSoundMem(Stage1BGM);
 					StopSoundMem(Stage1BGM);
-
+					Player::Death += 1;
 					GameMain::NowStage = 4;
 				}
 				S1DecisionToAnswerFlg = TRUE; // 回答を決定した状態にする

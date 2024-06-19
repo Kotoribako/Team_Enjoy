@@ -34,7 +34,7 @@ private:
 	int Turnflg;
 	int E_FPS;     //FPScnt
 	int E_Seconas1;  //秒数
-
+	int Returnflg;
 public:
 	
 	static float ex, ex2; // 敵の左座標(ex)と右座標を取る(ex2) 
