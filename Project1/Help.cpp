@@ -10,7 +10,7 @@ Help::Help()
 	//背景画像読み込み
 	BackgroundImg = LoadGraph("image/BackGround02.png");
 	//画像読み込み
-	HelpImg = LoadGraph("image/Help_Img.png");
+	HelpImg = LoadGraph("image/Help2_Img.png");
 	ModoruImg = LoadGraph("image/HelpModoru.png");
 
 	//タイトルBGM読み込み
@@ -70,7 +70,7 @@ void Help::Draw() const
 	DrawGraph(0, 0, HelpImg, TRUE);
 	
 	if (S_Seconas >= 3) {
-		DrawGraph(250, 150, ModoruImg, TRUE);
+		DrawGraph(260, 200, ModoruImg, TRUE);
 	}
 
 	/*SetFontSize(30);
