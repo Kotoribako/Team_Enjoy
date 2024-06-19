@@ -120,7 +120,7 @@ void GameMain::Draw() const
 	player->Draw();
 	enemy->Draw();
 	DrawFormatString(500, 0, GetColor(0, 0, 0), "mouseX:%d  mouseY:%d", mouseX, mouseY);
-	DrawFormatString(1000, 0, GetColor(0, 0, 0), "NowStage:%d", NowStage);
+	DrawFormatString(1000, 0, GetColor(0, 0, 0), "Stage%d", NowStage);
 
 }
 
