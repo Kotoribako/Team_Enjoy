@@ -259,8 +259,8 @@ void Player::Draw()
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "Animflg:%d", Animflg);
 	DrawFormatString(0, 80, GetColor(0, 0, 0), "Right:%d",Rightflg );
 	DrawFormatString(0, 110, GetColor(0, 0, 0), "Left:%d", Leftflg);
-	DrawFormatString(100, 0, GetColor(0, 255, 0), "playerX:%f  playerY:%f", playerX, playerY);
-	DrawFormatString(100, 20, GetColor(0, 255, 255), "px2:%f py2:%f", px2 + -1 * (Stage2::Stage2X), py2);
+	DrawFormatString(100, 0, GetColor(0, 255, 0), "playerX:%f  playerY:%f", playerX + -1 * (Stage1::Stage1X), playerY);
+	DrawFormatString(100, 20, GetColor(0, 255, 255), "px:%f py:%f px2:%f py2:%f", px + -1 * (Stage1::Stage1X), py, px2 + -1 * (Stage1::Stage1X), py2);
 	DrawFormatString(100, 40, GetColor(0, 0, 0), "HitY:%d", BlockHitY());
 	DrawFormatString(0, 120, GetColor(0, 0, 0), "Death:%d", Death);
 	for (int i = 0; i < Life; i++)
@@ -1125,7 +1125,7 @@ int Player::BlockHitX()
 	case 4:
 		for (int i = 0; i < 11; i++)
 		{
-			if (px + -1 * (Stage1::Stage1X) == block->S1bloc[i].X2 && py2 > block->S1bloc[i].Y && py< block->S1bloc[i].Y2 /*&& px + -1 * (Stage1::Stage1X) == block->S1bloc[i-1].X2*/)
+			if (px + -1 * (Stage1::Stage1X) == block->S1bloc[i].X2 && py2 > block->S1bloc[i].Y && py < block->S1bloc[i].Y2 /*&& px + -1 * (Stage1::Stage1X) == block->S1bloc[i-1].X2*/)
 			{
 				BlockNum = i;
 				return 1;
