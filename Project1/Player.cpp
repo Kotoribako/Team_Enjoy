@@ -71,9 +71,9 @@ void Player::Update()
 		switch (GameMain::NowStage) {
 		case 1:
 		case 4:
-			if (py2 > block->S1bloc[BlockNum].Y) {
-				playerY = block->S1bloc[BlockNum].Y - 15;
-			}
+			//if (py2 > block->S1bloc[BlockNum].Y) {
+			//	playerY = block->S1bloc[BlockNum].Y - 15;
+			//}
 			if (px + -1 * (Stage1::Stage1X) < block->S1bloc[9].X2 && block->S1bloc[9].X < px2 + -1 * (Stage1::Stage1X) && block->S1bloc[9].Y < py2 ||
 				px + -1 * (Stage1::Stage1X) < block->S1bloc[10].X2 && block->S1bloc[10].X < px2 + -1 * (Stage1::Stage1X) && block->S1bloc[10].Y < py2)
 			{
@@ -86,9 +86,9 @@ void Player::Update()
 			break;
 		case 2:
 		case 5:
-			if (py2 > block->S2bloc[BlockNum].Y) {
-				playerY = block->S2bloc[BlockNum].Y - 15;
-			}
+			//if (py2 > block->S2bloc[BlockNum].Y) {
+			//	playerY = block->S2bloc[BlockNum].Y - 15;
+			//}
 			if (px + -1 * (Stage2::Stage2X) < block->S2bloc[18].X2 && block->S2bloc[18].X < px2 + -1 * (Stage2::Stage2X) && block->S2bloc[18].Y < py2)
 			{
 				quizflg = 1;
@@ -100,9 +100,9 @@ void Player::Update()
 			break;
 		case 3:
 		case 6:
-			if (py2 > block->S3bloc[BlockNum].Y) {
-				playerY = block->S3bloc[BlockNum].Y - 15;
-			}
+			//if (py2 > block->S3bloc[BlockNum].Y) {
+			//	playerY = block->S3bloc[BlockNum].Y - 15;
+			//}
 			if (px + -1 * (Stage3::Stage3X) < block->S3bloc[26].X2 && block->S3bloc[26].X < px2 + -1 * (Stage3::Stage3X) && block->S3bloc[26].Y < py2)
 			{
 				quizflg = 1;
