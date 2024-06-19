@@ -7,6 +7,7 @@
 End::End()
 {
 	S_FPS = 0;
+	S_Seconas = 0;
 }
 
 End::~End()

@@ -6,6 +6,7 @@ class End : public AbstractScene
 private:
 
 	int S_FPS;
+	int S_Seconas;
 
 public:
 	End();
