@@ -34,7 +34,6 @@ AbstractScene* End::Update()
 	if (S_Seconas >= 6) {
 		return 0;
 	}
-
 }
 
 void End::Draw() const
