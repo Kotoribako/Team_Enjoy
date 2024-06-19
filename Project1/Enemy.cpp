@@ -27,6 +27,7 @@ Enemy::Enemy()
 	Hitflg = FALSE;
 	Range = 15;
 	Turnflg = 0;
+	Returnflg = 0;
 	switch (GameMain::NowStage)
 	{
 	case 1:
@@ -75,9 +76,28 @@ void Enemy::Update()
 	//{
 	//case 1:
 	//case 4:
-
+	if (enemyX == blockx[GameMain::NowStage].X2)
+	{
+		Returnflg = 1;
+	}
+	if (enemyX == blockx[GameMain::NowStage].X)
+	{
+		Returnflg = 0;
+	}
+	if (Returnflg == 0)
+	{
+		enemyX += 0.5f;
+		Turnflg = 1;
+	}
+	if (Returnflg == 1)
+	{
+		enemyX -= 0.5f;
+		Turnflg = 0;
+	}
+		//enemyX -= 0.5f;
+		//Turnflg = 0;
 	//}
-	if (count == 60)
+	/*if (count == 60)
 	{
 		countup += 1;
 		
@@ -93,20 +113,20 @@ void Enemy::Update()
 		}
 		
 		count = 0;
-	}
+	}*/
 
-	if (countup == 5)
-	{
-		if (direction == 0)
-		{
-			direction = 1;
-		}
-		else if (direction == 1)
-		{
-			direction = 0;
-		}
-		countup = 0;
-	}
+	//if (countup == 5)
+	//{
+	//	if (direction == 0)
+	//	{
+	//		direction = 1;
+	//	}
+	//	else if (direction == 1)
+	//	{
+	//		direction = 0;
+	//	}
+	//	countup = 0;
+	//}
 	EnemyAnim();
 	if (E_FPS > 59) {
 		E_FPS = 0;
@@ -121,7 +141,7 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	DrawFormatString(200, 200, GetColor(0, 0, 255), "Turnflg:%d",Turnflg);
+	DrawFormatString(200, 200, GetColor(0, 0, 255), "ReTurnflg:%d",Returnflg);
 	//DrawFormatString(200, 200, GetColor(0, 0, 255), "countup:%d", countup);
 	switch (GameMain::NowStage)
 	{
