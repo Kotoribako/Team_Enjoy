@@ -45,8 +45,4 @@ void End::Draw() const
 	if (S_Seconas >= 4) {
 		DrawGraph(0, 0, ThankImg, TRUE);
 	}
-
-	SetFontSize(20);
-	DrawFormatString(0, 30, 0x000000, "S_FPS : %d", End::S_FPS);
-	DrawFormatString(0, 50, 0x000000, "S_Seconas : %d", End::S_Seconas);
 }

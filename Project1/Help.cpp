@@ -72,8 +72,4 @@ void Help::Draw() const
 	if (S_Seconas >= 3) {
 		DrawGraph(260, 200, ModoruImg, TRUE);
 	}
-
-	/*SetFontSize(30);
-	DrawFormatString(400, 500, 0xffffff, "--- A  →  GAME STARAT ---");
-	DrawFormatString(450, 550, 0xffffff, "--- B  →  TITLE ---");*/
 }
