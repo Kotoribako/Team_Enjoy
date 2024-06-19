@@ -270,6 +270,8 @@ void Stage3::ChangeStage()
 					DeleteSoundMem(Stage3BGM);
 					StopSoundMem(Stage3BGM);
 
+					Player::quizflg = 0; // 回答後は問題消えるようにする
+
 					GameMain::NowStage = 7; // ゲームクリア画面に行く。
 				}
 				else
@@ -277,6 +279,8 @@ void Stage3::ChangeStage()
 					//BGM削除
 					DeleteSoundMem(Stage3BGM);
 					StopSoundMem(Stage3BGM);
+
+					Player::quizflg = 0; // 回答後は問題消えるようにする
 
 					GameMain::NowStage = 6;
 				}
