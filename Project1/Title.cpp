@@ -26,8 +26,8 @@ Title::Title()
 	((MenuSE = LoadSoundMem("sound/SE/kettei_SE.wav")) == -1);
 
 	//
-	MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
-	now_menu = static_cast<int>(TITLE_MENU::GAME_START);
+	//MenuFont = CreateFontToHandle("HG創英角POP体", 64, 1, DX_FONTTYPE_ANTIALIASING_EDGE_8X8, -1, 3);
+	//now_menu = static_cast<int>(TITLE_MENU::GAME_START);
 	input_margin = 0;
 
 }
@@ -111,7 +111,10 @@ AbstractScene* Title::Update()
 			break;
 		}
 	}
-
+	if (PAD_INPUT::OnButton(XINPUT_BUTTON_X))
+	{
+		return new GameMain();
+	}
 	return this;
 }
 

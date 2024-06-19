@@ -128,6 +128,14 @@ void Player::Update()
 		Downflg = TRUE;
 		HitFlg = FALSE;
 	}
+	if (BlockHitY() == 19 && GameMain::NowStage == 2 || GameMain::NowStage == 5)
+	{
+		count += 1;
+		Downflg = TRUE;
+		HitFlg = FALSE;
+
+
+	}
 
 	//if (BlockHitY() == 11)
 	//{
@@ -1014,6 +1022,17 @@ int Player::BlockHitY()
 			// 上に乗っているか確認
 			if (px + -1 * (Stage1::Stage1X) < block->S1bloc[i].X2 && block->S1bloc[i].X < px2 + -1 * (Stage1::Stage1X) /*&& py < block->S1bloc[i].Y2 && block->S1bloc[i].Y<py2*/)
 			{
+
+				if (py < block->S1bloc[i].Y2 && block->S1bloc[i].Y < py2 && Jumpflg == FALSE) // 地面に着地している状態
+				{
+					BlockNum = i;
+					if (py < block->S1bloc[BlockNum].Y && py2 > block->S1bloc[BlockNum].Y)
+					{
+						playerY = block->S1bloc[BlockNum].Y - 11;
+					}
+					return 1;
+					break;
+				}
 				if (block->S1bloc[i].Y > py2 && Jumpflg == TRUE) // ジャンプ中
 				{
 					return 2;
@@ -1024,12 +1043,8 @@ int Player::BlockHitY()
 					return 3;
 					break;
 				}
-				if (py < block->S1bloc[i].Y2 && block->S1bloc[i].Y < py2 && Jumpflg == FALSE) // 地面に着地している状態
-				{
-					i = BlockNum;
-					return 1;
-					break;
-				}
+				
+				
 
 			}
 		}
@@ -1042,6 +1057,16 @@ int Player::BlockHitY()
 			// 上に乗っているか確認
 			if (px + -1 * (Stage2::Stage2X) < block->S2bloc[i].X2 && block->S2bloc[i].X < px2 + -1 * (Stage2::Stage2X))
 			{
+				if (py < block->S2bloc[i].Y2 && block->S2bloc[i].Y < py2 && Jumpflg == FALSE) // 地面に着地している状態
+				{
+					if (py < block->S2bloc[i].Y && py2 > block->S2bloc[i].Y)
+					{
+						playerY = block->S2bloc[i].Y - 11;
+					}
+					return 1;
+					break;
+				}
+
 				if (block->S2bloc[i].Y > py2 && Jumpflg == TRUE) // ジャンプ中
 				{
 					return 2;
@@ -1052,13 +1077,6 @@ int Player::BlockHitY()
 					return 3;
 					break;
 				}
-				if (py < block->S2bloc[i].Y2 && block->S2bloc[i].Y < py2 && Jumpflg == FALSE) // 地面に着地している状態
-				{
-					i = BlockNum;
-					return 1;
-					break;
-				}
-
 			}
 		}
 		return 0;
@@ -1070,6 +1088,16 @@ int Player::BlockHitY()
 			// 上に乗っているか確認
 			if (px + -1 * (Stage3::Stage3X) < block->S3bloc[i].X2 && block->S3bloc[i].X < px2 + -1 * (Stage3::Stage3X))
 			{
+				if (py < block->S3bloc[i].Y2 && block->S3bloc[i].Y < py2) // 地面に着地している状態
+				{
+			
+					if (py < block->S3bloc[i].Y && py2 > block->S3bloc[i].Y)
+					{
+						playerY = block->S3bloc[i].Y - 11;
+					}
+					return 1;
+					break;
+				}
 				if (block->S3bloc[i].Y > py2 && Jumpflg == TRUE) // ジャンプ中
 				{
 					return 2;
@@ -1080,12 +1108,7 @@ int Player::BlockHitY()
 					return 3;
 					break;
 				}
-				if (py < block->S3bloc[i].Y2 && block->S3bloc[i].Y < py2) // 地面に着地している状態
-				{
-					i = BlockNum;
-					return 1;
-					break;
-				}
+				
 
 			}
 		}
