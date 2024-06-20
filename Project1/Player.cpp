@@ -24,6 +24,10 @@ Player::Player()
 	playerY = PLAYERSTARTY;
 
 	if (LoadDivGraph("image/Dummy/player.png", 3, 3, 1, 64, 64, image)) {};
+
+	DeathSE = LoadSoundMem("sound/SE/deth2_SE.wav");
+	JumpSE = LoadSoundMem("sound/SE/Jump.mp3");
+
 	P_img = image[0];
 	px = playerX - 15;
 	px2 = playerX + 15;
@@ -113,7 +117,7 @@ void Player::Update()
 			}
 		}
 	}
-	else if(BlockHitY() == 3 /*&& Jumpflg == TRUE*/)
+	else if(BlockHitY() == 3)
 	{
 		Jumpflg = FALSE;
 		// 落下処理させる
@@ -178,6 +182,8 @@ void Player::Update()
 
 		block = new Block();
 
+		PlaySoundMem(DeathSE, DX_PLAYTYPE_BACK, TRUE);
+
 	}
 	if (Life < 0) {
 		/* ここにゲームオーバー処理を入れる */
@@ -209,32 +215,13 @@ void Player::Update()
 		P_Seconas1 = 0;
 	}
 
-
-	//if (playerY >= 800) // リスポーン処理（後で消す）
-	//{
-	//	playerX = PLAYERSTARTX;
-	//	playerY = PLAYERSTARTY;
-	//	Jumpflg = FALSE;
-	//	Downflg = FALSE;
-	//	Stage1::Stage1X = 0;
-	//	Stage2::Stage2X = 0;
-	//	Stage3::Stage3X = 0;
-	//	Life--;
-	//	if (Life == -1) {
-	//		/* ここにゲームオーバー処理を入れる */
-	//		GameMain::NowStage = 8;
-	//	}
-
-	//	block = new Block();
-
-	//}
-
 	if (Stage1::S1DecisionToAnswerFlg == TRUE && GameMain::NowStage == 4 ||
 		Stage2::S2DecisionToAnswerFlg == TRUE && GameMain::NowStage == 5 ||
 		Stage3::S3DecisionToAnswerFlg == TRUE && GameMain::NowStage == 6) {
 		// プレイヤーをスタート地点に戻す
 		playerX = PLAYERSTARTX;
 		playerY = PLAYERSTARTY;
+		//PlaySoundMem(DeathSE, DX_PLAYTYPE_BACK, TRUE);
 	}
 	if (Rightflg == 0 && Leftflg == 0 && Turnflg == 0)
 	{
@@ -348,6 +335,7 @@ void Player::Move()
 	}
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && Jumpflg == FALSE /*&& NoHitBlockFlg == TRUE*/)
 	{
+		PlaySoundMem(JumpSE, DX_PLAYTYPE_BACK,TRUE);
 		MaxY = playerY - 50;
 		Jumpflg = TRUE;
 		standflg = 0;

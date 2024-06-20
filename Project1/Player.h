@@ -4,8 +4,15 @@
 class Player
 {
 private:
+	/* 画像用変数・配列 */
 	int image[3]; //プレイヤー画像格納用
 	int P_img;    //プレイヤー画像表示（切り替え）用
+
+	/* BGM・SE用変数 */
+	int DeathSE; // 死んだときの音
+	int JumpSE; // ジャンプした時の音
+
+	/* 処理用変数・配列 */
 	int life;       //残機
 	int input_margin;
 	float P_YSpeed;
