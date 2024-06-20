@@ -94,39 +94,7 @@ void Enemy::Update()
 		enemyX -= 0.5f;
 		Turnflg = 0;
 	}
-		//enemyX -= 0.5f;
-		//Turnflg = 0;
-	//}
-	/*if (count == 60)
-	{
-		countup += 1;
-		
-		if (direction == 0)
-		{
-			enemyX += speed;
-			Turnflg = 1;
-		}
-		else if (direction == 1)
-		{
-			enemyX -= speed;
-			Turnflg = 0;
-		}
-		
-		count = 0;
-	}*/
-
-	//if (countup == 5)
-	//{
-	//	if (direction == 0)
-	//	{
-	//		direction = 1;
-	//	}
-	//	else if (direction == 1)
-	//	{
-	//		direction = 0;
-	//	}
-	//	countup = 0;
-	//}
+	
 	EnemyAnim();
 	if (E_FPS > 59) {
 		E_FPS = 0;
@@ -257,50 +225,7 @@ void Enemy::EnemyAnim()
 	else if (E_FPS % 15 == 10 || E_FPS % 15 == 11 || E_FPS % 15 == 12 || E_FPS % 15 == 13 || E_FPS % 15 == 14) {
 		E_Img = slimeImg[2];
 	}
-	//else if (E_FPS % 70 == 15 || E_FPS % 70 == 16 || E_FPS % 70 == 17 || E_FPS % 70 == 18 || E_FPS % 70 == 19) {
-	//	E_Img = slimeImg[0];
-	//}
-	//else if (E_FPS % 70 == 20 || E_FPS % 70 == 21 || E_FPS % 70 == 22 || E_FPS % 70 == 23 || E_FPS % 70 == 24) {
-	//	E_Img = slimeImg[1];
-	//}
-	//else if (E_FPS % 70 == 25 || E_FPS % 70 == 26 || E_FPS % 70 == 27 || E_FPS % 70 == 28 || E_FPS % 70 == 29) {
-	//	E_Img = slimeImg[2];
-	//}
-	//else if (E_FPS % 70 == 30 || E_FPS % 70 == 31 || E_FPS % 70 == 32 || E_FPS % 70 == 33 || E_FPS % 70 == 34) {
-	//	E_Img = slimeImg[0];
-	//}
-	//else if (E_FPS % 70 == 35 || E_FPS % 70 == 36 || E_FPS % 70 == 37 || E_FPS % 70 == 38 || E_FPS % 70 == 39) {
-	//	E_Img = slimeImg[1];
-	//}
-	//else if (E_FPS % 70 == 40 || E_FPS % 70 == 41 || E_FPS % 70 == 42 || E_FPS % 70 == 43 || E_FPS % 70 == 44) {
-	//	E_Img = slimeImg[2];
-	//}
-	//else if (E_FPS % 70 == 45 || E_FPS % 70 == 46 || E_FPS % 70 == 47 || E_FPS % 70 == 48 || E_FPS % 70 == 49) {
-	//	E_Img = slimeImg[0];
-	//}
-	//else if (E_FPS % 70 == 50 || E_FPS % 70 == 51 || E_FPS % 70 == 52 || E_FPS % 70 == 53 || E_FPS % 70 == 54) {
-	//	E_Img = slimeImg[1];
-	//}
-	//else if (E_FPS % 70 == 55 || E_FPS % 70 == 56 || E_FPS % 70 == 57 || E_FPS % 70 == 58 || E_FPS % 70 == 59) {
-	//	E_Img = slimeImg[2];
-	//}
-	//else if (E_FPS % 70 == 60 || E_FPS % 70 == 61 || E_FPS % 70 == 62 || E_FPS % 70 == 63 || E_FPS % 70 == 64) {
-	//	E_Img = slimeImg[0];
-	//}
-	//else if (E_FPS % 70 == 65 || E_FPS % 70 == 66 || E_FPS % 70 == 67 || E_FPS % 70 == 68 || E_FPS % 70 == 69) {
-	//	E_Img = slimeImg[1];
-	//}
-
-	//else if (E_FPS % 50 == 10 || E_FPS % 50 == 11 || E_FPS % 50 == 12 || E_FPS % 50 == 13 || E_FPS % 50 == 14) {
-	//	E_Img = slimeImg[2];
-	//}
-	//else if (E_FPS % 50 == 5 || E_FPS % 50 == 6 || E_FPS % 50 == 7 || E_FPS % 50 == 8 || E_FPS % 50 == 9) {
-	//	E_Img = slimeImg[1];
-	//}
-	//else if (E_FPS % 50 == 10 || E_FPS % 50 == 11 || E_FPS % 50 == 12 || E_FPS % 50 == 13 || E_FPS % 50 == 14) {
-	//	E_Img = slimeImg[2];
-	//}
-
+	
 
 	else {
 		// 5�t���[��
