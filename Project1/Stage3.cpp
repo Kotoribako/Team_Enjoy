@@ -279,6 +279,7 @@ void Stage3::ChangeStage()
 					//BGM削除
 					DeleteSoundMem(Stage3BGM);
 					StopSoundMem(Stage3BGM);
+					Player::Death += 1;
 
 					Player::quizflg = 0; // 回答後は問題消えるようにする
 

@@ -40,7 +40,7 @@ void GameMain::Initialize()
 		break;
 	}
 	enemy = new Enemy();
-
+	player = new Player();
 }
 
 AbstractScene* GameMain::Update()

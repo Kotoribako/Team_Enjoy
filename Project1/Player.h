@@ -26,9 +26,6 @@ private:
 	int BlockNum;
 	int NoHitBlockFlg;
 
-	int eightflg;
-	int threeflg;
-
 	int Animflg;
 	int Turnflg;
 	int Rightflg;
