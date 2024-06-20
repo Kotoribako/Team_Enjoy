@@ -291,7 +291,6 @@ void Stage1::ChangeStage()
 					DeleteSoundMem(Stage1BGM);
 					StopSoundMem(Stage1BGM);
 					Player::Death += 1;
-					GameMain::NowStage = 4;
 
 					Player::quizflg = 0; // 回答後は問題消えるようにする
 

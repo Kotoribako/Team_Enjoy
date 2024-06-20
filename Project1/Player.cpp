@@ -190,14 +190,14 @@ void Player::Update()
 		// ブロックにめり込ませないようにする
 		P_moveX = 3;
 		playerX += P_moveX;
-		//playerX = block->S1bloc[BlockNum].X2 - 15;
+		BlockNum = -1; // BlockNumberをリセット
 	}
 	if (BlockHitX() == 2)
 	{
 		// ブロックにめり込ませないようにする
 		P_moveX = -3;
 		playerX += P_moveX;
-		//playerX = block->S1bloc[BlockNum].X2 + 15;
+		BlockNum = -1; // BlockNumberをリセット
 	}
 	
 	if (P_FPS > 59) {
@@ -229,7 +229,9 @@ void Player::Update()
 
 	//}
 
-	if (Stage1::S1DecisionToAnswerFlg == TRUE && GameMain::NowStage == 4) {
+	if (Stage1::S1DecisionToAnswerFlg == TRUE && GameMain::NowStage == 4 ||
+		Stage2::S2DecisionToAnswerFlg == TRUE && GameMain::NowStage == 5 ||
+		Stage3::S3DecisionToAnswerFlg == TRUE && GameMain::NowStage == 6) {
 		// プレイヤーをスタート地点に戻す
 		playerX = PLAYERSTARTX;
 		playerY = PLAYERSTARTY;
@@ -1025,10 +1027,9 @@ int Player::BlockHitY()
 
 				if (py < block->S1bloc[i].Y2 && block->S1bloc[i].Y < py2 && Jumpflg == FALSE) // 地面に着地している状態
 				{
-					BlockNum = i;
-					if (py < block->S1bloc[BlockNum].Y && py2 > block->S1bloc[BlockNum].Y)
+					if (py < block->S1bloc[i].Y && py2 > block->S1bloc[i].Y)
 					{
-						playerY = block->S1bloc[BlockNum].Y - 11;
+						playerY = block->S1bloc[i].Y - 11;
 					}
 					return 1;
 					break;
@@ -1059,6 +1060,7 @@ int Player::BlockHitY()
 			{
 				if (py < block->S2bloc[i].Y2 && block->S2bloc[i].Y < py2 && Jumpflg == FALSE) // 地面に着地している状態
 				{
+					//if(i==10 && )
 					if (py < block->S2bloc[i].Y && py2 > block->S2bloc[i].Y)
 					{
 						playerY = block->S2bloc[i].Y - 11;
