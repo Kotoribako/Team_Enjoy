@@ -32,8 +32,8 @@ Stage2::Stage2()
 
 	srand((unsigned int)time(NULL));
 	i = rand() % 3;
-	y = rand() % 2;
-	x = rand() % 3;
+	y = rand() % 3;
+	x = rand() % 2;
 
 
 	switch (i)
