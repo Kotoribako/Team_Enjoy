@@ -241,7 +241,7 @@ void Player::Draw()
 	////DrawFormatString(0, 120, GetColor(0, 0, 0), "Death:%d", Death);
 	for (int i = 0; i < Life; i++)
 	{
-		DrawGraph(100 + 50 * i, 100, image[0], TRUE);
+		DrawGraph(50 + 50 * i, 50, image[0], TRUE);
 	}
 }
 
