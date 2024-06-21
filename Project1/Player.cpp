@@ -221,11 +221,11 @@ void Player::Draw()
 	if (Turnflg == 0) {
 		DrawGraph(playerX - 30, playerY - 50, P_img, TRUE);
 	}
-	DrawBox(px, py, px2, py2, GetColor(0, 0,255 ), FALSE);
-	DrawCircle(playerX, playerY, Range, GetColor(255, 0, 0),FALSE);
+	////DrawBox(px, py, px2, py2, GetColor(0, 0,255 ), FALSE);
+	////DrawCircle(playerX, playerY, Range, GetColor(255, 0, 0),FALSE);
 
-	DrawBox(px, py-30, px2, py2-30, GetColor(0, 0, 255), FALSE);
-	DrawCircle(playerX, playerY-30, Range, GetColor(255, 0, 0), FALSE);
+	////DrawBox(px, py-30, px2, py2-30, GetColor(0, 0, 255), FALSE);
+	////DrawCircle(playerX, playerY-30, Range, GetColor(255, 0, 0), FALSE);
 
 	if (Turnflg == 1)
 	{
