@@ -12,12 +12,24 @@ private:
 	};
 	struct BlockX blockx[4];
 
-	int img[2];
+
+	struct S_Enemy
+	{
+		float enemyX;
+		float enemyX2;
+		float enemyY;
+		float enemyY2;
+		int Turnflg;
+		float speed;
+
+	};
+	struct S_Enemy s_enemy[3];
 	int slimeImg[3];
+
+	//img[2];
 	int E_Img;
 	int count;
 	bool Hitflg;
-	float speed;
 	
 	int countup;
 	int moveX;
@@ -25,13 +37,8 @@ private:
 	Block* block;
 	Player* player;
 	int flg;
-	float enemyX;
-	float enemyX2;
-	float enemyY;
-	float enemyY2;
 
 	int OverFlg;
-	int Turnflg;
 	int E_FPS;     //FPScnt
 	int E_Seconas1;  //秒数
 	int Returnflg;

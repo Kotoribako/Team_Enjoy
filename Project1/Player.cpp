@@ -24,6 +24,10 @@ Player::Player()
 	playerY = PLAYERSTARTY;
 
 	if (LoadDivGraph("image/Dummy/player.png", 3, 3, 1, 64, 64, image)) {};
+
+	DeathSE = LoadSoundMem("sound/SE/deth2_SE.wav");
+	JumpSE = LoadSoundMem("sound/SE/Jump.mp3");
+
 	P_img = image[0];
 	px = playerX - 15;
 	px2 = playerX + 15;
@@ -113,7 +117,7 @@ void Player::Update()
 			}
 		}
 	}
-	else if(BlockHitY() == 3 /*&& Jumpflg == TRUE*/)
+	else if(BlockHitY() == 3)
 	{
 		Jumpflg = FALSE;
 		// 落下処理させる
@@ -178,6 +182,8 @@ void Player::Update()
 
 		block = new Block();
 
+		PlaySoundMem(DeathSE, DX_PLAYTYPE_BACK, TRUE);
+
 	}
 	if (Life < 0) {
 		/* ここにゲームオーバー処理を入れる */
@@ -190,14 +196,14 @@ void Player::Update()
 		// ブロックにめり込ませないようにする
 		P_moveX = 3;
 		playerX += P_moveX;
-		//playerX = block->S1bloc[BlockNum].X2 - 15;
+		BlockNum = -1; // BlockNumberをリセット
 	}
 	if (BlockHitX() == 2)
 	{
 		// ブロックにめり込ませないようにする
 		P_moveX = -3;
 		playerX += P_moveX;
-		//playerX = block->S1bloc[BlockNum].X2 + 15;
+		BlockNum = -1; // BlockNumberをリセット
 	}
 	
 	if (P_FPS > 59) {
@@ -209,30 +215,13 @@ void Player::Update()
 		P_Seconas1 = 0;
 	}
 
-
-	//if (playerY >= 800) // リスポーン処理（後で消す）
-	//{
-	//	playerX = PLAYERSTARTX;
-	//	playerY = PLAYERSTARTY;
-	//	Jumpflg = FALSE;
-	//	Downflg = FALSE;
-	//	Stage1::Stage1X = 0;
-	//	Stage2::Stage2X = 0;
-	//	Stage3::Stage3X = 0;
-	//	Life--;
-	//	if (Life == -1) {
-	//		/* ここにゲームオーバー処理を入れる */
-	//		GameMain::NowStage = 8;
-	//	}
-
-	//	block = new Block();
-
-	//}
-
-	if (Stage1::S1DecisionToAnswerFlg == TRUE && GameMain::NowStage == 4) {
+	if (Stage1::S1DecisionToAnswerFlg == TRUE && GameMain::NowStage == 4 ||
+		Stage2::S2DecisionToAnswerFlg == TRUE && GameMain::NowStage == 5 ||
+		Stage3::S3DecisionToAnswerFlg == TRUE && GameMain::NowStage == 6) {
 		// プレイヤーをスタート地点に戻す
 		playerX = PLAYERSTARTX;
 		playerY = PLAYERSTARTY;
+		//PlaySoundMem(DeathSE, DX_PLAYTYPE_BACK, TRUE);
 	}
 	if (Rightflg == 0 && Leftflg == 0 && Turnflg == 0)
 	{
@@ -259,8 +248,8 @@ void Player::Draw()
 	DrawFormatString(0, 50, GetColor(0, 0, 0), "Animflg:%d", Animflg);
 	DrawFormatString(0, 80, GetColor(0, 0, 0), "Right:%d",Rightflg );
 	DrawFormatString(0, 110, GetColor(0, 0, 0), "Left:%d", Leftflg);
-	DrawFormatString(100, 0, GetColor(0, 255, 0), "playerX:%f  playerY:%f", playerX, playerY);
-	DrawFormatString(100, 20, GetColor(0, 255, 255), "px2:%f py2:%f", px2 + -1 * (Stage2::Stage2X), py2);
+	DrawFormatString(100, 0, GetColor(0, 255, 0), "playerX:%f  playerY:%f", playerX + -1 * (Stage2::Stage2X), playerY);
+	DrawFormatString(100, 20, GetColor(0, 255, 255), "px:%f py:%f px2:%f py2:%f", px + -1 * (Stage2::Stage2X), py, px2 + -1 * (Stage2::Stage2X), py2);
 	DrawFormatString(100, 40, GetColor(0, 0, 0), "HitY:%d", BlockHitY());
 	DrawFormatString(0, 120, GetColor(0, 0, 0), "Death:%d", Death);
 	for (int i = 0; i < Life; i++)
@@ -346,6 +335,7 @@ void Player::Move()
 	}
 	if (PAD_INPUT::OnButton(XINPUT_BUTTON_A) && Jumpflg == FALSE /*&& NoHitBlockFlg == TRUE*/)
 	{
+		PlaySoundMem(JumpSE, DX_PLAYTYPE_BACK,TRUE);
 		MaxY = playerY - 50;
 		Jumpflg = TRUE;
 		standflg = 0;
@@ -1025,10 +1015,9 @@ int Player::BlockHitY()
 
 				if (py < block->S1bloc[i].Y2 && block->S1bloc[i].Y < py2 && Jumpflg == FALSE) // 地面に着地している状態
 				{
-					BlockNum = i;
-					if (py < block->S1bloc[BlockNum].Y && py2 > block->S1bloc[BlockNum].Y)
+					if (py < block->S1bloc[i].Y && py2 > block->S1bloc[i].Y)
 					{
-						playerY = block->S1bloc[BlockNum].Y - 11;
+						playerY = block->S1bloc[i].Y - 11;
 					}
 					return 1;
 					break;
@@ -1059,6 +1048,7 @@ int Player::BlockHitY()
 			{
 				if (py < block->S2bloc[i].Y2 && block->S2bloc[i].Y < py2 && Jumpflg == FALSE) // 地面に着地している状態
 				{
+					//if(i==10 && )
 					if (py < block->S2bloc[i].Y && py2 > block->S2bloc[i].Y)
 					{
 						playerY = block->S2bloc[i].Y - 11;
@@ -1125,7 +1115,7 @@ int Player::BlockHitX()
 	case 4:
 		for (int i = 0; i < 11; i++)
 		{
-			if (px + -1 * (Stage1::Stage1X) == block->S1bloc[i].X2 && py2 > block->S1bloc[i].Y && py< block->S1bloc[i].Y2 /*&& px + -1 * (Stage1::Stage1X) == block->S1bloc[i-1].X2*/)
+			if (px + -1 * (Stage1::Stage1X) == block->S1bloc[i].X2 && py2 > block->S1bloc[i].Y && py < block->S1bloc[i].Y2 /*&& px + -1 * (Stage1::Stage1X) == block->S1bloc[i-1].X2*/)
 			{
 				BlockNum = i;
 				return 1;
