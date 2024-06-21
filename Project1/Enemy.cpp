@@ -10,6 +10,7 @@ int   Enemy::Range;
 Enemy::Enemy()
 {
 	if (LoadDivGraph("image/Dummy/slime.png", 3, 3, 1, 64, 64, slimeImg)) {};
+	PlayerDeathSE = LoadSoundMem("sound/SE/deth2_SE.wav");
 	E_Img = slimeImg[0];
 	block = new Block();
 	player = new Player();
@@ -57,6 +58,11 @@ Enemy::Enemy()
 		break;
 	}
 
+}
+
+Enemy::~Enemy()
+{
+	DeleteSoundMem(PlayerDeathSE);
 }
 
 void Enemy::Update()
@@ -223,7 +229,7 @@ void Enemy::Enemyhit()
 			 float Hitrange = (player->Range + Range) * (player->Range * Range) / 4;
 			 if (c[0] <= Hitrange)
 			 {
-
+				 PlaySoundMem(PlayerDeathSE, DX_PLAYTYPE_BACK);
 				 Player::Life -= 1;
 				 Player::Death += 1;
 				 Player::playerX = 220;
@@ -251,7 +257,7 @@ void Enemy::Enemyhit()
 				float Hitrange = (player->Range + Range) * (player->Range * Range) / 4;
 				if (c[i] <= Hitrange)
 				{
-
+					PlaySoundMem(PlayerDeathSE, DX_PLAYTYPE_BACK);
 					Player::Life -= 1;
 					Player::Death += 1;
 					Player::playerX = 220;
@@ -278,7 +284,7 @@ void Enemy::Enemyhit()
 			float Hitrange = (player->Range + Range) * (player->Range * Range) / 4;
 			if (c[i] <= Hitrange)
 			{
-
+				PlaySoundMem(PlayerDeathSE, DX_PLAYTYPE_BACK);
 				Player::Life -= 1;
 				Player::Death += 1;
 				Player::playerX = 220;
