@@ -5,10 +5,6 @@
 #include"Stage3.h"
 #include"GameMain.h"
 #include"math.h"
-float Enemy::ex;
-float Enemy::ex2;
-float Enemy::ey;
-float Enemy::ey2;
 int   Enemy::Range;
 
 Enemy::Enemy()
@@ -171,8 +167,7 @@ void Enemy::Draw()
 			DrawGraph(s_enemy[0].enemyX + Stage1::Stage1X - 30, s_enemy[0].enemyY - 50, E_Img, TRUE);
 
 		}
-		DrawBox(ex + /*moveX +*/ Stage1::Stage1X, ey, ex2 + /*moveX +*/ Stage1::Stage1X, ey2, GetColor(0, 255, 0), FALSE);
-		DrawCircle(s_enemy[0].enemyX + Stage1::Stage1X, s_enemy[0].enemyY, Range, GetColor(0, 255, 0), FALSE);
+		//DrawCircle(s_enemy[0].enemyX + Stage1::Stage1X, s_enemy[0].enemyY, Range, GetColor(0, 255, 0), FALSE);
 		break;
 	case 2:
 		for (int i = 0; i < 2; i++)
@@ -186,8 +181,7 @@ void Enemy::Draw()
 			{
 				DrawGraph(s_enemy[i].enemyX + Stage2::Stage2X - 30, s_enemy[i].enemyY - 30, E_Img, TRUE);
 			}
-			DrawBox(ex + /*moveX +*/ Stage2::Stage2X, ey, ex2 +/* moveX +*/ Stage2::Stage2X, ey2, GetColor(0, 255, 0), FALSE);
-			DrawCircle(s_enemy[i].enemyX + Stage2::Stage2X, s_enemy[i].enemyY, Range, GetColor(0, 255, 0), FALSE);
+			//DrawCircle(s_enemy[i].enemyX + Stage2::Stage2X, s_enemy[i].enemyY, Range, GetColor(0, 255, 0), FALSE);
 
 		}
 		break;
@@ -204,8 +198,7 @@ void Enemy::Draw()
 
 				DrawGraph(s_enemy[i].enemyX + Stage3::Stage3X - 30, s_enemy[i].enemyY - 30, E_Img, TRUE);
 			}
-			DrawBox(ex + /*moveX +*/ Stage3::Stage3X, ey, ex2 +/* moveX +*/ Stage3::Stage3X, ey2, GetColor(0, 255, 0), FALSE);
-			DrawCircle(s_enemy[i].enemyX + Stage3::Stage3X, s_enemy[i].enemyY, Range, GetColor(0, 255, 0), FALSE);
+			//DrawCircle(s_enemy[i].enemyX + Stage3::Stage3X, s_enemy[i].enemyY, Range, GetColor(0, 255, 0), FALSE);
 
 		}
 		break;
