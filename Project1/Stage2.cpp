@@ -32,7 +32,7 @@ Stage2::Stage2()
 
 	srand((unsigned int)time(NULL));
 	i = rand() % 3;
-	y = rand() % 3;
+	y = rand() % 2;
 	x = rand() % 3;
 
 
@@ -318,7 +318,7 @@ void Stage2::Initialize()
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			door[i].Img = LoadDoorImg[i];
 			door[i].Y = 550;
 			door[i].answer = quiz[i2].answer[i];
 		}
@@ -327,7 +327,7 @@ void Stage2::Initialize()
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			door[i].Img = LoadDoorImg[i];
 			door[i].Y = 550;
 			door[i].answer = quiz2[y2].answer[i];
 		}
@@ -336,7 +336,7 @@ void Stage2::Initialize()
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			door[i].Img = LoadDoorImg[i];
 			door[i].Y = 550;
 			door[i].answer = quiz3[x2].answer[i];
 		}
