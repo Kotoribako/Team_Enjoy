@@ -160,7 +160,6 @@ Stage1::Stage1()
 	Stage1Img = LoadGraph("image/Dummy/FirstStage(temporary).png");
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
-	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 	
 	S1DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }
@@ -345,7 +344,6 @@ void Stage1::Initialize()
 	Stage1Img = LoadGraph("image/Dummy/FirstStage(temporary).png");
 	Stage1X = 0.0; // 最初の画像のX座標を0にする
 	StopStage1Xflg = FALSE;
-	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 	GameMain::NowStage = 1;
 
 	S1DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする

@@ -33,8 +33,6 @@ private:
 	int SeikaiSE;
 	int HazureSE;
 
-	int TestImg;
-
 	int janruImg[3];
 	int i;
 	int y;

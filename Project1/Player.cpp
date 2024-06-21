@@ -26,7 +26,7 @@ Player::Player()
 	if (LoadDivGraph("image/Dummy/player.png", 3, 3, 1, 64, 64, image)) {};
 
 	DeathSE = LoadSoundMem("sound/SE/deth2_SE.wav");
-	JumpSE = LoadSoundMem("sound/SE/Jump.mp3");
+	JumpSE = LoadSoundMem("sound/SE/Jump.wav");
 
 	P_img = image[0];
 	px = playerX - 15;

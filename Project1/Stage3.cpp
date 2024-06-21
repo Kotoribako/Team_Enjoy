@@ -151,7 +151,6 @@ Stage3::Stage3()
 	Stage3Img = LoadGraph("image/Dummy/Stage3.png");
 	Stage3X = 0.0; // 最初の画像のX座標を0にする
 	StopStage3Xflg = FALSE;
-	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 
 	S3DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
 }
@@ -332,7 +331,6 @@ void Stage3::Initialize()
 	Stage3Img = LoadGraph("image/Dummy/Stage3.png");
 	Stage3X = 0.0; // 最初の画像のX座標を0にする
 	StopStage3Xflg = FALSE;
-	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 	GameMain::NowStage = 1;
 
 	S3DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
