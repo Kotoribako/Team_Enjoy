@@ -31,7 +31,6 @@ private:
 	float py2 = playerY + 15;
 	int HitFlg;  // 地面に足がついているか
 	int BlockNum;
-	int NoHitBlockFlg;
 
 	int Animflg;
 	int Turnflg;
@@ -56,7 +55,6 @@ public:
 	void Update();
 	void Draw();
 	void Move();  //プレイヤー動き（ジャンプ含む）
-	void PlayerHit(); //当たり判定のためのプレイヤー座標
 	void PlayerAnim(); //プレイヤーアニメーション
 
 	int BlockHitY(); // Y軸の別の当たり判定をやってみる

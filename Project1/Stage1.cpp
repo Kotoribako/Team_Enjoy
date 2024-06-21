@@ -197,9 +197,9 @@ void Stage1::Update()
 void Stage1::Draw()
 {
 	DrawGraph(Stage1X, 0, Stage1Img, TRUE);
-	DrawFormatString(0, 30, GetColor(255, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
-	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
-	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
+	////DrawFormatString(0, 30, GetColor(255, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
+	////DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
+	////DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -230,7 +230,7 @@ void Stage1::Draw()
 	}
 	block->Draw();
 
-	DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
+	////DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
 
 }
 
