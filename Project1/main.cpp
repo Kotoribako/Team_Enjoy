@@ -58,7 +58,7 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		PAD_INPUT::UpdateKey();
 		sceneMng->Draw();
 		FPSC.All();
-		FPSC.Disp();
+		////FPSC.Disp();
 		//�����I��
 		if (PAD_INPUT::OnButton(XINPUT_BUTTON_BACK) || CheckHitKey(KEY_INPUT_ESCAPE))
 		{

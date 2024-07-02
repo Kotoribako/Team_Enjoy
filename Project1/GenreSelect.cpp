@@ -119,8 +119,8 @@ void GenreSelect::Draw() const
 { 
 	DrawGraph(0, 0, BackGround, TRUE);
 
-	DrawFormatString(100, 100, GetColor(0, 0, 0), "CauserX:%d\n",CauserX);
-	DrawFormatString(200, 100, GetColor(0, 0, 0), "CauserY:%d\n",CauserY);
+	////DrawFormatString(100, 100, GetColor(0, 0, 0), "CauserX:%d\n",CauserX);
+	////DrawFormatString(200, 100, GetColor(0, 0, 0), "CauserY:%d\n",CauserY);
 
 
 	SetFontSize(60);

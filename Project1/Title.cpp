@@ -111,10 +111,6 @@ AbstractScene* Title::Update()
 			break;
 		}
 	}
-	if (PAD_INPUT::OnButton(XINPUT_BUTTON_X))
-	{
-		return new GameMain();
-	}
 	return this;
 }
 

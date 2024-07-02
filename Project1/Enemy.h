@@ -39,6 +39,9 @@ private:
 
 	int E_FPS;     //FPScnt
 	int E_Seconas1;  //秒数
+
+	int PlayerDeathSE; // プレイヤーが敵に当たった時に死ぬ音を入れる
+
 public:
 	
 	static float ex, ex2; // 敵の左座標(ex)と右座標を取る(ex2) 
@@ -47,6 +50,7 @@ public:
 
 
 	Enemy();
+	~Enemy();
 	void Update();
 	void Draw();
 	void Enemyhit();

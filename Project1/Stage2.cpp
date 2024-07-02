@@ -33,7 +33,7 @@ Stage2::Stage2()
 	srand((unsigned int)time(NULL));
 	i = rand() % 3;
 	y = rand() % 3;
-	x = rand() % 3;
+	x = rand() % 2;
 
 
 	switch (i)
@@ -318,7 +318,7 @@ void Stage2::Initialize()
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			door[i].Img = LoadDoorImg[i];
 			door[i].Y = 550;
 			door[i].answer = quiz[i2].answer[i];
 		}
@@ -327,7 +327,7 @@ void Stage2::Initialize()
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			door[i].Img = LoadDoorImg[i];
 			door[i].Y = 550;
 			door[i].answer = quiz2[y2].answer[i];
 		}
@@ -336,7 +336,7 @@ void Stage2::Initialize()
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			door[i].Img = LoadGraph("image/Dummy/DummyDoor.png");
+			door[i].Img = LoadDoorImg[i];
 			door[i].Y = 550;
 			door[i].answer = quiz3[x2].answer[i];
 		}
@@ -346,7 +346,6 @@ void Stage2::Initialize()
 	Stage2Img = LoadGraph("image/Dummy/Stage2.png");
 	Stage2X = 0.0; // 最初の画像のX座標を0にする
 	StopStage2Xflg = FALSE;
-	TestImg = LoadGraph("image/Quiz/Anime&Game/AnimeGame1.png");
 	GameMain::NowStage = 1;
 
 	S2DecisionToAnswerFlg = FALSE; // 回答を決定していない状態にする
