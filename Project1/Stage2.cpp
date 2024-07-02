@@ -200,19 +200,19 @@ void Stage2::Draw()
 {
 
 	DrawGraph(Stage2X, 0, Stage2Img, TRUE);
-	DrawFormatString(0, 30, GetColor(255, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
-	DrawFormatString(0, 600, GetColor(255, 0, 0), "stage2X:%f\n", Stage2X);
-	DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
+	////DrawFormatString(0, 30, GetColor(255, 0, 0), "Genre:%d", GenreSelect::Selectgenre);
+	////DrawFormatString(0, 600, GetColor(255, 0, 0), "stage2X:%f\n", Stage2X);
+	////DrawLine(640, 0, 640, 720, GetColor(0, 0, 255), TRUE);
 
 	for (int i = 0; i < 4; i++)
 	{
 		DrawGraph(door[i].X, door[i].Y, door[i].Img, TRUE);
 	}
 
-	DrawBox(door[0].X - 10, door[0].Y, door[0].X + 70, door[0].Y + 60, 0x00ff00, FALSE);
-	DrawBox(door[1].X - 10, door[1].Y, door[1].X + 70, door[1].Y + 60, 0xff0000, FALSE);
-	DrawBox(door[2].X - 10, door[2].Y, door[2].X + 70, door[2].Y + 60, 0x0000ff, FALSE);
-	DrawBox(door[3].X - 10, door[3].Y, door[3].X + 70, door[3].Y + 60, 0xffff00, FALSE);
+	////DrawBox(door[0].X - 10, door[0].Y, door[0].X + 70, door[0].Y + 60, 0x00ff00, FALSE);
+	////DrawBox(door[1].X - 10, door[1].Y, door[1].X + 70, door[1].Y + 60, 0xff0000, FALSE);
+	////DrawBox(door[2].X - 10, door[2].Y, door[2].X + 70, door[2].Y + 60, 0x0000ff, FALSE);
+	////DrawBox(door[3].X - 10, door[3].Y, door[3].X + 70, door[3].Y + 60, 0xffff00, FALSE);
 
 
 	if (Player::quizflg == 1) // プレイヤーのX座標が1050を超えると、
@@ -233,7 +233,7 @@ void Stage2::Draw()
 	}
 	block->Draw();
 
-	DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
+	////DrawFormatString(1500, 0, GetColor(255, 255, 255), "Genre:%d", GenreSelect::Selectgenre);
 
 }
 
